@@ -1,3 +1,19 @@
+// almost all of this code is borrowed from the typeahead-find project.
+
+//alert("sup");
+
+// Called when the user clicks on the browser action.
+//chrome.browserAction.onClicked.addListener(function(tab) {
+//chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
+  // No tabs or host permissions needed!
+  //console.log('Turning ' + tab.url + ' red!');
+  //chrome.tabs.executeScript({
+    //code: 'document.body.style.backgroundColor="red"'
+  //});
+//});
+
+/* Styles and addStyle borrowed from nice-alert.js project */
+
 var styles = '\
   #type-ahead-box {\
     position: fixed;\
@@ -69,7 +85,7 @@ function setAlternativeActiveDocument(doc) {
 
 
 // doesn't seem to be needed?
-setAlternativeActiveDocument(document);
+//setAlternativeActiveDocument(document);
 //options = default_options;
 
 if (typeof(chrome) == "object" && chrome.extension) {
@@ -80,12 +96,218 @@ if (typeof(chrome) == "object" && chrome.extension) {
   main();
 }
 
+function is_shortcut(ev) {
+    var is_mac = navigator.appVersion.indexOf("Mac") !== -1;
+    var is_windows = navigator.appVersion.indexOf("Windows") !== -1;
+    var is_alternative_input = (is_mac && ev.altKey) || (is_windows && ev.ctrlKey && ev.altKey);
+    return !is_alternative_input && (ev.altKey || ev.metaKey || ev.ctrlKey);
+}
+
+function stopEvent(ev) {
+  ev.preventDefault();
+  ev.stopPropagation();
+}
+
+function upMatch(element, matchFunction) {
+  while (element) {
+    var res = matchFunction(element);
+    if (res == null)
+      return null;
+    else if (res)
+      return element;
+    element = element.parentNode;
+  }
+  return element;
+}
+
+
+function getActiveElement(doc) {
+  return doc.activeElement || doc._tafActiveElement;
+}
+
+function isInputElementActive(doc) {
+  var element = getActiveElement(doc);
+  if (!element)
+    return;
+  var name = element.tagName.toLowerCase();
+  if (["input", "select", "textarea", "object", "embed"].indexOf(name) >= 0)
+    return true;
+  return (upMatch(element, function(el) {
+      if (!el.getAttribute || el.getAttribute('contenteditable') == 'false')
+        return null;
+      return el.getAttribute('contenteditable'); 
+    }))
+}
+
+function getRootNodes() {  
+  var rootNodes = new Array();
+  var frames = document.getElementsByTagName('frame');
+  for (var i = 0; i < frames.length; i++)
+    rootNodes.push(frames[i]);
+  return rootNodes;
+}
+
 function init() {
-	draw();
+  var keycodes = {
+    "backspace": 8,
+    "tab": 9,
+    "enter": 13,
+    "spacebar": 32,
+    "escape": 27,
+    "n": 78,
+    "p": 80,
+    "g": 71,
+    "f3": 114,
+    "f4": 115,
+    "dot": 46,
+    "zero": 48,
+    "activate": 167
+  };
+  
+  var numpadtype = true;
+  var numpadstart = 48;
+  
+  var selectHistory = [];
+  selectHistory.push(".gridContainer");
+  
+  function getLatestSelector() {
+    return selectHistory[selectHistory.length-1];
+  }
+  
+  function getPreviousSelector() {
+    if (selectHistory.length>1) {
+      selectHistory.pop(selectHistory.length-1);
+    }
+    return getLatestSelector();
+  }
+  
+  //createGrid();
+	function setEvents(rootNode) {
+		var doc = rootNode.contentDocument || rootNode;
+		var body = rootNode.body;
+		
+		if (!body || !body.addEventListener) {
+			return;
+		}
+		
+		setAlternativeActiveDocument(document);
+		
+		// usually on keydown
+		//processSearch();
+		draw();
+      var container = makeGridContainer(document.documentElement);
+      
+      doc.addEventListener('keypress', function(ev) {
+      if (isInputElementActive(doc)) {
+        return;
+      }
+      var code = ev.keyCode;
+      var ascii = String.fromCharCode(code);
+        
+      if (!is_shortcut(ev) && ascii && [keycodes.enter].indexOf(code) == -1) {
+        doc.getElementById("trace").innerHTML = code;
+        
+        if (numpadtype) {
+          var num = code-numpadstart;
+          if (num<10 && num > 0) {
+            doc.getElementById("trace").innerHTML += ", " + (code-numpadstart);
+            
+            $(getLatestSelector()+" .cell").text("");
+            
+            var rowIndexed1 = 4-Math.ceil(num/3);
+            var columnIndexed1 = ((num-1)%3)+1;
+			//cell.innerHTML = 7-(i*3-p);
+            
+            selectArray = [];
+            selectArray.push(getLatestSelector());
+            selectArray.push(".grid");
+            selectArray.push(".row:nth-of-type("+rowIndexed1+")");
+            selectArray.push(".cell:nth-of-type("+columnIndexed1+")");
+            selectHistory.push(selectArray.join(" "));
+            
+            createGrid($(getLatestSelector()).first());
+            console.log("not zero");
+          } else if (code == keycodes.zero) {
+            console.log("zero");
+            // remove a grid!
+            $(getLatestSelector()).empty();
+            getPreviousSelector();
+          }
+        }
+        if (code == keycodes.dot) {
+          // click
+          var $this = $(getLatestSelector()+" .grid").first();
+          var offset = $this.offset();
+          //console.log($this.get(0));
+          //console.log($this.offset());
+          var width = $this.outerWidth();
+          var height = $this.outerHeight();
+          
+          var centerX = offset.left + width / 2;
+          var centerY = offset.top + height / 2;
+          
+          console.log("x: "+centerX+" y: "+centerY);
+          
+          var rootNodes = [window].concat(getRootNodes());
+          for (var i = 0; i < rootNodes.length; i++) {    
+            var doc2 = rootNodes[i].document || rootNodes[i].contentDocument;
+            if (!doc2 || !doc2.body)
+              continue;
+            
+          
+            var element = $(doc2.elementFromPoint(centerX, centerY)).get(0);
+            
+            console.log(element);
+            
+            element.click();
+          }
+        } else if (code == keycodes.activate) {
+          if ($(".gridContainer").children().length == 0) {
+            // need to make a grid
+            selectHistory = [".gridContainer"];
+            createGrid(container);
+          } else {
+            // toggle grid off
+            selectHistory = [".gridContainer"];
+            $(getLatestSelector()).empty();
+          }
+        }
+        stopEvent(ev);
+      }
+    }, false);
+	}
+	
+	// guess this defers setting events until root is loaded?
+  	var rootNodes = [document].concat(getRootNodes());
+	for (var i = 0; i < rootNodes.length; i++) {
+    var rootNode = rootNodes[i];
+    if (rootNode.contentDocument) { 
+      rootNode.addEventListener('load', function(ev) {
+        setEvents(ev.target.contentDocument);
+      });
+    }
+    else if (!rootNode.contentDocument || rootNode.contentDocument.readyState == 'complete') {
+      setEvents(rootNode.contentDocument ? rootNode.contentDocument : rootNode);
+    }
+  }
+	//draw();
+}
+
+function processSearch() {
+	var rootNodes = [window].concat(getRootNodes());
+	for (var i = 0; i < rootNodes.length; i++) {
+		var doc = rootNodes[i].document || rootNodes[i].contentDocument;
+    	if (!doc || !doc.body)
+			continue;
+		var frame = rootNodes[i].contentWindow || rootNodes[i];
+ 	}
+//	console.log("windowInner: "+window.innerHeight);
+//	console.log("docHeight: "+doc.height);
+//	console.log("frameHeight: "+ frame.innerHeight);
 }
 
 function draw() {
-	var box = document.getElementById('type-ahead-box');
+  var box = document.getElementById('type-ahead-box');
   if (!box) { 
     box = document.createElement('TABOX');
     box.id = 'type-ahead-box';
@@ -93,60 +315,53 @@ function draw() {
     addStyle(styles);
   }
   box.style.display = 'block';
-  //if (search.mode) {
-    //var color = colors[search.mode][(search.total < 1 && search.text) ? 'ko' : 'ok'] 
-    box.style['background-color'] = "#ff0000";
-  //}
+  box.style['background-color'] = "#ff0000";
   box.innerHTML = "<small>soup</small>";
-  //box.style['top'] = ''
-  //box.style['top'] = 100  + 'px';
 }
 
-function drawGrid(width, height) {
-    var grid = '<div id="grid">',
-        cell_html = '',
-        i = 0, j = 0;
-
-    for( ; i < width; i++) {
-        cell_html += '<div class="cell"></div>';
-    }
-
-    for( ; j < height; j++) {
-        grid += '<div class="row">' + cell_html + '</div>';
-    }
-
-    grid += '</div>';
-
-    return grid;
+function makeGridContainer(root) {
+  var parent = document.createElement('div');
+  parent.className = 'gridContainer';
+  $(root).append(parent);
+  return parent;
 }
 
-function createGrid() {
-    //var ratioW = Math.floor((window.innerWidth || document.documentElement.offsetWidth) / size),
-     //   ratioH = Math.floor((window.innerHeight || document.documentElement.offsetHeight) / size);
+function createGrid(root) {
+	/*var rootNodes = [window].concat(getRootNodes());
+	for (var i = 0; i < rootNodes.length; i++) {
+		var doc = rootNodes[i].document || rootNodes[i].contentDocument;
+    	if (!doc || !doc.body)
+			continue;
+		var frame = rootNodes[i].contentWindow || rootNodes[i];
+ 	}
+	console.log("windowInner: "+window.innerHeight);
+	console.log("docHeight: "+doc.height);
+	console.log("frameHeight: "+ frame.innerHeight);*/
+  
+  var anticipatedHeight = $(root).height();
+  var cellHeight = anticipatedHeight/3;
+  // do not display text smaller than 12px
+  // which on a low-density monitor is 12pt
 	
-	
-
+  console.log(anticipatedHeight);
+    
     var parent = document.createElement('div');
     parent.className = 'grid';
-    //parent.style.width = (ratioW * size) + 'px';
-    //parent.style.height = (ratioH * size) + 'px';
-	parent.style.width = '100%';
-	parent.style.height = '100%';
 
     for (var i = 0; i < 3; i++) {
+		var row = document.createElement('div');
+		row.className = 'row';
         for (var p = 0; p < 3; p++) {
             var cell = document.createElement('div');
-            cell.style.height = '33%';
-            cell.style.width = '33%';
+			cell.className = "cell";
+          if (cellHeight>12) {
 			cell.innerHTML = 7-(i*3-p);
-            parent.appendChild(cell);
+          }
+            row.appendChild(cell);
         }
+		parent.appendChild(row);
     }
 
-    document.documentElement.appendChild(parent);
+    //root.appendChild(parent);
+  $(root).append(parent);
 }
-
-createGrid();
-
-//$(drawGrid(2, 3)).appendTo();
-
