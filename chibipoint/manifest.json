@@ -1,16 +1,25 @@
 {
-  "name": "Page Redder",
-  "description": "Make the current page red",
-  "version": "2.0",
-  "permissions": [
-    "activeTab"
-  ],
+  "name": "ChibiPoint",
+  "description": "Point at webpages using the keyboard",
+  "version": "0.1",
+	"content_scripts": [
+		{
+			"matches": ["http://*/*", "https://*/*"],
+      "css": ["styles.css"],
+      "js": ["main.js", "jquery-2.1.0.min.js"],
+      "run_at": "document_start"
+		}
+	],
   "background": {
-    "scripts": ["background.js"],
+    "scripts": ["main.js"],
     "persistent": false
   },
+  "permissions": [
+	  "tabs",
+    "activeTab"
+  ],
   "browser_action": {
-    "default_title": "Make this page red"
+    "default_title": "Point at this page!"
   },
   "manifest_version": 2
 }
