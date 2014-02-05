@@ -194,8 +194,12 @@ function init() {
 		
 		// usually on keydown
 		//processSearch();
-		draw();
+		//draw();
       var container = makeGridContainer(document.documentElement);
+      
+            // need to make a grid
+            selectHistory = [".gridContainer"];
+            createGrid(container);
       
       doc.addEventListener('keypress', function(ev) {
       if (isInputElementActive(doc)) {
@@ -205,12 +209,17 @@ function init() {
       var ascii = String.fromCharCode(code);
         
       if (!is_shortcut(ev) && ascii && [keycodes.enter].indexOf(code) == -1) {
-        doc.getElementById("trace").innerHTML = code;
+        var tracer = doc.getElementById("trace");
+        if (tracer != null) {
+          doc.getElementById("trace").innerHTML = code;
+        }
         
         if (numpadtype) {
           var num = code-numpadstart;
           if (num<10 && num > 0) {
-            doc.getElementById("trace").innerHTML += ", " + (code-numpadstart);
+            if (tracer != null) {
+              doc.getElementById("trace").innerHTML += ", " + (code-numpadstart);
+            }
             
             $(getLatestSelector()+" .cell").text("");
             
@@ -232,6 +241,24 @@ function init() {
             // remove a grid!
             $(getLatestSelector()).empty();
             getPreviousSelector();
+            
+            trace(getLatestSelector());
+            
+            var anticipatedHeight = $(getLatestSelector()).height();
+            var cellHeight = anticipatedHeight/3;
+            $(getLatestSelector()+" .grid .row").each(function(index) {
+                var i = index;
+                $(this).children().each(function(index) {
+                  var p = index;
+                  if (cellHeight>12) {
+                    $(this).text(7-(i*3-p));
+                    
+                    var trans = document.createElement('div');
+                    trans.className = "backing";
+                    $(this).append(trans);
+                  }
+                });
+            });
           }
         }
         if (code == keycodes.dot) {
@@ -354,9 +381,13 @@ function createGrid(root) {
         for (var p = 0; p < 3; p++) {
             var cell = document.createElement('div');
 			cell.className = "cell";
-          if (cellHeight>12) {
-			cell.innerHTML = 7-(i*3-p);
-          }
+            if (cellHeight>12) {
+              cell.innerHTML = 7-(i*3-p);
+              cell.style.fontSize =Math.min(96,cellHeight*0.5)+"px"
+              var trans = document.createElement('div');
+              trans.className = "backing";
+              cell.appendChild(trans);
+            }
             row.appendChild(cell);
         }
 		parent.appendChild(row);
