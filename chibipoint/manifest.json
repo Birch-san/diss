@@ -6,14 +6,10 @@
 		{
 			"matches": ["http://*/*", "https://*/*"],
       "css": ["styles.css"],
-      "js": ["main.js", "jquery-2.1.0.min.js"],
+      "js": ["require.js", "require-cs.js",  "depend.js"],
       "run_at": "document_start"
 		}
 	],
-  "background": {
-    "scripts": ["main.js", "trace.js"],
-    "persistent": false
-  },
   "permissions": [
 	  "tabs",
     "activeTab"
@@ -21,5 +17,8 @@
   "browser_action": {
     "default_title": "Point at this page!"
   },
-  "manifest_version": 2
+  "manifest_version": 2,
+  "web_accessible_resources": [
+    "*.js"
+  ]
 }

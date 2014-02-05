@@ -1,3 +1,5 @@
+define([], function() {
+
 everLogged = false;
 
 function trace(message) {
@@ -39,3 +41,8 @@ function supertraceInline(o) {
 	}
 	trace(str);
 }
+
+  return {trace: trace,
+         supertrace: supertrace,
+         supertraceInline: supertraceInline};
+});
