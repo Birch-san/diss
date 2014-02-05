@@ -221,7 +221,15 @@ function init() {
               doc.getElementById("trace").innerHTML += ", " + (code-numpadstart);
             }
             
+            trace($(getLatestSelector()+" .grid").get(0));
+            
             $(getLatestSelector()+" .cell").text("");
+            $(getLatestSelector()+" .grid").css({"border-color": "#C1E0FF", 
+             "border-width":"0px", 
+             "border-style":"solid"});
+            $(getLatestSelector()+" .cell").css({"border-color": "#C1E0FF", 
+             "border-width":"0px", 
+             "border-style":"solid"});
             
             var rowIndexed1 = 4-Math.ceil(num/3);
             var columnIndexed1 = ((num-1)%3)+1;
@@ -259,6 +267,13 @@ function init() {
                   }
                 });
             });
+            
+            $(getLatestSelector()+" .grid").css({"border-color": "#ccc", 
+             "border-width":"1px 0 0 1px", 
+             "border-style":"solid"});
+            $(getLatestSelector()+" .cell").css({"border-color": "#ccc", 
+             "border-width":"0 1px 1px 0", 
+             "border-style":"solid"});
           }
         }
         if (code == keycodes.dot) {
