@@ -1,0 +1,105 @@
+// out: styles.css
+// compress: false, strictMath: false
+
+
+@gridcol: #ccc;
+@gridthick: 1px;
+
+@growcoeff: 1.05;
+
+
+body {
+    padding: 0;
+}
+
+.gridContainer {
+  padding: 0;
+  //top: 8.3%;
+  top:0;
+  left:calc(((100%*(@growcoeff - 1))/2) /@growcoeff);
+  
+  position:fixed;
+  width:calc(100%/@growcoeff);
+  height:calc(100%/@growcoeff); 
+  
+  pointer-events: none;
+}
+
+.grid {
+  
+  border: @gridthick solid @gridcol;
+  border-width: @gridthick 0 0 @gridthick;
+    
+  position:relative;
+  left:calc(-(100%*(@growcoeff - 1))/2);
+  
+  //top:-10%;
+  top:0;
+  //float:left;
+  
+  width:calc(100%*@growcoeff);
+  height:calc(100%*@growcoeff);
+	
+    //overflow: auto;
+	display: table;
+    table-layout: fixed;
+  
+  pointer-events: inherit;
+}
+
+.row {
+    //border: 1px solid #ccc;
+    //border-width: 0 1px 1px 0;
+    
+    display: table-row;
+  pointer-events: inherit;
+  
+}
+
+@cellratio:calc(100%/3);
+
+.cell {
+  padding:0;
+  
+  border: @gridthick solid @gridcol;
+  border-width: 0 @gridthick @gridthick 0;
+  
+  width:@cellratio;
+  height:@cellratio;
+  display: table-cell;
+  
+  
+  // text
+  line-height: @cellratio; 
+  text-align:center;
+  vertical-align:middle;
+  color: #000;
+  color:rgba(0, 0, 0, 0.5);
+  font-family:Geneva, Arial, Helvetica, sans-serif;
+  
+  pointer-events: inherit;
+  
+  position:relative;
+  overflow:visible;
+  clear:both;
+}
+
+@backingprop: 0.8;
+@radius: 15%;
+
+.backing {
+  position:absolute;
+  
+  top:calc(100%*(1-@backingprop)/2);
+  left:calc(100%*(1-@backingprop)/2);
+  
+  width:calc(100%*@backingprop);
+  height:calc(100%*@backingprop);
+  background:rgba(255, 255, 255, 0.5);
+  
+  z-index:-1;
+  
+  -moz-border-radius: @radius @radius;
+  -webkit-border-radius: @radius @radius;
+  border-radius: @radius @radius;
+}
