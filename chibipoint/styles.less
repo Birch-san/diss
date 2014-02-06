@@ -103,3 +103,61 @@ body {
   -webkit-border-radius: @radius @radius;
   border-radius: @radius @radius;
 }
+
+@haircol:rgba(255, 0, 0, 1);
+@hairthick:1px;
+
+.shownCrosshairs {
+  border-width: 0 0 0 0;
+  
+  top:0;
+  left:0;
+  
+  width:100%;
+  height:100%;
+  
+  position:fixed;
+  padding:0;
+  
+  pointer-events: none;
+}
+
+.hiddenCrosshairs {  
+  pointer-events: none;
+  
+  display:none;
+}
+
+.horizontalHair {
+  padding:0;
+  
+  left:inherit;
+  
+  background:@haircol;
+  
+  border-width:inherit;
+  
+  width:inherit;
+  height:@hairthick;
+  
+  position:relative;
+  
+  pointer-events: inherit;
+}
+
+.verticalHair {
+  padding:0;
+  
+  top:-@hairthick;
+  
+  background:@haircol;
+  
+  border-width:inherit;
+  
+  width:@hairthick;
+  height:inherit;
+  
+  position:relative;
+  
+  pointer-events: inherit;
+}

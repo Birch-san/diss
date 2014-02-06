@@ -6,7 +6,7 @@
 		{
 			"matches": ["http://*/*", "https://*/*"],
       "css": ["styles.css"],
-      "js": ["require.js", "require-cs.js",  "depend.js"],
+      "js": ["src/lib/require.js", "src/lib/require-cs.js",  "src/depend.js"],
       "run_at": "document_start"
 		}
 	],
