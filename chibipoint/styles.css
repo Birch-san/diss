@@ -10,6 +10,7 @@ body {
   width: calc(95.23809523809524%);
   height: calc(95.23809523809524%);
   pointer-events: none;
+  z-index: 2147483647;
 }
 .grid {
   position: relative;
@@ -78,6 +79,7 @@ body {
   position: fixed;
   padding: 0;
   pointer-events: none;
+  z-index: 2147483646;
 }
 .hiddenCrosshairs {
   pointer-events: none;

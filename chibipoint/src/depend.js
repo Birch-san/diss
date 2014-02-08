@@ -3,7 +3,7 @@ if (chrome.extension != undefined) {
   url = chrome.extension.getURL("/src/");
 }
 
-require({ baseUrl:url  }, ["lib/jquery-2.1.0.min", "test", "trace", "lookup", "testonly", "setup"], function ($, test, trace, lookup, testonly, setup) {
+require({ baseUrl:url  }, ["lib/jquery-2.1.0.min", "test", "trace", "lookup", "testonly", "setup", "Grid", "Crosshairs"], function ($, test, trace, lookup, testonly, setup, gridclass, crosshairclass) {
   // default namespace
   window.birchlabs = {};
  
