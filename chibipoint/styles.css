@@ -12,8 +12,6 @@ body {
   pointer-events: none;
 }
 .grid {
-  border: 1px solid #cccccc;
-  border-width: 1px 0 0 1px;
   position: relative;
   left: calc(-2.500000000000002%);
   top: 0;
@@ -23,14 +21,20 @@ body {
   table-layout: fixed;
   pointer-events: inherit;
 }
+.gridBorderOn {
+  border: 1px solid #cccccc;
+  border-width: 1px 0 0 1px;
+}
+.gridBorderOff {
+  border: 0 solid #cccccc;
+  border-width: 0 0 0 0;
+}
 .row {
   display: table-row;
   pointer-events: inherit;
 }
 .cell {
   padding: 0;
-  border: 1px solid #cccccc;
-  border-width: 0 1px 1px 0;
   width: calc(33.333333333333336%);
   height: calc(33.333333333333336%);
   display: table-cell;
@@ -44,6 +48,14 @@ body {
   position: relative;
   overflow: visible;
   clear: both;
+}
+.cellBorderOn {
+  border: 1px solid #cccccc;
+  border-width: 0 1px 1px 0;
+}
+.cellBorderOff {
+  border: 0 solid #cccccc;
+  border-width: 0 0 0 0;
 }
 .backing {
   position: absolute;
@@ -90,4 +102,13 @@ body {
   height: inherit;
   position: relative;
   pointer-events: inherit;
+}
+.targeted {
+  background: rgba(255, 230, 0, 0.5);
+  border-radius: 3px;
+}
+.cluck {
+  background: red!important;
+  border-radius: 3px;
+  border-color: red!important;
 }

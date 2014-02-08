@@ -35,6 +35,14 @@ define(["lib/jquery-2.1.0.min", "trace", "lookup", "testonly"], function (jq, tr
       return this.selectHistory.length>1;
     }
     
+    p.getLastRows = function() {
+      return $(this.getLatestSelector()+" .row");
+    };
+    
+    p.getLastCells = function() {
+      return $(this.getLatestSelector()+" .cell");
+    };
+    
     p.getLastGrid = function() {
       return $(this.getLatestSelector()+" .grid").first();
     };
@@ -73,19 +81,19 @@ define(["lib/jquery-2.1.0.min", "trace", "lookup", "testonly"], function (jq, tr
       var rect = elem.get(0).getBoundingClientRect();
       var pY = y*100/rect.height;
       
-      tracer.supertrace(rect);
       $(".horizontalHair").first().css({top:pY+"%"});
     };
     
     p.show = function() {
-      this.hairs.className = "shownCrosshairs";
+      this.hairs.className = "crosshairs shownCrosshairs";
     };
     p.hide = function() {
-      this.hairs.className = "hiddenCrosshairs";
+      this.hairs.className = "crosshairs hiddenCrosshairs";
     };
     
     p.createCrosshairs = function(root) {
       this.hairs = document.createElement('div');
+      this.hairs.className = "crosshairs";
       
       this.horizontalHair = document.createElement('div');
       this.horizontalHair.className = "horizontalHair";
@@ -107,6 +115,8 @@ define(["lib/jquery-2.1.0.min", "trace", "lookup", "testonly"], function (jq, tr
       
       this.setX(centerX);
       this.setY(centerY);
+      
+      highlightTarget();
     };
     
     p.initialize = function(root, grid) {
@@ -120,6 +130,8 @@ define(["lib/jquery-2.1.0.min", "trace", "lookup", "testonly"], function (jq, tr
   })();
   
   function init() {
+    birchlabs.targetedElement = null;
+    
     var keycodes = {
       "backspace": 8,
       "tab": 9,
@@ -155,7 +167,7 @@ define(["lib/jquery-2.1.0.min", "trace", "lookup", "testonly"], function (jq, tr
           birchlabs.testmode = true;
         }
         
-        trace(birchlabs.testmode);
+        //trace(birchlabs.testmode);
         
           // usually on keydown
           //processSearch();
@@ -168,6 +180,26 @@ define(["lib/jquery-2.1.0.min", "trace", "lookup", "testonly"], function (jq, tr
           
           crosshairs = crosshairs||new birchlabs.Crosshairs(document.documentElement, grid);
         }
+        
+        var $window   = $(window),
+            resize_ok = true,
+            timer;
+
+        timer = setInterval(function () {
+            resize_ok = true;
+        }, 250);
+        
+        liveTargeter = function() {
+          if (resize_ok === true) {
+                resize_ok = false;
+                //trace($window.width());
+              trace($(".verticalHair").first().offset().left);
+              highlightTarget();
+            }
+        };
+
+        $window.resize(liveTargeter);
+        $window.scroll(liveTargeter);
         
         doc.addEventListener('keypress', function(ev) {
         if (lookup.isInputElementActive(doc)) {
@@ -189,15 +221,11 @@ define(["lib/jquery-2.1.0.min", "trace", "lookup", "testonly"], function (jq, tr
                 doc.getElementById("trace").innerHTML += ", " + (code-numpadstart);
               }
               
-              trace($(grid.getLatestSelector()+" .grid").get(0));
-              
-              $(grid.getLatestSelector()+" .cell").text("");
-              $(grid.getLatestSelector()+" .grid").css({"border-color": "#C1E0FF", 
-               "border-width":"0px", 
-               "border-style":"solid"});
-              $(grid.getLatestSelector()+" .cell").css({"border-color": "#C1E0FF", 
-               "border-width":"0px", 
-               "border-style":"solid"});
+              grid.getLastCells().text("");
+              grid.getLastGrid().addClass("gridBorderOff");
+              grid.getLastCells().addClass("cellBorderOff");
+              grid.getLastGrid().removeClass("gridBorderOn");
+              grid.getLastCells().removeClass("cellBorderOn");
               
               var rowIndexed1 = 4-Math.ceil(num/3);
               var columnIndexed1 = ((num-1)%3)+1;
@@ -228,7 +256,7 @@ define(["lib/jquery-2.1.0.min", "trace", "lookup", "testonly"], function (jq, tr
               
               var anticipatedHeight = $(grid.getLatestSelector()).height();
               var cellHeight = anticipatedHeight/3;
-              $(grid.getLatestSelector()+" .grid .row").each(function(index) {
+              grid.getLastRows().each(function(index) {
                   var i = index;
                   $(this).children().each(function(index) {
                     var p = index;
@@ -242,14 +270,12 @@ define(["lib/jquery-2.1.0.min", "trace", "lookup", "testonly"], function (jq, tr
                   });
               });
               
-              $(grid.getLatestSelector()+" .grid").css({"border-color": "#ccc", 
-               "border-width":"1px 0 0 1px", 
-               "border-style":"solid"});
-              $(grid.getLatestSelector()+" .cell").css({"border-color": "#ccc", 
-               "border-width":"0 1px 1px 0", 
-               "border-style":"solid"});
+              grid.getLastGrid().removeClass("gridBorderOff");
+              grid.getLastCells().removeClass("cellBorderOff");
+              grid.getLastGrid().addClass("gridBorderOn");
+              grid.getLastCells().addClass("cellBorderOn");
               
-              var exists = $(grid.getLatestSelector()+" .grid").length>0;
+              var exists = grid.getLastGrid().length>0;
               if (exists) {
                 // move crosshairs
                 crosshairs.updatePosition(grid);
@@ -261,7 +287,7 @@ define(["lib/jquery-2.1.0.min", "trace", "lookup", "testonly"], function (jq, tr
             }
           }
           if (code == keycodes.dot) {
-            var finalGrid = $(grid.getLatestSelector()+" .grid").first();
+            var finalGrid = grid.getLastGrid();
             var coords = findPointerCoords(finalGrid);
             var centerX = coords.centerX;
             var centerY = coords.centerY;
@@ -273,11 +299,13 @@ define(["lib/jquery-2.1.0.min", "trace", "lookup", "testonly"], function (jq, tr
                 continue;
               
             
-              var element = $(doc2.elementFromPoint(centerX, centerY)).get(0);
+              var element = $(doc2.elementFromPoint(centerX, centerY));
               
               console.log(element);
               
-              element.click();
+              element.removeClass("targeted");
+              element.addClass("cluck");
+              element.get(0).click();
             }
             lookup.stopEvent(ev);
           } else if (code == keycodes.activate) {
@@ -320,6 +348,36 @@ define(["lib/jquery-2.1.0.min", "trace", "lookup", "testonly"], function (jq, tr
       //draw();
   }
   
+  function highlightTarget() {
+    var finalGrid = grid.getLastGrid();
+    var coords = findPointerCoords(finalGrid);
+    var centerX = coords.centerX;
+    var centerY = coords.centerY;
+    
+    var rootNodes = [window].concat(lookup.getRootNodes());
+    for (var i = 0; i < rootNodes.length; i++) {    
+      var doc2 = rootNodes[i].document || rootNodes[i].contentDocument;
+      if (!doc2 || !doc2.body)
+        continue;
+
+
+      var element = $(doc2.elementFromPoint(centerX, centerY));
+
+      //console.log(element.get(0));
+      
+      trace(birchlabs.targetedElement);
+
+      // unhighlight previous element
+      if (birchlabs.targetedElement != null) {
+        birchlabs.targetedElement.removeClass("targeted");
+        birchlabs.targetedElement.removeClass("cluck");
+      }
+      birchlabs.targetedElement = element;
+      
+      element.addClass("targeted");
+    }
+  }
+  
   function findPointerCoords(gridElement) {
     // click
     //var offset = gridElement.offset();
@@ -354,14 +412,14 @@ define(["lib/jquery-2.1.0.min", "trace", "lookup", "testonly"], function (jq, tr
     console.log(anticipatedHeight);
       
       var parent = document.createElement('div');
-      parent.className = 'grid';
+      parent.className = 'grid gridBorderOn';
   
       for (var i = 0; i < 3; i++) {
           var row = document.createElement('div');
           row.className = 'row';
           for (var p = 0; p < 3; p++) {
               var cell = document.createElement('div');
-              cell.className = "cell";
+              cell.className = "cell cellBorderOn";
               if (cellHeight>12) {
                 cell.innerHTML = 7-(i*3-p);
                 cell.style.fontSize =Math.min(96,cellHeight*0.5)+"px"
