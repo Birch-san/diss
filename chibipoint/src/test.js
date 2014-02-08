@@ -1,4 +1,4 @@
-define(["lib/jquery-2.1.0.min", "trace", "lookup", "testonly", "Grid", "Crosshairs"], function (jq, tracer, lookup, testonly, gridclass, crosshairclass) {
+define(["lib/jquery-2.1.0.min", "trace", "lookup", "testonly", "Grid", "Crosshairs", "Loupe"], function (jq, tracer, lookup, testonly, gridclass, crosshairclass, loupe) {
   var trace = tracer.trace;
   
   window.birchlabs = window.birchlabs||{};
@@ -7,7 +7,10 @@ define(["lib/jquery-2.1.0.min", "trace", "lookup", "testonly", "Grid", "Crosshai
   //console.log(birchlabs);
   
   var grid = new birchlabs.Grid();
+  var loupe = new birchlabs.Loupe(document.documentElement);
+  
   birchlabs.theGrid = grid;
+  birchlabs.theLoupe = loupe;
   
   function init() {
     birchlabs.targetedElement = null;
@@ -59,6 +62,7 @@ define(["lib/jquery-2.1.0.min", "trace", "lookup", "testonly", "Grid", "Crosshai
           createGrid(container);
           
           crosshairs = crosshairs||new birchlabs.Crosshairs(document.documentElement, grid);
+          highlightTarget();
         }
         
         var $window   = $(window),
@@ -67,7 +71,7 @@ define(["lib/jquery-2.1.0.min", "trace", "lookup", "testonly", "Grid", "Crosshai
 
         timer = setInterval(function () {
             resize_ok = true;
-        }, 250);
+        }, 50);
         
         liveTargeter = function() {
           if (resize_ok === true) {
@@ -132,6 +136,7 @@ define(["lib/jquery-2.1.0.min", "trace", "lookup", "testonly", "Grid", "Crosshai
               $(grid.getLatestSelector()).empty();
               
               crosshairs.hide();
+              removeHighlights();
             }
             lookup.stopEvent(ev);
           }
@@ -174,14 +179,20 @@ define(["lib/jquery-2.1.0.min", "trace", "lookup", "testonly", "Grid", "Crosshai
       //trace(birchlabs.targetedElement);
 
       // unhighlight previous element
-      if (birchlabs.targetedElement != null) {
-        birchlabs.targetedElement.removeClass("targeted");
-        birchlabs.targetedElement.removeClass("cluck");
-      }
+      removeHighlights();
       birchlabs.targetedElement = element;
       
       element.addClass("targeted");
+      
+      birchlabs.theLoupe.magnify(element.first().get(0));
     }
+  }
+  
+  function removeHighlights() {
+    if (birchlabs.targetedElement != null) {
+        birchlabs.targetedElement.removeClass("targeted");
+        birchlabs.targetedElement.removeClass("cluck");
+      }
   }
   
   function makeGridContainer(root) {
@@ -288,6 +299,7 @@ define(["lib/jquery-2.1.0.min", "trace", "lookup", "testonly", "Grid", "Crosshai
       highlightTarget();
     } else {
       crosshairs.hide();
+      removeHighlights();
     }
   }
   
