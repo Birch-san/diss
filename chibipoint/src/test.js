@@ -35,26 +35,46 @@ define(["lib/jquery-2.1.0.min", "trace", "lookup", "testonly"], function (jq, tr
       return this.selectHistory.length>1;
     }
     
+    p.getLastGrid = function() {
+      return $(this.getLatestSelector()+" .grid").first();
+    };
+    
+    p.getFirstGrid = function() {
+      return $(this.selectHistory[0]+" .grid").first();
+    };
+    
     birchlabs.Grid = Grid;
   })();
   
   var grid = new birchlabs.Grid();
   
   (function() {
-    var Crosshairs = function(root, x, y) {
-      this.initialize(root, x, y);
+    var Crosshairs = function(root, grid) {
+      this.initialize(root, grid);
     };
     
     var p = Crosshairs.prototype;
     
     p.setX = function(x) {
       this.x = x;
-      $(".verticalHair").first().css({left:x});
+      
+      // convert to percent
+      var elem = this.grid.getFirstGrid();
+      var rect = elem.get(0).getBoundingClientRect();
+      var pX = x*100/rect.width;
+      $(".verticalHair").first().css({left:pX+"%"});
     };
     
     p.setY = function(y) {
       this.y = y;
-      $(".horizontalHair").first().css({top:y});
+      
+      // convert to percent
+      var elem = this.grid.getFirstGrid();
+      var rect = elem.get(0).getBoundingClientRect();
+      var pY = y*100/rect.height;
+      
+      tracer.supertrace(rect);
+      $(".horizontalHair").first().css({top:pY+"%"});
     };
     
     p.show = function() {
@@ -79,10 +99,20 @@ define(["lib/jquery-2.1.0.min", "trace", "lookup", "testonly"], function (jq, tr
       $(root).append(this.hairs);
     };
     
-    p.initialize = function(root, x, y) {
+    p.updatePosition = function() {
+      var finalGrid = this.grid.getLastGrid();
+      var coords = findPointerCoords(finalGrid);
+      var centerX = coords.centerX;
+      var centerY = coords.centerY;
+      
+      this.setX(centerX);
+      this.setY(centerY);
+    };
+    
+    p.initialize = function(root, grid) {
       this.createCrosshairs(root);
-      this.setX(x);
-      this.setY(y);
+      this.grid = grid;
+      this.updatePosition();
       this.show();
     };
     
@@ -135,14 +165,8 @@ define(["lib/jquery-2.1.0.min", "trace", "lookup", "testonly"], function (jq, tr
         
         if (birchlabs.testmode) {
           createGrid(container);
-        
-          var finalGrid = $(grid.getLatestSelector()+" .grid").first();
-          var coords = findPointerCoords(finalGrid);
-          var centerX = coords.centerX;
-          var centerY = coords.centerY;
           
-          crosshairs = crosshairs||new birchlabs.Crosshairs(document.documentElement, centerX, centerY);
-          crosshairs.show();
+          crosshairs = crosshairs||new birchlabs.Crosshairs(document.documentElement, grid);
         }
         
         doc.addEventListener('keypress', function(ev) {
@@ -188,16 +212,12 @@ define(["lib/jquery-2.1.0.min", "trace", "lookup", "testonly"], function (jq, tr
               
               createGrid($(grid.getLatestSelector()).first());
               
-              // move crosshairs
-              var finalGrid = $(grid.getLatestSelector()+" .grid").first();
-              var coords = findPointerCoords(finalGrid);
-              var centerX = coords.centerX;
-              var centerY = coords.centerY;
-              
-              crosshairs.setX(centerX);
-              crosshairs.setY(centerY);
+              // move crosshairs              
+              crosshairs.updatePosition(grid);
               
               console.log("not zero");
+              
+              lookup.stopEvent(ev);
             } else if (code == keycodes.zero) {
               console.log("zero");
               // remove a grid!
@@ -232,16 +252,12 @@ define(["lib/jquery-2.1.0.min", "trace", "lookup", "testonly"], function (jq, tr
               var exists = $(grid.getLatestSelector()+" .grid").length>0;
               if (exists) {
                 // move crosshairs
-                var finalGrid = $(grid.getLatestSelector()+" .grid").first();
-                var coords = findPointerCoords(finalGrid);
-                var centerX = coords.centerX;
-                var centerY = coords.centerY;
-                
-                crosshairs.setX(centerX);
-                crosshairs.setY(centerY);
+                crosshairs.updatePosition(grid);
               } else {
                 crosshairs.hide();
               }
+            
+              lookup.stopEvent(ev);
             }
           }
           if (code == keycodes.dot) {
@@ -263,23 +279,17 @@ define(["lib/jquery-2.1.0.min", "trace", "lookup", "testonly"], function (jq, tr
               
               element.click();
             }
+            lookup.stopEvent(ev);
           } else if (code == keycodes.activate) {
             if ($(".gridContainer").children().length == 0) {
               // need to make a grid
               grid.initialize();
               createGrid(container);
               
-              // move crosshairs
-              var finalGrid = $(grid.getLatestSelector()+" .grid").first();
-              var coords = findPointerCoords(finalGrid);
-              var centerX = coords.centerX;
-              var centerY = coords.centerY;
+              crosshairs = crosshairs||new birchlabs.Crosshairs(document.documentElement, grid);
               
-              crosshairs = crosshairs||new birchlabs.Crosshairs(document.documentElement, centerX, centerY);
-              
-              crosshairs.setX(centerX);
-              crosshairs.setY(centerY);
-              
+              // in case crosshairs already instantiated
+              crosshairs.updatePosition(grid);
               crosshairs.show();
             } else {
               // toggle grid off
@@ -288,8 +298,8 @@ define(["lib/jquery-2.1.0.min", "trace", "lookup", "testonly"], function (jq, tr
               
               crosshairs.hide();
             }
+            lookup.stopEvent(ev);
           }
-          lookup.stopEvent(ev);
         }
       }, false);
       }
@@ -312,7 +322,8 @@ define(["lib/jquery-2.1.0.min", "trace", "lookup", "testonly"], function (jq, tr
   
   function findPointerCoords(gridElement) {
     // click
-    var offset = gridElement.offset();
+    //var offset = gridElement.offset();
+    var offset = gridElement.get(0).getBoundingClientRect();
     //console.log($this.get(0));
     //console.log($this.offset());
     var width = gridElement.outerWidth();

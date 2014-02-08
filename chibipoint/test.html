@@ -1,9 +1,139 @@
 <head>
-<script data-main="./depend" src="require.js"></script>
+<script data-main="/src/depend" src="src/lib/require.js"></script>
 <input type="hidden" id="chibipointtestmode">
 <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
-<body style="background-color:#ff00ff"><p id="trace"></p>
+<body style="background-color:#00ffff"><p id="trace">0</p>
   <p> click
 <a href="http://birchlabs.co.uk/">whatever</a></p>
 <textarea rows="16" cols="90" id="logger">Logs go here</textarea></body>
+
+<table width="1011" align="center" style="exptable">
+  <tbody><tr>
+    <td class="captionbox"><img src="Experiments/CirnoRope2.png" alt="Rope Physics" width="229" height="142"><br>
+    <span class="style2 ">Rope Physics in JavaScript<br>
+    Engine</span>   </td>
+    <td class="commentary"><p>After watching Attack on Titan, and seeing the 3D fan-games that had been produced of it, I decided to see if I could make my own. I also felt it was a chance to make the jump to JavaScript and HTML5 after all my time in Flash, so consider this my first HTML5 work. I wanted to do real rope, so I recruited a physics engine. I used Box2D for this, and I found multiple versions had been made for JavaScript. Some looked machine-ported from C, others looked machine-ported from AS3, and only one distribution existed with full documentation, so I used this to start with. When I found out that it didn't support rope joints, I had to delve into the muddier machine-ported alternatives instead.</p>
+      <p>The rope is modeled as boxes chained by revolute, distance-constrained joints (or 'rope' joints). I felt that even with a small number of these joints, the rope action was pretty realistic, but it wasn't curved enough. I solved this problem by writing a custom renderer. First I tried cubic Bézier curve interpolation between the joints, but this occasionally got the wrong solution and jerked around a bit. Quadratic interpolation had similar problems, and missed out some end joints. In the end, simple linear interpolation was the best option, and I just left the physics resolution high.</p>
+      <p>A lot of this work was made easier by Grant Skinner's wonderful CreateJS library. It makes JS graphics work a lot like working with AS3. Gskinner is an old hand from the Flash days, and I'm glad he's trying to unify the experiences.</p>
+      <p>Two versions are provided for your amusement: one uses the well-supported box2djs, in which I was able to get everything to fall realistically (but the rope breaks apart if you use the jetpack), and also the box2d-html5 machine port, where objects fall quite weirdly, but the rope has real rope joints and the jetpack works a bit better.</p>
+      <p><a href="http://www.birchlabs.co.uk/Titan/index.html">Play</a> (Box2d-js)<br>
+      <a href="http://www.birchlabs.co.uk/Titan2/index.html">Play</a> (Box2d-html5)</p></td>
+  </tr>
+  <tr>
+    <td class="captionbox"><img src="Experiments/SurfaceNormals.png" alt="Surface Normals" width="229" height="142"><br>
+    <span class="style2 ">SAT theorem<br>
+    Fun with Geometry</span></td>
+    <td class="commentary"><p>This is an implementation of the Separating Axis Theorem. Metanet produced a <a href="http://www.metanetsoftware.com/technique/tutorialA.html">really interesting paper</a> on how they used this to implement the collision detection and response in N.</p>
+      <p>Basically, axes are created from the normals of each of the triangle's surfaces. The rectangle's bounds are projected onto these axes. If there exists any axis upon which there is no intersection, then the shapes do not intersect. However if there is an intersection, you can use the depth and direction to calculate an appropriate collision response! This is better than standard Flash hitTest where you have very little information about which direction the collision occurred from.</p>
+    <p><a href="http://www.birchlabs.co.uk/SurfaceNormals6.swf">Play</a></p>      <p></p></td>
+  </tr>
+  <tr>
+    <td width="256" class="captionbox"><img src="Experiments/Naruto Game.jpg" alt="Naruto Game" width="229" height="142"><br>
+    <span class="style2 ">Naruto Game<br>
+    Proof-of-concept</span>    </td>
+    <td width="743" class="commentary">Experiment in Flash sprite handling; avoids fractional coordinates to prevent blurring. Attacks have differing priorities, and use this as a basis for clashes. Certain attacks can be chained into combos. Simple gravity physics is provided, and even acknowledged by the AI (who solves quadratic equations to work out how far he can jump, and if a platform can be used as part of their route-finding). You can use Naruto's signature "shadow clone technique" to create AI allies!
+    	<p>Player 1 uses WASD to move, T and Y to attack. T attack requires charged chakra.<br>
+        Player 2 uses IJKL to move, [ and ] to attack. [ attack requires charged chakra.<br>
+        </p>
+      <p><a href="http://www.birchlabs.co.uk/Naruto Game.swf">Play 2v2</a> (Naruto [Human] + Naruto [AI] vs Naruto [AI] + Naruto [AI])<br>
+      <a href="http://www.birchlabs.co.uk/Naruto Game_Sakura.swf">Play 1v1</a> (Sakura [Human] vs Naruto [AI]). Sakura is unfinished!</p></td>
+  </tr>
+  <tr>
+    <td class="captionbox"><div align="center" class="style6">
+      <img src="Experiments/Invasion5.png" alt="Invasion 5" width="229" height="142"><br>
+        <span class="style2 ">Invasion 5<br>
+        In progress</span>
+    </div></td>
+    <td class="commentary">Invasion 5, long-awaited successor to Invasion 4. I wanted to do bigger battles than ever before, so I addressed Flash's graphics bottleneck (no more vectors; everything is now pre-rendered as bitmaps, then blitted to the screen). Also rewrote the horrible O(n*m) collision [n arrows, m soldiers] to work in O(n) time. Soldier coordinates are hashed into screen quadrants (20px wide columns), and projectiles apply the same hash to their own coordinates. A hash collision in this case represents a spatial collision, so an answer can be found very quickly.<p>Can handle thousands of interacting objects, where previous versions could only handle around 100. It's in a pretty finished state now, but the development process has been rocky. For a while I had to develop it in a virtual machine, and often my virtual machines would become forsaken, halting progress. This has been through easily 7 full rewrites by now, as I explored different graphics optimization approaches (damage-mapping, sprite pooling, spritesheet masks, strobing), and also ported from IDE to IDE and even from AS2 to AS3. The journey took long enough that now I have to think about moving it to JavaScript!</p>
+      <p>There are new interface elements that you can click-and-hold, even for buying and upgrading. Time can be skipped or paused thanks to the new renderer (no movie clips)! In fact this is part of the new gameplay I envisioned: I've tried to encourage strategy within the game beyond just deploying all your units without thinking; there are new base defenses that work on timers, as well as new allies that you have to time your deployments effectively to benefit from (get through a few levels first).</p>
+      <p>Music has been composed, and generals have been drawn, by the way; they're on the to-do list.</p>
+      <p align="justify"><a href="http://www.birchlabs.co.uk/Invasion5.swf">Play AS1</a> early AS1 version, mainly to demonstrate the language difference. Some new features missing.<br>
+      <a href="http://www.birchlabs.co.uk/Invasion-5.html">Play AS3</a> Latest version, actualy almost finished,<br>
+    <a href="http://www.birchlabs.co.uk/Invasion5CP.swf">Play AS3</a> stress-test to show engine speed</p></td>
+  </tr>
+  <tr>
+    <td class="captionbox"><img src="Experiments/Tower.png" alt="Tower Defense" width="229" height="142"><span class="style2 ">Tower Defense<br> 
+    Proof-of-concept<br>
+    Possible game</span></td>
+    <td class="commentary"><p>I was getting pretty sick of seeing slow Tower Defense games on the internet, which could take about a hundred units, tops, before they started to slow down. If you just put a bit more effort into it, you can make it literally about 100 times faster than that. This uses my most flexible (maybe even 'finished') sprite engine so far - on the dev side, it's almost exactly the same as working with movie clips. Supports having multiple animations (walk, run, shoot, die, etc), filters and rotation (these are all pre-rendered, since rotating bitmaps is slow and ugly). The end result is that it's a much more complicated game engine, but just as easy to use. And it _screams_. Hitting over 24 fps with about 7,000 animated, eased route-following units onscreen.</p>
+      <p>        The route-finding is, mathematically, pretty complicated. The bobs aren't just taking the most efficient route round. Nor are they sticking to 'always on inside', or 'always on outside'. Nor are they going perpendicular to a curved route at a set radius. What they're doing is forming a natural curved turning circle through their eased rotation, and aiming to hit a diagonal projected out from the waypoint. This is made more difficult by factors such as concave/convex angles having to be treated differently to each other, and also having to change logic when you transfer from one type of angle to the other. Seeing just the waypoint ahead isn't enough; you need to look two ahead, to see which way it turns afterward. I do wonder if the corner-handling of the Orbit gravity experiments would be better-suited to this, though. It's a lot harder to implement, though, and would probably be more processor intensive (and considering you're aiming for thousands of units, you really don't want to be  doing something the 'slow way' thousands of times).<br>
+      </p>
+    <p><a href="http://www.birchlabs.co.uk/Tower.swf">Play AS3</a></p></td>
+  </tr>
+  <tr>
+    <td class="captionbox"><img src="Experiments/Orbit.jpg" alt="Orbit" width="229" height="142"><br>
+        <span class="style2 ">Orbit<br>
+        Proof-of-concept<br>
+        Abandoned game
+        </span><br>
+    </td>
+    <td class="commentary"><p>This was a response to Nintendo's game, Super Mario Galaxy. I wanted to see if I could write a platform engine that was independent of orientation (that is to say, you could walk forward all the way around the surface of a planetoid, sticking to the surface the whole time). While my engine handled the gravity simulation perfectly, collision handling was another matter - the levels were to be bitmaps (actually photos I'd taken as part of my Art course - you can see them in this site's Gallery), so instead of using maths-based collision, it had to be an algorithm that was accurate to a fraction of a pixel. The engine had problems traversing certain types of terrain (believe me when I say I tried to fix this), and ultimately had to be abandoned for this reason. Oh, and the reason that the 'hero' character is the Saboteur from Invasion is because it was the first thing I found.</p>
+      <p>        I ported it to ActionScript 3.0, since I was planning to make some VAST levels, and all the speed I could squeeze out of the Flash Player was welcome. Here are the two versions of the game (the AS3 one has planet-hopping in it, although it's not very well implemented):</p>
+      <p><a href="http://www.birchlabs.co.uk/Orbit5.swf">Play AS1</a> (one planetoid) <br>
+      <a href="http://www.birchlabs.co.uk/Orbit.swf">Play AS3</a> (two planetoids)</p></td>
+  </tr>
+  <tr>
+    <td class="captionbox"><div align="center"><span class="style6"><img src="Experiments/Vectors.png" alt="Gravity Experiment" width="229" height="142"><br>
+        <span class="style2 ">Gravity Experiment <br>
+    Finished experiment</span></span></div></td>
+    <td class="commentary"><p>A hugely important part of Orbit was the gravity engine. Using  complicated vector maths (at the time this was beyond what I'd encountered in school), I was able to make the man stay perpendicular to all vectors (a pseudo-gravitational effect). After this I developed a more 'real' interpretation of gravity (with inverse square pull from each node), enhancing it with the previous engine's ability to handle 'lines' of gravity rather than simple points.</p>
+      <p><a href="http://www.birchlabs.co.uk/MultipleVectors.swf">Play</a> (pseudo-gravity)<br>
+      <a href="http://www.birchlabs.co.uk/CommunalVectors6.swf">Play</a> (real gravity)</p></td>
+  </tr>
+  <tr>
+    <td class="captionbox"><div align="center"><span class="style6"><img src="Experiments/Commando4.jpg" alt="Commando 4" width="229" height="142" align="top"><br>
+            <span class="style2 ">Commando 4 <br>
+    Abandoned game </span></span></div></td>
+    <td class="commentary"><p>The main problem I saw with Commando 3 (besides the appalling engine) was that the graphics were too intensive to allow any major battles to run well. So I turned to one of the (now old) versions of the Invasion 5 engine for a speed boost. However, it turned out that making a side-on RTS was a stupid, inflexible idea. Sprite work was far too fiddly, and bugs were impossible to catch, with the result being that I abandoned the project. Kortex did the artwork for this prototype, and I feel bad about these animations never seeing the light of day. If I do ever try to make a Commando 4 again, it'll be a top-down RTS for sure, probably with buildings, and it'd use the Invasion 5 sprite engine. If anyone's wondering why I've been so reluctant to embark on such a project, look at the spritesheet linked below... I made that by hand; no code involved. THAT is how many sprites need to be prepared for ONE unit in a top-down game (and of course I need to do it a second time for team two :P). It's not fun at all. And it only works with small units; a sprite sheet for the tank (actually note that I'd need TWO spritesheets - one for the turret, one for the base) would be too big to fit within Flash's 2880x2880 bitmap size limit. It could be spread between several bitmaps, but this is a real pain to do. I also had an explanation of the collision system used in Commando 4 (a derivation of the one used in Invasion 5) lying around, so I've attached that as well.</p>
+      <p><a href="http://www.birchlabs.co.uk/Commando4.swf">Play</a><br>
+        <a href="http://www.birchlabs.co.uk/InfTeam1.png">View spritesheet</a><br>
+      <a href="http://www.birchlabs.co.uk/Commando4Collisions.png">View collision diagram </a></p></td>
+  </tr>
+  <tr>
+    <td class="captionbox"><div align="center"><span class="style6"><img src="Experiments/CommandoX.png" alt="Commando X" width="229" height="142" align="top"><br>
+        <span class="style2 ">Commando X <br>
+        Proof-of-concept</span></span></div></td>
+    <td class="commentary"><p>Here's a little experiment that spews out infantry created from the aforementioned spritesheet. It was originally an attempt at making a Commando 4, but trying to keep the engine fast made it very hard to work on. By the way, it's only called Commando X because Commando 4 was already taken, and I didn't want to skip to Commando 5 because it'd be confusing if I ever released it.</p>
+      <p><a href="http://www.birchlabs.co.uk/CommandoX.swf">Play</a></p></td>
+  </tr>
+  <tr>
+    <td class="captionbox"><div align="center"><span class="style6"><img src="Experiments/Polygon.png" alt="Polygon" width="229" height="142" align="top"><br>
+        <span class="style2 ">Polygon<br>
+        Proof-of-concept</span></span></div></td>
+    <td class="commentary"><p>With the incredibly fast rendering and collision detection methods from Invasion 5, I decided to see if I could create a Geometry Wars clone (the problem with existing Flash Geometry Wars games is that they don't run fast enough to push around the number of sprites that the original game did). Turns out I could, I just couldn't be bothered to finish it. One good thing that came from this project was that I wrote a spritesheet generator, which might just solve the aforementioned sprite problems involved with making a fourth Commando game. Three versions here - one is of the neat eyecandy you get when you fade the battlefield bitmap every frame instead of clearing it, the next is an example of what the game would look like with the colour scheme I intended, and finally an example with a moving enemy and a modified colour scheme so that the cool ripple effect I wrote is visible.</p>
+      <p>
+        <a href="http://www.birchlabs.co.uk/PolygonEyeCandy.swf">Play</a> (eyecandy)<br>
+        <a href="http://www.birchlabs.co.uk/Polygon.swf">Play</a> (canonical colours)<br>
+      <a href="http://www.birchlabs.co.uk/PolygonWithRipple.swf">Play</a> (ripple effect)    </p></td>
+  </tr>
+  <tr>
+    <td class="captionbox"><div align="center"><span class="style6"><img src="Experiments/Displacement.jpg" alt="DisplacementMapFilter" width="229" height="142"><br>
+        <span class="style2 ">DisplacementMapFilter<br>
+    Finished experiment </span></span></div></td>
+    <td class="commentary">Now this was an interesting experiment. I was trying to capture the grid-tearing effect used in the Geometry Wars games, for the Polygon project. I don't know the maths involved in doing this with the position data of actual grid nodes, but I figured I could make a pretty neat imitation of the effect using the DisplacementMapFilter - this is a filter that shuffles pixels into different positions based on a reference bitmap (it's only hard to explain because I don't understand it :P). It came out really well, and I managed to find a few really clever ways to speed up the effect. Sadly, I've never used it.<br>
+      <a href="http://www.birchlabs.co.uk/31FPSGrid.swf">View</a>
+    </td>
+  </tr>
+  <tr>
+    <td class="captionbox"><div align="center"><span class="style6"><img src="Experiments/Mode7.jpg" alt="Mode7" width="229" height="142"><br>
+          <span class="style2 ">3D engine <br>
+Finished experiment</span></span></div></td>
+    <td class="commentary"><p>I set out trying to write a mode7 engine to allow me to use 3D worlds in my games. However, clear documentation was hard to come by, so instead, I opted for something even harder - a fully-fledged polygon-based 3D engine. After weeks of hard work (this was perhaps the most complicated coding I'd done at that point), I got a decent prototype going. I came to the sad conclusion that this engine was not fast enough to be used to display a 3D landscape (or rather, I had to make a compromise between speed and clarity - if I were to cut the picture into only two triangles, it'd run very fast, but the 3D transformation would be pretty unimpressive). Also would need to implement backface culling to make any meaningful 3D geometry. However, I'm very proud of what I accomplished. The image used in it is a Megatokyo strip.</p>
+      <p><a href="http://www.birchlabs.co.uk/MyMode7_7.swf">View</a></p></td>
+  </tr>
+  <tr>
+    <td class="captionbox"><div align="center"><span class="style6"><img src="Experiments/Scythe.png" alt="Scythe" width="229" height="142"><br>
+        <span class="style2 ">Scythe<br>
+    Abandoned game </span></span></div></td>
+    <td class="commentary"><p>This takes me back. Scythe was a game that Kortex wanted to make, in the style of 'Soulmech Shinobu'. A to use slash-combo, S to eat fallen souls for magic, and D to throw fireballs. Arrow keys to move and jump. I think this game came out pretty well, but we left it at level 1 it due to lack of interest.</p>
+      <p><a href="http://www.birchlabs.co.uk/ScytheBMPCache.swf">Play</a></p></td>
+  </tr>
+  <tr>
+    <td class="captionbox"><div align="center" class="style6"><img src="Experiments/WiiBox.png" alt="Wii Box" width="229" height="142"><br>
+        <span class="style2 ">Wii Box<br>
+    Abandoned game</span></div></td>
+    <td class="commentary"><p>The Box was starting to feel its age, so I decided to have a go at revamping it using the skills I've acquired since I made the last version. Changes included upping the framerate, making the shrink items work (hah!), fixing the enemy's rotation easing, redrawing the player as a square (never realised he was a rectangle), easing the player's movement, adding a sensible speed cap, fixing item spawning and mapping the controls to the WiiMote (that's right, it'll be compatible with the Wii if I ever put it on WiiCade). I actually left this only a few lines away from completed, but it's a simple enough game that I wasn't invested.</p>
+      <p><a href="http://www.birchlabs.co.uk/WiiBox.swf">Play</a></p></td>
+  </tr>
+</tbody></table>
