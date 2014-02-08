@@ -1,4 +1,4 @@
-define(["lib/jquery-2.1.0.min", "trace", "lookup", "testonly", "Grid", "Crosshairs", "Loupe"], function (jq, tracer, lookup, testonly, gridclass, crosshairclass, loupe) {
+define(["lib/jquery-2.1.0.min", "lib/knockout-3.0.0", "trace", "lookup", "testonly", "Grid", "Crosshairs", "Flyout"], function (jq, knockout, tracer, lookup, testonly, gridclass, crosshairclass, flyout) {
   var trace = tracer.trace;
   
   window.birchlabs = window.birchlabs||{};
@@ -7,10 +7,10 @@ define(["lib/jquery-2.1.0.min", "trace", "lookup", "testonly", "Grid", "Crosshai
   //console.log(birchlabs);
   
   var grid = new birchlabs.Grid();
-  var loupe = new birchlabs.Loupe(document.documentElement);
+  var flyout = new birchlabs.Flyout(document.documentElement, "A");
   
   birchlabs.theGrid = grid;
-  birchlabs.theLoupe = loupe;
+  birchlabs.theFlyout = flyout;
   
   function init() {
     birchlabs.targetedElement = null;
@@ -79,6 +79,7 @@ define(["lib/jquery-2.1.0.min", "trace", "lookup", "testonly", "Grid", "Crosshai
                 //trace($window.width());
               //trace($(".verticalHair").first().offset().left);
               highlightTarget();
+            
             }
         };
 
@@ -183,8 +184,6 @@ define(["lib/jquery-2.1.0.min", "trace", "lookup", "testonly", "Grid", "Crosshai
       birchlabs.targetedElement = element;
       
       element.addClass("targeted");
-      
-      birchlabs.theLoupe.magnify(element.first().get(0));
     }
   }
   
