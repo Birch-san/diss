@@ -168,8 +168,8 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
     var centerY = coords.centerY;
     
     var rootNodes = [window].concat(lookup.getRootNodes());
-    for (var i = 0; i < rootNodes.length; i++) {    
-      var doc2 = rootNodes[i].document || rootNodes[i].contentDocument;
+    for (var x = 0; x < rootNodes.length; x++) {
+      var doc2 = rootNodes[x].document || rootNodes[x].contentDocument;
       if (!doc2 || !doc2.body)
         continue;
 
@@ -188,8 +188,6 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
       
       flyout.setTarget(element.first().get(0), grid.getFirstGrid().get(0));
       
-      var rect = grid.getLastRows().first().children().first().get(0).getBoundingClientRect();
-      
       /*grid.getLastRows().each(function(index) {
         var i = index;
         $(this).children().each(function(index) {
@@ -207,8 +205,81 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
       //supertrace(rect);
       
       //trace($(grid.getLastGrid()).get(0).innerText);
-      $(doc2.body).find("*").withinBox(rect.left, rect.top, rect.width, rect.height).each(function() {trace( $(this).get(0))});
+      //$(doc2.body).find("*").withinBox(rect.left, rect.top, rect.width, rect.height).each(function() {trace( $(this).get(0))});
       //trace(getEventListeners(element.first().get(0)));
+      
+      //trace(element.first().get(0).getAttribute("_handlerTypes"));
+      
+      //var worker = new Worker('task.js');
+      
+      // some of the obscure ones are guesses
+      var careElements = {"A":true,
+                         "INPUT":true,
+                         "TEXTAREA":true,
+                         "SELECT":true,
+                         "BUTTON":true//,
+                         //"output":true,
+                         //"command":true,
+                         //"kbd":true
+                         };
+      
+      var buckets = [];
+      
+      for (var i=0; i<3; i++) {
+        for (var j=0; j<3; j++) {
+          var myBucket = [];
+          
+          var rect = grid.getLastRows().eq(i).children().eq(j).get(0).getBoundingClientRect();
+
+          $(doc2.body).find("*").withinBox(rect.left, rect.top, rect.width, rect.height, true).each(function() {
+            var myElement = $(this).get(0);
+            if (myElement.getAttribute("_handlerTypes") != null ||
+               careElements[myElement.nodeName]) {
+              myBucket.push(myElement);
+              //trace(myElement);
+            }
+          });
+          buckets.push(myBucket);
+        }
+      }
+      
+      // which element was selected by each segment
+      var selected = [];
+      
+      var bucketIndex = 0;
+      // one bucket for each segment
+      for (var i=0; i<1; i++) {
+        for (var j=0; j<1; j++) {
+          var fulfilled = false;
+          for (var b=0; b<buckets.length; b++) {
+            // check everything in my allocated bucket first
+            // but be prepared to cycle round to another bucket!
+            var myBucket = buckets[(bucketIndex+b)%buckets.length];
+            for (var n = 0; n<myBucket.length; n++) {
+              var inSelectedAlready = false;
+              for (var s = 0; s<selected.length; s++) {
+                // skip over 
+                if (selected[s] == myBucket[n])
+                {
+                  inSelectedAlready = true;
+                  break;
+                }
+              }
+              if (!inSelectedAlready) {
+                // add to selected
+                selected[bucketIndex] = myBucket[n];
+                fulfilled = true;
+                break;
+              }
+            }
+            if (fulfilled) {
+              break;
+            }
+          }
+          bucketIndex++;
+        }
+      }
+      trace(selected);
     }
   }
   
@@ -232,8 +303,6 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
     var cellHeight = anticipatedHeight/3;
     // do not display text smaller than 12px
     // which on a low-density monitor is 12pt
-      
-    console.log(anticipatedHeight);
       
       var parent = document.createElement('div');
       parent.className = 'grid gridBorderOn';
@@ -283,17 +352,14 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
     // move crosshairs              
     crosshairs.updatePosition(grid);
     highlightTarget();
-
-    console.log("not zero");
   }
   
   function backup(grid, crosshairs) {
-    console.log("zero");
     // remove a grid!
     $(grid.getLatestSelector()).empty();
     grid.getPreviousSelector();
 
-    trace(grid.getLatestSelector());
+    //trace(grid.getLatestSelector());
 
     var anticipatedHeight = $(grid.getLatestSelector()).height();
     var cellHeight = anticipatedHeight/3;
@@ -340,8 +406,6 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
 
 
       var element = $(doc2.elementFromPoint(centerX, centerY));
-
-      console.log(element);
 
       element.removeClass("targeted");
       element.addClass("cluck");

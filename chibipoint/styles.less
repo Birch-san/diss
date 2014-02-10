@@ -120,6 +120,9 @@ body {
   -moz-border-radius: @radius @radius;
   -webkit-border-radius: @radius @radius;
   border-radius: @radius @radius;
+  
+  //background-blend-mode: difference, normal; // Chrome Canary
+  //-webkit-background-blend-mode: difference, normal; // WebKit Nightly
 }
 
 @haircol:rgba(255, 0, 0, 1);
@@ -217,6 +220,8 @@ body {
 
 .flyoutContainer {
  .fullContainer;
+  
+  z-index:2147483645;
 }
 
 .aFlyout {
