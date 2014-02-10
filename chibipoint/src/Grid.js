@@ -61,7 +61,7 @@ var birchlabs = window.birchlabs;
     var centerX = offset.left + width / 2;
     var centerY = offset.top + height / 2;
     
-    console.log("x: "+centerX+" y: "+centerY);
+    //console.log("x: "+centerX+" y: "+centerY);
     
     return {centerX:centerX, centerY:centerY};
   };

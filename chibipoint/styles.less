@@ -49,11 +49,10 @@ body {
 .gridBorderOn {
   border: @gridthick solid @gridcol;
   border-width: @gridthick 0 0 @gridthick;
+  //outline: 1px solid 0;
 }
 
 .gridBorderOff {
-  border: 0 solid @gridcol;
-  border-width: 0 0 0 0;
 }
 
 .row {
@@ -91,17 +90,20 @@ body {
 }
 
 .cellBorderOn {
-  border: @gridthick solid @gridcol;
-  border-width: 0 @gridthick @gridthick 0;
+  /*border: @gridthick solid @gridcol;
+  border-width: @gridthick @gridthick @gridthick @gridthick;
+  //border-style:double;
+  outline: 1px solid 0;
+  outline-offset: 1px;*/
+  box-shadow: 0 0 0 1px #fff, 0 0 0 2px #888; 
 }
 
 .cellBorderOff {
-  border: 0 solid @gridcol;
-  border-width: 0 0 0 0;
 }
 
 @backingprop: 0.8;
 @radius: 15%;
+@backinggrey: 230;
 
 .backing {
   position:absolute;
@@ -111,7 +113,7 @@ body {
   
   width:calc(100%*@backingprop);
   height:calc(100%*@backingprop);
-  background:rgba(255, 255, 255, 0.5);
+  background:rgba(@backinggrey, @backinggrey, @backinggrey, 0.25);
   
   z-index:-1;
   
@@ -122,11 +124,10 @@ body {
 
 @haircol:rgba(255, 0, 0, 1);
 @hairthick:1px;
+@hairborderthick:1px;
 
-.shownCrosshairs {
-  border-width: 0 0 0 0;
-  
-  top:0;
+.fullContainer {
+ top:0;
   left:0;
   
   width:100%;
@@ -136,6 +137,10 @@ body {
   padding:0;
   
   pointer-events: none;
+}
+
+.shownCrosshairs {
+  .fullContainer;
   
   z-index:2147483646;
 }
@@ -146,55 +151,96 @@ body {
   display:none;
 }
 
-.horizontalHair {
+.hairBorder {
+  border-width: @hairborderthick @hairborderthick @hairborderthick @hairborderthick;
+  border-color:#00ffff;
+}
+
+.hairlinecommon {
   padding:0;
+  
+  position:relative;
+  
+  pointer-events: inherit;
+  
+  background:@haircol;
+  
+  .hairBorder;
+}
+
+.horizontalHair {
+  .hairlinecommon;
   
   left:inherit;
   
-  background:@haircol;
-  
-  border-width:inherit;
-  
   width:inherit;
   height:@hairthick;
-  
-  position:relative;
-  
-  pointer-events: inherit;
 }
 
 .verticalHair {
-  padding:0;
+  .hairlinecommon;
   
   top:-@hairthick;
   
-  background:@haircol;
-  
-  border-width:inherit;
-  
   width:@hairthick;
   height:inherit;
-  
-  position:relative;
-  
-  pointer-events: inherit;
 }
 
 .targeted {
-  background: rgba(255, 230, 0, 0.5);
+    background: yellow!important;
     //padding: 3px 5px;
     //margin: -3px -5px;
     //line-height: 1.7;
+  
     border-radius: 3px;
+    /*border-color: red!important;
+    border: 3px solid black;
+    box-sizing: border-box;*/
+    //border-radius: 3px;
+    box-shadow:  0 0 10px #ff00ff;
+  
     //display:inline-block;
 }
 
 .cluck {
-  background: red!important;
+    background: red!important;
     //padding: 3px 5px;
     //margin: -3px -5px;
     //line-height: 1.7;
-    border-radius: 3px;
+  
+    /*border-radius: 3px;
     border-color: red!important;
+    border: 3px solid black;*/
+  
     //display:inline-block;
+}
+
+.flyoutContainer {
+ .fullContainer;
+}
+
+.aFlyout {
+  position: absolute;
+  top:0;
+  left: 0;
+ width:100%;
+ height:100%;
+}
+
+.flyout {
+  background: red;
+  position: absolute;
+  top:0;
+  left: 0;
+}
+
+.lineDiv {
+}
+
+.lineSvg {
+}
+
+.line {
+ stroke:rgb(255,0,0);
+ stroke-width:2;
 }

@@ -3,7 +3,7 @@ if (chrome.extension != undefined) {
   url = chrome.extension.getURL("/src/");
 }
 
-require({ baseUrl:url  }, ["lib/jquery-2.1.0.min", "lib/knockout-3.0.0", "test", "trace", "lookup", "testonly", "setup", "Grid", "Crosshairs", "Flyout"], function ($, knockout, test, trace, lookup, testonly, setup, gridclass, crosshairclass, flyout) {
+require({ baseUrl:url  }, ["lib/jquery-2.1.0.min", "lib/within", "test", "trace", "lookup", "testonly", "setup", "Grid", "Crosshairs", "Flyout"], function ($, within, test, trace, lookup, testonly, setup, gridclass, crosshairclass, flyout) {
   // default namespace
   window.birchlabs = {};
  

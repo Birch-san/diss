@@ -1,5 +1,6 @@
-define(["lib/jquery-2.1.0.min", "lib/knockout-3.0.0", "trace", "lookup", "testonly", "Grid", "Crosshairs", "Flyout"], function (jq, knockout, tracer, lookup, testonly, gridclass, crosshairclass, flyout) {
+define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Grid", "Crosshairs", "Flyout"], function (jq, within, tracer, lookup, testonly, gridclass, crosshairclass, flyout) {
   var trace = tracer.trace;
+  var supertrace = tracer.supertrace;
   
   window.birchlabs = window.birchlabs||{};
   var birchlabs = window.birchlabs;
@@ -184,6 +185,30 @@ define(["lib/jquery-2.1.0.min", "lib/knockout-3.0.0", "trace", "lookup", "teston
       birchlabs.targetedElement = element;
       
       element.addClass("targeted");
+      
+      flyout.setTarget(element.first().get(0), grid.getFirstGrid().get(0));
+      
+      var rect = grid.getLastRows().first().children().first().get(0).getBoundingClientRect();
+      
+      /*grid.getLastRows().each(function(index) {
+        var i = index;
+        $(this).children().each(function(index) {
+          var p = index;
+          if (cellHeight>12) {
+            $(this).text(7-(i*3-p));
+
+            var trans = document.createElement('div');
+            trans.className = "backing";
+            $(this).append(trans);
+          }
+        });
+    });*/
+      
+      //supertrace(rect);
+      
+      //trace($(grid.getLastGrid()).get(0).innerText);
+      $(doc2.body).find("*").withinBox(rect.left, rect.top, rect.width, rect.height).each(function() {trace( $(this).get(0))});
+      //trace(getEventListeners(element.first().get(0)));
     }
   }
   

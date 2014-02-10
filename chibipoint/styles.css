@@ -26,10 +26,6 @@ body {
   border: 1px solid #cccccc;
   border-width: 1px 0 0 1px;
 }
-.gridBorderOff {
-  border: 0 solid #cccccc;
-  border-width: 0 0 0 0;
-}
 .row {
   display: table-row;
   pointer-events: inherit;
@@ -51,12 +47,12 @@ body {
   clear: both;
 }
 .cellBorderOn {
-  border: 1px solid #cccccc;
-  border-width: 0 1px 1px 0;
-}
-.cellBorderOff {
-  border: 0 solid #cccccc;
-  border-width: 0 0 0 0;
+  /*border: @gridthick solid @gridcol;
+  border-width: @gridthick @gridthick @gridthick @gridthick;
+  //border-style:double;
+  outline: 1px solid 0;
+  outline-offset: 1px;*/
+  box-shadow: 0 0 0 1px #fff, 0 0 0 2px #888;
 }
 .backing {
   position: absolute;
@@ -64,14 +60,22 @@ body {
   left: calc(9.999999999999998%);
   width: calc(80%);
   height: calc(80%);
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(230, 230, 230, 0.25);
   z-index: -1;
   -moz-border-radius: 15% 15%;
   -webkit-border-radius: 15% 15%;
   border-radius: 15% 15%;
 }
+.fullContainer {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  padding: 0;
+  pointer-events: none;
+}
 .shownCrosshairs {
-  border-width: 0 0 0 0;
   top: 0;
   left: 0;
   width: 100%;
@@ -85,32 +89,77 @@ body {
   pointer-events: none;
   display: none;
 }
-.horizontalHair {
+.hairBorder {
+  border-width: 1px 1px 1px 1px;
+  border-color: #00ffff;
+}
+.hairlinecommon {
   padding: 0;
-  left: inherit;
-  background: #ff0000;
-  border-width: inherit;
-  width: inherit;
-  height: 1px;
   position: relative;
   pointer-events: inherit;
+  background: #ff0000;
+  border-width: 1px 1px 1px 1px;
+  border-color: #00ffff;
+}
+.horizontalHair {
+  padding: 0;
+  position: relative;
+  pointer-events: inherit;
+  background: #ff0000;
+  border-width: 1px 1px 1px 1px;
+  border-color: #00ffff;
+  left: inherit;
+  width: inherit;
+  height: 1px;
 }
 .verticalHair {
   padding: 0;
-  top: -1px;
-  background: #ff0000;
-  border-width: inherit;
-  width: 1px;
-  height: inherit;
   position: relative;
   pointer-events: inherit;
+  background: #ff0000;
+  border-width: 1px 1px 1px 1px;
+  border-color: #00ffff;
+  top: -1px;
+  width: 1px;
+  height: inherit;
 }
 .targeted {
-  background: rgba(255, 230, 0, 0.5);
+  background: yellow!important;
   border-radius: 3px;
+  /*border-color: red!important;
+    border: 3px solid black;
+    box-sizing: border-box;*/
+  box-shadow: 0 0 10px #ff00ff;
 }
 .cluck {
   background: red!important;
-  border-radius: 3px;
-  border-color: red!important;
+  /*border-radius: 3px;
+    border-color: red!important;
+    border: 3px solid black;*/
+}
+.flyoutContainer {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  padding: 0;
+  pointer-events: none;
+}
+.aFlyout {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.flyout {
+  background: red;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.line {
+  stroke: #ff0000;
+  stroke-width: 2;
 }

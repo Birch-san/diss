@@ -12,7 +12,7 @@ function trace(message) {
       proposedValue = message +
       "\n" + logger.value;
       
-      lines = proposedValue.split("\n", 14);
+      lines = proposedValue.split("\n", 100);
       
       culled = lines.join("\n");
       logger.value = culled;
