@@ -210,7 +210,56 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
       
       //trace(element.first().get(0).getAttribute("_handlerTypes"));
       
-      //var worker = new Worker('task.js');
+      /*url = "/src/";
+      if (chrome.extension != undefined) {
+        url = chrome.extension.getURL("/src/");
+      }
+      
+      var worker = new Worker(url+ "flyoutworker.js");
+      worker.postMessage(); // Start the worker.*/
+      
+      /*var response = 'self.onmessage=' + function(e){
+        postMessage('Worker: ' + e.data);
+      };
+      var blob = new Blob([response], {type: 'application/javascript'});
+      var worker = new Worker(URL.createObjectURL(blob));
+      worker.onmessage = function(e) {
+          trace(e.data);
+      };
+      worker.postMessage('Test');*/
+      
+      var response = 'self.onmessage=' + function(e){        
+        var i = e.data[0];
+        var j = e.data[1];
+        //var gridRows = e.data[2];
+          
+          var myBucket = [];
+        
+        importScript();
+        
+          var rect = gridRows.eq(i).children().eq(j).get(0).getBoundingClientRect();
+        
+        $(doc2.body).find("*").withinBox(rect.left, rect.top, rect.width, rect.height, true).each(function() {
+            var myElement = $(this).get(0);
+            if (myElement.getAttribute("_handlerTypes") != null ||
+               careElements[myElement.nodeName]) {
+              myBucket.push(myElement);
+              //trace(myElement);
+            }
+          });
+        
+        console.log(myBucket);
+        
+        // posts message back to manager
+        //postMessage('Worker: ' + e1.data, e2.data);
+      };
+      var blob = new Blob([response], {type: 'application/javascript'});
+      
+      var workerIndex = 0;
+      var workers = [];
+      
+      
+      //workers[0].postMessage('Test');
       
       // some of the obscure ones are guesses
       var careElements = {"A":true,
@@ -227,23 +276,21 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
       
       for (var i=0; i<3; i++) {
         for (var j=0; j<3; j++) {
-          var myBucket = [];
+          workers.push(new Worker(URL.createObjectURL(blob)));
+          // what manager does on receipt
+          workers[workers.length-1].onmessage = function(e) {
+              //trace(e.data);
+          };
           
-          var rect = grid.getLastRows().eq(i).children().eq(j).get(0).getBoundingClientRect();
+          workers[workers.length-1].postMessage([i, j]);
 
-          $(doc2.body).find("*").withinBox(rect.left, rect.top, rect.width, rect.height, true).each(function() {
-            var myElement = $(this).get(0);
-            if (myElement.getAttribute("_handlerTypes") != null ||
-               careElements[myElement.nodeName]) {
-              myBucket.push(myElement);
-              //trace(myElement);
-            }
-          });
-          buckets.push(myBucket);
+          //buckets.push(myBucket);
+          
+          workerIndex++;
         }
       }
       
-      // which element was selected by each segment
+      /*// which element was selected by each segment
       var selected = [];
       
       var bucketIndex = 0;
@@ -278,8 +325,8 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
           }
           bucketIndex++;
         }
-      }
-      trace(selected);
+      }*/
+      //trace(selected);
     }
   }
   
