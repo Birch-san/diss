@@ -61,6 +61,7 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
         
         if (birchlabs.testmode) {
           createGrid(container);
+          flyout.show();
           
           crosshairs = crosshairs||new birchlabs.Crosshairs(document.documentElement, grid);
           highlightTarget();
@@ -132,11 +133,13 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
               crosshairs.updatePosition(grid);
               highlightTarget();
               crosshairs.show();
+              flyout.show();
             } else {
               // toggle grid off
               grid.initialize();
               $(grid.getLatestSelector()).empty();
               
+              flyout.hide();
               crosshairs.hide();
               removeHighlights();
             }
@@ -210,10 +213,8 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
       
       //trace(element.first().get(0).getAttribute("_handlerTypes"));
       
-      //var worker = new Worker('task.js');
-      
       // some of the obscure ones are guesses
-      var careElements = {"A":true,
+      /*var careElements = {"A":true,
                          "INPUT":true,
                          "TEXTAREA":true,
                          "SELECT":true,
@@ -279,7 +280,7 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
           bucketIndex++;
         }
       }
-      trace(selected);
+      trace(selected);*/
     }
   }
   
@@ -352,6 +353,8 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
     // move crosshairs              
     crosshairs.updatePosition(grid);
     highlightTarget();
+    
+    flyout.show();
   }
   
   function backup(grid, crosshairs) {
@@ -387,7 +390,9 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
       // move crosshairs
       crosshairs.updatePosition(grid);
       highlightTarget();
+      flyout.show();
     } else {
+      flyout.hide();
       crosshairs.hide();
       removeHighlights();
     }

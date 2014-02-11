@@ -147,6 +147,9 @@ body {
   pointer-events: none;
   z-index: 2147483645;
 }
+.hiddenfC {
+  display: none;
+}
 .aFlyout {
   position: absolute;
   top: 0;
@@ -155,12 +158,12 @@ body {
   height: 100%;
 }
 .flyout {
-  background: red;
+  background: #00ad00;
   position: absolute;
   top: 0;
   left: 0;
 }
 .line {
-  stroke: #ff0000;
+  stroke: #00ad00;
   stroke-width: 2;
 }

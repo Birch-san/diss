@@ -14,7 +14,7 @@ var birchlabs = window.birchlabs;
  
   Flyout.makecontainer = function(root) {
     this.container = document.createElement('div');
-    this.container.className = "flyoutContainer";
+    this.container.className = "flyoutContainer hiddenfC";
 
     $(root).append(this.container);
     return this.container;
@@ -44,9 +44,11 @@ var birchlabs = window.birchlabs;
   };*/
 
   p.show = function() {
+    Flyout.getContainer(this.root).className = "flyoutContainer shownfC";
     //this.hairs.className = "crosshairs shownCrosshairs";
   };
   p.hide = function() {
+   Flyout.getContainer(this.root).className = "flyoutContainer hiddenfC";
     //this.hairs.className = "crosshairs hiddenCrosshairs";
   };
 
