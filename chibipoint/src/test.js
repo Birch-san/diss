@@ -84,8 +84,8 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
             }
         };
 
-        $window.resize(liveTargeter);
-        $window.scroll(liveTargeter);
+        //$window.resize(liveTargeter);
+        //$window.scroll(liveTargeter);
         
         doc.addEventListener('keypress', function(ev) {
         if (lookup.isInputElementActive(doc)) {
@@ -317,13 +317,17 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
 
 
           ew = q.width(), eh = q.height();
-
+          
+          //console.log(offset);
+          // false, false, false, false
           res =  !( (offset.top > top+height) || (offset.top +eh < top) || (offset.left > left+width ) || (offset.left+ew < left));
-
+        
         // it's certainly in the grid somewhere
           if(res) {
+            
             // now find which buckets to put it in
               //ret.push(this);
+            
               for (i=0; i<rects.length; i++) {
                 r = rects[i];
                 left2 = r.left;
@@ -331,7 +335,24 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
                 width2 = r.width;
                 height2 = r.height;
 
-                res2 =  !( (offset.top > top2+height2) || (offset.top +eh < top2) || (offset.left > left+width2 ) || (offset.left+ew < left2));
+                res2 =  !( (offset.top > top2+height2) || (offset.top +eh < top2) || (offset.left > left2+width2 ) || (offset.left+ew < left2));
+                
+                
+          //if (i == 8 && this.href=="http://www.metanetsoftware.com/technique/tutorialA.html") {
+            /*console.log(offset);
+            console.log(ew);
+            console.log(eh);
+            console.log(rect);*/
+            //console.log(res2);
+            /*console.log(offset.top > top2+height2);
+            console.log(offset.top +eh < top2);
+            console.log(offset.left > left+width2 );
+            console.log(offset.left+ew < left2);*/
+            /*console.log(offset.left);
+            console.log(left);
+            console.log(width2 );
+            console.log(left+width2 );*/
+          //}
 
                 if (res2) {
                   buckets[i].push(this);
@@ -376,17 +397,17 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
       //console.log(getAllClickablesInBounds($(doc2.body), rect));
       var buckets =getAllClickablesInBoundsAndSort($(doc2.body), rect, rects);
       
-      console.log(buckets);
+      //console.log(buckets);
 
       //buckets.push(myBucket);
       
       // which element was selected by each segment
-      /*var selected = [];
+      var selected = [];
       
       var bucketIndex = 0;
       // one bucket for each segment
-      for (var i=0; i<1; i++) {
-        for (var j=0; j<1; j++) {
+      for (var i=0; i<3; i++) {
+        for (var j=0; j<3; j++) {
           var fulfilled = false;
           for (var b=0; b<buckets.length; b++) {
             // check everything in my allocated bucket first
@@ -416,7 +437,7 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
           bucketIndex++;
         }
       }
-      trace(selected);*/
+      //trace(selected);
     }
   }
   
