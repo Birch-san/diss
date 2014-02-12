@@ -223,7 +223,32 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
                          //"kbd":true
                          };
       
-      var buckets = [];
+      function findElementsInRect(rect, root) {
+        var found = [];
+        $(root).children().withinBox(rect.left, rect.top, rect.width, rect.height, true).each(
+          function() {
+            //console.log($(this));
+            found.push($(this));
+            // continue search within me
+            found = found.concat(findElementsInRect(rect, $(this)));
+          });
+        return found;
+      };
+      
+      function findClickables(potentials) {
+        var filtered = [];
+        var p;
+        for (var i in potentials) {
+          p = potentials[i].get(0);
+          if (p.getAttribute("_handlerTypes") != null ||
+               careElements[p.nodeName]) {
+            filtered.push(p);
+          }
+        }
+        return filtered;
+      }
+      
+      /*var buckets = [];
       
       for (var i=0; i<3; i++) {
         for (var j=0; j<3; j++) {
@@ -241,10 +266,122 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
           });
           buckets.push(myBucket);
         }
+      }*/
+      
+      var rect = grid.getLastRows().eq(0).children().eq(0).get(0).getBoundingClientRect();
+      
+      function getAllClickables(root) {
+        return $(root).find("[_handlerTypes], A");
+      }
+      function getAllClickablesInBounds(root, rect) {
+        return $(root).find("[_handlerTypes], A, INPUT, SELECT, TEXTAREA, BUTTON").withinBox(rect.left, rect.top, rect.width, rect.height, true);
       }
       
+      function getAllClickablesInBoundsAndSort(root, rect, rects) {
+        var found = [];
+        var buckets = [];
+        for (var j=0; j<rects.length; j++) {
+          buckets.push([]);
+        }
+        
+        var left = rect.left;
+        var top = rect.top;
+        var width = rect.width;
+        var height = rect.height;
+        
+        var left2;
+        var top2;
+        var width2;
+        var height2;
+        
+        var cache = false;
+        
+        var r;
+        var i;
+        var res;
+        var res2;
+        var q;
+        var ew;
+        
+        $(root).find("[_handlerTypes], A, INPUT, SELECT, TEXTAREA, BUTTON").each(function() {
+          
+          //var ret = []
+          q = $(this);
+
+          if(this == document.documentElement) return  this.ret.push(this);
+
+          var offset = cache ? 
+              $.data(this,"offset") || 
+              $.data(this,"offset", q.offset()) : 
+              q.offset();
+
+
+          ew = q.width(), eh = q.height();
+
+          res =  !( (offset.top > top+height) || (offset.top +eh < top) || (offset.left > left+width ) || (offset.left+ew < left));
+
+        // it's certainly in the grid somewhere
+          if(res) {
+            // now find which buckets to put it in
+              //ret.push(this);
+              for (i=0; i<rects.length; i++) {
+                r = rects[i];
+                left2 = r.left;
+                top2 = r.top;
+                width2 = r.width;
+                height2 = r.height;
+
+                res2 =  !( (offset.top > top2+height2) || (offset.top +eh < top2) || (offset.left > left+width2 ) || (offset.left+ew < left2));
+
+                if (res2) {
+                  buckets[i].push(this);
+                }
+              }
+          }
+        });
+        return buckets;
+      }
+      
+      //getAllClickables($(doc2.body));
+      
+      //var them = getAllClickablesInBounds($(doc2.body), rect);
+      //console.log(them.length);
+      
+      /*for (var i=0; i<3; i++) {
+        for (var j=0; j<3; j++) {
+          var rect = grid.getLastRows().eq(i).children().eq(j).get(0).getBoundingClientRect();
+
+          var potentials = findElementsInRect(rect, $(doc2.body));
+          //console.log(potentials.length);
+          var myBucket = findClickables(potentials);
+          //console.log(myBucket);
+          
+          buckets.push(myBucket);
+        }
+      }*/
+      
+      //var buckets = [];
+      
+      //i=0;
+      //j=0;
+      var rect = grid.getLastGrid().get(0).getBoundingClientRect();
+      
+      var rects = [];
+      for (var i=0; i<3; i++) {
+        for (var j=0; j<3; j++) {
+          rects.push(grid.getLastRows().eq(i).children().eq(j).get(0).getBoundingClientRect());
+        }
+      }
+
+      //console.log(getAllClickablesInBounds($(doc2.body), rect));
+      var buckets =getAllClickablesInBoundsAndSort($(doc2.body), rect, rects);
+      
+      console.log(buckets);
+
+      //buckets.push(myBucket);
+      
       // which element was selected by each segment
-      var selected = [];
+      /*var selected = [];
       
       var bucketIndex = 0;
       // one bucket for each segment
@@ -279,7 +416,7 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
           bucketIndex++;
         }
       }
-      trace(selected);
+      trace(selected);*/
     }
   }
   
