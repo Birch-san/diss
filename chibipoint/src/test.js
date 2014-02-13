@@ -6,12 +6,16 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
   var birchlabs = window.birchlabs;
   
   //console.log(birchlabs);
+ 
+  var Flyout = birchlabs.Flyout;
+  Flyout.makecontainer(document.documentElement);
+  var flyouts = [];
   
   var grid = new birchlabs.Grid();
-  var flyout = new birchlabs.Flyout(document.documentElement, "A");
   
   birchlabs.theGrid = grid;
   birchlabs.theFlyout = flyout;
+  birchlabs.flyouts = flyouts;
   
   function init() {
     birchlabs.targetedElement = null;
@@ -31,6 +35,24 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
       "zero": 48,
       "activate": 167
     };
+    
+    // qwerty grid
+    /*var flyoutShortcuts = [113,119,101,
+                          97,115,100,
+                          122,120,99];*/
+    // dvorak grid
+    var flyoutShortcuts = [39,44,46,
+                          97,111,101,
+                          59,113,106];
+    // alphabet grid
+    /*var flyoutShortcuts = [97,98,99,
+                          100,101,102,
+                          103,104,105];*/
+    
+    for (var i=0; i<flyoutShortcuts.length; i++) {
+      flyouts.push(new Flyout(flyoutShortcuts[i], 20*i));
+    }
+    flyout = flyouts[0];
     
     var numpadtype = true;
     var numpadstart = 48;
@@ -61,7 +83,7 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
         
         if (birchlabs.testmode) {
           createGrid(container);
-          flyout.show();
+          Flyout.show();
           
           crosshairs = crosshairs||new birchlabs.Crosshairs(document.documentElement, grid);
           highlightTarget();
@@ -133,13 +155,13 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
               crosshairs.updatePosition(grid);
               highlightTarget();
               crosshairs.show();
-              flyout.show();
+              Flyout.show();
             } else {
               // toggle grid off
               grid.initialize();
               $(grid.getLatestSelector()).empty();
               
-              flyout.hide();
+              Flyout.hide();
               crosshairs.hide();
               removeHighlights();
             }
@@ -189,7 +211,7 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
       
       element.addClass("targeted");
       
-      flyout.setTarget(element.first().get(0), grid.getFirstGrid().get(0));
+      //flyouts[0].setTarget(element.first().get(0), grid.getFirstGrid().get(0));
       
       /*grid.getLastRows().each(function(index) {
         var i = index;
@@ -438,7 +460,17 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
           bucketIndex++;
         }
       }
-      //trace(selected);
+      
+      for (var i=0; i<flyouts.length; i++) {
+        var targ = selected[i];
+        if (targ) {
+          flyouts[i].setTarget(targ, grid.getFirstGrid().get(0));
+        } else {
+          console.log('yo');
+          flyouts[i].setTarget(null, grid.getFirstGrid().get(0));
+        }
+      }
+      trace(selected);
     }
   }
   
@@ -512,7 +544,7 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
     crosshairs.updatePosition(grid);
     highlightTarget();
     
-    flyout.show();
+    Flyout.show();
   }
   
   function backup(grid, crosshairs) {
@@ -548,9 +580,9 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
       // move crosshairs
       crosshairs.updatePosition(grid);
       highlightTarget();
-      flyout.show();
+      Flyout.show();
     } else {
-      flyout.hide();
+      Flyout.hide();
       crosshairs.hide();
       removeHighlights();
     }

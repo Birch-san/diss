@@ -22,15 +22,16 @@ var birchlabs = window.birchlabs;
 
   var p = Flyout.prototype;
 
-  /*p.setX = function(x) {
-    this.x = x;
+  p.setX = function(x) {
+    //this.x = x;
 
     // convert to percent
-    var elem = this.grid.getFirstGrid();
+    /*var elem = this.grid.getFirstGrid();
     var rect = elem.get(0).getBoundingClientRect();
     var pX = x*100/rect.width;
-    $(".verticalHair").first().css({left:pX+"%"});
-  };*/
+    $(".aFlyout").first().css({left:pX+"%"});*/
+    $(this.aFlyout).css({left:x});
+  };
 
   /*p.setY = function(y) {
     this.y = y;
@@ -43,49 +44,50 @@ var birchlabs = window.birchlabs;
     $(".horizontalHair").first().css({top:pY+"%"});
   };*/
 
-  p.show = function() {
-    Flyout.getContainer(this.root).className = "flyoutContainer shownfC";
+  Flyout.show = function() {
+    Flyout.getContainer().className = "flyoutContainer shownfC";
     //this.hairs.className = "crosshairs shownCrosshairs";
   };
-  p.hide = function() {
-   Flyout.getContainer(this.root).className = "flyoutContainer hiddenfC";
+  Flyout.hide = function() {
+   Flyout.getContainer().className = "flyoutContainer hiddenfC";
     //this.hairs.className = "crosshairs hiddenCrosshairs";
   };
 
   p.build = function(label) {
     var container = Flyout.getContainer(this.root);
    
-    var aFlyout = document.createElement('div');
-    aFlyout.className = "aFlyout";
+    this.aFlyout = document.createElement('div');
+    this.aFlyout.className = "aFlyout";
    
-    var lineDiv = document.createElement('div');
-    lineDiv.className = "lineDiv";
-    var svg = document.createElement('svg');
-    svg.className = "lineSvg"
-    var svgLine = document.createElement('line');
-    svgLine.className = "line"
+    this.lineDiv = document.createElement('div');
+    this.lineDiv.className = "lineDiv";
+    this.svg = document.createElement('svg');
+    this.svg.className = "lineSvg"
+    this.svgLine = document.createElement('line');
+    this.svgLine.className = "line"
+    this.svgLine.id = "birchFlyoutLine"+this.x;
    //svgLine.style ="stroke:rgb(255,0,0);stroke-width:2";
-    $(svgLine).attr({x1:"0",
+    $(this.svgLine).attr({x1:"0",
                     y1:"0",
                     x2:"200",
                     y2:"200"});
     //$(svgLine).attr({"data-bind": "attr: {x1:x1,y1:y1,x2:x2,y2:y2}"});
     
-    $(svg).append(svgLine);
+    $(this.svg).append(this.svgLine);
    
-    $(lineDiv).append(svg);
+    $(this.lineDiv).append(this.svg);
    
-    var flyout = document.createElement('div');
-    flyout.className = "flyout";
-    flyout.innerHTML = label;
+    this.flyout = document.createElement('div');
+    this.flyout.className = "flyout";
+    this.flyout.innerHTML = String.fromCharCode(label);
    
-    $(aFlyout).append(flyout);
-    $(aFlyout).append(lineDiv);
+    $(this.aFlyout).append(this.flyout);
+    $(this.aFlyout).append(this.lineDiv);
    
-    $(container).append(aFlyout);
+    $(container).append(this.aFlyout);
    
    // refresh namespace
-    $(lineDiv).html($(lineDiv).html());
+    $(this.lineDiv).html($(this.lineDiv).html());
   };
 
   /*p.updatePosition = function() {
@@ -97,17 +99,22 @@ var birchlabs = window.birchlabs;
     this.setY(centerY);
   };*/
 
-  p.initialize = function(root, label) {
+  p.initialize = function(label, x, root) {
+    this.x = x;
     this.root = root;
-    this.label = label;
     this.build(label);
-    
+    this.setX(x);
    
     //this.updatePosition();
     //this.show();
   };
  
  p.setTarget = function(element, coordsyst) {
+  if (element == null) {
+   $("#"+this.svgLine.id).attr({x2:0,
+                    y2:0});
+   return;
+  }
   var rect = element.getBoundingClientRect();
   var theX = rect.left;
   var theY = rect.top;
@@ -116,12 +123,15 @@ var birchlabs = window.birchlabs;
   var pX = theX*100/rect2.width;
   var pY = theY*100/rect2.height;*/
   
-  /*$(".line").attr({x2:pX+"%",
-                    y2:pY+"%"});*/
-  
-  $(".line").attr({x2:theX,
+  $("#"+this.svgLine.id).attr({x2:theX-this.x,
                     y2:theY});
- }
+  
+  /*$(this.svgLine).attr({x2:theX,
+                    y2:theY});
+  $(this.svgLine).attr({id:"hey"});
+    //$(this.lineDiv).html($(this.lineDiv).html());
+  $(this.lineDiv).html($(this.lineDiv).html());*/
+ };
 
   birchlabs.Flyout = Flyout;
 })();
