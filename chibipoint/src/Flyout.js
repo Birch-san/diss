@@ -1,4 +1,4 @@
-define([], function() {
+define(["lib/jquery-2.1.0.min", "lib/within"], function(jq, within) {
 
 window.birchlabs = window.birchlabs||{};
 var birchlabs = window.birchlabs;
@@ -6,6 +6,12 @@ var birchlabs = window.birchlabs;
 (function() {
   var Flyout = function(root, label) {
     this.initialize(root, label);
+  };
+ 
+  Flyout.latestId = 0;
+ 
+  Flyout.getNextId = function() {
+    return Flyout.latestId++;
   };
  
   Flyout.getContainer = function(root) {
@@ -23,14 +29,15 @@ var birchlabs = window.birchlabs;
   var p = Flyout.prototype;
 
   p.setX = function(x) {
-    //this.x = x;
+    this.x = x;
 
     // convert to percent
     /*var elem = this.grid.getFirstGrid();
     var rect = elem.get(0).getBoundingClientRect();
     var pX = x*100/rect.width;
     $(".aFlyout").first().css({left:pX+"%"});*/
-    $(this.aFlyout).css({left:x});
+    $(this.flyout).css({left:x});
+    //$(this.flyout).css({left:x});
   };
 
   /*p.setY = function(y) {
@@ -52,6 +59,15 @@ var birchlabs = window.birchlabs;
    Flyout.getContainer().className = "flyoutContainer hiddenfC";
     //this.hairs.className = "crosshairs hiddenCrosshairs";
   };
+ 
+  p.hide = function() {
+   $(this.aFlyout).addClass("birchAFlyoutHidden");
+   //$(this.aFlyout).removeClass("birchAFlyoutShown");
+  };
+ 
+  p.show = function() {
+   $(this.aFlyout).removeClass("birchAFlyoutHidden");
+  };
 
   p.build = function(label) {
     var container = Flyout.getContainer(this.root);
@@ -65,7 +81,7 @@ var birchlabs = window.birchlabs;
     this.svg.className = "lineSvg"
     this.svgLine = document.createElement('line');
     this.svgLine.className = "line"
-    this.svgLine.id = "birchFlyoutLine"+this.x;
+    this.svgLine.id = "birchFlyoutLine"+this.unique;
    //svgLine.style ="stroke:rgb(255,0,0);stroke-width:2";
     $(this.svgLine).attr({x1:"0",
                     y1:"0",
@@ -99,32 +115,85 @@ var birchlabs = window.birchlabs;
     this.setY(centerY);
   };*/
 
-  p.initialize = function(label, x, root) {
-    this.x = x;
+  // root required only if it's the first and you haven't done a makeContainer yet
+  p.initialize = function(label, root) {
     this.root = root;
+    this.unique = Flyout.getNextId();
     this.build(label);
-    this.setX(x);
+    this.setX(this.unique*20);
    
     //this.updatePosition();
     //this.show();
   };
  
+ p.point = function() {
+  if (this.target) {
+    var rect = this.target.getBoundingClientRect();
+    var left = rect.left;
+    var top = rect.top;
+    var width = rect.width;
+    var height = rect.height;
+
+    var me = $(Flyout.getContainer());
+
+   // from within.js
+    // my own offset
+    //var offset = me.offset();
+    //var ew = me.width(), eh = me.height();
+    //var res =  !( (offset.top > top+height) || (offset.top +eh < top) || (offset.left > left+width ) || (offset.left+ew < left));
+   
+   var myRect = me.get(0).getBoundingClientRect();
+   var res = !( (myRect.top > top+height) || (myRect.top +myRect.height < top) || (myRect.left > left+width ) || (myRect.left+myRect.width < left));
+
+     if(res) {
+      var theX = left;
+      var theY = top;
+      
+       $("#"+this.svgLine.id).attr({x1:this.x,
+                                    y1:0,
+                                    x2:theX,
+                                    y2:theY});
+      this.show();
+      this.paintTarget();
+     } else {
+      this.hide();
+      this.unpaintTarget();
+     }
+  } else {
+   this.hide();
+  }
+ };
+ 
+ p.paintTarget = function() {
+  if (this.target) {
+   $(this.target).addClass("birchPainted");
+  }
+ };
+ 
+ p.unpaintTarget = function() {
+  if (this.target) {
+   $(this.target).removeClass("birchPainted");
+  }
+ };
+ 
+ p.unsetTarget = function() {
+  this.unpaintTarget();
+  this.target = false;
+ };
+ 
  p.setTarget = function(element, coordsyst) {
-  if (element == null) {
+  /*if (element == null) {
    $("#"+this.svgLine.id).attr({x2:0,
                     y2:0});
    return;
-  }
-  var rect = element.getBoundingClientRect();
-  var theX = rect.left;
-  var theY = rect.top;
+  }*/
+  this.unsetTarget();
+  this.target = element;
+  this.point();
   
   /*var rect2 = coordsyst.getBoundingClientRect();
   var pX = theX*100/rect2.width;
   var pY = theY*100/rect2.height;*/
-  
-  $("#"+this.svgLine.id).attr({x2:theX-this.x,
-                    y2:theY});
   
   /*$(this.svgLine).attr({x2:theX,
                     y2:theY});

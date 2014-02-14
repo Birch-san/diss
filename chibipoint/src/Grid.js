@@ -1,4 +1,4 @@
-define([], function() {
+define(["lib/jquery-2.1.0.min", "lib/within"], function(jq, within) {
 
 window.birchlabs = window.birchlabs||{};
 var birchlabs = window.birchlabs;

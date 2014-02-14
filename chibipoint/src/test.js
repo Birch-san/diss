@@ -50,7 +50,7 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
                           103,104,105];*/
     
     for (var i=0; i<flyoutShortcuts.length; i++) {
-      flyouts.push(new Flyout(flyoutShortcuts[i], 20*i));
+      flyouts.push(new Flyout(flyoutShortcuts[i]));
     }
     flyout = flyouts[0];
     
@@ -102,13 +102,14 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
                 resize_ok = false;
                 //trace($window.width());
               //trace($(".verticalHair").first().offset().left);
-              highlightTarget();
-            
+              //highlightTarget();
+            crosshairHighlight(getDocRoot());
+              pointFlyouts();
             }
         };
 
-        //$window.resize(liveTargeter);
-        //$window.scroll(liveTargeter);
+        $window.resize(liveTargeter);
+        $window.scroll(liveTargeter);
         
         doc.addEventListener('keypress', function(ev) {
         if (lookup.isInputElementActive(doc)) {
@@ -187,53 +188,34 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
       //draw();
   }
   
-  function highlightTarget() {
+  function crosshairHighlight(root) {
     var coords = grid.findPointerCoords();
     var centerX = coords.centerX;
     var centerY = coords.centerY;
     
+    var element = $(root.elementFromPoint(centerX, centerY));
+
+    // unhighlight previous element
+    removeHighlights();
+    birchlabs.targetedElement = element;
+
+    element.addClass("targeted");
+  }
+  
+  function getDocRoot() {
     var rootNodes = [window].concat(lookup.getRootNodes());
     for (var x = 0; x < rootNodes.length; x++) {
       var doc2 = rootNodes[x].document || rootNodes[x].contentDocument;
       if (!doc2 || !doc2.body)
         continue;
-
-
-      var element = $(doc2.elementFromPoint(centerX, centerY));
-
-      //console.log(element.get(0));
+      return doc2;
+    }
+  }
+  
+  function highlightTarget() {    
+    var doc2 = getDocRoot();
       
-      //trace(birchlabs.targetedElement);
-
-      // unhighlight previous element
-      removeHighlights();
-      birchlabs.targetedElement = element;
-      
-      element.addClass("targeted");
-      
-      //flyouts[0].setTarget(element.first().get(0), grid.getFirstGrid().get(0));
-      
-      /*grid.getLastRows().each(function(index) {
-        var i = index;
-        $(this).children().each(function(index) {
-          var p = index;
-          if (cellHeight>12) {
-            $(this).text(7-(i*3-p));
-
-            var trans = document.createElement('div');
-            trans.className = "backing";
-            $(this).append(trans);
-          }
-        });
-    });*/
-      
-      //supertrace(rect);
-      
-      //trace($(grid.getLastGrid()).get(0).innerText);
-      //$(doc2.body).find("*").withinBox(rect.left, rect.top, rect.width, rect.height).each(function() {trace( $(this).get(0))});
-      //trace(getEventListeners(element.first().get(0)));
-      
-      //trace(element.first().get(0).getAttribute("_handlerTypes"));
+      crosshairHighlight(doc2);
       
       // some of the obscure ones are guesses
       var careElements = {"A":true,
@@ -246,59 +228,7 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
                          //"kbd":true
                          };
       
-      function findElementsInRect(rect, root) {
-        var found = [];
-        $(root).children().withinBox(rect.left, rect.top, rect.width, rect.height, true).each(
-          function() {
-            //console.log($(this));
-            found.push($(this));
-            // continue search within me
-            found = found.concat(findElementsInRect(rect, $(this)));
-          });
-        return found;
-      };
-      
-      function findClickables(potentials) {
-        var filtered = [];
-        var p;
-        for (var i in potentials) {
-          p = potentials[i].get(0);
-          if (p.getAttribute("_handlerTypes") != null ||
-               careElements[p.nodeName]) {
-            filtered.push(p);
-          }
-        }
-        return filtered;
-      }
-      
-      /*var buckets = [];
-      
-      for (var i=0; i<3; i++) {
-        for (var j=0; j<3; j++) {
-          var myBucket = [];
-          
-          var rect = grid.getLastRows().eq(i).children().eq(j).get(0).getBoundingClientRect();
-
-          $(doc2.body).find("*").withinBox(rect.left, rect.top, rect.width, rect.height, true).each(function() {
-            var myElement = $(this).get(0);
-            if (myElement.getAttribute("_handlerTypes") != null ||
-               careElements[myElement.nodeName]) {
-              myBucket.push(myElement);
-              //trace(myElement);
-            }
-          });
-          buckets.push(myBucket);
-        }
-      }*/
-      
       var rect = grid.getLastRows().eq(0).children().eq(0).get(0).getBoundingClientRect();
-      
-      function getAllClickables(root) {
-        return $(root).find("[_handlerTypes], A");
-      }
-      function getAllClickablesInBounds(root, rect) {
-        return $(root).find("[_handlerTypes], A, INPUT, SELECT, TEXTAREA, BUTTON").withinBox(rect.left, rect.top, rect.width, rect.height, true);
-      }
       
       function getAllClickablesInBoundsAndSort(root, rect, rects) {
         var found = [];
@@ -341,16 +271,12 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
 
           ew = q.width(), eh = q.height();
           
-          //console.log(offset);
-          // false, false, false, false
           res =  !( (offset.top > top+height) || (offset.top +eh < top) || (offset.left > left+width ) || (offset.left+ew < left));
         
         // it's certainly in the grid somewhere
           if(res) {
             
             // now find which buckets to put it in
-              //ret.push(this);
-            
               for (i=0; i<rects.length; i++) {
                 r = rects[i];
                 left2 = r.left;
@@ -359,23 +285,6 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
                 height2 = r.height;
 
                 res2 =  !( (offset.top > top2+height2) || (offset.top +eh < top2) || (offset.left > left2+width2 ) || (offset.left+ew < left2));
-                
-                
-          //if (i == 8 && this.href=="http://www.metanetsoftware.com/technique/tutorialA.html") {
-            /*console.log(offset);
-            console.log(ew);
-            console.log(eh);
-            console.log(rect);*/
-            //console.log(res2);
-            /*console.log(offset.top > top2+height2);
-            console.log(offset.top +eh < top2);
-            console.log(offset.left > left+width2 );
-            console.log(offset.left+ew < left2);*/
-            /*console.log(offset.left);
-            console.log(left);
-            console.log(width2 );
-            console.log(left+width2 );*/
-          //}
 
                 if (res2) {
                   buckets[i].push(this);
@@ -385,29 +294,6 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
         });
         return buckets;
       }
-      
-      //getAllClickables($(doc2.body));
-      
-      //var them = getAllClickablesInBounds($(doc2.body), rect);
-      //console.log(them.length);
-      
-      /*for (var i=0; i<3; i++) {
-        for (var j=0; j<3; j++) {
-          var rect = grid.getLastRows().eq(i).children().eq(j).get(0).getBoundingClientRect();
-
-          var potentials = findElementsInRect(rect, $(doc2.body));
-          //console.log(potentials.length);
-          var myBucket = findClickables(potentials);
-          //console.log(myBucket);
-          
-          buckets.push(myBucket);
-        }
-      }*/
-      
-      //var buckets = [];
-      
-      //i=0;
-      //j=0;
       var rect = grid.getLastGrid().get(0).getBoundingClientRect();
       
       var rects = [];
@@ -416,13 +302,7 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
           rects.push(grid.getLastRows().eq(i).children().eq(j).get(0).getBoundingClientRect());
         }
       }
-
-      //console.log(getAllClickablesInBounds($(doc2.body), rect));
       var buckets =getAllClickablesInBoundsAndSort($(doc2.body), rect, rects);
-      
-      //console.log(buckets);
-
-      //buckets.push(myBucket);
       
       // which element was selected by each segment
       var selected = [];
@@ -462,16 +342,33 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
       }
       
       for (var i=0; i<flyouts.length; i++) {
+        var f = flyouts[i];
         var targ = selected[i];
+        f.unsetTarget();
+        f.hide();
         if (targ) {
-          flyouts[i].setTarget(targ, grid.getFirstGrid().get(0));
-        } else {
-          console.log('yo');
-          flyouts[i].setTarget(null, grid.getFirstGrid().get(0));
+          f.setTarget(targ, grid.getFirstGrid().get(0));
         }
       }
-      trace(selected);
-    }
+      var delayPoint = setInterval(function () {
+          clearInterval(delayPoint);
+          for (var i=0; i<flyouts.length; i++) {
+            var f = flyouts[i];
+            var targ = selected[i];
+            if (targ) {
+              f.show();
+            }
+          }
+        pointFlyouts();
+        }, 50);
+      //trace(selected);
+  }
+  
+  function pointFlyouts() {
+    for (var i=0; i<flyouts.length; i++) {
+        var f = flyouts[i];
+        f.point();
+      }
   }
   
   function removeHighlights() {
