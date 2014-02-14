@@ -32,13 +32,22 @@ var birchlabs = window.birchlabs;
     this.x = x;
 
     // convert to percent
-    /*var elem = this.grid.getFirstGrid();
-    var rect = elem.get(0).getBoundingClientRect();
+    var rect = Flyout.getContainer().getBoundingClientRect();
     var pX = x*100/rect.width;
-    $(".aFlyout").first().css({left:pX+"%"});*/
-    $(this.flyout).css({left:x});
+    $(this.flyout).css({left:pX+"%"});
+    //$(this.flyout).css({left:x});
     //$(this.flyout).css({left:x});
   };
+  
+  p.setY = function(y) {
+     this.y = y;
+
+     // convert to percent
+     var rect = Flyout.getContainer().getBoundingClientRect();
+     var pY = y*100/rect.height;
+     $(this.flyout).css({top:pY+"%"});
+     //$(this.flyout).css({left:x});
+   };
 
   /*p.setY = function(y) {
     this.y = y;
@@ -136,24 +145,21 @@ var birchlabs = window.birchlabs;
 
     var me = $(Flyout.getContainer());
 
-   // from within.js
-    // my own offset
-    //var offset = me.offset();
-    //var ew = me.width(), eh = me.height();
-    //var res =  !( (offset.top > top+height) || (offset.top +eh < top) || (offset.left > left+width ) || (offset.left+ew < left));
-   
+   // adapted from within.js   
    var myRect = me.get(0).getBoundingClientRect();
    var res = !( (myRect.top > top+height) || (myRect.top +myRect.height < top) || (myRect.left > left+width ) || (myRect.left+myRect.width < left));
 
      if(res) {
+      this.show();
+      this.setX(rect.left-20);
+      this.setY(rect.top-20);
       var theX = left;
       var theY = top;
       
        $("#"+this.svgLine.id).attr({x1:this.x,
-                                    y1:0,
+                                    y1:this.y,
                                     x2:theX,
                                     y2:theY});
-      this.show();
       this.paintTarget();
      } else {
       this.hide();

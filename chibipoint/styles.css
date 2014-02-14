@@ -168,6 +168,7 @@ body {
 }
 .flyout {
   background: #00ad00;
+  outline-color: #000000;
   outline: 1px solid 0;
   position: absolute;
   top: 0;

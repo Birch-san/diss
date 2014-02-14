@@ -253,25 +253,29 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
         var i;
         var res;
         var res2;
-        var q;
-        var ew;
+        //var q;
+        //var ew;
+        var itRect;
         
         $(root).find("[_handlerTypes], A, INPUT, SELECT, TEXTAREA, BUTTON").each(function() {
           
           //var ret = []
-          q = $(this);
+          //q = $(this);
 
           if(this == document.documentElement) return  this.ret.push(this);
 
-          var offset = cache ? 
+          /*var offset = cache ? 
               $.data(this,"offset") || 
               $.data(this,"offset", q.offset()) : 
-              q.offset();
-
-
-          ew = q.width(), eh = q.height();
+              q.offset();*/
           
-          res =  !( (offset.top > top+height) || (offset.top +eh < top) || (offset.left > left+width ) || (offset.left+ew < left));
+          itRect = this.getBoundingClientRect();
+
+
+          //ew = q.width(), eh = q.height();
+          
+          //res =  !( (offset.top > top+height) || (offset.top +eh < top) || (offset.left > left+width ) || (offset.left+ew < left));
+          res = !( (itRect.top > top+height) || (itRect.top +itRect.height < top) || (itRect.left > left+width ) || (itRect.left+itRect.width < left));
         
         // it's certainly in the grid somewhere
           if(res) {
@@ -284,7 +288,7 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
                 width2 = r.width;
                 height2 = r.height;
 
-                res2 =  !( (offset.top > top2+height2) || (offset.top +eh < top2) || (offset.left > left2+width2 ) || (offset.left+ew < left2));
+                res2 =  !( (itRect.top > top2+height2) || (itRect.top +itRect.height < top2) || (itRect.left > left2+width2 ) || (itRect.left+itRect.width < left2));
 
                 if (res2) {
                   buckets[i].push(this);
