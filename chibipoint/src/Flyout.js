@@ -171,9 +171,28 @@ var birchlabs = window.birchlabs;
  };
  
  p.doClick = function() {
+  function clickOrFocus(element) {
+    console.log(element);
+    console.log(element.nodeName);
+    var justFocus = {//"A":true,
+                         "INPUT":true,
+                         "TEXTAREA":true,
+                         "SELECT":true,
+                         "BUTTON":true//,
+                         //"output":true,
+                         //"command":true,
+                         //"kbd":true
+                         };
+    
+    if (justFocus[element.nodeName]) {
+      element.focus();
+    } else {
+      element.click();
+    }
+  }
   if (this.target) {
    $(this.target).addClass("cluck");
-   this.target.click();
+   clickOrFocus(this.target);
   }
  };
  

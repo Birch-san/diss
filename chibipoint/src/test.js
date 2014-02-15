@@ -558,6 +558,11 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
     }
   }
   
+  function shortcut() {
+    console.log('ayup');
+  }
+  
     return { init: init,
-             createGrid: createGrid};
+             createGrid: createGrid,
+           shortcut: shortcut};
   });

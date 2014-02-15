@@ -19,6 +19,17 @@ define(["test"], function (test) {
  
 // to begin with, not in test mode
 birchlabs.testmode = false;
+ 
+ chrome.runtime.onMessage.addListener(
+  function(request, sender, sendResponse) {
+    /*console.log(sender.tab ?
+                "from a content script:" + sender.tab.url :
+                "from the extension");*/
+    if (request.greeting == "hello") {
+      //sendResponse({farewell: "goodbye"});
+     test.shortcut();
+    }
+  });
 
 /* Styles and addStyle borrowed from nice-alert.js project */
 
