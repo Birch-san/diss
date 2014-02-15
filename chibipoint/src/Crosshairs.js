@@ -36,6 +36,7 @@ var birchlabs = window.birchlabs;
   };
   p.hide = function() {
     this.hairs.className = "crosshairs hiddenCrosshairs";
+    this.removeHighlights();
   };
 
   p.createCrosshairs = function(root) {
@@ -56,14 +57,44 @@ var birchlabs = window.birchlabs;
 
   p.updatePosition = function() {
     var coords = this.grid.findPointerCoords();
-    var centerX = coords.centerX;
-    var centerY = coords.centerY;
+    if (coords) {
+     var centerX = coords.centerX;
+     var centerY = coords.centerY;
 
-    this.setX(centerX);
-    this.setY(centerY);
+     this.setX(centerX);
+     this.setY(centerY);
+    }
   };
+ 
+  p.highlight = function(root) {
+    var coords = this.grid.findPointerCoords();
+    if (coords) {
+     var centerX = coords.centerX;
+     var centerY = coords.centerY;
+
+     var element = $(root.elementFromPoint(centerX, centerY));
+
+     // unhighlight previous element
+     this.removeHighlights();
+     this.targetedElement = element;
+
+     element.addClass("targeted");
+    
+     return element;
+    } else {
+      return null;
+    }
+  };
+ 
+ p.removeHighlights = function() {
+    if (this.targetedElement) {
+       this.targetedElement.removeClass("targeted");
+       this.targetedElement.removeClass("cluck");
+     }
+ };
 
   p.initialize = function(root, grid) {
+    this.targetedElement = null;
     this.createCrosshairs(root);
     this.grid = grid;
     this.updatePosition();

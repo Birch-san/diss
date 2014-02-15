@@ -6,18 +6,35 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
   var birchlabs = window.birchlabs;
   
   //console.log(birchlabs);
- 
-  var Flyout = birchlabs.Flyout;
-  Flyout.makecontainer(document.documentElement);
-  var flyouts = [];
   
-  var grid = new birchlabs.Grid();
-  
-  birchlabs.theGrid = grid;
-  birchlabs.theFlyout = flyout;
-  birchlabs.flyouts = flyouts;
+  function makeContainers() {
+    var Flyout = birchlabs.Flyout;
+    var Grid = birchlabs.Grid;
+    var Crosshairs = birchlabs.Crosshairs;
+    
+    Flyout.makecontainer(document.documentElement);
+    var flyouts = [];
+
+    var grid = new Grid();
+    var crosshairs = new Crosshairs(document.documentElement, grid);
+    crosshairs.hide();
+    
+    birchlabs.grid = grid;
+    birchlabs.crosshairs = crosshairs;
+    //birchlabs.theFlyout = flyout;
+    birchlabs.flyouts = flyouts;
+  }
   
   function init() {
+    makeContainers();
+    var Flyout = birchlabs.Flyout;
+    var Grid = birchlabs.Grid;
+    var Crosshairs = birchlabs.Crosshairs;
+    
+    var flyouts = birchlabs.flyouts;
+    var grid = birchlabs.grid;
+    var crosshairs = birchlabs.crosshairs;
+    
     birchlabs.targetedElement = null;
     
     var keycodes = {
@@ -52,7 +69,6 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
     for (var i=0; i<flyoutShortcuts.length; i++) {
       flyouts.push(new Flyout(flyoutShortcuts[i]));
     }
-    flyout = flyouts[0];
     
     var numpadtype = true;
     var numpadstart = 48;
@@ -79,14 +95,10 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
           //processSearch();
           //draw();
         var container = makeGridContainer(document.documentElement);
-        var crosshairs;
+        birchlabs.container = container;
         
         if (birchlabs.testmode) {
-          createGrid(container);
-          Flyout.show();
-          
-          crosshairs = crosshairs||new birchlabs.Crosshairs(document.documentElement, grid);
-          highlightTarget();
+          toggleGrid();          
         }
         
         var $window   = $(window),
@@ -103,7 +115,7 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
                 //trace($window.width());
               //trace($(".verticalHair").first().offset().left);
               //highlightTarget();
-            crosshairHighlight(getDocRoot());
+            crosshairs.highlight(getDocRoot());
               pointFlyouts();
             }
         };
@@ -161,27 +173,8 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
             
             lookup.stopEvent(ev);
           } else if (code == keycodes.activate) {
-            if ($(".gridContainer").children().length == 0) {
-              // need to make a grid
-              grid.initialize();
-              createGrid(container);
-              
-              crosshairs = crosshairs||new birchlabs.Crosshairs(document.documentElement, grid);
-              
-              // in case crosshairs already instantiated
-              crosshairs.updatePosition(grid);
-              highlightTarget();
-              crosshairs.show();
-              Flyout.show();
-            } else {
-              // toggle grid off
-              grid.initialize();
-              $(grid.getLatestSelector()).empty();
-              
-              Flyout.hide();
-              crosshairs.hide();
-              removeHighlights();
-            }
+            toggleGrid();
+            
             lookup.stopEvent(ev);
           }
           for (i=0; i<flyoutShortcuts.length; i++) {
@@ -210,22 +203,6 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
       //draw();
   }
   
-  function crosshairHighlight(root) {
-    var coords = grid.findPointerCoords();
-    var centerX = coords.centerX;
-    var centerY = coords.centerY;
-    
-    var element = $(root.elementFromPoint(centerX, centerY));
-
-    // unhighlight previous element
-    removeHighlights();
-    birchlabs.targetedElement = element;
-
-    element.addClass("targeted");
-    
-    return element;
-  }
-  
   function getDocRoot() {
     var rootNodes = [window].concat(lookup.getRootNodes());
     for (var x = 0; x < rootNodes.length; x++) {
@@ -236,10 +213,14 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
     }
   }
   
-  function highlightTarget() {    
+  function highlightTarget() {
+    var crosshairs = birchlabs.crosshairs;
+    var flyouts = birchlabs.flyouts;
+    var grid = birchlabs.grid;
+    
     var doc2 = getDocRoot();
       
-      var crosshaired = crosshairHighlight(doc2).get(0);
+      var crosshaired = crosshairs.highlight(doc2).get(0);
       
       // some of the obscure ones are guesses
       var careElements = {"A":true,
@@ -372,7 +353,7 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
         }
       }
       
-      for (var i=0; i<flyouts.length; i++) {
+      for (var i=0; i<flyouts.length; i++) {        
         var f = flyouts[i];
         var targ = selected[i];
         f.unsetTarget();
@@ -395,17 +376,22 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
       //trace(selected);
   }
   
-  function pointFlyouts() {
+  function unpointFlyouts() {
+    var flyouts = birchlabs.flyouts;
+    
     for (var i=0; i<flyouts.length; i++) {
         var f = flyouts[i];
-        f.point();
+        f.unsetTarget();
+        f.hide();
       }
   }
   
-  function removeHighlights() {
-    if (birchlabs.targetedElement != null) {
-        birchlabs.targetedElement.removeClass("targeted");
-        birchlabs.targetedElement.removeClass("cluck");
+  function pointFlyouts() {
+    var flyouts = birchlabs.flyouts;
+    
+    for (var i=0; i<flyouts.length; i++) {
+        var f = flyouts[i];
+        f.point();
       }
   }
   
@@ -449,6 +435,8 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
   }
   
   function drill(num, grid, crosshairs) {
+    var Flyout = birchlabs.Flyout;
+    
     grid.getLastCells().text("");
     grid.getLastGrid().addClass("gridBorderOff");
     grid.getLastCells().addClass("cellBorderOff");
@@ -476,6 +464,8 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
   }
   
   function backup(grid, crosshairs) {
+    var Flyout = birchlabs.Flyout;
+    
     // remove a grid!
     $(grid.getLatestSelector()).empty();
     grid.getPreviousSelector();
@@ -503,6 +493,8 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
     grid.getLastGrid().addClass("gridBorderOn");
     grid.getLastCells().addClass("cellBorderOn");
 
+    unpointFlyouts();
+    
     var exists = grid.getLastGrid().length>0;
     if (exists) {
       // move crosshairs
@@ -512,7 +504,6 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
     } else {
       Flyout.hide();
       crosshairs.hide();
-      removeHighlights();
     }
   }
   
@@ -559,7 +550,43 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
   }
   
   function shortcut() {
-    console.log('ayup');
+    toggleGrid();
+  }
+  
+  function toggleGrid() {
+    var Flyout = birchlabs.Flyout;
+    
+    var crosshairs = birchlabs.crosshairs;
+    var container = birchlabs.container;
+    var grid = birchlabs.grid;
+    
+    if (gridIsOn()) {
+      // need to make a grid
+      grid.initialize();
+      createGrid(container);
+
+      crosshairs = crosshairs||new birchlabs.Crosshairs(document.documentElement, grid);
+      birchlabs.crosshairs = crosshairs;
+
+      // in case crosshairs already instantiated
+      crosshairs.updatePosition(grid);
+      highlightTarget();
+      crosshairs.show();
+      Flyout.show();
+    } else {
+      // toggle grid off
+      grid.initialize();
+      $(grid.getLatestSelector()).empty();
+
+      unpointFlyouts();
+      Flyout.hide();
+      crosshairs.hide();
+    }
+    document.documentElement.focus();
+  }
+  
+  function gridIsOn() {
+    return $(".gridContainer").children().length == 0;
   }
   
     return { init: init,

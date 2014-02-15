@@ -50,20 +50,25 @@ var birchlabs = window.birchlabs;
  
   p.findPointerCoords = function() {
     var element = this.getLastGrid();
-    // click
-    //var offset = gridElement.offset();
-    var offset = element.get(0).getBoundingClientRect();
-    //console.log($this.get(0));
-    //console.log($this.offset());
-    var width = element.outerWidth();
-    var height = element.outerHeight();
-    
-    var centerX = offset.left + width / 2;
-    var centerY = offset.top + height / 2;
-    
-    //console.log("x: "+centerX+" y: "+centerY);
-    
-    return {centerX:centerX, centerY:centerY};
+    // maybe there are no grids made
+    if (element.get(0)) {
+     // click
+     //var offset = gridElement.offset();
+     var offset = element.get(0).getBoundingClientRect();
+     //console.log($this.get(0));
+     //console.log($this.offset());
+     var width = element.outerWidth();
+     var height = element.outerHeight();
+
+     var centerX = offset.left + width / 2;
+     var centerY = offset.top + height / 2;
+
+     //console.log("x: "+centerX+" y: "+centerY);
+     return {centerX:centerX, centerY:centerY};
+     
+    } else {
+     return null;
+    }
   };
 
   birchlabs.Grid = Grid;

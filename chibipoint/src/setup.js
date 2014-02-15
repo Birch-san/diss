@@ -20,6 +20,8 @@ define(["test"], function (test) {
 // to begin with, not in test mode
 birchlabs.testmode = false;
  
+ if (chrome.runtime) {
+ 
  chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
     /*console.log(sender.tab ?
@@ -30,7 +32,8 @@ birchlabs.testmode = false;
      test.shortcut();
     }
   });
-
+ }
+  
 /* Styles and addStyle borrowed from nice-alert.js project */
 
 var styles = '\

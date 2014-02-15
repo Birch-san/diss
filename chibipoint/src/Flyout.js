@@ -29,6 +29,7 @@ var birchlabs = window.birchlabs;
   var p = Flyout.prototype;
 
   p.setX = function(x) {
+    x = Math.max(2, x);
     this.x = x;
 
     // convert to percent
@@ -40,6 +41,7 @@ var birchlabs = window.birchlabs;
   };
   
   p.setY = function(y) {
+     y = Math.max(2, y);
      this.y = y;
 
      // convert to percent
