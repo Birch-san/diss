@@ -172,8 +172,8 @@ var birchlabs = window.birchlabs;
   }
  };
  
- p.doClick = function() {
-  function clickOrFocus(element) {
+ 
+  p.clickOrFocus = function(element) {
     console.log(element);
     console.log(element.nodeName);
     var justFocus = {//"A":true,
@@ -192,9 +192,18 @@ var birchlabs = window.birchlabs;
       element.click();
     }
   }
+ 
+ p.doClick = function() {
   if (this.target) {
+   
    $(this.target).addClass("cluck");
-   clickOrFocus(this.target);
+   this.clickOrFocus(this.target);
+   
+   var thatTarget = this.target;
+   var delayUnclick = setInterval(function () {
+      clearInterval(delayUnclick);
+      $(thatTarget).removeClass("cluck");
+    }, 50);
   }
  };
  

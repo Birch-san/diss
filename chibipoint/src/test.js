@@ -16,10 +16,13 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
     var flyouts = [];
 
     var grid = new Grid();
+    var container = makeGridContainer(document.documentElement);
+    
     var crosshairs = new Crosshairs(document.documentElement, grid);
     crosshairs.hide();
     
     birchlabs.grid = grid;
+    birchlabs.container = container;
     birchlabs.crosshairs = crosshairs;
     //birchlabs.theFlyout = flyout;
     birchlabs.flyouts = flyouts;
@@ -94,8 +97,7 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
           // usually on keydown
           //processSearch();
           //draw();
-        var container = makeGridContainer(document.documentElement);
-        birchlabs.container = container;
+        //var container = birchlabs.container;
         
         if (birchlabs.testmode) {
           toggleGrid();          
@@ -154,14 +156,12 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
           
           if (numpadtype) {
             var num = code-numpadstart;
-            if (num<10 && num > 0) {
-              if (tracer != null) {
-                doc.getElementById("trace").innerHTML += ", " + (code-numpadstart);
+            if (num<10 && num > 0) {              
+              if (gridIsInUse()) {
+                drill(num, grid, crosshairs);
+                
+                lookup.stopEvent(ev);
               }
-              
-              drill(num, grid, crosshairs);
-              
-              lookup.stopEvent(ev);
             } else if (code == keycodes.zero) {
               backup(grid, crosshairs);
             
@@ -180,6 +180,7 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
           for (i=0; i<flyoutShortcuts.length; i++) {
             if (code == flyoutShortcuts[i]) {
               flyouts[i].doClick();
+              closeGrid();
             }
             lookup.stopEvent(ev);
           }
@@ -213,6 +214,63 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
     }
   }
   
+  function getAllClickablesInBoundsAndSort(root, rect, rects) {
+      var found = [];
+      var buckets = [];
+      for (var j=0; j<rects.length; j++) {
+        buckets.push([]);
+      }
+
+      var left = rect.left;
+      var top = rect.top;
+      var width = rect.width;
+      var height = rect.height;
+
+      var left2;
+      var top2;
+      var width2;
+      var height2;
+
+      var cache = false;
+
+      var r;
+      var i;
+      var res;
+      var res2;
+      //var q;
+      //var ew;
+      var itRect;
+
+      $(root).find("[_handlerTypes], A, INPUT, SELECT, TEXTAREA, BUTTON").each(function() {
+
+        if(this == document.documentElement) return  this.ret.push(this);
+
+        itRect = this.getBoundingClientRect();
+
+        res = !( (itRect.top > top+height) || (itRect.top +itRect.height < top) || (itRect.left > left+width ) || (itRect.left+itRect.width < left));
+
+      // it's certainly in the grid somewhere
+        if(res) {
+
+          // now find which buckets to put it in
+            for (i=0; i<rects.length; i++) {
+              r = rects[i];
+              left2 = r.left;
+              top2 = r.top;
+              width2 = r.width;
+              height2 = r.height;
+
+              res2 =  !( (itRect.top > top2+height2) || (itRect.top +itRect.height < top2) || (itRect.left > left2+width2 ) || (itRect.left+itRect.width < left2));
+
+              if (res2) {
+                buckets[i].push(this);
+              }
+            }
+        }
+      });
+      return buckets;
+    }
+  
   function highlightTarget() {
     var crosshairs = birchlabs.crosshairs;
     var flyouts = birchlabs.flyouts;
@@ -232,77 +290,7 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
                          //"command":true,
                          //"kbd":true
                          };
-      
-      var rect = grid.getLastRows().eq(0).children().eq(0).get(0).getBoundingClientRect();
-      
-      function getAllClickablesInBoundsAndSort(root, rect, rects) {
-        var found = [];
-        var buckets = [];
-        for (var j=0; j<rects.length; j++) {
-          buckets.push([]);
-        }
-        
-        var left = rect.left;
-        var top = rect.top;
-        var width = rect.width;
-        var height = rect.height;
-        
-        var left2;
-        var top2;
-        var width2;
-        var height2;
-        
-        var cache = false;
-        
-        var r;
-        var i;
-        var res;
-        var res2;
-        //var q;
-        //var ew;
-        var itRect;
-        
-        $(root).find("[_handlerTypes], A, INPUT, SELECT, TEXTAREA, BUTTON").each(function() {
           
-          //var ret = []
-          //q = $(this);
-
-          if(this == document.documentElement) return  this.ret.push(this);
-
-          /*var offset = cache ? 
-              $.data(this,"offset") || 
-              $.data(this,"offset", q.offset()) : 
-              q.offset();*/
-          
-          itRect = this.getBoundingClientRect();
-
-
-          //ew = q.width(), eh = q.height();
-          
-          //res =  !( (offset.top > top+height) || (offset.top +eh < top) || (offset.left > left+width ) || (offset.left+ew < left));
-          res = !( (itRect.top > top+height) || (itRect.top +itRect.height < top) || (itRect.left > left+width ) || (itRect.left+itRect.width < left));
-        
-        // it's certainly in the grid somewhere
-          if(res) {
-            
-            // now find which buckets to put it in
-              for (i=0; i<rects.length; i++) {
-                r = rects[i];
-                left2 = r.left;
-                top2 = r.top;
-                width2 = r.width;
-                height2 = r.height;
-
-                res2 =  !( (itRect.top > top2+height2) || (itRect.top +itRect.height < top2) || (itRect.left > left2+width2 ) || (itRect.left+itRect.width < left2));
-
-                if (res2) {
-                  buckets[i].push(this);
-                }
-              }
-          }
-        });
-        return buckets;
-      }
       var rect = grid.getLastGrid().get(0).getBoundingClientRect();
       
       var rects = [];
@@ -525,6 +513,7 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
     } else {
       element.click();
     }
+    closeGrid();
   }
   
   function gridclick(grid) {
@@ -546,6 +535,12 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
       
       clickOrFocus(element.get(0));
       //element.get(0).click();
+      
+      var delayUnclick = setInterval(function () {
+          clearInterval(delayUnclick);
+          element.removeClass("cluck");
+        pointFlyouts();
+        }, 50);
     }
   }
   
@@ -560,13 +555,16 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
     var container = birchlabs.container;
     var grid = birchlabs.grid;
     
-    if (gridIsOn()) {
+    document.activeElement.blur();
+    //document.documentElement.focus();
+    
+    if (gridIsEmpty()) {
       // need to make a grid
       grid.initialize();
       createGrid(container);
 
-      crosshairs = crosshairs||new birchlabs.Crosshairs(document.documentElement, grid);
-      birchlabs.crosshairs = crosshairs;
+      //crosshairs = crosshairs||new birchlabs.Crosshairs(document.documentElement, grid);
+      //birchlabs.crosshairs = crosshairs;
 
       // in case crosshairs already instantiated
       crosshairs.updatePosition(grid);
@@ -575,18 +573,31 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
       Flyout.show();
     } else {
       // toggle grid off
-      grid.initialize();
-      $(grid.getLatestSelector()).empty();
-
-      unpointFlyouts();
-      Flyout.hide();
-      crosshairs.hide();
+      closeGrid();
     }
-    document.documentElement.focus();
   }
   
-  function gridIsOn() {
+  function closeGrid() {
+    var Flyout = birchlabs.Flyout;
+    
+    var crosshairs = birchlabs.crosshairs;
+    var grid = birchlabs.grid;
+    
+    grid.initialize();
+    $(grid.getLatestSelector()).empty();
+
+    unpointFlyouts();
+    Flyout.hide();
+    crosshairs.hide();
+  }
+  
+  function gridIsEmpty() {
     return $(".gridContainer").children().length == 0;
+  }
+  
+  function gridIsInUse() {
+    //var grid = birchlabs.grid;
+    return $(".grid").children().length > 0;
   }
   
     return { init: init,
