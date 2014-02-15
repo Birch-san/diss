@@ -170,6 +170,13 @@ var birchlabs = window.birchlabs;
   }
  };
  
+ p.doClick = function() {
+  if (this.target) {
+   $(this.target).addClass("cluck");
+   this.target.click();
+  }
+ };
+ 
  p.paintTarget = function() {
   if (this.target) {
    $(this.target).addClass("birchPainted");

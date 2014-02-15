@@ -111,8 +111,24 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
         $window.resize(liveTargeter);
         $window.scroll(liveTargeter);
         
+        // some keys can only be caught by keydown
+        doc.addEventListener('keydown', function(ev) {
+          var code = ev.keyCode;
+          var ascii = String.fromCharCode(code);
+          
+          if (code == keycodes.enter) {
+            gridclick(grid);
+            
+            lookup.stopEvent(ev);
+          }
+        });
+        
         doc.addEventListener('keypress', function(ev) {
         if (lookup.isInputElementActive(doc)) {
+          var tracer = doc.getElementById("trace");
+          if (tracer != null) {
+            doc.getElementById("trace").innerHTML = code;
+          }
           return;
         }
         var code = ev.keyCode;
@@ -168,6 +184,12 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
             }
             lookup.stopEvent(ev);
           }
+          for (i=0; i<flyoutShortcuts.length; i++) {
+            if (code == flyoutShortcuts[i]) {
+              flyouts[i].doClick();
+            }
+            lookup.stopEvent(ev);
+          }
         }
       }, false);
       }
@@ -200,6 +222,8 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
     birchlabs.targetedElement = element;
 
     element.addClass("targeted");
+    
+    return element;
   }
   
   function getDocRoot() {
@@ -215,7 +239,7 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
   function highlightTarget() {    
     var doc2 = getDocRoot();
       
-      crosshairHighlight(doc2);
+      var crosshaired = crosshairHighlight(doc2).get(0);
       
       // some of the obscure ones are guesses
       var careElements = {"A":true,
@@ -310,6 +334,7 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
       
       // which element was selected by each segment
       var selected = [];
+    //console.log(crosshaired);
       
       var bucketIndex = 0;
       // one bucket for each segment
@@ -322,19 +347,21 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
             var myBucket = buckets[(bucketIndex+b)%buckets.length];
             for (var n = 0; n<myBucket.length; n++) {
               var inSelectedAlready = false;
-              for (var s = 0; s<selected.length; s++) {
-                // skip over 
-                if (selected[s] == myBucket[n])
-                {
-                  inSelectedAlready = true;
+              if (myBucket[n] != crosshaired) {
+                for (var s = 0; s<selected.length; s++) {
+                  // skip over 
+                  if (selected[s] == myBucket[n])
+                  {
+                    inSelectedAlready = true;
+                    break;
+                  }
+                }
+                if (!inSelectedAlready) {
+                  // add to selected
+                  selected[bucketIndex] = myBucket[n];
+                  fulfilled = true;
                   break;
                 }
-              }
-              if (!inSelectedAlready) {
-                // add to selected
-                selected[bucketIndex] = myBucket[n];
-                fulfilled = true;
-                break;
               }
             }
             if (fulfilled) {
@@ -489,6 +516,26 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
     }
   }
   
+  function clickOrFocus(element) {
+    console.log(element);
+    console.log(element.nodeName);
+    var justFocus = {//"A":true,
+                         "INPUT":true,
+                         "TEXTAREA":true,
+                         "SELECT":true,
+                         "BUTTON":true//,
+                         //"output":true,
+                         //"command":true,
+                         //"kbd":true
+                         };
+    
+    if (justFocus[element.nodeName]) {
+      element.focus();
+    } else {
+      element.click();
+    }
+  }
+  
   function gridclick(grid) {
     var coords = grid.findPointerCoords();
     var centerX = coords.centerX;
@@ -505,7 +552,9 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
 
       element.removeClass("targeted");
       element.addClass("cluck");
-      element.get(0).click();
+      
+      clickOrFocus(element.get(0));
+      //element.get(0).click();
     }
   }
   

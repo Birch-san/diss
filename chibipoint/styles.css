@@ -89,25 +89,17 @@ body {
   pointer-events: none;
   display: none;
 }
-.hairBorder {
-  border-width: 1px 1px 1px 1px;
-  border-color: #00ffff;
-}
 .hairlinecommon {
   padding: 0;
   position: relative;
   pointer-events: inherit;
   background: #ff0000;
-  border-width: 1px 1px 1px 1px;
-  border-color: #00ffff;
 }
 .horizontalHair {
   padding: 0;
   position: relative;
   pointer-events: inherit;
   background: #ff0000;
-  border-width: 1px 1px 1px 1px;
-  border-color: #00ffff;
   left: inherit;
   width: inherit;
   height: 1px;
@@ -117,8 +109,6 @@ body {
   position: relative;
   pointer-events: inherit;
   background: #ff0000;
-  border-width: 1px 1px 1px 1px;
-  border-color: #00ffff;
   top: -1px;
   width: 1px;
   height: inherit;
@@ -138,6 +128,8 @@ body {
     border: 3px solid black;
     box-sizing: border-box;*/
   box-shadow: 0 0 10px #ff0000;
+  background-blend-mode: darken, normal;
+  -webkit-background-blend-mode: darken, normal;
 }
 .cluck {
   background: red!important;

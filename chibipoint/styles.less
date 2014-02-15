@@ -155,8 +155,11 @@ body {
 }
 
 .hairBorder {
-  border-width: @hairborderthick @hairborderthick @hairborderthick @hairborderthick;
-  border-color:#00ffff;
+  //border-width: @hairborderthick @hairborderthick @hairborderthick @hairborderthick;
+  //border-color:#00ffff;
+  
+  //outline-color:;
+  //outline: 1px solid 0;
 }
 
 .hairlinecommon {
@@ -218,6 +221,8 @@ body {
     //border-radius: 3px;
     box-shadow:  0 0 10px #ff0000;
   
+    background-blend-mode: darken, normal; // Chrome Canary
+    -webkit-background-blend-mode: darken, normal; // WebKit Nightly
     //display:inline-block;
 }
 
