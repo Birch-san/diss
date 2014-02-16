@@ -12,8 +12,12 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
     var Grid = birchlabs.Grid;
     var Crosshairs = birchlabs.Crosshairs;
     
-    Flyout.makecontainer(document.documentElement);
-    var flyouts = [];
+    if (birchlabs.flyoutsOn) {
+      Flyout.makecontainer(document.documentElement);
+      var flyouts = [];
+    } else {
+      Flyout.hide();
+    }
 
     var grid = new Grid();
     var container = makeGridContainer(document.documentElement);
@@ -29,6 +33,7 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
   }
   
   function init() {
+    birchlabs.flyoutsOn = false;
     makeContainers();
     var Flyout = birchlabs.Flyout;
     var Grid = birchlabs.Grid;
@@ -69,8 +74,10 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
                           100,101,102,
                           103,104,105];*/
     
-    for (var i=0; i<flyoutShortcuts.length; i++) {
-      flyouts.push(new Flyout(flyoutShortcuts[i]));
+    if (birchlabs.flyoutsOn) {
+      for (var i=0; i<flyoutShortcuts.length; i++) {
+        flyouts.push(new Flyout(flyoutShortcuts[i]));
+      }
     }
     
     var numpadtype = true;
@@ -180,12 +187,14 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
             
             lookup.stopEvent(ev);
           }
-          for (i=0; i<flyoutShortcuts.length; i++) {
-            if (code == flyoutShortcuts[i]) {
-              flyouts[i].doClick();
-              closeGrid();
-              
-              lookup.stopEvent(ev);
+          if (birchlabs.flyoutsOn) {
+            for (i=0; i<flyoutShortcuts.length; i++) {
+              if (code == flyoutShortcuts[i]) {
+                flyouts[i].doClick();
+                closeGrid();
+
+                lookup.stopEvent(ev);
+              }
             }
           }
         }
@@ -333,7 +342,8 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
           rects.push(grid.getLastRows().eq(i).children().eq(j).get(0).getBoundingClientRect());
         }
       }
-      var buckets =getAllClickablesInBoundsAndSort($(doc2.body), rect, rects);
+      if (birchlabs.flyoutsOn) {
+        var buckets =getAllClickablesInBoundsAndSort($(doc2.body), rect, rects);
       
       // which element was selected by each segment
       var selected = [];
@@ -396,25 +406,30 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
     //    pointFlyouts();
       //  }, 50);
       //trace(selected);
+    }
   }
   
   function unpointFlyouts() {
-    var flyouts = birchlabs.flyouts;
+    if (birchlabs.flyoutsOn) {
+      var flyouts = birchlabs.flyouts;
     
-    for (var i=0; i<flyouts.length; i++) {
-        var f = flyouts[i];
-        f.unsetTarget();
-        f.hide();
-      }
+      for (var i=0; i<flyouts.length; i++) {
+          var f = flyouts[i];
+          f.unsetTarget();
+          f.hide();
+        }
+    }
   }
   
   function pointFlyouts() {
-    var flyouts = birchlabs.flyouts;
-    
-    for (var i=0; i<flyouts.length; i++) {
-        var f = flyouts[i];
-        f.point();
-      }
+    if (birchlabs.flyoutsOn) {
+      var flyouts = birchlabs.flyouts;
+
+      for (var i=0; i<flyouts.length; i++) {
+          var f = flyouts[i];
+          f.point();
+        }
+    }
   }
   
   function makeGridContainer(root) {
@@ -530,8 +545,6 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
   }
   
   function clickOrFocus(element) {
-    console.log(element);
-    console.log(element.nodeName);
     var justFocus = {//"A":true,
                          "INPUT":true,
                          "TEXTAREA":true,

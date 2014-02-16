@@ -174,8 +174,6 @@ var birchlabs = window.birchlabs;
  
  
   p.clickOrFocus = function(element) {
-    console.log(element);
-    console.log(element.nodeName);
     var justFocus = {//"A":true,
                          "INPUT":true,
                          "TEXTAREA":true,
