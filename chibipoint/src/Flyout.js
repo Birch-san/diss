@@ -204,7 +204,7 @@ var birchlabs = window.birchlabs;
    var delayUnclick = setInterval(function () {
       clearInterval(delayUnclick);
       $(thatTarget).removeClass("cluck");
-    }, 50);
+    }, 1000);
   }
  };
  

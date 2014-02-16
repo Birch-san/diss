@@ -388,8 +388,8 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
           f.setTarget(targ, grid.getFirstGrid().get(0));
         }
       }
-      var delayPoint = setInterval(function () {
-          clearInterval(delayPoint);
+//      var delayPoint = setInterval(function () {
+  //        clearInterval(delayPoint);
           for (var i=0; i<flyouts.length; i++) {
             var f = flyouts[i];
             var targ = selected[i];
@@ -397,8 +397,8 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
               f.show();
             }
           }
-        pointFlyouts();
-        }, 50);
+    //    pointFlyouts();
+      //  }, 50);
       //trace(selected);
   }
   
@@ -484,9 +484,10 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
 
     // move crosshairs              
     crosshairs.updatePosition(grid);
-    highlightTarget();
     
+    highlightTarget();
     Flyout.show();
+    
   }
   
   function backup(grid, crosshairs) {
@@ -578,7 +579,7 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
           clearInterval(delayUnclick);
           element.removeClass("cluck");
         pointFlyouts();
-        }, 50);
+        }, 1000);
     }
   }
   
@@ -607,9 +608,9 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
 
       // in case crosshairs already instantiated
       crosshairs.updatePosition(grid);
+      Flyout.show();
       highlightTarget();
       crosshairs.show();
-      Flyout.show();
     } else {
       // toggle grid off
       closeGrid();
