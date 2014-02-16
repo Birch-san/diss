@@ -15,9 +15,8 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
     if (birchlabs.flyoutsOn) {
       Flyout.makecontainer(document.documentElement);
       var flyouts = [];
-    } else {
-      Flyout.hide();
     }
+    Flyout.hide();
 
     var grid = new Grid();
     var container = makeGridContainer(document.documentElement);
@@ -33,7 +32,7 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
   }
   
   function init() {
-    birchlabs.flyoutsOn = false;
+    birchlabs.flyoutsOn = true;
     makeContainers();
     var Flyout = birchlabs.Flyout;
     var Grid = birchlabs.Grid;
@@ -61,27 +60,60 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
       "activate": 167
     };
     
-    // qwerty grid
-    /*var flyoutShortcuts = [113,119,101,
-                          97,115,100,
-                          122,120,99];*/
-    // dvorak grid
-    var flyoutShortcuts = [39,44,46,
-                          97,111,101,
-                          59,113,106];
-    // alphabet grid
-    /*var flyoutShortcuts = [97,98,99,
+    var numpad = false;
+    
+    if (numpad) {
+      // numpad
+      var numpadMappings = {"7":[55,], "8":[56,8], "9":[57,9],
+                         "4":[52,4], "5":[53,5], "6":[54,6],
+                         "1":[49,1], "2":[50,2], "3":[51,3]};
+      var zeroKey = keycodes.zero;
+    }
+    
+    var dvorak = false;
+    
+    if (dvorak) {
+      // dvorak flyouts
+      var flyoutShortcuts = [103,99,114,
+                          104,116,110,
+                          109,119,118];
+      
+      if (!numpad) {
+        var numpadMappings = {"7":[39,7], "8":[44,8], "9":[46,9],
+                           "4":[97,4], "5":[111,5], "6":[101,6],
+                           "1":[59,1], "2":[113,2], "3":[106,3]};
+        var zeroKey = 107;
+      }
+    } else {
+      // qwerty flyouts
+      var flyoutShortcuts = [117,105,111,
+                          106,107,108,
+                          109,44,46];
+      
+      // alphabet flyouts
+      /*var flyoutShortcuts = [97,98,99,
                           100,101,102,
                           103,104,105];*/
+      
+      if (!numpad) {
+        // qwerty grid    
+        var numpadMappings = {"7":[113,7], "8":[119,8], "9":[101,9],
+                           "4":[97,4], "5":[115,5], "6":[100,6],
+                           "1":[122,1], "2":[120,2], "3":[99,3]};
+        var zeroKey = 118;
+      }
+    }
+    
+    // numpad grid
+    // I'm so sorry
+    
+    birchlabs.numpadMappings = numpadMappings;
     
     if (birchlabs.flyoutsOn) {
       for (var i=0; i<flyoutShortcuts.length; i++) {
         flyouts.push(new Flyout(flyoutShortcuts[i]));
       }
     }
-    
-    var numpadtype = true;
-    var numpadstart = 48;
     
     //createGrid();
       function setEvents(rootNode) {
@@ -168,7 +200,7 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
             doc.getElementById("trace").innerHTML = code;
           }
           
-          if (numpadtype) {
+          /*if (numpadtype) {
             var num = code-numpadstart;
             if (num<10 && num > 0) {              
               if (gridIsInUse()) {
@@ -181,6 +213,20 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
             
               lookup.stopEvent(ev);
             }
+          }*/
+          for (var j in numpadMappings) {
+            if (code == numpadMappings[j][0]) {
+              if (gridIsInUse()) {
+                drill(numpadMappings[j][1], grid, crosshairs);
+                
+                lookup.stopEvent(ev);
+              }
+            }
+          }
+          if (code == zeroKey) {
+            backup(grid, crosshairs);
+
+            lookup.stopEvent(ev);
           }
           if (code == keycodes.activate) {
             toggleGrid();
@@ -440,6 +486,7 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
   }
   
   function createGrid(root) {
+    var numpadMappings = birchlabs.numpadMappings;
     
     var anticipatedHeight = $(root).height();
     var cellHeight = anticipatedHeight/3;
@@ -468,7 +515,7 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
               }
             
               if (cellHeight>12) {
-                cell.innerHTML = 7-(i*3-p);
+                cell.innerHTML = String.fromCharCode(numpadMappings[(7-(i*3-p)).toString()][0]).toUpperCase();
                 cell.style.fontSize =Math.min(96,cellHeight*0.5)+"px"
                 var trans = document.createElement('div');
                 trans.className = "chibiPoint_backing";
@@ -514,6 +561,7 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
   }
   
   function backup(grid, crosshairs) {
+    var numpadMappings = birchlabs.numpadMappings;
     var Flyout = birchlabs.Flyout;
     
     if (gridIsInUse()) {
@@ -531,7 +579,7 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
           $(this).children().each(function(index) {
             var p = index;
             if (cellHeight>12) {
-              $(this).text(7-(i*3-p));
+              $(this).text(String.fromCharCode(numpadMappings[(7-(i*3-p)).toString()][0]).toUpperCase());
 
               var trans = document.createElement('div');
               trans.className = "chibiPoint_backing";
