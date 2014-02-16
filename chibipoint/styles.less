@@ -12,7 +12,7 @@ body {
     padding: 0;
 }
 
-.gridContainer {
+.chibiPoint_gridContainer {
   padding: 0;
   //top: 8.3%;
   top:0;
@@ -27,11 +27,11 @@ body {
   z-index:2147483647;
 }
 
-.birchHiddenGridContainer {
+.chibiPoint_hiddenGridContainer {
   display:none;
 }
 
-.grid {
+.chibiPoint_grid {
     
   position:relative;
   left:calc(-(100%*(@growcoeff - 1))/2);
@@ -50,16 +50,16 @@ body {
   pointer-events: inherit;
 }
 
-.gridBorderOn {
+.chibiPoint_gridBorderOn {
   border: @gridthick solid @gridcol;
   border-width: @gridthick 0 0 @gridthick;
   //outline: 1px solid 0;
 }
 
-.gridBorderOff {
+.chibiPoint_gridBorderOff {
 }
 
-.row {
+.chibiPoint_row {
     //border: 1px solid #ccc;
     //border-width: 0 1px 1px 0;
     
@@ -70,7 +70,7 @@ body {
 
 @cellratio:calc(100%/3);
 
-.cell {
+.chibiPoint_cell {
   padding:0;
   
   width:@cellratio;
@@ -93,7 +93,7 @@ body {
   clear:both;
 }
 
-.cellBorderOn {
+.chibiPoint_cellBorderOn {
   /*border: @gridthick solid @gridcol;
   border-width: @gridthick @gridthick @gridthick @gridthick;
   //border-style:double;
@@ -102,14 +102,14 @@ body {
   box-shadow: 0 0 0 1px #fff, 0 0 0 2px #888; 
 }
 
-.cellBorderOff {
+.chibiPoint_cellBorderOff {
 }
 
 @backingprop: 0.8;
 @radius: 15%;
 @backinggrey: 230;
 
-.backing {
+.chibiPoint_backing {
   position:absolute;
   
   top:calc(100%*(1-@backingprop)/2);
@@ -133,7 +133,7 @@ body {
 @hairthick:1px;
 @hairborderthick:1px;
 
-.fullContainer {
+.chibiPoint_fullContainer {
  top:0;
   left:0;
   
@@ -146,19 +146,19 @@ body {
   pointer-events: none;
 }
 
-.shownCrosshairs {
-  .fullContainer;
+.chibiPoint_shownCrosshairs {
+  .chibiPoint_fullContainer;
   
   z-index:2147483646;
 }
 
-.hiddenCrosshairs {  
+.chibiPoint_hiddenCrosshairs {  
   pointer-events: none;
   
   display:none;
 }
 
-.hairBorder {
+.chibiPoint_hairBorder {
   //border-width: @hairborderthick @hairborderthick @hairborderthick @hairborderthick;
   //border-color:#00ffff;
   
@@ -166,7 +166,7 @@ body {
   //outline: 1px solid 0;
 }
 
-.hairlinecommon {
+.chibiPoint_hairlinecommon {
   padding:0;
   
   position:relative;
@@ -175,11 +175,11 @@ body {
   
   background:@haircol;
   
-  .hairBorder;
+  .chibiPoint_hairBorder;
 }
 
-.horizontalHair {
-  .hairlinecommon;
+.chibiPoint_horizontalHair {
+  .chibiPoint_hairlinecommon;
   
   left:inherit;
   
@@ -187,8 +187,8 @@ body {
   height:@hairthick;
 }
 
-.verticalHair {
-  .hairlinecommon;
+.chibiPoint_verticalHair {
+  .chibiPoint_hairlinecommon;
   
   top:-@hairthick;
   
@@ -196,7 +196,7 @@ body {
   height:inherit;
 }
 
-.targeted {
+.chibiPoint_targeted {
     background: yellow!important;
     //padding: 3px 5px;
     //margin: -3px -5px;
@@ -212,7 +212,7 @@ body {
     //display:inline-block;
 }
 
-.birchPainted {
+.chibiPoint_painted {
     background: cyan!important;
     //padding: 3px 5px;
     //margin: -3px -5px;
@@ -230,7 +230,7 @@ body {
     //display:inline-block;
 }
 
-.cluck {
+.chibiPoint_cluck {
     background: red!important;
     //padding: 3px 5px;
     //margin: -3px -5px;
@@ -243,30 +243,30 @@ body {
     //display:inline-block;
 }
 
-.flyoutContainer {
- .fullContainer;
+.chibiPoint_flyoutContainer {
+ .chibiPoint_fullContainer;
   
   z-index:2147483645;
 }
 
-.shownfC {
+.chibiPoint_shownfC {
 }
 
-.hiddenfC {
+.chibiPoint_hiddenfC {
  display:none;
 }
 
-.aFlyout {
+.chibiPoint_aFlyout {
   position: absolute;
  width:100%;
  height:100%;
 }
 
-.birchAFlyoutHidden {
+.chibiPoint_aFlyoutHidden {
  display: none;
 }
 
-.flyout {
+.chibiPoint_flyout {
   background: rgb(0,173,0);
   outline-color:#000000;
   outline: 1px solid 0!important;
@@ -277,13 +277,13 @@ body {
  text-align: center;
 }
 
-.lineDiv {
+.chibiPoint_lineDiv {
 }
 
-.lineSvg {
+.chibiPoint_lineSvg {
 }
 
-.line {
+.chibiPoint_line {
  stroke:rgb(0,173,0);
  stroke-width:2;
 }

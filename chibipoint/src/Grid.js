@@ -10,7 +10,7 @@ var birchlabs = window.birchlabs;
   var p = Grid.prototype;
 
   p.initialize = function() {
-      this.selectHistory = [".gridContainer"];
+      this.selectHistory = [".chibiPoint_gridContainer"];
   };
 
   p.getLatestSelector = function() {
@@ -33,19 +33,19 @@ var birchlabs = window.birchlabs;
   }
 
   p.getLastRows = function() {
-    return $(this.getLatestSelector()+" .row");
+    return $(this.getLatestSelector()+" .chibiPoint_row");
   };
 
   p.getLastCells = function() {
-    return $(this.getLatestSelector()+" .cell");
+    return $(this.getLatestSelector()+" .chibiPoint_cell");
   };
 
   p.getLastGrid = function() {
-    return $(this.getLatestSelector()+" .grid").first();
+    return $(this.getLatestSelector()+" .chibiPoint_grid").first();
   };
 
   p.getFirstGrid = function() {
-    return $(this.selectHistory[0]+" .grid").first();
+    return $(this.selectHistory[0]+" .chibiPoint_grid").first();
   };
  
   p.findPointerCoords = function() {

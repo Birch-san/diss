@@ -17,7 +17,7 @@ var birchlabs = window.birchlabs;
     var elem = this.grid.getFirstGrid();
     var rect = elem.get(0).getBoundingClientRect();
     var pX = x*100/rect.width;
-    $(".verticalHair").first().css({left:pX+"%"});
+    $(".chibiPoint_verticalHair").first().css({left:pX+"%"});
   };
 
   p.setY = function(y) {
@@ -28,26 +28,26 @@ var birchlabs = window.birchlabs;
     var rect = elem.get(0).getBoundingClientRect();
     var pY = y*100/rect.height;
 
-    $(".horizontalHair").first().css({top:pY+"%"});
+    $(".chibiPoint_horizontalHair").first().css({top:pY+"%"});
   };
 
   p.show = function() {
-    this.hairs.className = "crosshairs shownCrosshairs";
+    this.hairs.className = "chibiPoint_crosshairs chibiPoint_shownCrosshairs";
   };
   p.hide = function() {
-    this.hairs.className = "crosshairs hiddenCrosshairs";
+    this.hairs.className = "chibiPoint_crosshairs chibiPoint_hiddenCrosshairs";
     this.removeHighlights();
   };
 
   p.createCrosshairs = function(root) {
     this.hairs = document.createElement('div');
-    this.hairs.className = "crosshairs";
+    this.hairs.className = "chibiPoint_crosshairs";
 
     this.horizontalHair = document.createElement('div');
-    this.horizontalHair.className = "horizontalHair";
+    this.horizontalHair.className = "chibiPoint_horizontalHair";
 
     this.verticalHair = document.createElement('div');
-    this.verticalHair.className = "verticalHair";
+    this.verticalHair.className = "chibiPoint_verticalHair";
 
     $(this.hairs).append(this.horizontalHair);
     $(this.hairs).append(this.verticalHair);
@@ -78,7 +78,7 @@ var birchlabs = window.birchlabs;
      this.removeHighlights();
      this.targetedElement = element;
 
-     element.addClass("targeted");
+     element.addClass("chibiPoint_targeted");
      
      // doesn't seem to work :(
      /*element.trigger('mouseover');
@@ -98,8 +98,8 @@ var birchlabs = window.birchlabs;
  
  p.removeHighlights = function() {
     if (this.targetedElement) {
-       this.targetedElement.removeClass("targeted");
-       this.targetedElement.removeClass("cluck");
+       this.targetedElement.removeClass("chibiPoint_targeted");
+       this.targetedElement.removeClass("chibiPoint_cluck");
      }
  };
 

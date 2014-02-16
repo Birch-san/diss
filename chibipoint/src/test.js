@@ -334,7 +334,6 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
         }
       }
       var buckets =getAllClickablesInBoundsAndSort($(doc2.body), rect, rects);
-    console.log(buckets);
       
       // which element was selected by each segment
       var selected = [];
@@ -420,7 +419,7 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
   
   function makeGridContainer(root) {
     var parent = document.createElement('div');
-    parent.className = 'gridContainer birchHiddenGridContainer';
+    parent.className = 'chibiPoint_gridContainer chibiPoint_hiddenGridContainer';
     $(root).append(parent);
     return parent;
   }
@@ -433,19 +432,19 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
     // which on a low-density monitor is 12pt
       
       var parent = document.createElement('div');
-      parent.className = 'grid gridBorderOn';
+      parent.className = 'chibiPoint_grid chibiPoint_gridBorderOn';
   
       for (var i = 0; i < 3; i++) {
           var row = document.createElement('div');
-          row.className = 'row';
+          row.className = 'chibiPoint_row';
           for (var p = 0; p < 3; p++) {
               var cell = document.createElement('div');
-              cell.className = "cell cellBorderOn";
+              cell.className = "chibiPoint_cell chibiPoint_cellBorderOn";
               if (cellHeight>12) {
                 cell.innerHTML = 7-(i*3-p);
                 cell.style.fontSize =Math.min(96,cellHeight*0.5)+"px"
                 var trans = document.createElement('div');
-                trans.className = "backing";
+                trans.className = "chibiPoint_backing";
                 cell.appendChild(trans);
               }
               row.appendChild(cell);
@@ -461,10 +460,10 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
     var Flyout = birchlabs.Flyout;
     
     grid.getLastCells().text("");
-    grid.getLastGrid().addClass("gridBorderOff");
-    grid.getLastCells().addClass("cellBorderOff");
-    grid.getLastGrid().removeClass("gridBorderOn");
-    grid.getLastCells().removeClass("cellBorderOn");
+    grid.getLastGrid().addClass("chibiPoint_gridBorderOff");
+    grid.getLastCells().addClass("chibiPoint_cellBorderOff");
+    grid.getLastGrid().removeClass("chibiPoint_gridBorderOn");
+    grid.getLastCells().removeClass("chibiPoint_cellBorderOn");
 
     var rowIndexed1 = 4-Math.ceil(num/3);
     var columnIndexed1 = ((num-1)%3)+1;
@@ -472,9 +471,9 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
 
     selectArray = [];
     selectArray.push(grid.getLatestSelector());
-    selectArray.push(".grid");
-    selectArray.push(".row:nth-of-type("+rowIndexed1+")");
-    selectArray.push(".cell:nth-of-type("+columnIndexed1+")");
+    selectArray.push(".chibiPoint_grid");
+    selectArray.push(".chibiPoint_row:nth-of-type("+rowIndexed1+")");
+    selectArray.push(".chibiPoint_cell:nth-of-type("+columnIndexed1+")");
     grid.pushHistory(selectArray.join(" "));
 
     createGrid($(grid.getLatestSelector()).first());
@@ -506,16 +505,16 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
             $(this).text(7-(i*3-p));
 
             var trans = document.createElement('div');
-            trans.className = "backing";
+            trans.className = "chibiPoint_backing";
             $(this).append(trans);
           }
         });
     });
 
-    grid.getLastGrid().removeClass("gridBorderOff");
-    grid.getLastCells().removeClass("cellBorderOff");
-    grid.getLastGrid().addClass("gridBorderOn");
-    grid.getLastCells().addClass("cellBorderOn");
+    grid.getLastGrid().removeClass("chibiPoint_gridBorderOff");
+    grid.getLastCells().removeClass("chibiPoint_cellBorderOff");
+    grid.getLastGrid().addClass("chibiPoint_gridBorderOn");
+    grid.getLastCells().addClass("chibiPoint_cellBorderOn");
 
     unpointFlyouts();
     
@@ -566,22 +565,21 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
 
       var element = $(doc2.elementFromPoint(centerX, centerY));
 
-      element.removeClass("targeted");
-      element.addClass("cluck");
+      element.removeClass("chibiPoint_targeted");
+      element.addClass("chibiPoint_cluck");
       
       var flash = setInterval(function() {
-        console.log('fl');
-        if (element.hasClass("cluck")) {
-          element.removeClass("cluck");
+        if (element.hasClass("chibiPoint_cluck")) {
+          element.removeClass("chibiPoint_cluck");
         } else {
-           element.addClass("cluck");
+           element.addClass("chibiPoint_cluck");
         }
       }, 100);
       
       var delayUnclick = setInterval(function () {
           clearInterval(flash);
           clearInterval(delayUnclick);
-          element.removeClass("cluck");
+          element.removeClass("chibiPoint_cluck");
       clickOrFocus(element.get(0));
         pointFlyouts();
         }, 500);
@@ -609,7 +607,7 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
       // need to make a grid
       grid.initialize();
       createGrid(container);
-      $(".gridContainer").removeClass("birchHiddenGridContainer");
+      $(".chibiPoint_gridContainer").removeClass("chibiPoint_hiddenGridContainer");
 
       //crosshairs = crosshairs||new birchlabs.Crosshairs(document.documentElement, grid);
       //birchlabs.crosshairs = crosshairs;
@@ -634,7 +632,7 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
     grid.initialize();
     $(grid.getLatestSelector()).empty();
 
-    $(".gridContainer").addClass("birchHiddenGridContainer");
+    $(".chibiPoint_gridContainer").addClass("chibiPoint_hiddenGridContainer");
     
     unpointFlyouts();
     Flyout.hide();
@@ -642,12 +640,12 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
   }
   
   function gridIsEmpty() {
-    return $(".gridContainer").children().length == 0;
+    return $(".chibiPoint_gridContainer").children().length == 0;
   }
   
   function gridIsInUse() {
     //var grid = birchlabs.grid;
-    return $(".grid").children().length > 0;
+    return $(".chibiPoint_grid").children().length > 0;
   }
   
     return { init: init,

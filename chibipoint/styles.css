@@ -2,7 +2,7 @@
 body {
   padding: 0;
 }
-.gridContainer {
+.chibiPoint_gridContainer {
   padding: 0;
   top: 0;
   left: calc(2.380952380952383%);
@@ -12,10 +12,10 @@ body {
   pointer-events: none;
   z-index: 2147483647;
 }
-.birchHiddenGridContainer {
+.chibiPoint_hiddenGridContainer {
   display: none;
 }
-.grid {
+.chibiPoint_grid {
   position: relative;
   left: calc(-2.500000000000002%);
   top: 0;
@@ -25,15 +25,15 @@ body {
   table-layout: fixed;
   pointer-events: inherit;
 }
-.gridBorderOn {
+.chibiPoint_gridBorderOn {
   border: 1px solid #cccccc;
   border-width: 1px 0 0 1px;
 }
-.row {
+.chibiPoint_row {
   display: table-row;
   pointer-events: inherit;
 }
-.cell {
+.chibiPoint_cell {
   padding: 0;
   width: calc(33.333333333333336%);
   height: calc(33.333333333333336%);
@@ -49,7 +49,7 @@ body {
   overflow: visible;
   clear: both;
 }
-.cellBorderOn {
+.chibiPoint_cellBorderOn {
   /*border: @gridthick solid @gridcol;
   border-width: @gridthick @gridthick @gridthick @gridthick;
   //border-style:double;
@@ -57,7 +57,7 @@ body {
   outline-offset: 1px;*/
   box-shadow: 0 0 0 1px #fff, 0 0 0 2px #888;
 }
-.backing {
+.chibiPoint_backing {
   position: absolute;
   top: calc(9.999999999999998%);
   left: calc(9.999999999999998%);
@@ -69,7 +69,7 @@ body {
   -webkit-border-radius: 15% 15%;
   border-radius: 15% 15%;
 }
-.fullContainer {
+.chibiPoint_fullContainer {
   top: 0;
   left: 0;
   width: 100%;
@@ -78,7 +78,7 @@ body {
   padding: 0;
   pointer-events: none;
 }
-.shownCrosshairs {
+.chibiPoint_shownCrosshairs {
   top: 0;
   left: 0;
   width: 100%;
@@ -88,17 +88,17 @@ body {
   pointer-events: none;
   z-index: 2147483646;
 }
-.hiddenCrosshairs {
+.chibiPoint_hiddenCrosshairs {
   pointer-events: none;
   display: none;
 }
-.hairlinecommon {
+.chibiPoint_hairlinecommon {
   padding: 0;
   position: relative;
   pointer-events: inherit;
   background: #ff0000;
 }
-.horizontalHair {
+.chibiPoint_horizontalHair {
   padding: 0;
   position: relative;
   pointer-events: inherit;
@@ -107,7 +107,7 @@ body {
   width: inherit;
   height: 1px;
 }
-.verticalHair {
+.chibiPoint_verticalHair {
   padding: 0;
   position: relative;
   pointer-events: inherit;
@@ -116,7 +116,7 @@ body {
   width: 1px;
   height: inherit;
 }
-.targeted {
+.chibiPoint_targeted {
   background: yellow!important;
   border-radius: 3px;
   /*border-color: red!important;
@@ -124,7 +124,7 @@ body {
     box-sizing: border-box;*/
   box-shadow: 0 0 10px #ff00ff;
 }
-.birchPainted {
+.chibiPoint_painted {
   background: cyan!important;
   border-radius: 3px;
   /*border-color: red!important;
@@ -134,13 +134,13 @@ body {
   background-blend-mode: darken, normal;
   -webkit-background-blend-mode: darken, normal;
 }
-.cluck {
+.chibiPoint_cluck {
   background: red!important;
   /*border-radius: 3px;
     border-color: red!important;
     border: 3px solid black;*/
 }
-.flyoutContainer {
+.chibiPoint_flyoutContainer {
   top: 0;
   left: 0;
   width: 100%;
@@ -150,18 +150,18 @@ body {
   pointer-events: none;
   z-index: 2147483645;
 }
-.hiddenfC {
+.chibiPoint_hiddenfC {
   display: none;
 }
-.aFlyout {
+.chibiPoint_aFlyout {
   position: absolute;
   width: 100%;
   height: 100%;
 }
-.birchAFlyoutHidden {
+.chibiPoint_aFlyoutHidden {
   display: none;
 }
-.flyout {
+.chibiPoint_flyout {
   background: #00ad00;
   outline-color: #000000;
   outline: 1px solid 0!important;
@@ -171,7 +171,7 @@ body {
   width: 20px;
   text-align: center;
 }
-.line {
+.chibiPoint_line {
   stroke: #00ad00;
   stroke-width: 2;
 }

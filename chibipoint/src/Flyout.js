@@ -63,36 +63,36 @@ var birchlabs = window.birchlabs;
   };*/
 
   Flyout.show = function() {
-    Flyout.getContainer().className = "flyoutContainer shownfC";
+    Flyout.getContainer().className = "chibiPoint_flyoutContainer chibiPoint_shownfC";
     //this.hairs.className = "crosshairs shownCrosshairs";
   };
   Flyout.hide = function() {
-   Flyout.getContainer().className = "flyoutContainer hiddenfC";
+   Flyout.getContainer().className = "chibiPoint_flyoutContainer chibiPoint_hiddenfC";
     //this.hairs.className = "crosshairs hiddenCrosshairs";
   };
  
   p.hide = function() {
-   $(this.aFlyout).addClass("birchAFlyoutHidden");
+   $(this.aFlyout).addClass("chibiPoint_aFlyoutHidden");
    //$(this.aFlyout).removeClass("birchAFlyoutShown");
   };
  
   p.show = function() {
-   $(this.aFlyout).removeClass("birchAFlyoutHidden");
+   $(this.aFlyout).removeClass("chibiPoint_aFlyoutHidden");
   };
 
   p.build = function(label) {
     var container = Flyout.getContainer(this.root);
    
     this.aFlyout = document.createElement('div');
-    this.aFlyout.className = "aFlyout";
+    this.aFlyout.className = "chibiPoint_aFlyout";
    
     this.lineDiv = document.createElement('div');
-    this.lineDiv.className = "lineDiv";
+    this.lineDiv.className = "chibiPoint_lineDiv";
     this.svg = document.createElement('svg');
-    this.svg.className = "lineSvg"
+    this.svg.className = "chibiPoint_lineSvg"
     this.svgLine = document.createElement('line');
-    this.svgLine.className = "line"
-    this.svgLine.id = "birchFlyoutLine"+this.unique;
+    this.svgLine.className = "chibiPoint_line"
+    this.svgLine.id = "chibiPoint_flyoutLine"+this.unique;
    //svgLine.style ="stroke:rgb(255,0,0);stroke-width:2";
     $(this.svgLine).attr({x1:"0",
                     y1:"0",
@@ -105,7 +105,7 @@ var birchlabs = window.birchlabs;
     $(this.lineDiv).append(this.svg);
    
     this.flyout = document.createElement('div');
-    this.flyout.className = "flyout";
+    this.flyout.className = "chibiPoint_flyout";
     this.flyout.innerHTML = String.fromCharCode(label);
    
     $(this.aFlyout).append(this.flyout);
@@ -198,13 +198,13 @@ var birchlabs = window.birchlabs;
   if (this.target) {
    
    var element = $(this.target);
-   $(this.target).addClass("cluck");
+   $(this.target).addClass("chibiPoint_cluck");
    
    var flash = setInterval(function() {
-     if (element.hasClass("cluck")) {
-       element.removeClass("cluck");
+     if (element.hasClass("chibiPoint_cluck")) {
+       element.removeClass("chibiPoint_cluck");
      } else {
-        element.addClass("cluck");
+        element.addClass("chibiPoint_cluck");
      }
    }, 100);
    
@@ -213,7 +213,7 @@ var birchlabs = window.birchlabs;
    var delayUnclick = setInterval(function () {
       clearInterval(flash);
       clearInterval(delayUnclick);
-      $(thatTarget).removeClass("cluck");
+      $(thatTarget).removeClass("chibiPoint_cluck");
      toClick(thatTarget);
     }, 500);
   }
@@ -221,13 +221,13 @@ var birchlabs = window.birchlabs;
  
  p.paintTarget = function() {
   if (this.target) {
-   $(this.target).addClass("birchPainted");
+   $(this.target).addClass("chibiPoint_painted");
   }
  };
  
  p.unpaintTarget = function() {
   if (this.target) {
-   $(this.target).removeClass("birchPainted");
+   $(this.target).removeClass("chibiPoint_painted");
   }
  };
  
