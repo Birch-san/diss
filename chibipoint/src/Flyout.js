@@ -29,11 +29,11 @@ var birchlabs = window.birchlabs;
   var p = Flyout.prototype;
 
   p.setX = function(x) {
-    x = Math.max(2, x);
+    var rect = Flyout.getContainer().getBoundingClientRect();
+    x = Math.min(Math.max(2, x), rect.width-22);
     this.x = x;
 
     // convert to percent
-    var rect = Flyout.getContainer().getBoundingClientRect();
     var pX = x*100/rect.width;
     $(this.flyout).css({left:pX+"%"});
     //$(this.flyout).css({left:x});
@@ -41,11 +41,11 @@ var birchlabs = window.birchlabs;
   };
   
   p.setY = function(y) {
-     y = Math.max(2, y);
+    var rect = Flyout.getContainer().getBoundingClientRect();
+     y = Math.min(Math.max(2, y), rect.height-22);
      this.y = y;
 
      // convert to percent
-     var rect = Flyout.getContainer().getBoundingClientRect();
      var pY = y*100/rect.height;
      $(this.flyout).css({top:pY+"%"});
      //$(this.flyout).css({left:x});
@@ -190,6 +190,7 @@ var birchlabs = window.birchlabs;
       element.focus();
     } else {
       element.click();
+      element.focus();
     }
   }
  

@@ -135,6 +135,13 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
             
             lookup.stopEvent(ev);
           }
+          if (code == keycodes.escape) {
+            if (!gridIsEmpty()) {
+              closeGrid();
+              
+              lookup.stopEvent(ev);
+            }
+          }
         });
         
         doc.addEventListener('keypress', function(ev) {
@@ -240,32 +247,62 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
       //var q;
       //var ew;
       var itRect;
+      // some of the obscure ones are guesses
+      var careElements = {"A":true,
+                         "INPUT":true,
+                         "TEXTAREA":true,
+                         "SELECT":true,
+                         "BUTTON":true//,
+                         //"output":true,
+                         //"command":true,
+                         //"kbd":true
+                         };
 
       $(root).find("[_handlerTypes], A, INPUT, SELECT, TEXTAREA, BUTTON").each(function() {
+        var handlers = this.getAttribute('_handlerTypes');
+        if (handlers != null ) {
+          var h = handlers.split(",");
+          var found = false;
+          for (i=0; i<h.length; i++) {
+            if (h[i] == 'click' || h[i] == 'mousedown') {
+              found = true;
+              break;
+            }
+          }
+          if (!found) {
+            if(careElements[this.nodeName]) found = true;
+          }
+          if (found) {
+            //if ($(this).css("visibility").indexOf("hidden") != -1 || !$(this).css("display").indexOf("none") != -1) return;
+            var visible = !$(this).is(':hidden') && $(this).is(':visible');
+            if (visible) {
+              //if(this == document.documentElement) return  this.ret.push(this);
+              if(this == document.documentElement) return;
 
-        if(this == document.documentElement) return  this.ret.push(this);
+              itRect = this.getBoundingClientRect();
 
-        itRect = this.getBoundingClientRect();
+              res = !( (itRect.top > top+height) || (itRect.top +itRect.height < top) || (itRect.left > left+width ) || (itRect.left+itRect.width < left));
 
-        res = !( (itRect.top > top+height) || (itRect.top +itRect.height < top) || (itRect.left > left+width ) || (itRect.left+itRect.width < left));
+            // it's certainly in the grid somewhere
+              if(res) {
 
-      // it's certainly in the grid somewhere
-        if(res) {
+                // now find which buckets to put it in
+                  for (i=0; i<rects.length; i++) {
+                    r = rects[i];
+                    left2 = r.left;
+                    top2 = r.top;
+                    width2 = r.width;
+                    height2 = r.height;
 
-          // now find which buckets to put it in
-            for (i=0; i<rects.length; i++) {
-              r = rects[i];
-              left2 = r.left;
-              top2 = r.top;
-              width2 = r.width;
-              height2 = r.height;
+                    res2 =  !( (itRect.top > top2+height2) || (itRect.top +itRect.height < top2) || (itRect.left > left2+width2 ) || (itRect.left+itRect.width < left2));
 
-              res2 =  !( (itRect.top > top2+height2) || (itRect.top +itRect.height < top2) || (itRect.left > left2+width2 ) || (itRect.left+itRect.width < left2));
-
-              if (res2) {
-                buckets[i].push(this);
+                    if (res2) {
+                      buckets[i].push(this);
+                    }
+                  }
               }
             }
+          }
         }
       });
       return buckets;
@@ -300,6 +337,7 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
         }
       }
       var buckets =getAllClickablesInBoundsAndSort($(doc2.body), rect, rects);
+    console.log(buckets);
       
       // which element was selected by each segment
       var selected = [];
@@ -385,7 +423,7 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
   
   function makeGridContainer(root) {
     var parent = document.createElement('div');
-    parent.className = 'gridContainer';
+    parent.className = 'gridContainer birchHiddenGridContainer';
     $(root).append(parent);
     return parent;
   }
@@ -490,8 +528,7 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
       highlightTarget();
       Flyout.show();
     } else {
-      Flyout.hide();
-      crosshairs.hide();
+      closeGrid();
     }
   }
   
@@ -512,6 +549,7 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
       element.focus();
     } else {
       element.click();
+      element.focus();
     }
     closeGrid();
   }
@@ -562,6 +600,7 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
       // need to make a grid
       grid.initialize();
       createGrid(container);
+      $(".gridContainer").removeClass("birchHiddenGridContainer");
 
       //crosshairs = crosshairs||new birchlabs.Crosshairs(document.documentElement, grid);
       //birchlabs.crosshairs = crosshairs;
@@ -586,6 +625,8 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
     grid.initialize();
     $(grid.getLatestSelector()).empty();
 
+    $(".gridContainer").addClass("birchHiddenGridContainer");
+    
     unpointFlyouts();
     Flyout.hide();
     crosshairs.hide();

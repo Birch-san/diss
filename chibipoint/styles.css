@@ -12,6 +12,9 @@ body {
   pointer-events: none;
   z-index: 2147483647;
 }
+.birchHiddenGridContainer {
+  display: none;
+}
 .grid {
   position: relative;
   left: calc(-2.500000000000002%);
@@ -161,7 +164,7 @@ body {
 .flyout {
   background: #00ad00;
   outline-color: #000000;
-  outline: 1px solid 0;
+  outline: 1px solid 0!important;
   position: absolute;
   top: 0;
   left: 0;
