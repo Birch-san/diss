@@ -52,7 +52,7 @@ body {
 
 .chibiPoint_gridBorderOn {
   border: @gridthick solid @gridcol;
-  border-width: @gridthick 0 0 @gridthick;
+  border-width: @gridthick @gridthick @gridthick @gridthick;
   //outline: 1px solid 0;
 }
 
@@ -99,7 +99,9 @@ body {
   //border-style:double;
   outline: 1px solid 0;
   outline-offset: 1px;*/
-  box-shadow: 0 0 0 1px #fff, 0 0 0 2px #888; 
+ 
+ //this one!
+ box-shadow: 0 0 0 1px #fff, 0 0 0 2px #888; 
 }
 
 .chibiPoint_cellBorderOff {
