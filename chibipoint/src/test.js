@@ -175,11 +175,7 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
               lookup.stopEvent(ev);
             }
           }
-          /*if (code == keycodes.dot) {
-            gridclick(grid);
-            
-            lookup.stopEvent(ev);
-          } else*/ if (code == keycodes.activate) {
+          if (code == keycodes.activate) {
             toggleGrid();
             
             lookup.stopEvent(ev);
@@ -188,8 +184,9 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
             if (code == flyoutShortcuts[i]) {
               flyouts[i].doClick();
               closeGrid();
+              
+              lookup.stopEvent(ev);
             }
-            lookup.stopEvent(ev);
           }
         }
       }, false);

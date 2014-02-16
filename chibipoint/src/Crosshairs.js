@@ -79,6 +79,16 @@ var birchlabs = window.birchlabs;
      this.targetedElement = element;
 
      element.addClass("targeted");
+     
+     // doesn't seem to work :(
+     /*element.trigger('mouseover');
+     element.trigger('hover');
+     element.trigger('mouseenter');
+     element.mouseover();
+     element.hover();
+     element.mouseenter();*/
+     //element.get(0).mouseover();
+     //element.get(0).hover();
     
      return element;
     } else {
