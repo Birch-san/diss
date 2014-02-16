@@ -197,14 +197,25 @@ var birchlabs = window.birchlabs;
  p.doClick = function() {
   if (this.target) {
    
+   var element = $(this.target);
    $(this.target).addClass("cluck");
-   this.clickOrFocus(this.target);
    
+   var flash = setInterval(function() {
+     if (element.hasClass("cluck")) {
+       element.removeClass("cluck");
+     } else {
+        element.addClass("cluck");
+     }
+   }, 100);
+   
+   var toClick = this.clickOrFocus;
    var thatTarget = this.target;
    var delayUnclick = setInterval(function () {
+      clearInterval(flash);
       clearInterval(delayUnclick);
       $(thatTarget).removeClass("cluck");
-    }, 1000);
+     toClick(thatTarget);
+    }, 500);
   }
  };
  

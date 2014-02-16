@@ -175,11 +175,11 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
               lookup.stopEvent(ev);
             }
           }
-          if (code == keycodes.dot) {
+          /*if (code == keycodes.dot) {
             gridclick(grid);
             
             lookup.stopEvent(ev);
-          } else if (code == keycodes.activate) {
+          } else*/ if (code == keycodes.activate) {
             toggleGrid();
             
             lookup.stopEvent(ev);
@@ -259,48 +259,48 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
                          };
 
       $(root).find("[_handlerTypes], A, INPUT, SELECT, TEXTAREA, BUTTON").each(function() {
+        var found = false;
         var handlers = this.getAttribute('_handlerTypes');
         if (handlers != null ) {
           var h = handlers.split(",");
-          var found = false;
           for (i=0; i<h.length; i++) {
             if (h[i] == 'click' || h[i] == 'mousedown') {
               found = true;
               break;
             }
           }
-          if (!found) {
-            if(careElements[this.nodeName]) found = true;
-          }
-          if (found) {
-            //if ($(this).css("visibility").indexOf("hidden") != -1 || !$(this).css("display").indexOf("none") != -1) return;
-            var visible = !$(this).is(':hidden') && $(this).is(':visible');
-            if (visible) {
-              //if(this == document.documentElement) return  this.ret.push(this);
-              if(this == document.documentElement) return;
+        }
+        if (!found) {
+          if(careElements[this.nodeName]) found = true;
+        }
+        if (found) {
+          //if ($(this).css("visibility").indexOf("hidden") != -1 || !$(this).css("display").indexOf("none") != -1) return;
+          var visible = !$(this).is(':hidden') && $(this).is(':visible');
+          if (visible) {
+            //if(this == document.documentElement) return  this.ret.push(this);
+            if(this == document.documentElement) return;
 
-              itRect = this.getBoundingClientRect();
+            itRect = this.getBoundingClientRect();
 
-              res = !( (itRect.top > top+height) || (itRect.top +itRect.height < top) || (itRect.left > left+width ) || (itRect.left+itRect.width < left));
+            res = !( (itRect.top > top+height) || (itRect.top +itRect.height < top) || (itRect.left > left+width ) || (itRect.left+itRect.width < left));
 
-            // it's certainly in the grid somewhere
-              if(res) {
+          // it's certainly in the grid somewhere
+            if(res) {
 
-                // now find which buckets to put it in
-                  for (i=0; i<rects.length; i++) {
-                    r = rects[i];
-                    left2 = r.left;
-                    top2 = r.top;
-                    width2 = r.width;
-                    height2 = r.height;
+              // now find which buckets to put it in
+                for (i=0; i<rects.length; i++) {
+                  r = rects[i];
+                  left2 = r.left;
+                  top2 = r.top;
+                  width2 = r.width;
+                  height2 = r.height;
 
-                    res2 =  !( (itRect.top > top2+height2) || (itRect.top +itRect.height < top2) || (itRect.left > left2+width2 ) || (itRect.left+itRect.width < left2));
+                  res2 =  !( (itRect.top > top2+height2) || (itRect.top +itRect.height < top2) || (itRect.left > left2+width2 ) || (itRect.left+itRect.width < left2));
 
-                    if (res2) {
-                      buckets[i].push(this);
-                    }
+                  if (res2) {
+                    buckets[i].push(this);
                   }
-              }
+                }
             }
           }
         }
@@ -526,8 +526,8 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
     if (exists) {
       // move crosshairs
       crosshairs.updatePosition(grid);
-      highlightTarget();
       Flyout.show();
+      highlightTarget();
     } else {
       closeGrid();
     }
@@ -572,14 +572,25 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
       element.removeClass("targeted");
       element.addClass("cluck");
       
-      clickOrFocus(element.get(0));
-      //element.get(0).click();
+      var flash = setInterval(function() {
+        console.log('fl');
+        if (element.hasClass("cluck")) {
+          element.removeClass("cluck");
+        } else {
+           element.addClass("cluck");
+        }
+      }, 100);
       
       var delayUnclick = setInterval(function () {
+          clearInterval(flash);
           clearInterval(delayUnclick);
           element.removeClass("cluck");
+      clickOrFocus(element.get(0));
         pointFlyouts();
-        }, 1000);
+        }, 500);
+      //element.get(0).click();
+      
+      
     }
   }
   
