@@ -60,11 +60,11 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
       "activate": 167
     };
     
-    var numpad = false;
+    var numpad = true;
     
     if (numpad) {
       // numpad
-      var numpadMappings = {"7":[55,], "8":[56,8], "9":[57,9],
+      var numpadMappings = {"7":[55,7], "8":[56,8], "9":[57,9],
                          "4":[52,4], "5":[53,5], "6":[54,6],
                          "1":[49,1], "2":[50,2], "3":[51,3]};
       var zeroKey = keycodes.zero;
