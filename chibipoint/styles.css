@@ -10,7 +10,7 @@ body {
   width: calc(95.23809523809524%);
   height: calc(95.23809523809524%);
   pointer-events: none;
-  z-index: 2147483647;
+  z-index: 2147483646;
 }
 .chibiPoint_hiddenGridContainer {
   display: none;
@@ -86,7 +86,7 @@ body {
   position: fixed;
   padding: 0;
   pointer-events: none;
-  z-index: 2147483646;
+  z-index: 2147483645;
 }
 .chibiPoint_hiddenCrosshairs {
   pointer-events: none;
@@ -148,7 +148,7 @@ body {
   position: fixed;
   padding: 0;
   pointer-events: none;
-  z-index: 2147483645;
+  z-index: 2147483647;
 }
 .chibiPoint_hiddenfC {
   display: none;

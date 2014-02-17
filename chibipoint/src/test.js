@@ -449,7 +449,7 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
               f.show();
             }
           }
-    //    pointFlyouts();
+        pointFlyouts();
       //  }, 50);
       //trace(selected);
     }
@@ -468,12 +468,14 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
   }
   
   function pointFlyouts() {
+    var grid = birchlabs.grid;
+    
     if (birchlabs.flyoutsOn) {
       var flyouts = birchlabs.flyouts;
 
       for (var i=0; i<flyouts.length; i++) {
           var f = flyouts[i];
-          f.point();
+          f.point(grid.findPointerCoords());
         }
     }
   }

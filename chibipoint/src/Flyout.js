@@ -132,12 +132,13 @@ var birchlabs = window.birchlabs;
     this.unique = Flyout.getNextId();
     this.build(label);
     this.setX(this.unique*20);
+    this.setY(this.unique*20);
    
     //this.updatePosition();
     //this.show();
   };
  
- p.point = function() {
+ p.point = function(avoidCoords) {
   if (this.target) {
     var rect = this.target.getBoundingClientRect();
     var left = rect.left;
@@ -153,8 +154,21 @@ var birchlabs = window.birchlabs;
 
      if(res) {
       this.show();
-      this.setX(rect.left-20);
-      this.setY(rect.top-20);
+      // disperse away from grid, assuming it exists
+      var xdist = 0;
+      var ydist = 0;
+      var dist = 0;
+      var angle = 0;
+      if (avoidCoords) {
+       xdist = avoidCoords.centerX-rect.left;
+       ydist = avoidCoords.centerY-rect.top;
+       dist = Math.sqrt(xdist*xdist+ydist*ydist);
+       angle = Math.atan2(ydist, xdist);
+      }
+      var avoidDist = Math.min((1/(dist*dist*dist))*100000000, 60);
+      
+      this.setX((rect.left-20)-Math.sin(angle)*avoidDist);
+      this.setY((rect.top-20)+Math.cos(angle)*avoidDist);
       var theX = left;
       var theY = top;
       
@@ -242,7 +256,7 @@ var birchlabs = window.birchlabs;
   }*/
   this.unsetTarget();
   this.target = element;
-  this.point();
+  //this.point();
   
   /*var rect2 = coordsyst.getBoundingClientRect();
   var pX = theX*100/rect2.width;
