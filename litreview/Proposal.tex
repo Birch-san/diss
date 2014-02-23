@@ -15,19 +15,21 @@
 
 \usepackage[colorlinks]{hyperref}
 \usepackage{cleveref}
-\crefformat{section}{[section #2#1#3]}
+\crefformat{section}{section #2#1#3}
 \crefdefaultlabelformat{[#2#1#3]}
 
 \usepackage[nomain,acronym,toc,section,numberedsection=autolabel]{glossaries} % make a separate list of acronyms
 %\makeindex
 \makeglossaries
 
-\title{Accessible Pointing Approaches for Web Applications [Proposal]}
+\title{Accessible Pointing Approaches for Web Applications}
 \author{Alexander Birch}
-\date{October 2013}
+\date{November 2013}
 \begin{document}
 \include{Proposal-glossary}
 \maketitle
+\tableofcontents
+\pagebreak
 
 \section{Problem}
 \subsection{Problem Context}
@@ -72,7 +74,7 @@ There exist at present a few categories of solution to the problem of web access
 \end{itemize}
 \subsubsection{Recommended web practice}
 \label{recommendedpracticesection}
-Guidance is provided on how to develop accessible web applications, in the form of the \gls{w3c}'s \gls{wcag}~\cite{wcag}. A description and analysis on its recommendations for keyboard access follows:
+Guidance is provided on how to develop accessible web applications, in the form of the \gls{w3c}'s \gls{wcag}~\cite{chisholm2001web}~\cite{wcag}. A description and analysis on its recommendations for keyboard access follows:
 \paragraph{Pointing with access keys}
 \label{accesskeysection}
   \Gls{accesskeys} are one paradigm used for keyboard accessibility in the HTML5 specification~\cite{html5specaccesskeys}. Hotkeys can be assigned for the focusing of interface elements, used in conjuction with modifier keys. This system allows the user to jump instantly between distant or unrelated interface elements. However, its usefulness is predicated on the discoverability and availability of said \glspl{keybinding}.
@@ -98,6 +100,7 @@ Guidance is provided on how to develop accessible web applications, in the form 
 \end{itemize}
 
 \subsubsection{Changing the web browser}
+\label{changingwebbrowser}
 Adding accessibility on top of web content can be achieved through a \gls{browserextension}. This can change the way content is treated so as to work better for the preferred input mode. In some implementations, the browser is extended through the use of web technologies, which can coexist with the content of the website.
 One such example is Type-Ahead-Find~\cite{typeaheadfind}, which allows users to move keyboard focus to hyperlinks by typing the content of said hyperlink. Another example is Stylish~\cite{stylish}, which allows users to redesign a website to suit their needs.
 
@@ -122,7 +125,7 @@ The pointing system will exist inside the context of the web application rather 
 The goal of this work is to produce an accessibility layer to sit between a web browser and web content, which would augment the accessibility of said content.
 The primary purpose of the accessibility layer is to achieve effective pointing via a sequence of keystrokes.
 
-The system will aim to solve better the pointing situations to which tab navigation is less suited. Pointing contexts such as form navigation, at which tab navigation is satisfactorily effective, need not be a focus of the novel system. Ideally the novel system would co-exist with tab navigation, allowing the user to fall back on tab navigation in cases where it is suitably effective (or more effective).
+The system will aim to solve better the pointing situations to which tab navigation~\footnote{Side-note: the term `tab navigation' is used in this document always to refer to focusing interface elements via the tab key (sometimes known as `tabbing navigation') --- not to be confused with `tab navigation', where a user switches browsing contexts represented as `tabs' in their windowing system.} is less suited. Pointing contexts such as form navigation, at which tab navigation is satisfactorily effective, need not be a focus of the novel system. Ideally the novel system would co-exist with tab navigation, allowing the user to fall back on tab navigation in cases where it is suitably effective (or more effective).
 \subsubsection{Software solution}
 The choice of browser for implementation is immaterial; the same logic can be applied to any extensible browser. This work will concern itself with Google Chrome, but the choice is arbitrary.
 The accessibility layer will be implemented in the form of a \gls{browserextension}, as this meets the criteria of sitting between browser and content, persists between page navigations, and doesn't incur work on the website developer's end.
@@ -218,41 +221,6 @@ Obstacle courses for the systems to compete on will be real-world examples chose
 % \end{itemize}
 \subsection{User participation}
 Users will be needed for testing the performance factors of the system defined in ~\cref{evaluationsec}. Random selection of users will meet the needs of the anticipated experiments, except for where comparisons to expert performance is required. Users will declare their competence in factors that might be significant to test results. Identification of participants will not be required at any point.
-\subsection{User confidentiality}
-This work responds to its institution's 13-point Ethics Checklist as follows:
-
-\newcommand{\ethitem}[2]{\item {\bfseries #1} #2}
-\begin{enumerate}
-\ethitem{Have you prepared a briefing script for volunteers?}{Briefing scripts will be provided to participants prior to any experiments. The purpose of the activities will be explained, as will be the destiny of the data produced by them.}
-\ethitem{Will the participants be using any non-standard hardware?}{As one goal of this work is to produce a highly-available system, hardware interaction is likely to be limited to keyboard \& mouse work. Experiments involving gestures are not out of the bounds of possibility either, but no risks are anticipated with such interactions.}
-\ethitem{Is there any intentional deception of the participants?}{Deception will not be necessary for these experiments.}
-\ethitem{How will participants voluntarily give consent?}{Consent forms will be given to participants immediately preceding experiment participation.}
-\ethitem{Will the participants be exposed to any risks greater than those encountered in their normal work life?}{No; these experiments involve only safe human-computer interaction.}
-\ethitem{Are you offering any incentive to the participants?}{No incentive is expected to be offered to participants. Payment would not be used to increase the participant's risk of harm.}
-\ethitem{Are any of your participants under the age of 16?}{No.}
-\ethitem{Do any of your participants have an impairment that will limit their understanding or communication?}{No explicit selection will be made for such participants. The sampling will be random.}
-\ethitem{Are you in a position of authority or influence over any of your participants?}{No.}
-\ethitem{Will the participants be informed that they could withdraw at any time?}{Yes; this will be explained in the introductory script.}
-\ethitem{Will the participants be informed of your contact details?}{Yes; the contact details of the investigator and supervisor as part of the debriefing.}
-\ethitem{Will participants be de-briefed?}{Yes; an introductory script will be provided.}
-\ethitem{Will the data collected from the participants be stored in an anonymous form?}{Yes; data will be stored anonymously and securely.}
-\end{enumerate}
-% Raised Rule Command:
-%  Arg 1 (Optional) - How high to raise the rule
-%  Arg 2            - Thickness of the rule
-\newcommand{\signature}[2]{\textbf{\textsc{#1:}} #2~\leaders\hbox{\rule{1pt}{1pt}}\hfill~\\~\\}
-\def\mysig{\underline{\includegraphics[scale=0.15]{signature}}}
-%\signature{Name}
-%\begin{figure}[H]
-%\includegraphics[scale=0.15]{signature}
-%\end{figure}
-%\vspace{0.1in}
-%\signature{Name}{\underline{\parbox{180pt}{\includegraphics[scale=0.15]{signature}}}}
-\signature{Name}{\mysig}
-\signature{Supervisor (if applicable)}{}
-\signature{Second Reader (if applicable)}{}
-\signature{Project Title}{}
-\signature{Date}{}
 
 \section{Potential impact}
 If successful, this work will make web applications more accessible to users who can't (or won't) use the mouse as their pointing device. The software layer would create accessibility in websites which might previously have been difficult to use, or wholly unusable. For businesses serving web applications, that would otherwise be liable for excluding users (or would have to dedicate resources to remaking their websites), this would be a huge step forward.
@@ -292,9 +260,119 @@ Each study will comprise:
 The roadmap for the project is described in~\cref{fig:roadmap}.
 Should time pressures become apparent in the design/development phase, Study 1 could be omitted, with the navigation mode for the novel sytem then being chosen without user consultation.
 
-\section{Project Agreement}
-\signature{Student Signature}{\mysig}
-\signature{Supervisor Signature}{}
+\section{Literature and Technology Review}
+The deliverable for this dissertation is anticipated to be a browser extension that adds accessibility onto web content, favouring a novel interaction approach over the experience prescribed as accessible by web standards.
+
+The key points to explore are:
+\begin{itemize}
+\item What factors exist in accessible design for keyboard usage, in general and for the web?
+\item Have approaches to keyboard accessibility evolved over time?
+\item Has the status of keyboard accessibility evolved over time?
+\item Does literature support the notion that `keyboard accessibility in the web is generally lacking'?
+\item Does work exist around making web content more accessible for the keyboard?
+\begin{itemize}
+\item Has web accessibility changed over time?
+\item Does work exist around adding extra accessibility to web content without the web developer's involvement?
+\begin{itemize}
+\item Does this work aim to bring content in line with a suggested web standard, or is a novel approach preferred?
+\end{itemize}
+\item Does work exist around adding extra accessibility to web content via the user agent?
+\end{itemize}
+\item Do there exist any novel keyboard pointing methods?
+\item Is there any support for the notion that web accessibility standards prescribe a sub-par experience?
+\item Are there any experimental techniques that are recruited for evaluating task performance on keyboards?
+\begin{itemize}
+\item Are there any comparisons with mouse performance?
+\end{itemize}
+\end{itemize}
+
+A review of each of these points follows. References to `accessibility' in general will be focused primarily around keyboard accessibility. The search effort around `keyboard accessibility' was constrained to `pointing with the keyboard'; accessibility concerns around other keyboard roles, such as typing, will not be discussed.
+
+\subsection{What factors exist in accessible design for keyboard usage, in general and for the web?}
+It is useful to have an understanding of what is meant by `keyboard-accessible' design. \citeauthor{deng}, \citeyear{deng} lists the factors involved~\cite{deng}~\parencite[as cited in][]{dellaporta2007web}:
+\begin{itemize}
+\item Using a logical tab order (using the tab key from the keyboard to navigate from link to link) mapped to the layout of the controls and the layout of information on the screen
+\item Using keyboard mapping for speeding up keyboard interaction and enhancing alternative input methods
+\item Avoiding conflicts with the operation of assistive software such as screen readers, and exploiting the built-in accessibility features of operating systems
+\item Providing multiple methods for access via the tab key as well as the use of shortcut keys
+\item Defining hot keys for more functionality for example, allowing the user to go backwards from link to link
+\item Ensuring that access keys and hot keys for frequently used functionalities are reachable using one hand, for people using one hand only
+\item Avoiding repetitive key presses that would be uncomfortable for users with repetitive strain injuries
+\item Placing frequently used links and functions on the first navigation level without requiring the user to navigate a lot to reach them
+\end{itemize}
+This makes some good points (particularly that tabbing isn't the only way to expose functionality via the keyboard; shortcuts help too).
+
+As for which issues were prevalent in practice, a list of `Top 20' accessibility concerns was published in \citeyear{hoffman2005emerging}, which included observations of the following keyboard concerns from accessibility tests~\cite{hoffman2005emerging}:
+\begin{itemize}
+\item Users cannot access objects by keyboard.
+\item Hot keys are confusing, missing, or conflict with browser commands.
+\item Focus does not move to the right place (so availability of target remains unknown).
+\item There is no visual focus on the page.
+\item Users cannot tab to page elements in logical order.
+\end{itemize}
+
+It must be stressed that this list is not exclusive to keyboard accessibility, and yet a quarter of accessibility concerns in this shortlist pertained to keyboard usage, and of those the majority were pointing issues. This suggests either that websites tend to be developed in a way that makes keyboard pointing difficult, or that the mechanism provided for pointing is not very effective.
+\subsection{Have approaches to keyboard accessibility evolved over time?}
+It would be interesting to explore the original role of the `tab' key, and verify whether it is still honored today. However, its history proved to be ill-documented. Tab's nature suggests that it is for form traversal: there is no directional control, nor any promise of a particular destination beyond `next element in markup' -- these factors are not a problem in form navigation, where the intention is to travel to the next field. As such it seems well-designed for at least this, but the aforementioned shortcomings are much more relevant in pointing scenarios, where the destination is spatial, having more complexity than `the next control', and can be unrelated to the starting position of the search.
+If it is the case that tab navigation was intended for form traversal, then it would not be surprising for it to be unsuited to general pointing. It is also easy to see how its use could have evolved from form navigation to whole-interface navigation; it provides a way to move keyboard focus to controls, so the temptation exists to purpose it as a general focus mechanism. On some level, this seems like accessibility, but on another level, it can be harmful; it pushes a possibly poorly-suited mechanism as the standard problem solution.
+\subsection{Has the status of keyboard accessibility evolved over time?}
+\label{a11yevolution}
+An early view (\citeyear{bergman1995towards}) is provided on the landscape of accessible computing by \citeauthor{bergman1995towards}~\cite{bergman1995towards}. It suggests (p.9) that ``most interface style guides were not written taking users with disabilities into account''. Whereas today, accessibility is featured in the Design Guidelines for many prominent software platforms: Apple references accessibility in its OS X Human Interface Guidelines\cite{applehig}, Microsoft provides literature on Designing Accessible Applications\cite{microsofthig}, and The GNOME Project provides Human Interface Guidelines for use with its desktop environment for Unix-like OSes\cite{gnomehig}.
+
+\citeauthor{hendrix1997adapting} describe how, in \citeyear{hendrix1997adapting}, the Mac versions of Internet Explorer and Netscape web browsers lacked any provision for selecting or activating web links without the mouse~\cite{hendrix1997adapting}. The Mac OS as a whole was also slated for not providing out-of-the-box support for accessing menus via the keyboard. These points are in stark contrast to today, where the default Mac browser, Safari, provides tab support by default\cite{safaria11y}, and the OS provides global keyboard shortcuts to access menus\cite{macshortcuts}.
+
+A landmark legal case in accessibility, Maguire v ~\gls{socog}~\cite{sloan2001web,russell2003access}, 2000, made it clear that laws such as the ~\gls{cthdda} could be used to enforce web accessibility, and that websites lacking provisions for the disabled could be defined as discriminatory, and thus be penalizable. ~\gls{socog}'s defence, that the cost of accessible development constituted `unjustifiable hardship', was rejected. Not only did the defendant have to redesign their website, they also had to pay damages to the plaintiff on top of this. This revelation that a lack of accessibility could be more costly than the perceived `price' of accessible development.
+\subsection{Does literature support the notion that `keyboard accessibility in the web is generally lacking'?}
+Literature suggests that ``the current design of most Web sites makes ... efficient keyboard navigation nearly impossible''~\parencite[][p.1]{schrepp2006efficiency}, and that ``the design of ... web applications is highly optimized for users who navigate with a mouse''~\parencite[][p.1]{schrepp2006efficiency}. This could be due to lack of standards-compliance, as a \citeyear{disability2004web} study~\cite{disability2004web} revealed a large majority (81\%) of websites fail to satisfy even the most basic checkpoints of the \gls{wcag}~\cite{chisholm2001web,wcag}. The same study~\cite{disability2004web} showed through interviews that disabled users believed that most web sites of the time did not consider their specific needs.
+The problem of Web designers lacking knowledge of the requirements of disabled users has been reported for years~\cite{disability2004web}~\cite{coyne2001beyond}~\cite{velasco2001raising}. This is understandable; the development of keyboard-accessible websites is considered to be challenging~\cite{watanabe2012using}.
+\subsection{Does work exist around making web content more accessible for the keyboard?}
+\label{makingwebcontentkeyboardaccessible}
+As explored previously in \cref{recommendedpracticesection}, guidance is provided on how to develop accessible web applications, in the form of the \gls{w3c}'s \gls{wcag}~\cite{chisholm2001web,wcag}. However, the content itself is not the only factor; content is accessed via a user agent (ie a web browser), and the user experience of that agent is important too. The \gls{w3c} provide recommendations on how to develop accessible user agents for browsing web applications\cite{jacobs2000user,allan2010user}. The User Agent Accessibility Guidelines recommends navigation methods for users, that could reduce the journey time for tab navigation. For example, Guideline 8 of the version 1.0 document, `Provide navigation mechanisms', suggests that ``User agents should allow users to configure navigation mechanisms (e.g., to allow navigation of links only, or links and headers, or tables and forms, etc.)''~\parencite[][p.17]{jacobs2000user}. Certainly allowing a filter on which elements are navigated would reduce the amount of navigation actions. Indeed, as will be discussed in \cref{novelpointing}, the Safari web browser allows the user to filter which types of focusable controls are traversed during tab navigation. However this filter choice is limited (only two modes are offered, and neither may be what the user really wants), and the feature is not equally available in other mainstream browsers (it is missing in Firefox, and Chrome's implementation buries it inside a preference~\cite{browserkeyboardaccess}).
+\subsubsection{Has web accessibility changed over time?}
+Suggested standards have evolved, with two versions of the \gls{wcag} being published~\cite{chisholm2001web,wcag}, in \citeyear{chisholm2001web} and in \citeyear{wcag}. Some noteworthy changes to keyboard use include~\cite{wcagcomparison}:
+\begin{itemize}
+\item The recommendation for provision of access keys has been redacted in the newer version.
+\item Focus traps (where the user can't move keyboard focus out of some interface area, such as an `infinite-scrolling' list) are recognised to be a problem.
+\item Visual indicator of focus is now required for keyboard navigation.
+\end{itemize}
+
+Web accessibility as a research field is now growing quickly and increasing in diversity, despite few studies having been published until 2002~\cite{freire2007techniques}. \citeauthor{freire2007techniques} claim that this interest has been stimulated by a need for developers to address accessibility requirements. This chronology could perhaps be explained by the Maguire v ~\gls{socog}~\cite{sloan2001web,russell2003access}, 2000 lawsuit referred to in \cref{a11yevolution}, after which accessible development gained some visibility.
+\subsubsection{Does work exist around adding extra accessibility to web content without the web developer's involvement?}
+\label{addingaccessibilityyourself}
+In cases where the web developer is uninterested or uninformed about accessibility, they cannot be relied upon to introduce accessibility to their website. \citeauthor{kouroupetroglou2006semantic} presents a framework for annotating web-pages with semantic information about the role of content, to aid information access for disabled users of the Worldwide Web~\cite{kouroupetroglou2006semantic}. The paper is based on the idea of the Semantic Web~\cite{berners2001semantic}, where structure and relationships of content are declared. The annotation framework relies on a community of users proposing markup for inaccessible web-pages, and uploading the annotation file to a public storage server. A bespoke web browser for blind users, SeEBrowser, loads the pages alongside their annotations, and uses the extra markup to provide structure-aware browsing shortcuts.
+
+The advantage of divorcing the responsibility of accessible development from the web developers is that the onus is not imposed on someone who may have an incomplete understanding of the domain, and also that stakeholders are given the power to add accessibility themselves, should the official design be unsatisfactory. This is, of course, predicated on having an active community (since without annotations, no accessibility can be added). The approach may also be relevant to keyboard-accessibility, as blind users navigate via the keyboard. Certainly, providing shortcuts that allow a variety of manners in which to traverse content, gives keyboard users more control over their navigation. However, in mainstream browsers, the extra semantic markup would be less useful, as the only keyboard navigation method available is tabbing, which is considered to be inefficient even for well marked-up pages (discussed later in \cref{subparstandards}).
+\subsubsection{Does work exist around adding extra accessibility to web content via the user agent?}
+Introducing accessibility via the user agent removes the need to change the way websites are developed. If existing websites do not meet content accessibility standards, the user agent may be able to compensate, by modifying the presentation of inaccessible content, or providing novel navigation methods that are robust to inaccessible page structure. For example, SeEBrowser (described previously in \cref{addingaccessibilityyourself}) is a user agent that provides browsing shortcuts to aid blind users in navigating efficiently through various web page elements (such as content areas, navigational aids and functional elements)~\cite{kouroupetroglou2007browsing}.
+
+User agent customization has been used to modify Internet Explorer~\cite{hanson2005personalization} to fit the needs of older users. This work aimed to aid vision impairments by zooming content and speaking text, aid cognitive impairments by simplifying layout, and help dexterity issues by providing large buttons, and an easy interface to change keyboard settings. The reason it was chosen that the work be an extension on Internet Explorer was that users preferred to use a standard browser with accessibility adaptations, rather than a specialized one with a limited set of features. Content transformations were performed in the user agent, as opposed to the original design which proposed to transform pages in a proxy placed before the client (though this would make the featureset available on all web browsers, it was found to be a non-viable architecture~\cite{fairweather2002distributed,czaja2002designing,hanson2005achieving}). User preferences were stored server-side, so that they would be obtainable from different computers. Ultimately it was found that most features offered were used, but the majority used were those that made only minor presentation adjustments.
+
+A subsequent study built on this work by implementing a similar user agent transformation for Firefox~\cite{hanson2005improving}, making the improvements available cross-platform. It describes the software as being purposed for changing the user experience, rather than the web page compliance.
+\subsection{Do there exist any novel keyboard pointing methods?}
+\label{novelpointing}
+A patent exists~\cite{Mouyade:2011:EP2385452} describing an `intuitive' method of focusing elements using the keyboard. It is spatial in nature, and allows the user to specify the direction of focus travel via the keyboard (rather than leaving this decision to the arbitrary directional order prescribed by page markup). Whilst this improves over standard tabbing by allowing a choice of direction, it still does not give an indication in advance of what will happen after the keypress.
+
+The default Mac browser, Safari, supports multiple granularities of interface tabbing, differentiated by whether Alt is held down with Tab\cite{safaria11y}. This allows a choice of whether to navigate between all focusable elements, or just form elements. This essentially gives the user a filtering mechanism, and can shorten tab journeys where the only controls of interest are form controls (ie, forms). Chrome also provides two modes for tabbing, but they are accessessed via a setting toggle rather than given separate keybindings~\cite{browserkeyboardaccess}. The result is that switching between them on a whim is not possible, so combining the use of the two modes in navigation is denied.
+The Mac OS itself also provides a global `granularity' setting for tabbing, which can be toggled by shortcut between `text boxes and lists only', or `all controls'\cite{macshortcuts}. Again, the effect is that the tab journey can be made finer or coarser via a toggle, shortening journeys to certain elements. This system-wide toggle stacks with the effects of Safari's toggle, allowing for complex filters to be created. However, shortcomings are that the current state of the system-wide toggle has to be memorized to be able to predict effects, and as ever with tab navigation, the destination is unknown until after the action. Additionally, this setting is not honored by all browsers; the Chrome web browser, for example does not observe this preference\cite{browserkeyboardaccess}.
+As a solution, there are other impracticalities to consider: the setting affects interactions in all aspects of the OS interface, rather than just the application at hand, which may be undesirable. It is also questionable whether repeatedly changing system preferences just to complete navigation tasks within an application, is sensible from a design point of view; changes made in `System Preferences' should be just that: preferences. A user can't `prefer' both modes -- rather, the choice is made based on current context, so a better implementation for these purposes is to allow both modes of navigation at all times, mapped to different key bindings (rather than toggling the mode used by one single key binding). In essence, this is what is achieved by Safari's `Alt-Tab' shortcut.
+
+MouseKeys is a feature that exists in Windows, Mac OS X and X Windows-based workstations. This is a system-level alternative pointing mechanism, that moves the mouse cursor and performs clicks, using keypresses. Naturally, being system-level allows it to work for all applications, and being an interface for operating the mouse cursor allows it to be treated by applications in the same way a mouse is. However it is considered time-consuming in comparison to keyboard navigation because it provides `relatively crude directional control', and inefficient support for continuous motions like drag \& drop \cite{bergman1995towards}.
+
+Switch Scanning is a paradigm whereby input options are scanned in front of the user, who activates a switch whenceupon their desired option cycles into focus\cite{hendrix1997adapting}. By allowing one key to perform many roles (dependent on time elapsed), it increases the expression of a keyboard shortcut. It is described as slow (naturally; it introduces a time factor to an otherwise-instant action). However, where time is not a concern, it could be harnessed to reduce the repetitive motor strain associated with repeated keyboard tabbing (a user could initiate cycled tabbing with one keypress, then stop it with one more, regardless of distance). For the purposes of this work though, which aims to improve on the speed of tabbing (not just the repetitive strain), switch scanning is likely too slow to be a solution.
+
+TypeAheadFind (now Find As You Type), referred to previously in \cref{changingwebbrowser}, is not just a plugin for the Chrome browser, but also a feature distributed with Firefox as standard~\cite{firefoxshortcuts}. It streamlines for the user the process of selecting hyperlinks; any time keyboard focus is not within an input field, key input is directed to an as-you-type search, which focuses any matching string in the page. A selected hyperlink can easily be followed by pressing Enter. This is an efficient method for focusing hyperlinks, as text search can narrow down the target quickly, and without aiming. However the string needs to be sufficiently unique, to reduce cycling through options. Additionally, it is no use for selecting interface elements that are not defined by text, such as divs. It can also be a bad citizen if the web application in question expects to receive keyboard input when the user is not within a form (for example, in a game). This can be improved optionally by setting a single, uncommonly-used key to be used for invoking the feature.
+\subsection{Is there any support for the notion that web accessibility standards prescribe a sub-par experience?}
+\label{subparstandards}
+Current accessibility guidelines do not address the problem of efficient keyboard access~\cite{schrepp2006efficiency}. Keyboard inefficiency can be severe enough that even a standards-compliant website may be, for practical purposes, unusable by keyboard users\cite{schrepp2006efficiency,coyne2001beyond,powlik2002accessibility}. However, as discussed previously in \cref{makingwebcontentkeyboardaccessible}, current user agents do not necessarily comply with user agent standards as wholly as they could; the problem could therefore lie with the existing implementations of web browsers, rather than the standards prescribed.
+\subsection{Are there any experimental techniques that are recruited for evaluating task performance on keyboards?}
+\citeauthor{schrepp2006efficiency}, \citeyear{schrepp2006efficiency} models keyboard performance using the \gls{goms} technique described by \citeauthor{card1983psychology}~\cite{card1983psychology}. It is used for predicting how long an experienced user needs to complete interface tasks. The technique has been used to compare efficiency of mouse and keyboard techniques~\cite{card1983psychology,john1996goms}. An overview exists of the different \gls{goms} models~\cite{john1995goms}. \gls{goms} reduces human-computer interaction to the sum of elementary actions (either motor, cognitive or perceptual). For example, pressing of a button, moving a cursor to a target, or perceiving the current position of the mouse cursor. \citeauthor{schrepp2006efficiency} freely admits that some of the factors in keyboard navigation are hard to model with \gls{goms}; accounting for the cognitive demand of orientation (that is, ascertaining the current position of keyboard focus) is challenging. Though measurements for this time penalty are known (1.35s)~\cite{raskin2000humane}, the frequency with which this penalty is incurred is harder to estimate (in fact, no guess was ventured on this by the paper). The ultimate conclusion was that, irrespective of this unaccounted extra time penalty, mouse speed still far exceeded keyboard speed. This further supports the notion that there is a wide discrepancy between mouse and keyboard efficiency. However the author concedes that application of \gls{goms} for disabled users was questionable to begin with, as standard predictions of motor time may be too optimistic; this has been estimated as high as 0.6s~\cite{keates1998developing}, rather than the 0.2s~\cite{raskin2000humane} predicted for able-bodied experts. For some cases, such as repetitive strain, it is possible that motor problems would worsen with use, making the time factor worsen as the experiment progresses. This increases the challenge of modelling times.
+
+For the purposes of evaluating the planned deliverable (an alternative keyboard pointing mechanism), the main comparison to be made is whether the novel system improves upon tabbing; for this it suffices to count keypresses. This avoids the difficulty associated with modelling usage times for disabled users, since the number of keypresses is still a useful indicator of effort, which is agnostic of physical condition. Time-based comparisons could still be made between keyboard and mouse, but perhaps selection of able-bodied users would help to increase the validity of the modelling.
+\subsection{Conclusions}
+Keyboard navigation of websites is a problem. Correcting the way people develop websites is challenging, and unrewarding; many websites don't observe standards (because the web developers don't attempt it, or even know how), and even those that do, do not necessarily provide an ideal experience. This is not necessarily a fault of the content guidelines; rather, it seems to be the fault of the navigation method prescribed by user agent guidelines, or the interpretation of said guidelines. A different user agent that provides more manners in which to traverse content with the keyboard, could be the real solution to accessible keyboard pointing. Annotations used by blind users could be used also by sighted keyboard users to inform of content structure, and by extension navigation possibilities. User agent extension has been pursued before as a solution in favour of other mechanisms (such as content modification by proxy server). Thus it seems like the original proposal of augmenting keyboard pointing in the user agent via a browser extension, is indeed an approach worth pursuing.
+
+\pagebreak
+\section{Figures}
 \begin{figure}[ht]
 \centering
 %\includegraphics[scale=0.5, angle=90]{roadmap}
@@ -306,11 +384,51 @@ Should time pressures become apparent in the design/development phase, Study 1 c
 %
 %
 %\glsaddall
+\pagebreak
 \printglossary[title=Terms]
 
 %\nocite{*}
 %\nocite{Doe:2009:Online}
+\pagebreak
 \printbibliography
+
+\pagebreak
+\section{Appendices}
+\subsection{User confidentiality}
+This work responds to its institution's 13-point Ethics Checklist as follows:
+
+\newcommand{\ethitem}[2]{\item {\bfseries #1} #2}
+\begin{enumerate}
+\ethitem{Have you prepared a briefing script for volunteers?}{Briefing scripts will be provided to participants prior to any experiments. The purpose of the activities will be explained, as will be the destiny of the data produced by them.}
+\ethitem{Will the participants be using any non-standard hardware?}{As one goal of this work is to produce a highly-available system, hardware interaction is likely to be limited to keyboard \& mouse work. Experiments involving gestures are not out of the bounds of possibility either, but no risks are anticipated with such interactions.}
+\ethitem{Is there any intentional deception of the participants?}{Deception will not be necessary for these experiments.}
+\ethitem{How will participants voluntarily give consent?}{Consent forms will be given to participants immediately preceding experiment participation.}
+\ethitem{Will the participants be exposed to any risks greater than those encountered in their normal work life?}{No; these experiments involve only safe human-computer interaction.}
+\ethitem{Are you offering any incentive to the participants?}{No incentive is expected to be offered to participants. Payment would not be used to increase the participant's risk of harm.}
+\ethitem{Are any of your participants under the age of 16?}{No.}
+\ethitem{Do any of your participants have an impairment that will limit their understanding or communication?}{No explicit selection will be made for such participants. The sampling will be random.}
+\ethitem{Are you in a position of authority or influence over any of your participants?}{No.}
+\ethitem{Will the participants be informed that they could withdraw at any time?}{Yes; this will be explained in the introductory script.}
+\ethitem{Will the participants be informed of your contact details?}{Yes; the contact details of the investigator and supervisor as part of the debriefing.}
+\ethitem{Will participants be de-briefed?}{Yes; an introductory script will be provided.}
+\ethitem{Will the data collected from the participants be stored in an anonymous form?}{Yes; data will be stored anonymously and securely.}
+\end{enumerate}
+% Raised Rule Command:
+%  Arg 1 (Optional) - How high to raise the rule
+%  Arg 2            - Thickness of the rule
+\newcommand{\signature}[2]{\textbf{\textsc{#1:}} #2~\leaders\hbox{\rule{1pt}{1pt}}\hfill~\\~\\}
+\def\mysig{\underline{\includegraphics[scale=0.15]{signature}}}
+%\signature{Name}
+%\begin{figure}[H]
+%\includegraphics[scale=0.15]{signature}
+%\end{figure}
+%\vspace{0.1in}
+%\signature{Name}{\underline{\parbox{180pt}{\includegraphics[scale=0.15]{signature}}}}
+\signature{Name}{\mysig}
+\signature{Supervisor (if applicable)}{}
+\signature{Second Reader (if applicable)}{}
+\signature{Project Title}{}
+\signature{Date}{}
 \end{document}
 
 % To make latexmk run makeglossaries on the files required, create a file .latexmk in your home directory:
