@@ -211,6 +211,9 @@ body {
     //border-radius: 3px;
     box-shadow:  0 0 10px #ff00ff;
   
+    background-blend-mode: multiply, normal; // Chrome Canary
+    -webkit-background-blend-mode: multiply, normal; // WebKit Nightly
+  
     //display:inline-block;
 }
 
@@ -227,9 +230,37 @@ body {
     //border-radius: 3px;
     box-shadow:  0 0 10px #ff0000;
   
-    background-blend-mode: darken, normal; // Chrome Canary
-    -webkit-background-blend-mode: darken, normal; // WebKit Nightly
+    background-blend-mode: multiply, normal; // Chrome Canary
+    -webkit-background-blend-mode: multiply, normal; // WebKit Nightly
     //display:inline-block;
+}
+
+.chibiPoint_paintedUnique0 {
+  background: rgba(0,173,0, @flyoutAlpha)!important;
+}
+.chibiPoint_paintedUnique1 {
+  background: rgba(13,255,150, @flyoutAlpha)!important;
+}
+.chibiPoint_paintedUnique2 {
+  background: rgba(249,25,137, @flyoutAlpha)!important;
+}
+.chibiPoint_paintedUnique3 {
+  background: rgba(249,112,12, @flyoutAlpha)!important;
+}
+.chibiPoint_paintedUnique4 {
+  background: rgba(186,167,19, @flyoutAlpha)!important;
+}
+.chibiPoint_paintedUnique5 {
+  background: rgba(172,0,237, @flyoutAlpha)!important;
+}
+.chibiPoint_paintedUnique6 {
+  background: rgba(240,172,24, @flyoutAlpha)!important;
+}
+.chibiPoint_paintedUnique7 {
+  background: rgba(8,160,94, @flyoutAlpha)!important;
+}
+.chibiPoint_paintedUnique8 {
+  background: rgba(135,54,94, @flyoutAlpha)!important;
 }
 
 .chibiPoint_cluck {
@@ -269,15 +300,84 @@ body {
 }
 
 .chibiPoint_flyout {
-  background: rgb(0,173,0);
-  outline-color:#000000;
-  outline: 1px solid 0!important;
+  //background: rgba(0,173,0, 0.30);
+  //outline: 1px solid 0!important;
+  border: 1px solid black;
   position: absolute;
   top:0;
   left: 0;
  width:20px;
  text-align: center;
+  font-family:Geneva, Arial, Helvetica, sans-serif;
+  
+  /*-webkit-text-stroke: 1px #000000;
+  -webkit-text-fill-color: #FFFFFF;*/
+  color: white;
+  text-shadow:
+   -1px -1px 0 #000,  
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+     1px 1px 0 #000;
 }
+
+@flyoutAlpha: 1.0;
+
+.chibiPoint_flyoutUnique0 {
+  background: rgba(0,173,0, @flyoutAlpha);
+}
+.chibiPoint_flyoutUnique1 {
+  background: rgba(13,255,150, @flyoutAlpha);
+}
+.chibiPoint_flyoutUnique2 {
+  background: rgba(249,25,137, @flyoutAlpha);
+}
+.chibiPoint_flyoutUnique3 {
+  background: rgba(249,112,12, @flyoutAlpha);
+}
+.chibiPoint_flyoutUnique4 {
+  background: rgba(186,167,19, @flyoutAlpha);
+}
+.chibiPoint_flyoutUnique5 {
+  background: rgba(172,0,237, @flyoutAlpha);
+}
+.chibiPoint_flyoutUnique6 {
+  background: rgba(240,172,24, @flyoutAlpha);
+}
+.chibiPoint_flyoutUnique7 {
+  background: rgba(8,160,94, @flyoutAlpha);
+}
+.chibiPoint_flyoutUnique8 {
+  background: rgba(135,54,94, @flyoutAlpha);
+}
+
+.chibiPoint_lineUnique0 {
+  stroke: rgb(0,173,0, @flyoutLineAlpha);
+}
+.chibiPoint_lineUnique1 {
+  stroke: rgb(13,255,150, @flyoutLineAlpha);
+}
+.chibiPoint_lineUnique2 {
+  stroke: rgb(249,25,137, @flyoutLineAlpha);
+}
+.chibiPoint_lineUnique3 {
+  stroke: rgb(249,112,12, @flyoutLineAlpha);
+}
+.chibiPoint_lineUnique4 {
+  stroke: rgb(186,167,19, @flyoutLineAlpha);
+}
+.chibiPoint_lineUnique5 {
+  stroke: rgb(172,0,237, @flyoutLineAlpha);
+}
+.chibiPoint_lineUnique6 {
+  stroke: rgb(240,172,24, @flyoutLineAlpha);
+}
+.chibiPoint_lineUnique7 {
+  stroke: rgb(8,160,94, @flyoutLineAlpha);
+}
+.chibiPoint_lineUnique8 {
+  stroke: rgb(135,54,94, @flyoutLineAlpha);
+}
+
 
 .chibiPoint_lineDiv {
 }
@@ -285,7 +385,9 @@ body {
 .chibiPoint_lineSvg {
 }
 
+@flyoutLineAlpha:1;
+@flyoutLineWidth:2;
 .chibiPoint_line {
- stroke:rgb(0,173,0);
- stroke-width:2;
+ //stroke:rgb(0,173,0);
+ stroke-width:@flyoutLineWidth;
 }

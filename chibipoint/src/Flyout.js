@@ -91,7 +91,7 @@ var birchlabs = window.birchlabs;
     this.svg = document.createElement('svg');
     this.svg.className = "chibiPoint_lineSvg"
     this.svgLine = document.createElement('line');
-    this.svgLine.className = "chibiPoint_line"
+    this.svgLine.className = "chibiPoint_line chibiPoint_lineUnique"+this.unique;
     this.svgLine.id = "chibiPoint_flyoutLine"+this.unique;
    //svgLine.style ="stroke:rgb(255,0,0);stroke-width:2";
     $(this.svgLine).attr({x1:"0",
@@ -105,8 +105,8 @@ var birchlabs = window.birchlabs;
     $(this.lineDiv).append(this.svg);
    
     this.flyout = document.createElement('div');
-    this.flyout.className = "chibiPoint_flyout";
-    this.flyout.innerHTML = String.fromCharCode(label);
+    this.flyout.className = "chibiPoint_flyout chibiPoint_flyoutUnique"+this.unique;
+    this.flyout.innerHTML = String.fromCharCode(label).toUpperCase();
    
     $(this.aFlyout).append(this.flyout);
     $(this.aFlyout).append(this.lineDiv);
@@ -234,12 +234,14 @@ var birchlabs = window.birchlabs;
  p.paintTarget = function() {
   if (this.target) {
    $(this.target).addClass("chibiPoint_painted");
+   $(this.target).addClass("chibiPoint_paintedUnique"+this.unique);
   }
  };
  
  p.unpaintTarget = function() {
   if (this.target) {
    $(this.target).removeClass("chibiPoint_painted");
+   $(this.target).removeClass("chibiPoint_paintedUnique"+this.unique);
   }
  };
  
