@@ -86,9 +86,9 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
       }
     } else {
       // qwerty flyouts
-      var flyoutShortcuts = [117,105,111,
-                          106,107,108,
-                          109,44,46];
+      var flyoutShortcuts = [113,119,101,
+                          97,115,100,
+                          122,120,99];
       
       // alphabet flyouts
       /*var flyoutShortcuts = [97,98,99,
@@ -96,6 +96,10 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
                           103,104,105];*/
       
       if (!numpad) {
+      // left hand qwerty
+        var flyoutShortcuts = [117,105,111,
+                          106,107,108,
+                          109,44,46];
         // qwerty grid    
         var numpadMappings = {"7":[113,7], "8":[119,8], "9":[101,9],
                            "4":[97,4], "5":[115,5], "6":[100,6],
