@@ -354,7 +354,7 @@ define(["lib/jquery-2.1.0.min", "lib/within", "lib/Blob", "lib/FileSaver", "trac
       return ret;
   }
   
-  function evaluatorWriteState(clickedElem) {
+  function evaluatorWriteState(clickedElem) {    
     //var b = blob.Blob;
     //console.log(b);
     
@@ -376,6 +376,9 @@ define(["lib/jquery-2.1.0.min", "lib/within", "lib/Blob", "lib/FileSaver", "trac
     output += "\n timeDeltasHuman: "+evaluator.timeDeltasHuman;
     output += "\n\n keyCount: "+evaluator.keyCount;
     output += "\n keys: "+evaluator.keys;
+    
+    output += "\n\n CHIBIPOINT ON: "+(!birchlabs.evaluateTabMode);
+    output += "\n FLYOUTS ON: "+birchlabs.flyoutsOn;
     
     var finalElem = "\n\nClicked.. \n";
     for (var j in clickedElem) {
