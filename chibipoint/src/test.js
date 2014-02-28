@@ -363,7 +363,8 @@ define(["lib/jquery-2.1.0.min", "lib/within", "lib/Blob", "lib/FileSaver", "trac
     var startDate = new Date(evaluator.timer);
     var endDate = new Date(endMilli);
     
-    var output = "clicked: "+clickedElem;
+    var output = "page: "+document.URL;
+    output += "\n clicked: "+clickedElem;
     output += "\n startTime: "+evaluator.timer;
     output += "\n endTime: "+endMilli;
     output += "\n duration: "+evaluator.totalTime;
