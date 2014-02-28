@@ -260,3 +260,31 @@ body {
 .chibiPoint_line {
   stroke-width: 2;
 }
+.chibiPoint_evaluator {
+  position: fixed;
+  pointer-events: none;
+  font-family: Geneva, Arial, Helvetica, sans-serif;
+  color: red;
+  width: 100%;
+  height: 100%;
+}
+.chibiPoint_timer {
+  position: fixed;
+  pointer-events: none;
+  font-family: Geneva, Arial, Helvetica, sans-serif;
+  color: red;
+  width: 100%;
+  height: 100%;
+  left: 10;
+  top: 10;
+}
+.chibiPoint_keyCount {
+  position: fixed;
+  pointer-events: none;
+  font-family: Geneva, Arial, Helvetica, sans-serif;
+  color: red;
+  width: 100%;
+  height: 100%;
+  left: 10;
+  top: 30;
+}

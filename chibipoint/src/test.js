@@ -1,9 +1,12 @@
-define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Grid", "Crosshairs", "Flyout"], function (jq, within, tracer, lookup, testonly, gridclass, crosshairclass, flyout) {
+define(["lib/jquery-2.1.0.min", "lib/within", "lib/Blob", "lib/FileSaver", "trace", "lookup", "testonly", "Grid", "Crosshairs", "Flyout"], function (jq, within, blob, saver, tracer, lookup, testonly, gridclass, crosshairclass, flyout) {
   var trace = tracer.trace;
   var supertrace = tracer.supertrace;
   
   window.birchlabs = window.birchlabs||{};
   var birchlabs = window.birchlabs;
+  
+  window.evaluator = window.evaluator||{};
+  var evaluator = window.evaluator;
   
   //console.log(birchlabs);
   
@@ -31,9 +34,38 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
     birchlabs.flyouts = flyouts;
   }
   
+  function makeEvaluators() {    
+    var keyCountElem = makeKeyCount(document.documentElement);
+    var timerElem = makeTimer(document.documentElement);
+    
+    var keys = "";
+    var times = "";
+    var timeDeltas = "";
+    var timesHuman = "";
+    var timeDeltasHuman = "";
+    var keyCount = 0;
+    var timer = new Date().getTime();
+    var totalTime = 0;
+    
+    evaluator.keys = keys;
+    evaluator.times = times;
+    evaluator.timeDeltas = timeDeltas;
+    evaluator.timesHuman = timesHuman;
+    evaluator.timeDeltasHuman = timeDeltasHuman;
+    evaluator.keyCount = keyCount;
+    evaluator.timer = timer;
+    evaluator.totalTime = 0;
+    
+    evaluator.keyCountElem = keyCountElem;
+    evaluator.timerElem = timerElem;
+    
+    drawEvaluators();
+  }
+  
   function init() {
     birchlabs.flyoutsOn = true;
     makeContainers();
+    makeEvaluators();
     var Flyout = birchlabs.Flyout;
     var Grid = birchlabs.Grid;
     var Crosshairs = birchlabs.Crosshairs;
@@ -177,12 +209,22 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
             gridclick(grid);
             
             lookup.stopEvent(ev);
+            evaluatorIncrementKeys(code);
           }
+          
+          if (code == keycodes.tab) {
+            alert("Please do not press tab during this experiment!");
+            document.activeElement.blur();
+          }
+          /*if (code == keycodes.spacebar) {
+            evaluatorIncrementKeys(code);
+          }*/
           if (code == keycodes.escape) {
             if (!gridIsEmpty()) {
               closeGrid();
               
               lookup.stopEvent(ev);
+              evaluatorIncrementKeys(code);
             }
           }
         });
@@ -224,6 +266,8 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
                 drill(numpadMappings[j][1], grid, crosshairs);
                 
                 lookup.stopEvent(ev);
+                evaluatorIncrementKeys(code);
+                break;
               }
             }
           }
@@ -231,11 +275,13 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
             backup(grid, crosshairs);
 
             lookup.stopEvent(ev);
+            evaluatorIncrementKeys(code);
           }
           if (code == keycodes.activate) {
             toggleGrid();
             
             lookup.stopEvent(ev);
+            evaluatorIncrementKeys(code);
           }
           if (birchlabs.flyoutsOn) {
             for (i=0; i<flyoutShortcuts.length; i++) {
@@ -244,6 +290,8 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
                 closeGrid();
 
                 lookup.stopEvent(ev);
+                evaluatorIncrementKeys(code);
+                break;
               }
             }
           }
@@ -265,6 +313,88 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
       }
     }
       //draw();
+  }
+  
+  function formatTime(time) {
+      var ret = time % 1000 + ' ms';
+      time = Math.floor(time / 1000);
+      if (time !== 0) {
+          ret = time % 60 + "s "+ret;
+          time = Math.floor(time / 60);
+          if (time !== 0) {
+              ret = time % 60 + "min "+ret;
+              time = Math.floor(time / 60);
+              if (time !== 0) {
+                  ret = time % 60 + "h "+ret;
+              }
+          }           
+      }
+      return ret;
+  }
+  
+  function evaluatorWriteState(clickedElem) {
+    //var b = blob.Blob;
+    //console.log(b);
+    
+    var endMilli = parseInt(evaluator.timer)+parseInt(evaluator.totalTime);
+    
+    var startDate = new Date(evaluator.timer);
+    var endDate = new Date(endMilli);
+    
+    var output = "clicked: "+clickedElem;
+    output += "\n startTime: "+evaluator.timer;
+    output += "\n endTime: "+endMilli;
+    output += "\n duration: "+evaluator.totalTime;
+    output += "\n durationHuman: "+formatTime(evaluator.totalTime);
+    output += "\n\n startDate: "+(startDate.toLocaleDateString() + " " + startDate.toLocaleTimeString());
+    output += "\n endDate: "+(endDate.toLocaleDateString() + " " + endDate.toLocaleTimeString());
+    output += "\n\n times: "+evaluator.times;
+    output += "\n timesHuman: "+evaluator.timesHuman;
+    output += "\n\n timeDeltas: "+evaluator.timeDeltas;
+    output += "\n timeDeltasHuman: "+evaluator.timeDeltasHuman;
+    output += "\n\n keyCount: "+evaluator.keyCount;
+    output += "\n keys: "+evaluator.keys;
+    
+    var finalElem = "\n\nClicked.. \n";
+    for (var j in clickedElem) {
+		finalElem += " "+ j + ": " + clickedElem[j] + "\n";
+	}
+    
+    output += finalElem;
+    
+    var bb = new Blob([output]);
+    console.log(bb);
+    //bb.append((new XMLSerializer).serializeToString(document));
+    //var blob = bb.getBlob("application/xhtml+xml;charset=" + document.characterSet);
+    saver.saveAs(bb, "document.txt");
+  }
+  
+  function evaluatorIncrementKeys(theKey) {
+    var evaluator = window.evaluator;
+    
+    var nowTime = (new Date().getTime());
+    var thisDelta = nowTime-(evaluator.timer+evaluator.totalTime);
+    var wholeDelta = nowTime-evaluator.timer;
+    
+    evaluator.keyCount++;
+    evaluator.keys += theKey+",";
+    evaluator.times += nowTime+",";
+    evaluator.timeDeltas += thisDelta+",";
+    evaluator.timesHuman += formatTime(nowTime)+", ";
+    evaluator.timeDeltasHuman += formatTime(thisDelta)+", ";
+    evaluator.totalTime = wholeDelta;
+    
+    //evaluator.keyCountElem.innerHTML = keyCount;
+    //evaluator.timerElem.innerHTML = timer;
+    
+    drawEvaluators();
+  }
+  
+  function drawEvaluators() {
+    var evaluator = window.evaluator;
+    
+    evaluator.keyCountElem.innerHTML = evaluator.keys;
+    evaluator.timerElem.innerHTML = formatTime(evaluator.totalTime);
   }
   
   function getDocRoot() {
@@ -484,6 +614,20 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
     }
   }
   
+  function makeTimer(root) {
+    var parent = document.createElement('div');
+    parent.className = 'chibiPoint_timer';
+    $(root).append(parent);
+    return parent;
+  }
+  
+  function makeKeyCount(root) {
+    var parent = document.createElement('div');
+    parent.className = 'chibiPoint_keyCount';
+    $(root).append(parent);
+    return parent;
+  }
+  
   function makeGridContainer(root) {
     var parent = document.createElement('div');
     parent.className = 'chibiPoint_gridContainer chibiPoint_hiddenGridContainer';
@@ -632,7 +776,8 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
     if (justFocus[element.nodeName]) {
       element.focus();
     } else {
-      element.click();
+      evaluatorWriteState(element);
+      //element.click();
       element.focus();
     }
     closeGrid();
@@ -678,6 +823,7 @@ define(["lib/jquery-2.1.0.min", "lib/within", "trace", "lookup", "testonly", "Gr
   
   function shortcut() {
     toggleGrid();
+    evaluatorIncrementKeys("Cmd_K");
   }
   
   function toggleGrid() {
