@@ -63,7 +63,11 @@ define(["lib/jquery-2.1.0.min", "lib/within", "lib/Blob", "lib/FileSaver", "trac
   }
   
   function init() {
+    birchlabs.evaluateTabMode = false;
     birchlabs.flyoutsOn = true;
+    if (birchlabs.evaluateTabMode) {
+      birchlabs.flyoutsOn = false;
+    }
     makeContainers();
     makeEvaluators();
     var Flyout = birchlabs.Flyout;
@@ -206,97 +210,115 @@ define(["lib/jquery-2.1.0.min", "lib/within", "lib/Blob", "lib/FileSaver", "trac
           var ascii = String.fromCharCode(code);
           
           if (code == keycodes.enter) {
-            gridclick(grid);
-            
-            lookup.stopEvent(ev);
-            evaluatorIncrementKeys(code);
-          }
-          
-          if (code == keycodes.tab) {
-            alert("Please do not press tab during this experiment!");
-            document.activeElement.blur();
-          }
-          /*if (code == keycodes.spacebar) {
-            evaluatorIncrementKeys(code);
-          }*/
-          if (code == keycodes.escape) {
-            if (!gridIsEmpty()) {
-              closeGrid();
-              
+            if (birchlabs.evaluateTabMode) {
+              evaluatorWriteState(document.activeElement);
+            } else {
+              gridclick(grid);
+
               lookup.stopEvent(ev);
               evaluatorIncrementKeys(code);
             }
           }
-        });
-        
-        doc.addEventListener('keypress', function(ev) {
-        if (lookup.isInputElementActive(doc)) {
-          var tracer = doc.getElementById("trace");
-          if (tracer != null) {
-            doc.getElementById("trace").innerHTML = code;
-          }
-          return;
-        }
-        var code = ev.keyCode;
-        var ascii = String.fromCharCode(code);
           
-        if (!lookup.is_shortcut(ev) && ascii && [keycodes.enter].indexOf(code) == -1) {
-          var tracer = doc.getElementById("trace");
-          if (tracer != null) {
-            doc.getElementById("trace").innerHTML = code;
-          }
-          
-          /*if (numpadtype) {
-            var num = code-numpadstart;
-            if (num<10 && num > 0) {              
-              if (gridIsInUse()) {
-                drill(num, grid, crosshairs);
-                
-                lookup.stopEvent(ev);
-              }
-            } else if (code == keycodes.zero) {
-              backup(grid, crosshairs);
-            
+          if (code == keycodes.tab) {
+            if (birchlabs.evaluateTabMode) {
+              // negative, for shift-tab!
+              var code2 = ev.shiftKey ? -code : code;
+              evaluatorIncrementKeys(code2);
+            } else {
+              alert("Please do not press tab during this experiment!");
               lookup.stopEvent(ev);
+              document.activeElement.blur();
             }
+          }
+          /*if (code == keycodes.spacebar) {
+            evaluatorIncrementKeys(code);
           }*/
-          for (var j in numpadMappings) {
-            if (code == numpadMappings[j][0]) {
-              if (gridIsInUse()) {
-                drill(numpadMappings[j][1], grid, crosshairs);
-                
-                lookup.stopEvent(ev);
-                evaluatorIncrementKeys(code);
-                break;
-              }
-            }
-          }
-          if (code == zeroKey) {
-            backup(grid, crosshairs);
-
-            lookup.stopEvent(ev);
-            evaluatorIncrementKeys(code);
-          }
-          if (code == keycodes.activate) {
-            toggleGrid();
-            
-            lookup.stopEvent(ev);
-            evaluatorIncrementKeys(code);
-          }
-          if (birchlabs.flyoutsOn) {
-            for (i=0; i<flyoutShortcuts.length; i++) {
-              if (code == flyoutShortcuts[i]) {
-                flyouts[i].doClick();
+          if (!birchlabs.evaluateTabMode) {
+            if (code == keycodes.escape) {
+              if (!gridIsEmpty()) {
                 closeGrid();
 
                 lookup.stopEvent(ev);
                 evaluatorIncrementKeys(code);
-                break;
               }
             }
           }
+        });
+        
+        // no key bindings in tab mode
+        if (!birchlabs.evaluateTabMode) {
+          doc.addEventListener('keypress', function(ev) {
+          if (lookup.isInputElementActive(doc)) {
+            var tracer = doc.getElementById("trace");
+            if (tracer != null) {
+              doc.getElementById("trace").innerHTML = code;
+            }
+            return;
+          }
+          var code = ev.keyCode;
+          var ascii = String.fromCharCode(code);
+
+          if (!lookup.is_shortcut(ev) && ascii && [keycodes.enter].indexOf(code) == -1) {
+            var tracer = doc.getElementById("trace");
+            if (tracer != null) {
+              doc.getElementById("trace").innerHTML = code;
+            }
+
+            /*if (numpadtype) {
+              var num = code-numpadstart;
+              if (num<10 && num > 0) {              
+                if (gridIsInUse()) {
+                  drill(num, grid, crosshairs);
+
+                  lookup.stopEvent(ev);
+                }
+              } else if (code == keycodes.zero) {
+                backup(grid, crosshairs);
+
+                lookup.stopEvent(ev);
+              }
+            }*/
+            for (var j in numpadMappings) {
+              if (code == numpadMappings[j][0]) {
+                if (gridIsInUse()) {
+                  drill(numpadMappings[j][1], grid, crosshairs);
+
+                  lookup.stopEvent(ev);
+                  evaluatorIncrementKeys(code);
+                  break;
+                }
+              }
+            }
+            if (code == zeroKey) {
+              backup(grid, crosshairs);
+
+              lookup.stopEvent(ev);
+              evaluatorIncrementKeys(code);
+            }
+            if (code == keycodes.activate) {
+              toggleGrid();
+
+              lookup.stopEvent(ev);
+              evaluatorIncrementKeys(code);
+            }
+            if (birchlabs.flyoutsOn) {
+              for (i=0; i<flyoutShortcuts.length; i++) {
+                if (code == flyoutShortcuts[i]) {
+                  evaluatorWriteState(flyouts[i].getTarget());
+                  flyouts[i].doClick();
+                  
+                  closeGrid();
+
+                  lookup.stopEvent(ev);
+                  evaluatorIncrementKeys(code);
+                  break;
+                }
+              }
+            }
+          }
+        }, false);
         }
-      }, false);
       }
       
       // guess this defers setting events until root is loaded?
@@ -777,7 +799,7 @@ define(["lib/jquery-2.1.0.min", "lib/within", "lib/Blob", "lib/FileSaver", "trac
       element.focus();
     } else {
       evaluatorWriteState(element);
-      //element.click();
+      element.click();
       element.focus();
     }
     closeGrid();
@@ -822,37 +844,41 @@ define(["lib/jquery-2.1.0.min", "lib/within", "lib/Blob", "lib/FileSaver", "trac
   }
   
   function shortcut() {
-    toggleGrid();
-    evaluatorIncrementKeys("Cmd_K");
+    if (!birchlabs.evaluateTabMode) {
+      toggleGrid();
+      evaluatorIncrementKeys("Cmd_K");
+    }
   }
   
   function toggleGrid() {
-    var Flyout = birchlabs.Flyout;
-    
-    var crosshairs = birchlabs.crosshairs;
-    var container = birchlabs.container;
-    var grid = birchlabs.grid;
-    
-    document.activeElement.blur();
-    //document.documentElement.focus();
-    
-    if (gridIsEmpty()) {
-      // need to make a grid
-      grid.initialize();
-      $(".chibiPoint_gridContainer").removeClass("chibiPoint_hiddenGridContainer");
-      createGrid(container);
+    if (!birchlabs.evaluateTabMode) {
+      var Flyout = birchlabs.Flyout;
 
-      //crosshairs = crosshairs||new birchlabs.Crosshairs(document.documentElement, grid);
-      //birchlabs.crosshairs = crosshairs;
+      var crosshairs = birchlabs.crosshairs;
+      var container = birchlabs.container;
+      var grid = birchlabs.grid;
 
-      // in case crosshairs already instantiated
-      crosshairs.updatePosition(grid);
-      Flyout.show();
-      highlightTarget();
-      crosshairs.show();
-    } else {
-      // toggle grid off
-      closeGrid();
+      document.activeElement.blur();
+      //document.documentElement.focus();
+
+      if (gridIsEmpty()) {
+        // need to make a grid
+        grid.initialize();
+        $(".chibiPoint_gridContainer").removeClass("chibiPoint_hiddenGridContainer");
+        createGrid(container);
+
+        //crosshairs = crosshairs||new birchlabs.Crosshairs(document.documentElement, grid);
+        //birchlabs.crosshairs = crosshairs;
+
+        // in case crosshairs already instantiated
+        crosshairs.updatePosition(grid);
+        Flyout.show();
+        highlightTarget();
+        crosshairs.show();
+      } else {
+        // toggle grid off
+        closeGrid();
+      }
     }
   }
   

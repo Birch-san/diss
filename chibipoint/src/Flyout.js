@@ -250,6 +250,10 @@ var birchlabs = window.birchlabs;
   this.target = false;
  };
  
+ p.getTarget = function() {
+   return this.target;
+ };
+ 
  p.setTarget = function(element, coordsyst) {
   /*if (element == null) {
    $("#"+this.svgLine.id).attr({x2:0,
