@@ -1,0 +1,262 @@
+page: http://www.amazon.co.uk/s/ref=nb_sb_noss_2?url=search-alias%3Daps&field-keywords=pillow&sprefix=pillo%2Caps&rh=i%3Aaps%2Ck%3Apillow
+ clicked: http://www.amazon.co.uk/Polycotton-Hollowfibre-Non-Allergenic-Pillows-Pack/dp/B0029TA2LM/ref=sr_1_1?ie=UTF8&qid=1393599275&sr=8-1&keywords=pillow
+ startTime: 1393599276405
+ endTime: 1393599368886
+ duration: 92481
+ durationHuman: 1min 32s 481 ms
+
+ startDate: 2/28/2014 2:54:36 PM
+ endDate: 2/28/2014 2:56:08 PM
+
+ times: 1393599277855,1393599278216,1393599278528,1393599278820,1393599279240,1393599280072,1393599280640,1393599281208,1393599282056,1393599282488,1393599283025,1393599283352,1393599283728,1393599284120,1393599284361,1393599284648,1393599285017,1393599285352,1393599285705,1393599286200,1393599286776,1393599287520,1393599287896,1393599288240,1393599288848,1393599289376,1393599289776,1393599290280,1393599290616,1393599290832,1393599291008,1393599291168,1393599291352,1393599291544,1393599291720,1393599291912,1393599292072,1393599292240,1393599292408,1393599292592,1393599292768,1393599292952,1393599293128,1393599293328,1393599294688,1393599295152,1393599295552,1393599296184,1393599296680,1393599297128,1393599297992,1393599298360,1393599298832,1393599299240,1393599300784,1393599304416,1393599307968,1393599309376,1393599309784,1393599310104,1393599310576,1393599310952,1393599311856,1393599312376,1393599314560,1393599315200,1393599316288,1393599316840,1393599317527,1393599317935,1393599318231,1393599318591,1393599320511,1393599320775,1393599321275,1393599321361,1393599321443,1393599321528,1393599321735,1393599322235,1393599322319,1393599322403,1393599322663,1393599322895,1393599323095,1393599323271,1393599323487,1393599323687,1393599323951,1393599324191,1393599324503,1393599325004,1393599325087,1393599325695,1393599326044,1393599326319,1393599326575,1393599327191,1393599327447,1393599327735,1393599328119,1393599328607,1393599329335,1393599329799,1393599330175,1393599330511,1393599330719,1393599330919,1393599331335,1393599331615,1393599331959,1393599332262,1393599332550,1393599332766,1393599333038,1393599333366,1393599333670,1393599333966,1393599334766,1393599335118,1393599335366,1393599336287,1393599336787,1393599336873,1393599336957,1393599337047,1393599337129,1393599337212,1393599337297,1393599337381,1393599337465,1393599337549,1393599337633,1393599337723,1393599337805,1393599337886,1393599337971,1393599338053,1393599338137,1393599338221,1393599338305,1393599338389,1393599338475,1393599338557,1393599338642,1393599338725,1393599338810,1393599338894,1393599338978,1393599339063,1393599339147,1393599339231,1393599339316,1393599339399,1393599339483,1393599339566,1393599339651,1393599339734,1393599339818,1393599339902,1393599339987,1393599340070,1393599340157,1393599340238,1393599340323,1393599340408,1393599340492,1393599340575,1393599340661,1393599340747,1393599340828,1393599340913,1393599340997,1393599341080,1393599341162,1393599341246,1393599341330,1393599341414,1393599341499,1393599341583,1393599341667,1393599341751,1393599341835,1393599341919,1393599342004,1393599342088,1393599342172,1393599342256,1393599342341,1393599342427,1393599343334,1393599343694,1393599344040,1393599344326,1393599344574,1393599344806,1393599345022,1393599345382,1393599345574,1393599345758,1393599345966,1393599346182,1393599346686,1393599347310,1393599347790,1393599348166,1393599348406,1393599348638,1393599350662,1393599351286,1393599351806,1393599352542,1393599353054,1393599353758,1393599359134,1393599360686,1393599361510,1393599364326,1393599366374,1393599367558,1393599368886,
+ timesHuman: 50h 54min 37s 855 ms, 50h 54min 38s 216 ms, 50h 54min 38s 528 ms, 50h 54min 38s 820 ms, 50h 54min 39s 240 ms, 50h 54min 40s 72 ms, 50h 54min 40s 640 ms, 50h 54min 41s 208 ms, 50h 54min 42s 56 ms, 50h 54min 42s 488 ms, 50h 54min 43s 25 ms, 50h 54min 43s 352 ms, 50h 54min 43s 728 ms, 50h 54min 44s 120 ms, 50h 54min 44s 361 ms, 50h 54min 44s 648 ms, 50h 54min 45s 17 ms, 50h 54min 45s 352 ms, 50h 54min 45s 705 ms, 50h 54min 46s 200 ms, 50h 54min 46s 776 ms, 50h 54min 47s 520 ms, 50h 54min 47s 896 ms, 50h 54min 48s 240 ms, 50h 54min 48s 848 ms, 50h 54min 49s 376 ms, 50h 54min 49s 776 ms, 50h 54min 50s 280 ms, 50h 54min 50s 616 ms, 50h 54min 50s 832 ms, 50h 54min 51s 8 ms, 50h 54min 51s 168 ms, 50h 54min 51s 352 ms, 50h 54min 51s 544 ms, 50h 54min 51s 720 ms, 50h 54min 51s 912 ms, 50h 54min 52s 72 ms, 50h 54min 52s 240 ms, 50h 54min 52s 408 ms, 50h 54min 52s 592 ms, 50h 54min 52s 768 ms, 50h 54min 52s 952 ms, 50h 54min 53s 128 ms, 50h 54min 53s 328 ms, 50h 54min 54s 688 ms, 50h 54min 55s 152 ms, 50h 54min 55s 552 ms, 50h 54min 56s 184 ms, 50h 54min 56s 680 ms, 50h 54min 57s 128 ms, 50h 54min 57s 992 ms, 50h 54min 58s 360 ms, 50h 54min 58s 832 ms, 50h 54min 59s 240 ms, 50h 55min 0s 784 ms, 50h 55min 4s 416 ms, 50h 55min 7s 968 ms, 50h 55min 9s 376 ms, 50h 55min 9s 784 ms, 50h 55min 10s 104 ms, 50h 55min 10s 576 ms, 50h 55min 10s 952 ms, 50h 55min 11s 856 ms, 50h 55min 12s 376 ms, 50h 55min 14s 560 ms, 50h 55min 15s 200 ms, 50h 55min 16s 288 ms, 50h 55min 16s 840 ms, 50h 55min 17s 527 ms, 50h 55min 17s 935 ms, 50h 55min 18s 231 ms, 50h 55min 18s 591 ms, 50h 55min 20s 511 ms, 50h 55min 20s 775 ms, 50h 55min 21s 275 ms, 50h 55min 21s 361 ms, 50h 55min 21s 443 ms, 50h 55min 21s 528 ms, 50h 55min 21s 735 ms, 50h 55min 22s 235 ms, 50h 55min 22s 319 ms, 50h 55min 22s 403 ms, 50h 55min 22s 663 ms, 50h 55min 22s 895 ms, 50h 55min 23s 95 ms, 50h 55min 23s 271 ms, 50h 55min 23s 487 ms, 50h 55min 23s 687 ms, 50h 55min 23s 951 ms, 50h 55min 24s 191 ms, 50h 55min 24s 503 ms, 50h 55min 25s 4 ms, 50h 55min 25s 87 ms, 50h 55min 25s 695 ms, 50h 55min 26s 44 ms, 50h 55min 26s 319 ms, 50h 55min 26s 575 ms, 50h 55min 27s 191 ms, 50h 55min 27s 447 ms, 50h 55min 27s 735 ms, 50h 55min 28s 119 ms, 50h 55min 28s 607 ms, 50h 55min 29s 335 ms, 50h 55min 29s 799 ms, 50h 55min 30s 175 ms, 50h 55min 30s 511 ms, 50h 55min 30s 719 ms, 50h 55min 30s 919 ms, 50h 55min 31s 335 ms, 50h 55min 31s 615 ms, 50h 55min 31s 959 ms, 50h 55min 32s 262 ms, 50h 55min 32s 550 ms, 50h 55min 32s 766 ms, 50h 55min 33s 38 ms, 50h 55min 33s 366 ms, 50h 55min 33s 670 ms, 50h 55min 33s 966 ms, 50h 55min 34s 766 ms, 50h 55min 35s 118 ms, 50h 55min 35s 366 ms, 50h 55min 36s 287 ms, 50h 55min 36s 787 ms, 50h 55min 36s 873 ms, 50h 55min 36s 957 ms, 50h 55min 37s 47 ms, 50h 55min 37s 129 ms, 50h 55min 37s 212 ms, 50h 55min 37s 297 ms, 50h 55min 37s 381 ms, 50h 55min 37s 465 ms, 50h 55min 37s 549 ms, 50h 55min 37s 633 ms, 50h 55min 37s 723 ms, 50h 55min 37s 805 ms, 50h 55min 37s 886 ms, 50h 55min 37s 971 ms, 50h 55min 38s 53 ms, 50h 55min 38s 137 ms, 50h 55min 38s 221 ms, 50h 55min 38s 305 ms, 50h 55min 38s 389 ms, 50h 55min 38s 475 ms, 50h 55min 38s 557 ms, 50h 55min 38s 642 ms, 50h 55min 38s 725 ms, 50h 55min 38s 810 ms, 50h 55min 38s 894 ms, 50h 55min 38s 978 ms, 50h 55min 39s 63 ms, 50h 55min 39s 147 ms, 50h 55min 39s 231 ms, 50h 55min 39s 316 ms, 50h 55min 39s 399 ms, 50h 55min 39s 483 ms, 50h 55min 39s 566 ms, 50h 55min 39s 651 ms, 50h 55min 39s 734 ms, 50h 55min 39s 818 ms, 50h 55min 39s 902 ms, 50h 55min 39s 987 ms, 50h 55min 40s 70 ms, 50h 55min 40s 157 ms, 50h 55min 40s 238 ms, 50h 55min 40s 323 ms, 50h 55min 40s 408 ms, 50h 55min 40s 492 ms, 50h 55min 40s 575 ms, 50h 55min 40s 661 ms, 50h 55min 40s 747 ms, 50h 55min 40s 828 ms, 50h 55min 40s 913 ms, 50h 55min 40s 997 ms, 50h 55min 41s 80 ms, 50h 55min 41s 162 ms, 50h 55min 41s 246 ms, 50h 55min 41s 330 ms, 50h 55min 41s 414 ms, 50h 55min 41s 499 ms, 50h 55min 41s 583 ms, 50h 55min 41s 667 ms, 50h 55min 41s 751 ms, 50h 55min 41s 835 ms, 50h 55min 41s 919 ms, 50h 55min 42s 4 ms, 50h 55min 42s 88 ms, 50h 55min 42s 172 ms, 50h 55min 42s 256 ms, 50h 55min 42s 341 ms, 50h 55min 42s 427 ms, 50h 55min 43s 334 ms, 50h 55min 43s 694 ms, 50h 55min 44s 40 ms, 50h 55min 44s 326 ms, 50h 55min 44s 574 ms, 50h 55min 44s 806 ms, 50h 55min 45s 22 ms, 50h 55min 45s 382 ms, 50h 55min 45s 574 ms, 50h 55min 45s 758 ms, 50h 55min 45s 966 ms, 50h 55min 46s 182 ms, 50h 55min 46s 686 ms, 50h 55min 47s 310 ms, 50h 55min 47s 790 ms, 50h 55min 48s 166 ms, 50h 55min 48s 406 ms, 50h 55min 48s 638 ms, 50h 55min 50s 662 ms, 50h 55min 51s 286 ms, 50h 55min 51s 806 ms, 50h 55min 52s 542 ms, 50h 55min 53s 54 ms, 50h 55min 53s 758 ms, 50h 55min 59s 134 ms, 50h 56min 0s 686 ms, 50h 56min 1s 510 ms, 50h 56min 4s 326 ms, 50h 56min 6s 374 ms, 50h 56min 7s 558 ms, 50h 56min 8s 886 ms, 
+
+ timeDeltas: 1450,361,312,292,420,832,568,568,848,432,537,327,376,392,241,287,369,335,353,495,576,744,376,344,608,528,400,504,336,216,176,160,184,192,176,192,160,168,168,184,176,184,176,200,1360,464,400,632,496,448,864,368,472,408,1544,3632,3552,1408,408,320,472,376,904,520,2184,640,1088,552,687,408,296,360,1920,264,500,86,82,85,207,500,84,84,260,232,200,176,216,200,264,240,312,501,83,608,349,275,256,616,256,288,384,488,728,464,376,336,208,200,416,280,344,303,288,216,272,328,304,296,800,352,248,921,500,86,84,90,82,83,85,84,84,84,84,90,82,81,85,82,84,84,84,84,86,82,85,83,85,84,84,85,84,84,85,83,84,83,85,83,84,84,85,83,87,81,85,85,84,83,86,86,81,85,84,83,82,84,84,84,85,84,84,84,84,84,85,84,84,84,85,86,907,360,346,286,248,232,216,360,192,184,208,216,504,624,480,376,240,232,2024,624,520,736,512,704,5376,1552,824,2816,2048,1184,1328,
+ timeDeltasHuman: 1s 450 ms, 361 ms, 312 ms, 292 ms, 420 ms, 832 ms, 568 ms, 568 ms, 848 ms, 432 ms, 537 ms, 327 ms, 376 ms, 392 ms, 241 ms, 287 ms, 369 ms, 335 ms, 353 ms, 495 ms, 576 ms, 744 ms, 376 ms, 344 ms, 608 ms, 528 ms, 400 ms, 504 ms, 336 ms, 216 ms, 176 ms, 160 ms, 184 ms, 192 ms, 176 ms, 192 ms, 160 ms, 168 ms, 168 ms, 184 ms, 176 ms, 184 ms, 176 ms, 200 ms, 1s 360 ms, 464 ms, 400 ms, 632 ms, 496 ms, 448 ms, 864 ms, 368 ms, 472 ms, 408 ms, 1s 544 ms, 3s 632 ms, 3s 552 ms, 1s 408 ms, 408 ms, 320 ms, 472 ms, 376 ms, 904 ms, 520 ms, 2s 184 ms, 640 ms, 1s 88 ms, 552 ms, 687 ms, 408 ms, 296 ms, 360 ms, 1s 920 ms, 264 ms, 500 ms, 86 ms, 82 ms, 85 ms, 207 ms, 500 ms, 84 ms, 84 ms, 260 ms, 232 ms, 200 ms, 176 ms, 216 ms, 200 ms, 264 ms, 240 ms, 312 ms, 501 ms, 83 ms, 608 ms, 349 ms, 275 ms, 256 ms, 616 ms, 256 ms, 288 ms, 384 ms, 488 ms, 728 ms, 464 ms, 376 ms, 336 ms, 208 ms, 200 ms, 416 ms, 280 ms, 344 ms, 303 ms, 288 ms, 216 ms, 272 ms, 328 ms, 304 ms, 296 ms, 800 ms, 352 ms, 248 ms, 921 ms, 500 ms, 86 ms, 84 ms, 90 ms, 82 ms, 83 ms, 85 ms, 84 ms, 84 ms, 84 ms, 84 ms, 90 ms, 82 ms, 81 ms, 85 ms, 82 ms, 84 ms, 84 ms, 84 ms, 84 ms, 86 ms, 82 ms, 85 ms, 83 ms, 85 ms, 84 ms, 84 ms, 85 ms, 84 ms, 84 ms, 85 ms, 83 ms, 84 ms, 83 ms, 85 ms, 83 ms, 84 ms, 84 ms, 85 ms, 83 ms, 87 ms, 81 ms, 85 ms, 85 ms, 84 ms, 83 ms, 86 ms, 86 ms, 81 ms, 85 ms, 84 ms, 83 ms, 82 ms, 84 ms, 84 ms, 84 ms, 85 ms, 84 ms, 84 ms, 84 ms, 84 ms, 84 ms, 85 ms, 84 ms, 84 ms, 84 ms, 85 ms, 86 ms, 907 ms, 360 ms, 346 ms, 286 ms, 248 ms, 232 ms, 216 ms, 360 ms, 192 ms, 184 ms, 208 ms, 216 ms, 504 ms, 624 ms, 480 ms, 376 ms, 240 ms, 232 ms, 2s 24 ms, 624 ms, 520 ms, 736 ms, 512 ms, 704 ms, 5s 376 ms, 1s 552 ms, 824 ms, 2s 816 ms, 2s 48 ms, 1s 184 ms, 1s 328 ms, 
+
+ keyCount: 221
+ keys: 9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,9,9,9,9,
+
+ CHIBIPOINT ON: false
+ FLYOUTS ON: false
+
+Clicked.. 
+ hash: 
+ search: ?ie=UTF8&qid=1393599275&sr=8-1&keywords=pillow
+ pathname: /Polycotton-Hollowfibre-Non-Allergenic-Pillows-Pack/dp/B0029TA2LM/ref=sr_1_1
+ port: 
+ hostname: www.amazon.co.uk
+ host: www.amazon.co.uk
+ password: 
+ username: 
+ protocol: http:
+ origin: http://www.amazon.co.uk
+ href: http://www.amazon.co.uk/Polycotton-Hollowfibre-Non-Allergenic-Pillows-Pack/dp/B0029TA2LM/ref=sr_1_1?ie=UTF8&qid=1393599275&sr=8-1&keywords=pillow
+ text: 
+ type: 
+ target: 
+ shape: 
+ rev: 
+ rel: 
+ ping: 
+ name: 
+ hreflang: 
+ download: 
+ coords: 
+ charset: 
+ inputMethodContext: [object InputMethodContext]
+ onwaiting: null
+ onvolumechange: null
+ ontimeupdate: null
+ onsuspend: null
+ onsubmit: null
+ onstalled: null
+ onshow: null
+ onselect: null
+ onseeking: null
+ onseeked: null
+ onscroll: null
+ onreset: null
+ onratechange: null
+ onprogress: null
+ onplaying: null
+ onplay: null
+ onpause: null
+ onmousewheel: null
+ onmouseup: null
+ onmouseover: null
+ onmouseout: null
+ onmousemove: null
+ onmouseleave: null
+ onmouseenter: null
+ onmousedown: null
+ onloadstart: null
+ onloadedmetadata: null
+ onloadeddata: null
+ onload: null
+ onkeyup: null
+ onkeypress: null
+ onkeydown: null
+ oninvalid: null
+ oninput: null
+ onfocus: null
+ onerror: null
+ onended: null
+ onemptied: null
+ ondurationchange: null
+ ondrop: null
+ ondragstart: null
+ ondragover: null
+ ondragleave: null
+ ondragenter: null
+ ondragend: null
+ ondrag: null
+ ondblclick: null
+ oncuechange: null
+ oncontextmenu: null
+ onclose: null
+ onclick: null
+ onchange: null
+ oncanplaythrough: null
+ oncanplay: null
+ oncancel: null
+ onblur: null
+ onabort: null
+ spellcheck: true
+ isContentEditable: false
+ contentEditable: inherit
+ outerText: 
+ innerText: 
+ accessKey: 
+ hidden: false
+ webkitdropzone: 
+ draggable: true
+ tabIndex: 0
+ dir: 
+ translate: true
+ lang: 
+ title: 
+ webkitRegionOverset: undefined
+ shadowRoot: null
+ pseudo: 
+ childElementCount: 1
+ lastElementChild: [object HTMLDivElement]
+ firstElementChild: [object HTMLDivElement]
+ children: [object HTMLCollection]
+ nextElementSibling: null
+ previousElementSibling: null
+ onwheel: null
+ onwebkitfullscreenerror: null
+ onwebkitfullscreenchange: null
+ onselectstart: null
+ onsearch: null
+ onpaste: null
+ oncut: null
+ oncopy: null
+ onbeforepaste: null
+ onbeforecut: null
+ onbeforecopy: null
+ webkitShadowRoot: null
+ webkitPseudo: 
+ dataset: [object DOMStringMap]
+ classList: 
+ className: 
+ outerHTML: <a href="http://www.amazon.co.uk/Polycotton-Hollowfibre-Non-Allergenic-Pillows-Pack/dp/B0029TA2LM/ref=sr_1_1?ie=UTF8&amp;qid=1393599275&amp;sr=8-1&amp;keywords=pillow"><div class="imageBox">
+    <img onload="viewCompleteImageLoaded(this, new Date().getTime(), 16, true);" src="http://ecx.images-amazon.com/images/I/21-rb5G4heL._AA160_.jpg" class="productImage cfMarker" alt="Product Details">
+        </div></a>
+ innerHTML: <div class="imageBox">
+    <img onload="viewCompleteImageLoaded(this, new Date().getTime(), 16, true);" src="http://ecx.images-amazon.com/images/I/21-rb5G4heL._AA160_.jpg" class="productImage cfMarker" alt="Product Details">
+        </div>
+ scrollHeight: 0
+ scrollWidth: 0
+ scrollTop: 0
+ scrollLeft: 0
+ clientHeight: 0
+ clientWidth: 0
+ clientTop: 0
+ clientLeft: 0
+ offsetParent: [object HTMLDivElement]
+ offsetHeight: 13
+ offsetWidth: 160
+ offsetTop: 0
+ offsetLeft: 0
+ localName: a
+ prefix: null
+ namespaceURI: http://www.w3.org/1999/xhtml
+ id: 
+ style: [object CSSStyleDeclaration]
+ attributes: [object NamedNodeMap]
+ tagName: A
+ parentElement: [object HTMLDivElement]
+ textContent: 
+    
+        
+ baseURI: http://www.amazon.co.uk/s/ref=nb_sb_noss_2?url=search-alias%3Daps&field-keywords=pillow&sprefix=pillo%2Caps&rh=i%3Aaps%2Ck%3Apillow
+ ownerDocument: [object HTMLDocument]
+ nextSibling: null
+ previousSibling: [object Text]
+ lastChild: [object HTMLDivElement]
+ firstChild: [object HTMLDivElement]
+ childNodes: [object NodeList]
+ parentNode: [object HTMLDivElement]
+ nodeType: 1
+ nodeValue: null
+ nodeName: A
+ insertAdjacentText: function insertAdjacentText() { [native code] }
+ click: function click() { [native code] }
+ insertAdjacentElement: function insertAdjacentElement() { [native code] }
+ getAttribute: function getAttribute() { [native code] }
+ setAttribute: function setAttribute() { [native code] }
+ removeAttribute: function removeAttribute() { [native code] }
+ getAttributeNode: function getAttributeNode() { [native code] }
+ getElementsByTagName: function getElementsByTagName() { [native code] }
+ hasAttributes: function hasAttributes() { [native code] }
+ getAttributeNS: function getAttributeNS() { [native code] }
+ setAttributeNS: function setAttributeNS() { [native code] }
+ removeAttributeNS: function removeAttributeNS() { [native code] }
+ getElementsByTagNameNS: function getElementsByTagNameNS() { [native code] }
+ getAttributeNodeNS: function getAttributeNodeNS() { [native code] }
+ hasAttribute: function hasAttribute() { [native code] }
+ hasAttributeNS: function hasAttributeNS() { [native code] }
+ focus: function focus() { [native code] }
+ blur: function blur() { [native code] }
+ scrollIntoView: function scrollIntoView() { [native code] }
+ scrollIntoViewIfNeeded: function scrollIntoViewIfNeeded() { [native code] }
+ scrollByLines: function scrollByLines() { [native code] }
+ scrollByPages: function scrollByPages() { [native code] }
+ getElementsByClassName: function getElementsByClassName() { [native code] }
+ insertAdjacentHTML: function insertAdjacentHTML() { [native code] }
+ querySelector: function querySelector() { [native code] }
+ querySelectorAll: function querySelectorAll() { [native code] }
+ webkitMatchesSelector: function webkitMatchesSelector() { [native code] }
+ webkitCreateShadowRoot: function webkitCreateShadowRoot() { [native code] }
+ getClientRects: function getClientRects() { [native code] }
+ getBoundingClientRect: function getBoundingClientRect() { [native code] }
+ webkitRequestPointerLock: function webkitRequestPointerLock() { [native code] }
+ remove: function remove() { [native code] }
+ ALLOW_KEYBOARD_INPUT: 1
+ setAttributeNode: function setAttributeNode() { [native code] }
+ removeAttributeNode: function removeAttributeNode() { [native code] }
+ setAttributeNodeNS: function setAttributeNodeNS() { [native code] }
+ createShadowRoot: function createShadowRoot() { [native code] }
+ getDestinationInsertionPoints: function getDestinationInsertionPoints() { [native code] }
+ webkitRequestFullScreen: function webkitRequestFullScreen() { [native code] }
+ webkitRequestFullscreen: function webkitRequestFullscreen() { [native code] }
+ webkitGetRegionFlowRanges: function webkitGetRegionFlowRanges() { [native code] }
+ animate: function animate() { [native code] }
+ insertBefore: function insertBefore() { [native code] }
+ replaceChild: function replaceChild() { [native code] }
+ removeChild: function removeChild() { [native code] }
+ appendChild: function appendChild() { [native code] }
+ hasChildNodes: function hasChildNodes() { [native code] }
+ cloneNode: function cloneNode() { [native code] }
+ normalize: function normalize() { [native code] }
+ isSupported: function isSupported() { [native code] }
+ lookupPrefix: function lookupPrefix() { [native code] }
+ isDefaultNamespace: function isDefaultNamespace() { [native code] }
+ lookupNamespaceURI: function lookupNamespaceURI() { [native code] }
+ ELEMENT_NODE: 1
+ ATTRIBUTE_NODE: 2
+ TEXT_NODE: 3
+ CDATA_SECTION_NODE: 4
+ ENTITY_REFERENCE_NODE: 5
+ ENTITY_NODE: 6
+ PROCESSING_INSTRUCTION_NODE: 7
+ COMMENT_NODE: 8
+ DOCUMENT_NODE: 9
+ DOCUMENT_TYPE_NODE: 10
+ DOCUMENT_FRAGMENT_NODE: 11
+ NOTATION_NODE: 12
+ DOCUMENT_POSITION_DISCONNECTED: 1
+ DOCUMENT_POSITION_PRECEDING: 2
+ DOCUMENT_POSITION_FOLLOWING: 4
+ DOCUMENT_POSITION_CONTAINS: 8
+ DOCUMENT_POSITION_CONTAINED_BY: 16
+ DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC: 32
+ isSameNode: function isSameNode() { [native code] }
+ isEqualNode: function isEqualNode() { [native code] }
+ compareDocumentPosition: function compareDocumentPosition() { [native code] }
+ contains: function contains() { [native code] }
+ addEventListener: function addEventListener() { [native code] }
+ removeEventListener: function removeEventListener() { [native code] }
+ dispatchEvent: function dispatchEvent() { [native code] }
