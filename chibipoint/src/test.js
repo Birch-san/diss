@@ -210,13 +210,13 @@ define(["lib/jquery-2.1.0.min", "lib/within", "lib/Blob", "lib/FileSaver", "trac
           var ascii = String.fromCharCode(code);
           
           if (code == keycodes.enter) {
+            evaluatorIncrementKeys(code);
             if (birchlabs.evaluateTabMode) {
               evaluatorWriteState(document.activeElement);
             } else {
               gridclick(grid);
 
               lookup.stopEvent(ev);
-              evaluatorIncrementKeys(code);
             }
           }
           
@@ -237,10 +237,10 @@ define(["lib/jquery-2.1.0.min", "lib/within", "lib/Blob", "lib/FileSaver", "trac
           if (!birchlabs.evaluateTabMode) {
             if (code == keycodes.escape) {
               if (!gridIsEmpty()) {
+                evaluatorIncrementKeys(code);
                 closeGrid();
 
                 lookup.stopEvent(ev);
-                evaluatorIncrementKeys(code);
               }
             }
           }
@@ -282,36 +282,36 @@ define(["lib/jquery-2.1.0.min", "lib/within", "lib/Blob", "lib/FileSaver", "trac
             for (var j in numpadMappings) {
               if (code == numpadMappings[j][0]) {
                 if (gridIsInUse()) {
+                  evaluatorIncrementKeys(code);
                   drill(numpadMappings[j][1], grid, crosshairs);
 
                   lookup.stopEvent(ev);
-                  evaluatorIncrementKeys(code);
                   break;
                 }
               }
             }
             if (code == zeroKey) {
+              evaluatorIncrementKeys(code);
               backup(grid, crosshairs);
 
               lookup.stopEvent(ev);
-              evaluatorIncrementKeys(code);
             }
             if (code == keycodes.activate) {
+              evaluatorIncrementKeys(code);
               toggleGrid();
 
               lookup.stopEvent(ev);
-              evaluatorIncrementKeys(code);
             }
             if (birchlabs.flyoutsOn) {
               for (i=0; i<flyoutShortcuts.length; i++) {
                 if (code == flyoutShortcuts[i]) {
+                  evaluatorIncrementKeys(code);
                   evaluatorWriteState(flyouts[i].getTarget());
                   flyouts[i].doClick();
                   
                   closeGrid();
 
                   lookup.stopEvent(ev);
-                  evaluatorIncrementKeys(code);
                   break;
                 }
               }
