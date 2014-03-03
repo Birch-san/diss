@@ -1,0 +1,260 @@
+page: http://www.bbc.co.uk/
+ clicked: [object HTMLDivElement]
+ startTime: 1393598339387
+ endTime: 1393598346114
+ duration: 6727
+ durationHuman: 6s 727 ms
+
+ startDate: 2/28/2014 2:38:59 PM
+ endDate: 2/28/2014 2:39:06 PM
+
+ times: 1393598346114,
+ timesHuman: 50h 39min 6s 114 ms, 
+
+ timeDeltas: 6727,
+ timeDeltasHuman: 6s 727 ms, 
+
+ keyCount: 1
+ keys: Cmd_K,
+
+ CHIBIPOINT ON: true
+ FLYOUTS ON: true
+
+Clicked.. 
+ align: 
+ inputMethodContext: [object InputMethodContext]
+ onwaiting: null
+ onvolumechange: null
+ ontimeupdate: null
+ onsuspend: null
+ onsubmit: null
+ onstalled: null
+ onshow: null
+ onselect: null
+ onseeking: null
+ onseeked: null
+ onscroll: null
+ onreset: null
+ onratechange: null
+ onprogress: null
+ onplaying: null
+ onplay: null
+ onpause: null
+ onmousewheel: null
+ onmouseup: null
+ onmouseover: null
+ onmouseout: null
+ onmousemove: null
+ onmouseleave: null
+ onmouseenter: null
+ onmousedown: null
+ onloadstart: null
+ onloadedmetadata: null
+ onloadeddata: null
+ onload: null
+ onkeyup: null
+ onkeypress: null
+ onkeydown: null
+ oninvalid: null
+ oninput: null
+ onfocus: null
+ onerror: null
+ onended: null
+ onemptied: null
+ ondurationchange: null
+ ondrop: null
+ ondragstart: null
+ ondragover: null
+ ondragleave: null
+ ondragenter: null
+ ondragend: null
+ ondrag: null
+ ondblclick: null
+ oncuechange: null
+ oncontextmenu: null
+ onclose: null
+ onclick: null
+ onchange: null
+ oncanplaythrough: null
+ oncanplay: null
+ oncancel: null
+ onblur: null
+ onabort: null
+ spellcheck: true
+ isContentEditable: false
+ contentEditable: inherit
+ outerText: 
+Accessibility links
+Skip to contentAccessibility Help
+Sign in
+BBC navigation
+News
+Sport
+Weather
+iPlayer
+TV
+Radio
+More
+Search the BBC
+
+ innerText: 
+Accessibility links
+Skip to contentAccessibility Help
+Sign in
+BBC navigation
+News
+Sport
+Weather
+iPlayer
+TV
+Radio
+More
+Search the BBC
+
+ accessKey: 
+ hidden: false
+ webkitdropzone: 
+ draggable: false
+ tabIndex: -1
+ dir: 
+ translate: true
+ lang: 
+ title: 
+ webkitRegionOverset: undefined
+ shadowRoot: null
+ pseudo: 
+ childElementCount: 2
+ lastElementChild: [object HTMLDivElement]
+ firstElementChild: [object HTMLDivElement]
+ children: [object HTMLCollection]
+ nextElementSibling: null
+ previousElementSibling: null
+ onwheel: null
+ onwebkitfullscreenerror: null
+ onwebkitfullscreenchange: null
+ onselectstart: null
+ onsearch: null
+ onpaste: null
+ oncut: null
+ oncopy: null
+ onbeforepaste: null
+ onbeforecut: null
+ onbeforecopy: null
+ webkitShadowRoot: null
+ webkitPseudo: 
+ dataset: [object DOMStringMap]
+ classList: orb-nav-pri orb-nav-pri-white orb-fixed-width orb-location-d orb-nav-dyn chibiPoint_painted chibiPoint_paintedUnique0
+ className: orb-nav-pri orb-nav-pri-white orb-fixed-width orb-location-d orb-nav-dyn chibiPoint_painted chibiPoint_paintedUnique0
+ outerHTML: <div id="orb-header" class="orb-nav-pri orb-nav-pri-white orb-fixed-width orb-location-d orb-nav-dyn chibiPoint_painted chibiPoint_paintedUnique0" _handlertypes="mousemove,mousedown,keydown"> <div class="orb-nav-pri-container b-r b-g-p"> <div class="orb-nav-section orb-nav-blocks" _handlertypes="click"> <a href="/"> <img src="http://static.bbci.co.uk/frameworks/barlesque/2.60.1/orb/4/img/bbc-blocks-dark.png" width="84" height="24" alt="BBC"> </a> </div> <section> <div class="orb-skip-links" _handlertypes="click"> <h2>Accessibility links</h2> <ul>  <li><a href="#h4discoveryzone">Skip to content</a></li>  <li><a href="/accessibility/">Accessibility Help</a></li> </ul> </div> </section>  <div class="orb-nav-section orb-nav-id orb-nav-focus">     <a id="idcta-link" href="https://ssl.bbc.co.uk/id/signin"><img id="idcta-image" src="http://static.bbci.co.uk/id/0.23.1/img/bbcid_orb_signin_dark.png" alt="" width="18" height="18"><span id="idcta-username">Sign in</span></a>           </div>  <nav role="navigation" class="orb-nav"> <div class="orb-nav-section orb-nav-links orb-nav-focus chibiPoint_painted chibiPoint_paintedUnique1" id="orb-nav-links" _handlertypes="click"> <h2>BBC navigation</h2> <ul>    <li class="orb-nav-news orb-d"> <a href="http://www.bbc.co.uk/news/">News</a> </li>        <li class="orb-nav-sport"> <a href="http://www.bbc.co.uk/sport/">Sport</a> </li>    <li class="orb-nav-weather"> <a href="http://www.bbc.co.uk/weather/">Weather</a> </li>        <li class="orb-nav-iplayer orb-d"> <a href="http://www.bbc.co.uk/iplayer/">iPlayer</a> </li>            <li class="orb-nav-tv"> <a href="http://www.bbc.co.uk/tv/">TV</a> </li>    <li class="orb-nav-radio"> <a href="http://www.bbc.co.uk/radio/">Radio</a> </li>    <li class="orb-nav-cbbc orb-nav-hide"> <a href="http://www.bbc.co.uk/cbbc/">CBBC</a> </li>    <li class="orb-nav-cbeebies orb-nav-hide"> <a href="http://www.bbc.co.uk/cbeebies/">CBeebies</a> </li>    <li class="orb-nav-comedy orb-nav-hide"> <a href="http://www.bbc.co.uk/comedy/">Comedy</a> </li>    <li class="orb-nav-food orb-nav-hide"> <a href="http://www.bbc.co.uk/food/">Food</a> </li>    <li class="orb-nav-history orb-nav-hide"> <a href="http://www.bbc.co.uk/history/">History</a> </li>    <li class="orb-nav-learning orb-nav-hide"> <a href="http://www.bbc.co.uk/learning/">Learning</a> </li>    <li class="orb-nav-music orb-nav-hide"> <a href="http://www.bbc.co.uk/music/">Music</a> </li>    <li class="orb-nav-science orb-nav-hide"> <a href="http://www.bbc.co.uk/science/">Science</a> </li>    <li class="orb-nav-nature orb-nav-hide"> <a href="http://www.bbc.co.uk/nature/">Nature</a> </li>    <li class="orb-nav-local orb-nav-hide"> <a href="http://www.bbc.co.uk/local/">Local</a> </li>    <li class="orb-nav-travelnews orb-nav-hide"> <a href="http://www.bbc.co.uk/travelnews/">Travel News</a> </li>    <li class="orb-nav-fullaz orb-nav-hide"> <a href="http://www.bbc.co.uk/a-z/">Full A-Z</a> </li>    <li id="orb-nav-more" aria-controls="orb-panel-more" _handlertypes="click" class="chibiPoint_painted chibiPoint_paintedUnique2" style="width: 90px;"><a href="#orb-footer" data-alt="More" class="istats-notrack">More<span class="orb-icon orb-icon-arrow"></span></a></li> </ul> </div> </nav> <div class="orb-nav-section orb-nav-search"> <a href="http://search.bbc.co.uk/search"> <img src="http://static.bbci.co.uk/frameworks/barlesque/2.60.1/orb/4/img/orb-search-dark.png" width="18" height="18" alt="Search the BBC"> </a> <form class="b-f" id="orb-search-form" role="search" method="get" action="http://search.bbc.co.uk/search" accept-charset="utf-8"> <div>  <input type="hidden" name="uri" value="/" _handlertypes="focus,blur">   <label for="orb-search-q">Search the BBC</label> <input id="orb-search-q" type="text" name="q" placeholder="Search" _handlertypes="focus,keydown,blur"> <input type="image" id="orb-search-button" src="http://static.bbci.co.uk/frameworks/barlesque/2.60.1/orb/4/img/orb-search-dark.png" width="17" height="17" alt="Search the BBC" _handlertypes="focus,blur"> </div> </form> </div> </div> <div id="orb-panels">  <div id="orb-panel-more" class="orb-panel" aria-labelledby="orb-nav-more" _handlertypes="click"> <div class="orb-panel-content b-g-p b-r orb-nav-sec"> <h2 id="orb-panel-more-title">More<span class="orb-icon orb-icon-arrow"></span></h2><ul>    <li class="orb-nav-news orb-d orb-panel-hide"> <a href="http://www.bbc.co.uk/news/">News</a> </li>        <li class="orb-nav-sport orb-panel-hide"> <a href="http://www.bbc.co.uk/sport/">Sport</a> </li>    <li class="orb-nav-weather orb-panel-hide"> <a href="http://www.bbc.co.uk/weather/">Weather</a> </li>        <li class="orb-nav-iplayer orb-d orb-panel-hide"> <a href="http://www.bbc.co.uk/iplayer/">iPlayer</a> </li>            <li class="orb-nav-tv orb-panel-hide"> <a href="http://www.bbc.co.uk/tv/">TV</a> </li>    <li class="orb-nav-radio orb-panel-hide"> <a href="http://www.bbc.co.uk/radio/">Radio</a> </li>    <li class="orb-nav-cbbc orb-first-visible"> <a href="http://www.bbc.co.uk/cbbc/">CBBC</a> </li>    <li class="orb-nav-cbeebies"> <a href="http://www.bbc.co.uk/cbeebies/">CBeebies</a> </li>    <li class="orb-nav-comedy"> <a href="http://www.bbc.co.uk/comedy/">Comedy</a> </li>    <li class="orb-nav-food"> <a href="http://www.bbc.co.uk/food/">Food</a> </li>    <li class="orb-nav-history"> <a href="http://www.bbc.co.uk/history/">History</a> </li>    <li class="orb-nav-learning"> <a href="http://www.bbc.co.uk/learning/">Learning</a> </li>    <li class="orb-nav-music"> <a href="http://www.bbc.co.uk/music/">Music</a> </li>    <li class="orb-nav-science"> <a href="http://www.bbc.co.uk/science/">Science</a> </li>    <li class="orb-nav-nature"> <a href="http://www.bbc.co.uk/nature/">Nature</a> </li>    <li class="orb-nav-local"> <a href="http://www.bbc.co.uk/local/">Local</a> </li>    <li class="orb-nav-travelnews"> <a href="http://www.bbc.co.uk/travelnews/">Travel News</a> </li>    <li class="orb-nav-fullaz"> <a href="http://www.bbc.co.uk/a-z/">Full A-Z</a> </li>    </ul> </div> </div></div> </div>
+ innerHTML:  <div class="orb-nav-pri-container b-r b-g-p"> <div class="orb-nav-section orb-nav-blocks" _handlertypes="click"> <a href="/"> <img src="http://static.bbci.co.uk/frameworks/barlesque/2.60.1/orb/4/img/bbc-blocks-dark.png" width="84" height="24" alt="BBC"> </a> </div> <section> <div class="orb-skip-links" _handlertypes="click"> <h2>Accessibility links</h2> <ul>  <li><a href="#h4discoveryzone">Skip to content</a></li>  <li><a href="/accessibility/">Accessibility Help</a></li> </ul> </div> </section>  <div class="orb-nav-section orb-nav-id orb-nav-focus">     <a id="idcta-link" href="https://ssl.bbc.co.uk/id/signin"><img id="idcta-image" src="http://static.bbci.co.uk/id/0.23.1/img/bbcid_orb_signin_dark.png" alt="" width="18" height="18"><span id="idcta-username">Sign in</span></a>           </div>  <nav role="navigation" class="orb-nav"> <div class="orb-nav-section orb-nav-links orb-nav-focus chibiPoint_painted chibiPoint_paintedUnique1" id="orb-nav-links" _handlertypes="click"> <h2>BBC navigation</h2> <ul>    <li class="orb-nav-news orb-d"> <a href="http://www.bbc.co.uk/news/">News</a> </li>        <li class="orb-nav-sport"> <a href="http://www.bbc.co.uk/sport/">Sport</a> </li>    <li class="orb-nav-weather"> <a href="http://www.bbc.co.uk/weather/">Weather</a> </li>        <li class="orb-nav-iplayer orb-d"> <a href="http://www.bbc.co.uk/iplayer/">iPlayer</a> </li>            <li class="orb-nav-tv"> <a href="http://www.bbc.co.uk/tv/">TV</a> </li>    <li class="orb-nav-radio"> <a href="http://www.bbc.co.uk/radio/">Radio</a> </li>    <li class="orb-nav-cbbc orb-nav-hide"> <a href="http://www.bbc.co.uk/cbbc/">CBBC</a> </li>    <li class="orb-nav-cbeebies orb-nav-hide"> <a href="http://www.bbc.co.uk/cbeebies/">CBeebies</a> </li>    <li class="orb-nav-comedy orb-nav-hide"> <a href="http://www.bbc.co.uk/comedy/">Comedy</a> </li>    <li class="orb-nav-food orb-nav-hide"> <a href="http://www.bbc.co.uk/food/">Food</a> </li>    <li class="orb-nav-history orb-nav-hide"> <a href="http://www.bbc.co.uk/history/">History</a> </li>    <li class="orb-nav-learning orb-nav-hide"> <a href="http://www.bbc.co.uk/learning/">Learning</a> </li>    <li class="orb-nav-music orb-nav-hide"> <a href="http://www.bbc.co.uk/music/">Music</a> </li>    <li class="orb-nav-science orb-nav-hide"> <a href="http://www.bbc.co.uk/science/">Science</a> </li>    <li class="orb-nav-nature orb-nav-hide"> <a href="http://www.bbc.co.uk/nature/">Nature</a> </li>    <li class="orb-nav-local orb-nav-hide"> <a href="http://www.bbc.co.uk/local/">Local</a> </li>    <li class="orb-nav-travelnews orb-nav-hide"> <a href="http://www.bbc.co.uk/travelnews/">Travel News</a> </li>    <li class="orb-nav-fullaz orb-nav-hide"> <a href="http://www.bbc.co.uk/a-z/">Full A-Z</a> </li>    <li id="orb-nav-more" aria-controls="orb-panel-more" _handlertypes="click" class="chibiPoint_painted chibiPoint_paintedUnique2" style="width: 90px;"><a href="#orb-footer" data-alt="More" class="istats-notrack">More<span class="orb-icon orb-icon-arrow"></span></a></li> </ul> </div> </nav> <div class="orb-nav-section orb-nav-search"> <a href="http://search.bbc.co.uk/search"> <img src="http://static.bbci.co.uk/frameworks/barlesque/2.60.1/orb/4/img/orb-search-dark.png" width="18" height="18" alt="Search the BBC"> </a> <form class="b-f" id="orb-search-form" role="search" method="get" action="http://search.bbc.co.uk/search" accept-charset="utf-8"> <div>  <input type="hidden" name="uri" value="/" _handlertypes="focus,blur">   <label for="orb-search-q">Search the BBC</label> <input id="orb-search-q" type="text" name="q" placeholder="Search" _handlertypes="focus,keydown,blur"> <input type="image" id="orb-search-button" src="http://static.bbci.co.uk/frameworks/barlesque/2.60.1/orb/4/img/orb-search-dark.png" width="17" height="17" alt="Search the BBC" _handlertypes="focus,blur"> </div> </form> </div> </div> <div id="orb-panels">  <div id="orb-panel-more" class="orb-panel" aria-labelledby="orb-nav-more" _handlertypes="click"> <div class="orb-panel-content b-g-p b-r orb-nav-sec"> <h2 id="orb-panel-more-title">More<span class="orb-icon orb-icon-arrow"></span></h2><ul>    <li class="orb-nav-news orb-d orb-panel-hide"> <a href="http://www.bbc.co.uk/news/">News</a> </li>        <li class="orb-nav-sport orb-panel-hide"> <a href="http://www.bbc.co.uk/sport/">Sport</a> </li>    <li class="orb-nav-weather orb-panel-hide"> <a href="http://www.bbc.co.uk/weather/">Weather</a> </li>        <li class="orb-nav-iplayer orb-d orb-panel-hide"> <a href="http://www.bbc.co.uk/iplayer/">iPlayer</a> </li>            <li class="orb-nav-tv orb-panel-hide"> <a href="http://www.bbc.co.uk/tv/">TV</a> </li>    <li class="orb-nav-radio orb-panel-hide"> <a href="http://www.bbc.co.uk/radio/">Radio</a> </li>    <li class="orb-nav-cbbc orb-first-visible"> <a href="http://www.bbc.co.uk/cbbc/">CBBC</a> </li>    <li class="orb-nav-cbeebies"> <a href="http://www.bbc.co.uk/cbeebies/">CBeebies</a> </li>    <li class="orb-nav-comedy"> <a href="http://www.bbc.co.uk/comedy/">Comedy</a> </li>    <li class="orb-nav-food"> <a href="http://www.bbc.co.uk/food/">Food</a> </li>    <li class="orb-nav-history"> <a href="http://www.bbc.co.uk/history/">History</a> </li>    <li class="orb-nav-learning"> <a href="http://www.bbc.co.uk/learning/">Learning</a> </li>    <li class="orb-nav-music"> <a href="http://www.bbc.co.uk/music/">Music</a> </li>    <li class="orb-nav-science"> <a href="http://www.bbc.co.uk/science/">Science</a> </li>    <li class="orb-nav-nature"> <a href="http://www.bbc.co.uk/nature/">Nature</a> </li>    <li class="orb-nav-local"> <a href="http://www.bbc.co.uk/local/">Local</a> </li>    <li class="orb-nav-travelnews"> <a href="http://www.bbc.co.uk/travelnews/">Travel News</a> </li>    <li class="orb-nav-fullaz"> <a href="http://www.bbc.co.uk/a-z/">Full A-Z</a> </li>    </ul> </div> </div></div> 
+ scrollHeight: 40
+ scrollWidth: 1320
+ scrollTop: 0
+ scrollLeft: 0
+ clientHeight: 40
+ clientWidth: 1320
+ clientTop: 0
+ clientLeft: 0
+ offsetParent: [object HTMLBodyElement]
+ offsetHeight: 41
+ offsetWidth: 1320
+ offsetTop: 0
+ offsetLeft: 0
+ localName: div
+ prefix: null
+ namespaceURI: http://www.w3.org/1999/xhtml
+ id: orb-header
+ style: [object CSSStyleDeclaration]
+ attributes: [object NamedNodeMap]
+ tagName: DIV
+ parentElement: [object HTMLElement]
+ textContent:          Accessibility links   Skip to content  Accessibility Help          Sign in               BBC navigation      News          Sport      Weather          iPlayer              TV      Radio      CBBC      CBeebies      Comedy      Food      History      Learning      Music      Science      Nature      Local      Travel News      Full A-Z     More              Search the BBC           More     News          Sport      Weather          iPlayer              TV      Radio      CBBC      CBeebies      Comedy      Food      History      Learning      Music      Science      Nature      Local      Travel News      Full A-Z        
+ baseURI: http://www.bbc.co.uk/
+ ownerDocument: [object HTMLDocument]
+ nextSibling: [object Text]
+ previousSibling: [object Text]
+ lastChild: [object Text]
+ firstChild: [object Text]
+ childNodes: [object NodeList]
+ parentNode: [object HTMLElement]
+ nodeType: 1
+ nodeValue: null
+ nodeName: DIV
+ insertAdjacentText: function insertAdjacentText() { [native code] }
+ click: function click() { [native code] }
+ insertAdjacentElement: function insertAdjacentElement() { [native code] }
+ getAttribute: function getAttribute() { [native code] }
+ setAttribute: function setAttribute() { [native code] }
+ removeAttribute: function removeAttribute() { [native code] }
+ getAttributeNode: function getAttributeNode() { [native code] }
+ getElementsByTagName: function getElementsByTagName() { [native code] }
+ hasAttributes: function hasAttributes() { [native code] }
+ getAttributeNS: function getAttributeNS() { [native code] }
+ setAttributeNS: function setAttributeNS() { [native code] }
+ removeAttributeNS: function removeAttributeNS() { [native code] }
+ getElementsByTagNameNS: function getElementsByTagNameNS() { [native code] }
+ getAttributeNodeNS: function getAttributeNodeNS() { [native code] }
+ hasAttribute: function hasAttribute() { [native code] }
+ hasAttributeNS: function hasAttributeNS() { [native code] }
+ focus: function focus() { [native code] }
+ blur: function blur() { [native code] }
+ scrollIntoView: function scrollIntoView() { [native code] }
+ scrollIntoViewIfNeeded: function scrollIntoViewIfNeeded() { [native code] }
+ scrollByLines: function scrollByLines() { [native code] }
+ scrollByPages: function scrollByPages() { [native code] }
+ getElementsByClassName: function getElementsByClassName() { [native code] }
+ insertAdjacentHTML: function insertAdjacentHTML() { [native code] }
+ querySelector: function querySelector() { [native code] }
+ querySelectorAll: function querySelectorAll() { [native code] }
+ webkitMatchesSelector: function webkitMatchesSelector() { [native code] }
+ webkitCreateShadowRoot: function webkitCreateShadowRoot() { [native code] }
+ getClientRects: function getClientRects() { [native code] }
+ getBoundingClientRect: function getBoundingClientRect() { [native code] }
+ webkitRequestPointerLock: function webkitRequestPointerLock() { [native code] }
+ remove: function remove() { [native code] }
+ ALLOW_KEYBOARD_INPUT: 1
+ setAttributeNode: function setAttributeNode() { [native code] }
+ removeAttributeNode: function removeAttributeNode() { [native code] }
+ setAttributeNodeNS: function setAttributeNodeNS() { [native code] }
+ createShadowRoot: function createShadowRoot() { [native code] }
+ getDestinationInsertionPoints: function getDestinationInsertionPoints() { [native code] }
+ webkitRequestFullScreen: function webkitRequestFullScreen() { [native code] }
+ webkitRequestFullscreen: function webkitRequestFullscreen() { [native code] }
+ webkitGetRegionFlowRanges: function webkitGetRegionFlowRanges() { [native code] }
+ animate: function animate() { [native code] }
+ insertBefore: function insertBefore() { [native code] }
+ replaceChild: function replaceChild() { [native code] }
+ removeChild: function removeChild() { [native code] }
+ appendChild: function appendChild() { [native code] }
+ hasChildNodes: function hasChildNodes() { [native code] }
+ cloneNode: function cloneNode() { [native code] }
+ normalize: function normalize() { [native code] }
+ isSupported: function isSupported() { [native code] }
+ lookupPrefix: function lookupPrefix() { [native code] }
+ isDefaultNamespace: function isDefaultNamespace() { [native code] }
+ lookupNamespaceURI: function lookupNamespaceURI() { [native code] }
+ ELEMENT_NODE: 1
+ ATTRIBUTE_NODE: 2
+ TEXT_NODE: 3
+ CDATA_SECTION_NODE: 4
+ ENTITY_REFERENCE_NODE: 5
+ ENTITY_NODE: 6
+ PROCESSING_INSTRUCTION_NODE: 7
+ COMMENT_NODE: 8
+ DOCUMENT_NODE: 9
+ DOCUMENT_TYPE_NODE: 10
+ DOCUMENT_FRAGMENT_NODE: 11
+ NOTATION_NODE: 12
+ DOCUMENT_POSITION_DISCONNECTED: 1
+ DOCUMENT_POSITION_PRECEDING: 2
+ DOCUMENT_POSITION_FOLLOWING: 4
+ DOCUMENT_POSITION_CONTAINS: 8
+ DOCUMENT_POSITION_CONTAINED_BY: 16
+ DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC: 32
+ isSameNode: function isSameNode() { [native code] }
+ isEqualNode: function isEqualNode() { [native code] }
+ compareDocumentPosition: function compareDocumentPosition() { [native code] }
+ contains: function contains() { [native code] }
+ addEventListener: function addEventListener() { [native code] }
+ removeEventListener: function removeEventListener() { [native code] }
+ dispatchEvent: function dispatchEvent() { [native code] }
