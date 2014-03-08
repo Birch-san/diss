@@ -1,4 +1,4 @@
-define(["lib/jquery-2.1.0.min", "lib/within"], function(jq, within) {
+define(["lib/jquery-2.1.0.min", "lib/within", "evaluator"], function(jq, within, evaler) {
 
 window.birchlabs = window.birchlabs||{};
 var birchlabs = window.birchlabs;
@@ -188,22 +188,7 @@ var birchlabs = window.birchlabs;
  
  
   p.clickOrFocus = function(element) {
-    var justFocus = {//"A":true,
-                         "INPUT":true,
-                         "TEXTAREA":true,
-                         "SELECT":true,
-                         "BUTTON":true//,
-                         //"output":true,
-                         //"command":true,
-                         //"kbd":true
-                         };
-    
-    if (justFocus[element.nodeName]) {
-      element.focus();
-    } else {
-      element.click();
-      element.focus();
-    }
+    evaler.clickOrFocus(element);
   }
  
  p.doClick = function() {

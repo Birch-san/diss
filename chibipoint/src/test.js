@@ -1,4 +1,4 @@
-define(["lib/jquery-2.1.0.min", "lib/within", "lib/Blob", "lib/FileSaver", "trace", "lookup", "testonly", "Grid", "Crosshairs", "Flyout"], function (jq, within, blob, saver, tracer, lookup, testonly, gridclass, crosshairclass, flyout) {
+define(["lib/jquery-2.1.0.min", "lib/within", "lib/Blob", "evaluator", "trace", "lookup", "testonly", "Grid", "Crosshairs", "Flyout"], function (jq, within, blob, evaler, tracer, lookup, testonly, gridclass, crosshairclass, flyout) {
   var trace = tracer.trace;
   var supertrace = tracer.supertrace;
   
@@ -34,42 +34,21 @@ define(["lib/jquery-2.1.0.min", "lib/within", "lib/Blob", "lib/FileSaver", "trac
     birchlabs.flyouts = flyouts;
   }
   
-  function makeEvaluators() {    
-    var keyCountElem = makeKeyCount(document.documentElement);
-    var timerElem = makeTimer(document.documentElement);
-    
-    var keys = "";
-    var times = "";
-    var timeDeltas = "";
-    var timesHuman = "";
-    var timeDeltasHuman = "";
-    var keyCount = 0;
-    var timer = new Date().getTime();
-    var totalTime = 0;
-    
-    evaluator.keys = keys;
-    evaluator.times = times;
-    evaluator.timeDeltas = timeDeltas;
-    evaluator.timesHuman = timesHuman;
-    evaluator.timeDeltasHuman = timeDeltasHuman;
-    evaluator.keyCount = keyCount;
-    evaluator.timer = timer;
-    evaluator.totalTime = 0;
-    
-    evaluator.keyCountElem = keyCountElem;
-    evaluator.timerElem = timerElem;
-    
-    drawEvaluators();
+  function makeGridContainer(root) {
+    var parent = document.createElement('div');
+    parent.className = 'chibiPoint_gridContainer chibiPoint_hiddenGridContainer';
+    $(root).append(parent);
+    return parent;
   }
   
   function init() {
     birchlabs.evaluateTabMode = false;
-    birchlabs.flyoutsOn = true;
+    birchlabs.flyoutsOn = false;
     if (birchlabs.evaluateTabMode) {
       birchlabs.flyoutsOn = false;
     }
     makeContainers();
-    makeEvaluators();
+    evaler.makeEvaluators();
     var Flyout = birchlabs.Flyout;
     var Grid = birchlabs.Grid;
     var Crosshairs = birchlabs.Crosshairs;
@@ -210,9 +189,9 @@ define(["lib/jquery-2.1.0.min", "lib/within", "lib/Blob", "lib/FileSaver", "trac
           var ascii = String.fromCharCode(code);
           
           if (code == keycodes.enter) {
-            evaluatorIncrementKeys(code);
+            evaler.evaluatorIncrementKeys(code);
             if (birchlabs.evaluateTabMode) {
-              evaluatorWriteState(document.activeElement);
+              evaler.evaluatorWriteState(document.activeElement);
             } else {
               gridclick(grid);
 
@@ -224,7 +203,9 @@ define(["lib/jquery-2.1.0.min", "lib/within", "lib/Blob", "lib/FileSaver", "trac
             if (birchlabs.evaluateTabMode) {
               // negative, for shift-tab!
               var code2 = ev.shiftKey ? -code : code;
-              evaluatorIncrementKeys(code2);
+              
+              evaler.evaluatorIncrementKeys(code2);
+              evaler.checkFocusAfterWait();
             } else {
               alert("Please do not press tab during this experiment!");
               lookup.stopEvent(ev);
@@ -232,12 +213,12 @@ define(["lib/jquery-2.1.0.min", "lib/within", "lib/Blob", "lib/FileSaver", "trac
             }
           }
           /*if (code == keycodes.spacebar) {
-            evaluatorIncrementKeys(code);
+            evaler.evaluatorIncrementKeys(code);
           }*/
           if (!birchlabs.evaluateTabMode) {
             if (code == keycodes.escape) {
               if (!gridIsEmpty()) {
-                evaluatorIncrementKeys(code);
+                evaler.evaluatorIncrementKeys(code);
                 closeGrid();
 
                 lookup.stopEvent(ev);
@@ -282,7 +263,7 @@ define(["lib/jquery-2.1.0.min", "lib/within", "lib/Blob", "lib/FileSaver", "trac
             for (var j in numpadMappings) {
               if (code == numpadMappings[j][0]) {
                 if (gridIsInUse()) {
-                  evaluatorIncrementKeys(code);
+                  evaler.evaluatorIncrementKeys(code);
                   drill(numpadMappings[j][1], grid, crosshairs);
 
                   lookup.stopEvent(ev);
@@ -291,13 +272,13 @@ define(["lib/jquery-2.1.0.min", "lib/within", "lib/Blob", "lib/FileSaver", "trac
               }
             }
             if (code == zeroKey) {
-              evaluatorIncrementKeys(code);
+              evaler.evaluatorIncrementKeys(code);
               backup(grid, crosshairs);
 
               lookup.stopEvent(ev);
             }
             if (code == keycodes.activate) {
-              evaluatorIncrementKeys(code);
+              evaler.evaluatorIncrementKeys(code);
               toggleGrid();
 
               lookup.stopEvent(ev);
@@ -305,8 +286,8 @@ define(["lib/jquery-2.1.0.min", "lib/within", "lib/Blob", "lib/FileSaver", "trac
             if (birchlabs.flyoutsOn) {
               for (i=0; i<flyoutShortcuts.length; i++) {
                 if (code == flyoutShortcuts[i]) {
-                  evaluatorIncrementKeys(code);
-                  evaluatorWriteState(flyouts[i].getTarget());
+                  evaler.evaluatorIncrementKeys(code);
+                  evaler.evaluatorWriteState(flyouts[i].getTarget());
                   flyouts[i].doClick();
                   
                   closeGrid();
@@ -335,92 +316,6 @@ define(["lib/jquery-2.1.0.min", "lib/within", "lib/Blob", "lib/FileSaver", "trac
       }
     }
       //draw();
-  }
-  
-  function formatTime(time) {
-      var ret = time % 1000 + ' ms';
-      time = Math.floor(time / 1000);
-      if (time !== 0) {
-          ret = time % 60 + "s "+ret;
-          time = Math.floor(time / 60);
-          if (time !== 0) {
-              ret = time % 60 + "min "+ret;
-              time = Math.floor(time / 60);
-              if (time !== 0) {
-                  ret = time % 60 + "h "+ret;
-              }
-          }           
-      }
-      return ret;
-  }
-  
-  function evaluatorWriteState(clickedElem) {    
-    //var b = blob.Blob;
-    //console.log(b);
-    
-    var endMilli = parseInt(evaluator.timer)+parseInt(evaluator.totalTime);
-    
-    var startDate = new Date(evaluator.timer);
-    var endDate = new Date(endMilli);
-    
-    var output = "page: "+document.URL;
-    output += "\n clicked: "+clickedElem;
-    output += "\n startTime: "+evaluator.timer;
-    output += "\n endTime: "+endMilli;
-    output += "\n duration: "+evaluator.totalTime;
-    output += "\n durationHuman: "+formatTime(evaluator.totalTime);
-    output += "\n\n startDate: "+(startDate.toLocaleDateString() + " " + startDate.toLocaleTimeString());
-    output += "\n endDate: "+(endDate.toLocaleDateString() + " " + endDate.toLocaleTimeString());
-    output += "\n\n times: "+evaluator.times;
-    output += "\n timesHuman: "+evaluator.timesHuman;
-    output += "\n\n timeDeltas: "+evaluator.timeDeltas;
-    output += "\n timeDeltasHuman: "+evaluator.timeDeltasHuman;
-    output += "\n\n keyCount: "+evaluator.keyCount;
-    output += "\n keys: "+evaluator.keys;
-    
-    output += "\n\n CHIBIPOINT ON: "+(!birchlabs.evaluateTabMode);
-    output += "\n FLYOUTS ON: "+birchlabs.flyoutsOn;
-    
-    var finalElem = "\n\nClicked.. \n";
-    for (var j in clickedElem) {
-		finalElem += " "+ j + ": " + clickedElem[j] + "\n";
-	}
-    
-    output += finalElem;
-    
-    var bb = new Blob([output]);
-    console.log(bb);
-    //bb.append((new XMLSerializer).serializeToString(document));
-    //var blob = bb.getBlob("application/xhtml+xml;charset=" + document.characterSet);
-    saver.saveAs(bb, "document.txt");
-  }
-  
-  function evaluatorIncrementKeys(theKey) {
-    var evaluator = window.evaluator;
-    
-    var nowTime = (new Date().getTime());
-    var thisDelta = nowTime-(evaluator.timer+evaluator.totalTime);
-    var wholeDelta = nowTime-evaluator.timer;
-    
-    evaluator.keyCount++;
-    evaluator.keys += theKey+",";
-    evaluator.times += nowTime+",";
-    evaluator.timeDeltas += thisDelta+",";
-    evaluator.timesHuman += formatTime(nowTime)+", ";
-    evaluator.timeDeltasHuman += formatTime(thisDelta)+", ";
-    evaluator.totalTime = wholeDelta;
-    
-    //evaluator.keyCountElem.innerHTML = keyCount;
-    //evaluator.timerElem.innerHTML = timer;
-    
-    drawEvaluators();
-  }
-  
-  function drawEvaluators() {
-    var evaluator = window.evaluator;
-    
-    evaluator.keyCountElem.innerHTML = evaluator.keys;
-    evaluator.timerElem.innerHTML = formatTime(evaluator.totalTime);
   }
   
   function getDocRoot() {
@@ -640,27 +535,6 @@ define(["lib/jquery-2.1.0.min", "lib/within", "lib/Blob", "lib/FileSaver", "trac
     }
   }
   
-  function makeTimer(root) {
-    var parent = document.createElement('div');
-    parent.className = 'chibiPoint_timer';
-    $(root).append(parent);
-    return parent;
-  }
-  
-  function makeKeyCount(root) {
-    var parent = document.createElement('div');
-    parent.className = 'chibiPoint_keyCount';
-    $(root).append(parent);
-    return parent;
-  }
-  
-  function makeGridContainer(root) {
-    var parent = document.createElement('div');
-    parent.className = 'chibiPoint_gridContainer chibiPoint_hiddenGridContainer';
-    $(root).append(parent);
-    return parent;
-  }
-  
   function createGrid(root) {
     var numpadMappings = birchlabs.numpadMappings;
     
@@ -789,23 +663,7 @@ define(["lib/jquery-2.1.0.min", "lib/within", "lib/Blob", "lib/FileSaver", "trac
   }
   
   function clickOrFocus(element) {
-    var justFocus = {//"A":true,
-                         "INPUT":true,
-                         "TEXTAREA":true,
-                         "SELECT":true,
-                         "BUTTON":true//,
-                         //"output":true,
-                         //"command":true,
-                         //"kbd":true
-                         };
-    
-    if (justFocus[element.nodeName]) {
-      element.focus();
-    } else {
-      evaluatorWriteState(element);
-      element.click();
-      element.focus();
-    }
+    evaler.clickOrFocus(element);
     closeGrid();
   }
   
@@ -850,7 +708,7 @@ define(["lib/jquery-2.1.0.min", "lib/within", "lib/Blob", "lib/FileSaver", "trac
   function shortcut() {
     if (!birchlabs.evaluateTabMode) {
       toggleGrid();
-      evaluatorIncrementKeys("Cmd_K");
+      evaler.evaluatorIncrementKeys("Cmd_K");
     }
   }
   

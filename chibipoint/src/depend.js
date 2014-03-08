@@ -54,7 +54,7 @@ if (chrome.extension != undefined) {
   url = chrome.extension.getURL("/src/");
 }
 
-require({ baseUrl:url  }, ["lib/jquery-2.1.0.min", "lib/within", "lib/Blob", "lib/FileSaver", "flyoutworker", "test", "trace", "lookup", "testonly", "setup", "Grid", "Crosshairs", "Flyout"], function ($, within, blob, saver, flyoutworker, test, trace, lookup, testonly, setup, gridclass, crosshairclass, flyout) {
+require({ baseUrl:url  }, ["lib/jquery-2.1.0.min", "lib/within", "lib/Blob", "lib/FileSaver", "evaluator", "test", "trace", "lookup", "testonly", "setup", "Grid", "Crosshairs", "Flyout"], function ($, within, blob, saver, evaluator, test, trace, lookup, testonly, setup, gridclass, crosshairclass, flyout) {
   // default namespace
   window.birchlabs = {};
  
