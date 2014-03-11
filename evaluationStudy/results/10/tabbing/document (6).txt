@@ -1,0 +1,263 @@
+page: http://www.megatokyo.com/
+ clicked: http://megatokyo.com/archive.php
+ startTime: 1394461406102
+ endTime: 1394461415470
+ duration: 9368
+ durationHuman: 9s 368 ms
+
+ trueBegin: 1394461187096
+ trueBeginDate: 3/10/2014 2:19:47 PM
+ thinkDuration: 219006
+ thinkDurationHuman: 3min 39s 6 ms
+ wholeDuration: 228374
+ wholeDurationHuman: 3min 48s 374 ms
+
+ startDate: 3/10/2014 2:23:26 PM
+ endDate: 3/10/2014 2:23:35 PM
+
+ times: 1394461406102,1394461406941,1394461407254,1394461407446,1394461407629,1394461407813,1394461407990,1394461408189,1394461408389,1394461408589,1394461408878,1394461409214,1394461410142,1394461411230,1394461411437,1394461411645,1394461411875,1394461412334,1394461412534,1394461412726,1394461413054,1394461413558,1394461415470,
+ timesHuman: 3/10/2014 2:23:26 PM, 3/10/2014 2:23:26 PM, 3/10/2014 2:23:27 PM, 3/10/2014 2:23:27 PM, 3/10/2014 2:23:27 PM, 3/10/2014 2:23:27 PM, 3/10/2014 2:23:27 PM, 3/10/2014 2:23:28 PM, 3/10/2014 2:23:28 PM, 3/10/2014 2:23:28 PM, 3/10/2014 2:23:28 PM, 3/10/2014 2:23:29 PM, 3/10/2014 2:23:30 PM, 3/10/2014 2:23:31 PM, 3/10/2014 2:23:31 PM, 3/10/2014 2:23:31 PM, 3/10/2014 2:23:31 PM, 3/10/2014 2:23:32 PM, 3/10/2014 2:23:32 PM, 3/10/2014 2:23:32 PM, 3/10/2014 2:23:33 PM, 3/10/2014 2:23:33 PM, 3/10/2014 2:23:35 PM, 
+
+ timeDeltas: 0,839,313,192,183,184,177,199,200,200,289,336,928,1088,207,208,230,459,200,192,328,504,1912,
+ timeDeltasHuman: 0 ms, 839 ms, 313 ms, 192 ms, 183 ms, 184 ms, 177 ms, 199 ms, 200 ms, 200 ms, 289 ms, 336 ms, 928 ms, 1s 88 ms, 207 ms, 208 ms, 230 ms, 459 ms, 200 ms, 192 ms, 328 ms, 504 ms, 1s 912 ms, 
+
+ keyCount: 23
+ keys: 9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,13,
+
+ CHIBIPOINT ON: false
+ FLYOUTS ON: false
+
+Clicked.. 
+ hash: 
+ search: 
+ pathname: /archive.php
+ port: 
+ hostname: megatokyo.com
+ host: megatokyo.com
+ password: 
+ username: 
+ protocol: http:
+ origin: http://megatokyo.com
+ href: http://megatokyo.com/archive.php
+ text: Archives
+ type: 
+ target: 
+ shape: 
+ rev: 
+ rel: 
+ ping: 
+ name: 
+ hreflang: 
+ download: 
+ coords: 
+ charset: 
+ inputMethodContext: [object InputMethodContext]
+ onwaiting: null
+ onvolumechange: null
+ ontimeupdate: null
+ onsuspend: null
+ onsubmit: null
+ onstalled: null
+ onshow: null
+ onselect: null
+ onseeking: null
+ onseeked: null
+ onscroll: null
+ onreset: null
+ onratechange: null
+ onprogress: null
+ onplaying: null
+ onplay: null
+ onpause: null
+ onmousewheel: null
+ onmouseup: null
+ onmouseover: null
+ onmouseout: null
+ onmousemove: null
+ onmouseleave: null
+ onmouseenter: null
+ onmousedown: null
+ onloadstart: null
+ onloadedmetadata: null
+ onloadeddata: null
+ onload: null
+ onkeyup: null
+ onkeypress: null
+ onkeydown: null
+ oninvalid: null
+ oninput: null
+ onfocus: null
+ onerror: null
+ onended: null
+ onemptied: null
+ ondurationchange: null
+ ondrop: null
+ ondragstart: null
+ ondragover: null
+ ondragleave: null
+ ondragenter: null
+ ondragend: null
+ ondrag: null
+ ondblclick: null
+ oncuechange: null
+ oncontextmenu: null
+ onclose: null
+ onclick: null
+ onchange: null
+ oncanplaythrough: null
+ oncanplay: null
+ oncancel: null
+ onblur: null
+ onabort: null
+ spellcheck: true
+ isContentEditable: false
+ contentEditable: inherit
+ outerText: Archives
+ innerText: Archives
+ accessKey: 
+ hidden: false
+ webkitdropzone: 
+ draggable: true
+ tabIndex: 0
+ dir: 
+ translate: true
+ lang: 
+ title: 
+ webkitRegionOverset: undefined
+ shadowRoot: null
+ pseudo: 
+ childElementCount: 0
+ lastElementChild: null
+ firstElementChild: null
+ children: [object HTMLCollection]
+ nextElementSibling: null
+ previousElementSibling: null
+ onwheel: null
+ onwebkitfullscreenerror: null
+ onwebkitfullscreenchange: null
+ onselectstart: null
+ onsearch: null
+ onpaste: null
+ oncut: null
+ oncopy: null
+ onbeforepaste: null
+ onbeforecut: null
+ onbeforecopy: null
+ webkitShadowRoot: null
+ webkitPseudo: 
+ dataset: [object DOMStringMap]
+ classList: 
+ className: 
+ outerHTML: <a href="archive.php">Archives</a>
+ innerHTML: Archives
+ scrollHeight: 0
+ scrollWidth: 0
+ scrollTop: 0
+ scrollLeft: 0
+ clientHeight: 0
+ clientWidth: 0
+ clientTop: 0
+ clientLeft: 0
+ offsetParent: [object HTMLDivElement]
+ offsetHeight: 16
+ offsetWidth: 56
+ offsetTop: 1085
+ offsetLeft: 623
+ localName: a
+ prefix: null
+ namespaceURI: http://www.w3.org/1999/xhtml
+ id: 
+ style: [object CSSStyleDeclaration]
+ attributes: [object NamedNodeMap]
+ tagName: A
+ parentElement: [object HTMLLIElement]
+ textContent: Archives
+ baseURI: http://megatokyo.com/
+ ownerDocument: [object HTMLDocument]
+ nextSibling: null
+ previousSibling: null
+ lastChild: [object Text]
+ firstChild: [object Text]
+ childNodes: [object NodeList]
+ parentNode: [object HTMLLIElement]
+ nodeType: 1
+ nodeValue: null
+ nodeName: A
+ insertAdjacentText: function insertAdjacentText() { [native code] }
+ click: function click() { [native code] }
+ insertAdjacentElement: function insertAdjacentElement() { [native code] }
+ getAttribute: function getAttribute() { [native code] }
+ setAttribute: function setAttribute() { [native code] }
+ removeAttribute: function removeAttribute() { [native code] }
+ getAttributeNode: function getAttributeNode() { [native code] }
+ getElementsByTagName: function getElementsByTagName() { [native code] }
+ hasAttributes: function hasAttributes() { [native code] }
+ getAttributeNS: function getAttributeNS() { [native code] }
+ setAttributeNS: function setAttributeNS() { [native code] }
+ removeAttributeNS: function removeAttributeNS() { [native code] }
+ getElementsByTagNameNS: function getElementsByTagNameNS() { [native code] }
+ getAttributeNodeNS: function getAttributeNodeNS() { [native code] }
+ hasAttribute: function hasAttribute() { [native code] }
+ hasAttributeNS: function hasAttributeNS() { [native code] }
+ focus: function focus() { [native code] }
+ blur: function blur() { [native code] }
+ scrollIntoView: function scrollIntoView() { [native code] }
+ scrollIntoViewIfNeeded: function scrollIntoViewIfNeeded() { [native code] }
+ scrollByLines: function scrollByLines() { [native code] }
+ scrollByPages: function scrollByPages() { [native code] }
+ getElementsByClassName: function getElementsByClassName() { [native code] }
+ insertAdjacentHTML: function insertAdjacentHTML() { [native code] }
+ querySelector: function querySelector() { [native code] }
+ querySelectorAll: function querySelectorAll() { [native code] }
+ webkitMatchesSelector: function webkitMatchesSelector() { [native code] }
+ webkitCreateShadowRoot: function webkitCreateShadowRoot() { [native code] }
+ getClientRects: function getClientRects() { [native code] }
+ getBoundingClientRect: function getBoundingClientRect() { [native code] }
+ webkitRequestPointerLock: function webkitRequestPointerLock() { [native code] }
+ remove: function remove() { [native code] }
+ ALLOW_KEYBOARD_INPUT: 1
+ setAttributeNode: function setAttributeNode() { [native code] }
+ removeAttributeNode: function removeAttributeNode() { [native code] }
+ setAttributeNodeNS: function setAttributeNodeNS() { [native code] }
+ createShadowRoot: function createShadowRoot() { [native code] }
+ getDestinationInsertionPoints: function getDestinationInsertionPoints() { [native code] }
+ webkitRequestFullScreen: function webkitRequestFullScreen() { [native code] }
+ webkitRequestFullscreen: function webkitRequestFullscreen() { [native code] }
+ webkitGetRegionFlowRanges: function webkitGetRegionFlowRanges() { [native code] }
+ animate: function animate() { [native code] }
+ insertBefore: function insertBefore() { [native code] }
+ replaceChild: function replaceChild() { [native code] }
+ removeChild: function removeChild() { [native code] }
+ appendChild: function appendChild() { [native code] }
+ hasChildNodes: function hasChildNodes() { [native code] }
+ cloneNode: function cloneNode() { [native code] }
+ normalize: function normalize() { [native code] }
+ isSupported: function isSupported() { [native code] }
+ lookupPrefix: function lookupPrefix() { [native code] }
+ isDefaultNamespace: function isDefaultNamespace() { [native code] }
+ lookupNamespaceURI: function lookupNamespaceURI() { [native code] }
+ ELEMENT_NODE: 1
+ ATTRIBUTE_NODE: 2
+ TEXT_NODE: 3
+ CDATA_SECTION_NODE: 4
+ ENTITY_REFERENCE_NODE: 5
+ ENTITY_NODE: 6
+ PROCESSING_INSTRUCTION_NODE: 7
+ COMMENT_NODE: 8
+ DOCUMENT_NODE: 9
+ DOCUMENT_TYPE_NODE: 10
+ DOCUMENT_FRAGMENT_NODE: 11
+ NOTATION_NODE: 12
+ DOCUMENT_POSITION_DISCONNECTED: 1
+ DOCUMENT_POSITION_PRECEDING: 2
+ DOCUMENT_POSITION_FOLLOWING: 4
+ DOCUMENT_POSITION_CONTAINS: 8
+ DOCUMENT_POSITION_CONTAINED_BY: 16
+ DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC: 32
+ isSameNode: function isSameNode() { [native code] }
+ isEqualNode: function isEqualNode() { [native code] }
+ compareDocumentPosition: function compareDocumentPosition() { [native code] }
+ contains: function contains() { [native code] }
+ addEventListener: function addEventListener() { [native code] }
+ removeEventListener: function removeEventListener() { [native code] }
+ dispatchEvent: function dispatchEvent() { [native code] }

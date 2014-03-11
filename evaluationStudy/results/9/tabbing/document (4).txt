@@ -1,0 +1,302 @@
+page: http://www.youtube.com/results?search_query=piano&sm=3
+ clicked: http://www.youtube.com/watch?v=vCYk9CRx0g8
+ startTime: 1394450604086
+ endTime: 1394450614764
+ duration: 10678
+ durationHuman: 10s 678 ms
+
+ trueBegin: 1394450529660
+ trueBeginDate: 3/10/2014 11:22:09 AM
+ thinkDuration: 74426
+ thinkDurationHuman: 1min 14s 426 ms
+ wholeDuration: 85104
+ wholeDurationHuman: 1min 25s 104 ms
+
+ startDate: 3/10/2014 11:23:24 AM
+ endDate: 3/10/2014 11:23:34 AM
+
+ times: 1394450604086,1394450604669,1394450605196,1394450605653,1394450606100,1394450606996,1394450608268,1394450608708,1394450608908,1394450609285,1394450609460,1394450609628,1394450609812,1394450609988,1394450610156,1394450610356,1394450610548,1394450610732,1394450610900,1394450611204,1394450611420,1394450611596,1394450611788,1394450611988,1394450612828,1394450614764,
+ timesHuman: 3/10/2014 11:23:24 AM, 3/10/2014 11:23:24 AM, 3/10/2014 11:23:25 AM, 3/10/2014 11:23:25 AM, 3/10/2014 11:23:26 AM, 3/10/2014 11:23:26 AM, 3/10/2014 11:23:28 AM, 3/10/2014 11:23:28 AM, 3/10/2014 11:23:28 AM, 3/10/2014 11:23:29 AM, 3/10/2014 11:23:29 AM, 3/10/2014 11:23:29 AM, 3/10/2014 11:23:29 AM, 3/10/2014 11:23:29 AM, 3/10/2014 11:23:30 AM, 3/10/2014 11:23:30 AM, 3/10/2014 11:23:30 AM, 3/10/2014 11:23:30 AM, 3/10/2014 11:23:30 AM, 3/10/2014 11:23:31 AM, 3/10/2014 11:23:31 AM, 3/10/2014 11:23:31 AM, 3/10/2014 11:23:31 AM, 3/10/2014 11:23:31 AM, 3/10/2014 11:23:32 AM, 3/10/2014 11:23:34 AM, 
+
+ timeDeltas: 0,583,527,457,447,896,1272,440,200,377,175,168,184,176,168,200,192,184,168,304,216,176,192,200,840,1936,
+ timeDeltasHuman: 0 ms, 583 ms, 527 ms, 457 ms, 447 ms, 896 ms, 1s 272 ms, 440 ms, 200 ms, 377 ms, 175 ms, 168 ms, 184 ms, 176 ms, 168 ms, 200 ms, 192 ms, 184 ms, 168 ms, 304 ms, 216 ms, 176 ms, 192 ms, 200 ms, 840 ms, 1s 936 ms, 
+
+ keyCount: 26
+ keys: 9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,13,
+
+ CHIBIPOINT ON: false
+ FLYOUTS ON: false
+
+Clicked.. 
+ hash: 
+ search: ?v=vCYk9CRx0g8
+ pathname: /watch
+ port: 
+ hostname: www.youtube.com
+ host: www.youtube.com
+ password: 
+ username: 
+ protocol: http:
+ origin: http://www.youtube.com
+ href: http://www.youtube.com/watch?v=vCYk9CRx0g8
+ text:  1:06:52  
+ type: 
+ target: 
+ shape: 
+ rev: 
+ rel: 
+ ping: 
+ name: 
+ hreflang: 
+ download: 
+ coords: 
+ charset: 
+ inputMethodContext: [object InputMethodContext]
+ onwaiting: null
+ onvolumechange: null
+ ontimeupdate: null
+ onsuspend: null
+ onsubmit: null
+ onstalled: null
+ onshow: null
+ onselect: null
+ onseeking: null
+ onseeked: null
+ onscroll: null
+ onreset: null
+ onratechange: null
+ onprogress: null
+ onplaying: null
+ onplay: null
+ onpause: null
+ onmousewheel: null
+ onmouseup: null
+ onmouseover: null
+ onmouseout: null
+ onmousemove: null
+ onmouseleave: null
+ onmouseenter: null
+ onmousedown: null
+ onloadstart: null
+ onloadedmetadata: null
+ onloadeddata: null
+ onload: null
+ onkeyup: null
+ onkeypress: null
+ onkeydown: null
+ oninvalid: null
+ oninput: null
+ onfocus: null
+ onerror: null
+ onended: null
+ onemptied: null
+ ondurationchange: null
+ ondrop: null
+ ondragstart: null
+ ondragover: null
+ ondragleave: null
+ ondragenter: null
+ ondragend: null
+ ondrag: null
+ ondblclick: null
+ oncuechange: null
+ oncontextmenu: null
+ onclose: null
+ onclick: null
+ onchange: null
+ oncanplaythrough: null
+ oncanplay: null
+ oncancel: null
+ onblur: null
+ onabort: null
+ spellcheck: true
+ isContentEditable: false
+ contentEditable: inherit
+ outerText:  1:06:52  
+ innerText:  1:06:52  
+ accessKey: 
+ hidden: false
+ webkitdropzone: 
+ draggable: true
+ tabIndex: 0
+ dir: 
+ translate: true
+ lang: 
+ title: 
+ webkitRegionOverset: undefined
+ shadowRoot: null
+ pseudo: 
+ childElementCount: 3
+ lastElementChild: [object HTMLButtonElement]
+ firstElementChild: [object HTMLSpanElement]
+ children: [object HTMLCollection]
+ nextElementSibling: null
+ previousElementSibling: null
+ onwheel: null
+ onwebkitfullscreenerror: null
+ onwebkitfullscreenchange: null
+ onselectstart: null
+ onsearch: null
+ onpaste: null
+ oncut: null
+ oncopy: null
+ onbeforepaste: null
+ onbeforecut: null
+ onbeforecopy: null
+ webkitShadowRoot: null
+ webkitPseudo: 
+ dataset: [object DOMStringMap]
+ classList: ux-thumb-wrap yt-uix-sessionlink contains-addto spf-link
+ className: ux-thumb-wrap yt-uix-sessionlink contains-addto spf-link
+ outerHTML: <a href="/watch?v=vCYk9CRx0g8" class="ux-thumb-wrap yt-uix-sessionlink contains-addto spf-link" data-sessionlink="ei=qaAdU-faJYrE8gO3_YCgAw&amp;ved=CAUQwBs">    <span class="video-thumb  yt-thumb yt-thumb-185">
+      <span class="yt-thumb-default">
+        <span class="yt-thumb-clip">
+          <img alt="Thumbnail" src="//i1.ytimg.com/vi/vCYk9CRx0g8/mqdefault.jpg" width="185">
+          <span class="vertical-align"></span>
+        </span>
+      </span>
+    </span>
+    <span class="video-time">1:06:52</span>
+
+
+  <button title="Watch Later" onclick=";return false;" type="button" class="addto-button video-actions spf-nolink hide-until-delayloaded addto-watch-later-button-sign-in yt-uix-button yt-uix-button-default yt-uix-button-size-small yt-uix-tooltip" data-video-ids="vCYk9CRx0g8" data-button-menu-id="shared-addto-watch-later-login" role="button"><span class="yt-uix-button-content">  <img src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" alt="Watch Later">
+ </span><img class="yt-uix-button-arrow" src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" alt="" title=""></button>
+</a>
+ innerHTML:     <span class="video-thumb  yt-thumb yt-thumb-185">
+      <span class="yt-thumb-default">
+        <span class="yt-thumb-clip">
+          <img alt="Thumbnail" src="//i1.ytimg.com/vi/vCYk9CRx0g8/mqdefault.jpg" width="185">
+          <span class="vertical-align"></span>
+        </span>
+      </span>
+    </span>
+    <span class="video-time">1:06:52</span>
+
+
+  <button title="Watch Later" onclick=";return false;" type="button" class="addto-button video-actions spf-nolink hide-until-delayloaded addto-watch-later-button-sign-in yt-uix-button yt-uix-button-default yt-uix-button-size-small yt-uix-tooltip" data-video-ids="vCYk9CRx0g8" data-button-menu-id="shared-addto-watch-later-login" role="button"><span class="yt-uix-button-content">  <img src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" alt="Watch Later">
+ </span><img class="yt-uix-button-arrow" src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" alt="" title=""></button>
+
+ scrollHeight: 104
+ scrollWidth: 185
+ scrollTop: 0
+ scrollLeft: 0
+ clientHeight: 104
+ clientWidth: 185
+ clientTop: 0
+ clientLeft: 0
+ offsetParent: [object HTMLOListElement]
+ offsetHeight: 104
+ offsetWidth: 185
+ offsetTop: 10
+ offsetLeft: 15
+ localName: a
+ prefix: null
+ namespaceURI: http://www.w3.org/1999/xhtml
+ id: 
+ style: [object CSSStyleDeclaration]
+ attributes: [object NamedNodeMap]
+ tagName: A
+ parentElement: [object HTMLDivElement]
+ textContent:     
+      
+        
+          
+          
+        
+      
+    
+    1:06:52
+
+
+    
+ 
+
+ baseURI: http://www.youtube.com/results?search_query=piano&sm=3
+ ownerDocument: [object HTMLDocument]
+ nextSibling: [object Text]
+ previousSibling: [object Text]
+ lastChild: [object Text]
+ firstChild: [object Text]
+ childNodes: [object NodeList]
+ parentNode: [object HTMLDivElement]
+ nodeType: 1
+ nodeValue: null
+ nodeName: A
+ insertAdjacentText: function insertAdjacentText() { [native code] }
+ click: function click() { [native code] }
+ insertAdjacentElement: function insertAdjacentElement() { [native code] }
+ getAttribute: function getAttribute() { [native code] }
+ setAttribute: function setAttribute() { [native code] }
+ removeAttribute: function removeAttribute() { [native code] }
+ getAttributeNode: function getAttributeNode() { [native code] }
+ getElementsByTagName: function getElementsByTagName() { [native code] }
+ hasAttributes: function hasAttributes() { [native code] }
+ getAttributeNS: function getAttributeNS() { [native code] }
+ setAttributeNS: function setAttributeNS() { [native code] }
+ removeAttributeNS: function removeAttributeNS() { [native code] }
+ getElementsByTagNameNS: function getElementsByTagNameNS() { [native code] }
+ getAttributeNodeNS: function getAttributeNodeNS() { [native code] }
+ hasAttribute: function hasAttribute() { [native code] }
+ hasAttributeNS: function hasAttributeNS() { [native code] }
+ focus: function focus() { [native code] }
+ blur: function blur() { [native code] }
+ scrollIntoView: function scrollIntoView() { [native code] }
+ scrollIntoViewIfNeeded: function scrollIntoViewIfNeeded() { [native code] }
+ scrollByLines: function scrollByLines() { [native code] }
+ scrollByPages: function scrollByPages() { [native code] }
+ getElementsByClassName: function getElementsByClassName() { [native code] }
+ insertAdjacentHTML: function insertAdjacentHTML() { [native code] }
+ querySelector: function querySelector() { [native code] }
+ querySelectorAll: function querySelectorAll() { [native code] }
+ webkitMatchesSelector: function webkitMatchesSelector() { [native code] }
+ webkitCreateShadowRoot: function webkitCreateShadowRoot() { [native code] }
+ getClientRects: function getClientRects() { [native code] }
+ getBoundingClientRect: function getBoundingClientRect() { [native code] }
+ webkitRequestPointerLock: function webkitRequestPointerLock() { [native code] }
+ remove: function remove() { [native code] }
+ ALLOW_KEYBOARD_INPUT: 1
+ setAttributeNode: function setAttributeNode() { [native code] }
+ removeAttributeNode: function removeAttributeNode() { [native code] }
+ setAttributeNodeNS: function setAttributeNodeNS() { [native code] }
+ createShadowRoot: function createShadowRoot() { [native code] }
+ getDestinationInsertionPoints: function getDestinationInsertionPoints() { [native code] }
+ webkitRequestFullScreen: function webkitRequestFullScreen() { [native code] }
+ webkitRequestFullscreen: function webkitRequestFullscreen() { [native code] }
+ webkitGetRegionFlowRanges: function webkitGetRegionFlowRanges() { [native code] }
+ animate: function animate() { [native code] }
+ insertBefore: function insertBefore() { [native code] }
+ replaceChild: function replaceChild() { [native code] }
+ removeChild: function removeChild() { [native code] }
+ appendChild: function appendChild() { [native code] }
+ hasChildNodes: function hasChildNodes() { [native code] }
+ cloneNode: function cloneNode() { [native code] }
+ normalize: function normalize() { [native code] }
+ isSupported: function isSupported() { [native code] }
+ lookupPrefix: function lookupPrefix() { [native code] }
+ isDefaultNamespace: function isDefaultNamespace() { [native code] }
+ lookupNamespaceURI: function lookupNamespaceURI() { [native code] }
+ ELEMENT_NODE: 1
+ ATTRIBUTE_NODE: 2
+ TEXT_NODE: 3
+ CDATA_SECTION_NODE: 4
+ ENTITY_REFERENCE_NODE: 5
+ ENTITY_NODE: 6
+ PROCESSING_INSTRUCTION_NODE: 7
+ COMMENT_NODE: 8
+ DOCUMENT_NODE: 9
+ DOCUMENT_TYPE_NODE: 10
+ DOCUMENT_FRAGMENT_NODE: 11
+ NOTATION_NODE: 12
+ DOCUMENT_POSITION_DISCONNECTED: 1
+ DOCUMENT_POSITION_PRECEDING: 2
+ DOCUMENT_POSITION_FOLLOWING: 4
+ DOCUMENT_POSITION_CONTAINS: 8
+ DOCUMENT_POSITION_CONTAINED_BY: 16
+ DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC: 32
+ isSameNode: function isSameNode() { [native code] }
+ isEqualNode: function isEqualNode() { [native code] }
+ compareDocumentPosition: function compareDocumentPosition() { [native code] }
+ contains: function contains() { [native code] }
+ addEventListener: function addEventListener() { [native code] }
+ removeEventListener: function removeEventListener() { [native code] }
+ dispatchEvent: function dispatchEvent() { [native code] }

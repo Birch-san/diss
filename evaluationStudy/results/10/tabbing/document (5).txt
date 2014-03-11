@@ -1,0 +1,269 @@
+page: http://www.amazon.co.uk/s/ref=nb_sb_noss_2?url=search-alias%3Daps&field-keywords=pillow&rh=i%3Aaps%2Ck%3Apillow
+ clicked: http://www.amazon.co.uk/Polycotton-Hollowfibre-Non-Allergenic-Pillows-Pack/dp/B0029TA2LM/ref=sr_1_1?ie=UTF8&qid=1394461185&sr=8-1&keywords=pillow
+ startTime: 1394461315999
+ endTime: 1394461370790
+ duration: 54791
+ durationHuman: 54s 791 ms
+
+ trueBegin: 1394461187470
+ trueBeginDate: 3/10/2014 2:19:47 PM
+ thinkDuration: 128529
+ thinkDurationHuman: 2min 8s 529 ms
+ wholeDuration: 183320
+ wholeDurationHuman: 3min 3s 320 ms
+
+ startDate: 3/10/2014 2:21:55 PM
+ endDate: 3/10/2014 2:22:50 PM
+
+ times: 1394461315999,1394461316499,1394461316583,1394461316666,1394461316750,1394461316834,1394461316918,1394461317003,1394461317087,1394461317171,1394461317256,1394461317621,1394461317854,1394461318118,1394461318413,1394461318765,1394461319141,1394461319621,1394461320134,1394461320573,1394461321074,1394461321158,1394461321242,1394461321326,1394461321410,1394461321495,1394461321579,1394461321663,1394461321748,1394461321832,1394461321916,1394461322000,1394461322084,1394461322169,1394461322253,1394461322338,1394461322422,1394461322506,1394461322591,1394461322675,1394461322758,1394461322842,1394461322925,1394461323012,1394461323097,1394461323181,1394461323597,1394461324061,1394461324562,1394461324647,1394461324731,1394461324815,1394461324900,1394461324983,1394461325067,1394461325245,1394461325746,1394461325830,1394461325914,1394461325999,1394461326083,1394461326166,1394461326517,1394461326829,1394461327413,1394461327741,1394461328005,1394461328245,1394461328469,1394461328693,1394461328909,1394461329413,1394461330269,1394461330709,1394461330949,1394461331213,1394461331477,1394461331717,1394461333622,1394461334037,1394461334341,1394461334581,1394461334821,1394461335262,1394461335550,1394461335797,1394461336046,1394461336309,1394461336597,1394461337302,1394461337606,1394461337821,1394461338037,1394461338477,1394461338693,1394461338902,1394461339109,1394461339342,1394461339605,1394461339853,1394461340110,1394461340350,1394461341509,1394461341846,1394461342078,1394461342301,1394461342517,1394461342733,1394461342950,1394461343173,1394461343381,1394461343590,1394461343821,1394461344917,1394461345166,1394461345381,1394461345598,1394461345806,1394461346022,1394461346229,1394461346445,1394461346646,1394461346845,1394461347062,1394461347262,1394461347470,1394461347685,1394461351397,1394461356942,1394461359062,1394461360030,1394461361349,1394461364150,1394461365181,1394461366510,1394461367085,1394461368533,1394461370790,
+ timesHuman: 3/10/2014 2:21:55 PM, 3/10/2014 2:21:56 PM, 3/10/2014 2:21:56 PM, 3/10/2014 2:21:56 PM, 3/10/2014 2:21:56 PM, 3/10/2014 2:21:56 PM, 3/10/2014 2:21:56 PM, 3/10/2014 2:21:57 PM, 3/10/2014 2:21:57 PM, 3/10/2014 2:21:57 PM, 3/10/2014 2:21:57 PM, 3/10/2014 2:21:57 PM, 3/10/2014 2:21:57 PM, 3/10/2014 2:21:58 PM, 3/10/2014 2:21:58 PM, 3/10/2014 2:21:58 PM, 3/10/2014 2:21:59 PM, 3/10/2014 2:21:59 PM, 3/10/2014 2:22:00 PM, 3/10/2014 2:22:00 PM, 3/10/2014 2:22:01 PM, 3/10/2014 2:22:01 PM, 3/10/2014 2:22:01 PM, 3/10/2014 2:22:01 PM, 3/10/2014 2:22:01 PM, 3/10/2014 2:22:01 PM, 3/10/2014 2:22:01 PM, 3/10/2014 2:22:01 PM, 3/10/2014 2:22:01 PM, 3/10/2014 2:22:01 PM, 3/10/2014 2:22:01 PM, 3/10/2014 2:22:02 PM, 3/10/2014 2:22:02 PM, 3/10/2014 2:22:02 PM, 3/10/2014 2:22:02 PM, 3/10/2014 2:22:02 PM, 3/10/2014 2:22:02 PM, 3/10/2014 2:22:02 PM, 3/10/2014 2:22:02 PM, 3/10/2014 2:22:02 PM, 3/10/2014 2:22:02 PM, 3/10/2014 2:22:02 PM, 3/10/2014 2:22:02 PM, 3/10/2014 2:22:03 PM, 3/10/2014 2:22:03 PM, 3/10/2014 2:22:03 PM, 3/10/2014 2:22:03 PM, 3/10/2014 2:22:04 PM, 3/10/2014 2:22:04 PM, 3/10/2014 2:22:04 PM, 3/10/2014 2:22:04 PM, 3/10/2014 2:22:04 PM, 3/10/2014 2:22:04 PM, 3/10/2014 2:22:04 PM, 3/10/2014 2:22:05 PM, 3/10/2014 2:22:05 PM, 3/10/2014 2:22:05 PM, 3/10/2014 2:22:05 PM, 3/10/2014 2:22:05 PM, 3/10/2014 2:22:05 PM, 3/10/2014 2:22:06 PM, 3/10/2014 2:22:06 PM, 3/10/2014 2:22:06 PM, 3/10/2014 2:22:06 PM, 3/10/2014 2:22:07 PM, 3/10/2014 2:22:07 PM, 3/10/2014 2:22:08 PM, 3/10/2014 2:22:08 PM, 3/10/2014 2:22:08 PM, 3/10/2014 2:22:08 PM, 3/10/2014 2:22:08 PM, 3/10/2014 2:22:09 PM, 3/10/2014 2:22:10 PM, 3/10/2014 2:22:10 PM, 3/10/2014 2:22:10 PM, 3/10/2014 2:22:11 PM, 3/10/2014 2:22:11 PM, 3/10/2014 2:22:11 PM, 3/10/2014 2:22:13 PM, 3/10/2014 2:22:14 PM, 3/10/2014 2:22:14 PM, 3/10/2014 2:22:14 PM, 3/10/2014 2:22:14 PM, 3/10/2014 2:22:15 PM, 3/10/2014 2:22:15 PM, 3/10/2014 2:22:15 PM, 3/10/2014 2:22:16 PM, 3/10/2014 2:22:16 PM, 3/10/2014 2:22:16 PM, 3/10/2014 2:22:17 PM, 3/10/2014 2:22:17 PM, 3/10/2014 2:22:17 PM, 3/10/2014 2:22:18 PM, 3/10/2014 2:22:18 PM, 3/10/2014 2:22:18 PM, 3/10/2014 2:22:18 PM, 3/10/2014 2:22:19 PM, 3/10/2014 2:22:19 PM, 3/10/2014 2:22:19 PM, 3/10/2014 2:22:19 PM, 3/10/2014 2:22:20 PM, 3/10/2014 2:22:20 PM, 3/10/2014 2:22:21 PM, 3/10/2014 2:22:21 PM, 3/10/2014 2:22:22 PM, 3/10/2014 2:22:22 PM, 3/10/2014 2:22:22 PM, 3/10/2014 2:22:22 PM, 3/10/2014 2:22:22 PM, 3/10/2014 2:22:23 PM, 3/10/2014 2:22:23 PM, 3/10/2014 2:22:23 PM, 3/10/2014 2:22:23 PM, 3/10/2014 2:22:24 PM, 3/10/2014 2:22:25 PM, 3/10/2014 2:22:25 PM, 3/10/2014 2:22:25 PM, 3/10/2014 2:22:25 PM, 3/10/2014 2:22:26 PM, 3/10/2014 2:22:26 PM, 3/10/2014 2:22:26 PM, 3/10/2014 2:22:26 PM, 3/10/2014 2:22:26 PM, 3/10/2014 2:22:27 PM, 3/10/2014 2:22:27 PM, 3/10/2014 2:22:27 PM, 3/10/2014 2:22:27 PM, 3/10/2014 2:22:31 PM, 3/10/2014 2:22:36 PM, 3/10/2014 2:22:39 PM, 3/10/2014 2:22:40 PM, 3/10/2014 2:22:41 PM, 3/10/2014 2:22:44 PM, 3/10/2014 2:22:45 PM, 3/10/2014 2:22:46 PM, 3/10/2014 2:22:47 PM, 3/10/2014 2:22:48 PM, 3/10/2014 2:22:50 PM, 
+
+ timeDeltas: 0,500,84,83,84,84,84,85,84,84,85,365,233,264,295,352,376,480,513,439,501,84,84,84,84,85,84,84,85,84,84,84,84,85,84,85,84,84,85,84,83,84,83,87,85,84,416,464,501,85,84,84,85,83,84,178,501,84,84,85,84,83,351,312,584,328,264,240,224,224,216,504,856,440,240,264,264,240,1905,415,304,240,240,441,288,247,249,263,288,705,304,215,216,440,216,209,207,233,263,248,257,240,1159,337,232,223,216,216,217,223,208,209,231,1096,249,215,217,208,216,207,216,201,199,217,200,208,215,3712,5545,2120,968,1319,2801,1031,1329,575,1448,2257,
+ timeDeltasHuman: 0 ms, 500 ms, 84 ms, 83 ms, 84 ms, 84 ms, 84 ms, 85 ms, 84 ms, 84 ms, 85 ms, 365 ms, 233 ms, 264 ms, 295 ms, 352 ms, 376 ms, 480 ms, 513 ms, 439 ms, 501 ms, 84 ms, 84 ms, 84 ms, 84 ms, 85 ms, 84 ms, 84 ms, 85 ms, 84 ms, 84 ms, 84 ms, 84 ms, 85 ms, 84 ms, 85 ms, 84 ms, 84 ms, 85 ms, 84 ms, 83 ms, 84 ms, 83 ms, 87 ms, 85 ms, 84 ms, 416 ms, 464 ms, 501 ms, 85 ms, 84 ms, 84 ms, 85 ms, 83 ms, 84 ms, 178 ms, 501 ms, 84 ms, 84 ms, 85 ms, 84 ms, 83 ms, 351 ms, 312 ms, 584 ms, 328 ms, 264 ms, 240 ms, 224 ms, 224 ms, 216 ms, 504 ms, 856 ms, 440 ms, 240 ms, 264 ms, 264 ms, 240 ms, 1s 905 ms, 415 ms, 304 ms, 240 ms, 240 ms, 441 ms, 288 ms, 247 ms, 249 ms, 263 ms, 288 ms, 705 ms, 304 ms, 215 ms, 216 ms, 440 ms, 216 ms, 209 ms, 207 ms, 233 ms, 263 ms, 248 ms, 257 ms, 240 ms, 1s 159 ms, 337 ms, 232 ms, 223 ms, 216 ms, 216 ms, 217 ms, 223 ms, 208 ms, 209 ms, 231 ms, 1s 96 ms, 249 ms, 215 ms, 217 ms, 208 ms, 216 ms, 207 ms, 216 ms, 201 ms, 199 ms, 217 ms, 200 ms, 208 ms, 215 ms, 3s 712 ms, 5s 545 ms, 2s 120 ms, 968 ms, 1s 319 ms, 2s 801 ms, 1s 31 ms, 1s 329 ms, 575 ms, 1s 448 ms, 2s 257 ms, 
+
+ keyCount: 138
+ keys: 9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,9,9,9,9,9,13,
+
+ CHIBIPOINT ON: false
+ FLYOUTS ON: false
+
+Clicked.. 
+ hash: 
+ search: ?ie=UTF8&qid=1394461185&sr=8-1&keywords=pillow
+ pathname: /Polycotton-Hollowfibre-Non-Allergenic-Pillows-Pack/dp/B0029TA2LM/ref=sr_1_1
+ port: 
+ hostname: www.amazon.co.uk
+ host: www.amazon.co.uk
+ password: 
+ username: 
+ protocol: http:
+ origin: http://www.amazon.co.uk
+ href: http://www.amazon.co.uk/Polycotton-Hollowfibre-Non-Allergenic-Pillows-Pack/dp/B0029TA2LM/ref=sr_1_1?ie=UTF8&qid=1394461185&sr=8-1&keywords=pillow
+ text: 
+ type: 
+ target: 
+ shape: 
+ rev: 
+ rel: 
+ ping: 
+ name: 
+ hreflang: 
+ download: 
+ coords: 
+ charset: 
+ inputMethodContext: [object InputMethodContext]
+ onwaiting: null
+ onvolumechange: null
+ ontimeupdate: null
+ onsuspend: null
+ onsubmit: null
+ onstalled: null
+ onshow: null
+ onselect: null
+ onseeking: null
+ onseeked: null
+ onscroll: null
+ onreset: null
+ onratechange: null
+ onprogress: null
+ onplaying: null
+ onplay: null
+ onpause: null
+ onmousewheel: null
+ onmouseup: null
+ onmouseover: null
+ onmouseout: null
+ onmousemove: null
+ onmouseleave: null
+ onmouseenter: null
+ onmousedown: null
+ onloadstart: null
+ onloadedmetadata: null
+ onloadeddata: null
+ onload: null
+ onkeyup: null
+ onkeypress: null
+ onkeydown: null
+ oninvalid: null
+ oninput: null
+ onfocus: null
+ onerror: null
+ onended: null
+ onemptied: null
+ ondurationchange: null
+ ondrop: null
+ ondragstart: null
+ ondragover: null
+ ondragleave: null
+ ondragenter: null
+ ondragend: null
+ ondrag: null
+ ondblclick: null
+ oncuechange: null
+ oncontextmenu: null
+ onclose: null
+ onclick: null
+ onchange: null
+ oncanplaythrough: null
+ oncanplay: null
+ oncancel: null
+ onblur: null
+ onabort: null
+ spellcheck: true
+ isContentEditable: false
+ contentEditable: inherit
+ outerText: 
+ innerText: 
+ accessKey: 
+ hidden: false
+ webkitdropzone: 
+ draggable: true
+ tabIndex: 0
+ dir: 
+ translate: true
+ lang: 
+ title: 
+ webkitRegionOverset: undefined
+ shadowRoot: null
+ pseudo: 
+ childElementCount: 1
+ lastElementChild: [object HTMLDivElement]
+ firstElementChild: [object HTMLDivElement]
+ children: [object HTMLCollection]
+ nextElementSibling: null
+ previousElementSibling: null
+ onwheel: null
+ onwebkitfullscreenerror: null
+ onwebkitfullscreenchange: null
+ onselectstart: null
+ onsearch: null
+ onpaste: null
+ oncut: null
+ oncopy: null
+ onbeforepaste: null
+ onbeforecut: null
+ onbeforecopy: null
+ webkitShadowRoot: null
+ webkitPseudo: 
+ dataset: [object DOMStringMap]
+ classList: 
+ className: 
+ outerHTML: <a href="http://www.amazon.co.uk/Polycotton-Hollowfibre-Non-Allergenic-Pillows-Pack/dp/B0029TA2LM/ref=sr_1_1?ie=UTF8&amp;qid=1394461185&amp;sr=8-1&amp;keywords=pillow"><div class="imageBox">
+    <img onload="viewCompleteImageLoaded(this, new Date().getTime(), 16, false);" src="http://ecx.images-amazon.com/images/I/21-rb5G4heL._AA160_.jpg" class="productImage cfMarker" alt="Product Details">
+        </div></a>
+ innerHTML: <div class="imageBox">
+    <img onload="viewCompleteImageLoaded(this, new Date().getTime(), 16, false);" src="http://ecx.images-amazon.com/images/I/21-rb5G4heL._AA160_.jpg" class="productImage cfMarker" alt="Product Details">
+        </div>
+ scrollHeight: 0
+ scrollWidth: 0
+ scrollTop: 0
+ scrollLeft: 0
+ clientHeight: 0
+ clientWidth: 0
+ clientTop: 0
+ clientLeft: 0
+ offsetParent: [object HTMLDivElement]
+ offsetHeight: 13
+ offsetWidth: 160
+ offsetTop: 0
+ offsetLeft: 0
+ localName: a
+ prefix: null
+ namespaceURI: http://www.w3.org/1999/xhtml
+ id: 
+ style: [object CSSStyleDeclaration]
+ attributes: [object NamedNodeMap]
+ tagName: A
+ parentElement: [object HTMLDivElement]
+ textContent: 
+    
+        
+ baseURI: http://www.amazon.co.uk/s/ref=nb_sb_noss_2?url=search-alias%3Daps&field-keywords=pillow&rh=i%3Aaps%2Ck%3Apillow
+ ownerDocument: [object HTMLDocument]
+ nextSibling: null
+ previousSibling: [object Text]
+ lastChild: [object HTMLDivElement]
+ firstChild: [object HTMLDivElement]
+ childNodes: [object NodeList]
+ parentNode: [object HTMLDivElement]
+ nodeType: 1
+ nodeValue: null
+ nodeName: A
+ insertAdjacentText: function insertAdjacentText() { [native code] }
+ click: function click() { [native code] }
+ insertAdjacentElement: function insertAdjacentElement() { [native code] }
+ getAttribute: function getAttribute() { [native code] }
+ setAttribute: function setAttribute() { [native code] }
+ removeAttribute: function removeAttribute() { [native code] }
+ getAttributeNode: function getAttributeNode() { [native code] }
+ getElementsByTagName: function getElementsByTagName() { [native code] }
+ hasAttributes: function hasAttributes() { [native code] }
+ getAttributeNS: function getAttributeNS() { [native code] }
+ setAttributeNS: function setAttributeNS() { [native code] }
+ removeAttributeNS: function removeAttributeNS() { [native code] }
+ getElementsByTagNameNS: function getElementsByTagNameNS() { [native code] }
+ getAttributeNodeNS: function getAttributeNodeNS() { [native code] }
+ hasAttribute: function hasAttribute() { [native code] }
+ hasAttributeNS: function hasAttributeNS() { [native code] }
+ focus: function focus() { [native code] }
+ blur: function blur() { [native code] }
+ scrollIntoView: function scrollIntoView() { [native code] }
+ scrollIntoViewIfNeeded: function scrollIntoViewIfNeeded() { [native code] }
+ scrollByLines: function scrollByLines() { [native code] }
+ scrollByPages: function scrollByPages() { [native code] }
+ getElementsByClassName: function getElementsByClassName() { [native code] }
+ insertAdjacentHTML: function insertAdjacentHTML() { [native code] }
+ querySelector: function querySelector() { [native code] }
+ querySelectorAll: function querySelectorAll() { [native code] }
+ webkitMatchesSelector: function webkitMatchesSelector() { [native code] }
+ webkitCreateShadowRoot: function webkitCreateShadowRoot() { [native code] }
+ getClientRects: function getClientRects() { [native code] }
+ getBoundingClientRect: function getBoundingClientRect() { [native code] }
+ webkitRequestPointerLock: function webkitRequestPointerLock() { [native code] }
+ remove: function remove() { [native code] }
+ ALLOW_KEYBOARD_INPUT: 1
+ setAttributeNode: function setAttributeNode() { [native code] }
+ removeAttributeNode: function removeAttributeNode() { [native code] }
+ setAttributeNodeNS: function setAttributeNodeNS() { [native code] }
+ createShadowRoot: function createShadowRoot() { [native code] }
+ getDestinationInsertionPoints: function getDestinationInsertionPoints() { [native code] }
+ webkitRequestFullScreen: function webkitRequestFullScreen() { [native code] }
+ webkitRequestFullscreen: function webkitRequestFullscreen() { [native code] }
+ webkitGetRegionFlowRanges: function webkitGetRegionFlowRanges() { [native code] }
+ animate: function animate() { [native code] }
+ insertBefore: function insertBefore() { [native code] }
+ replaceChild: function replaceChild() { [native code] }
+ removeChild: function removeChild() { [native code] }
+ appendChild: function appendChild() { [native code] }
+ hasChildNodes: function hasChildNodes() { [native code] }
+ cloneNode: function cloneNode() { [native code] }
+ normalize: function normalize() { [native code] }
+ isSupported: function isSupported() { [native code] }
+ lookupPrefix: function lookupPrefix() { [native code] }
+ isDefaultNamespace: function isDefaultNamespace() { [native code] }
+ lookupNamespaceURI: function lookupNamespaceURI() { [native code] }
+ ELEMENT_NODE: 1
+ ATTRIBUTE_NODE: 2
+ TEXT_NODE: 3
+ CDATA_SECTION_NODE: 4
+ ENTITY_REFERENCE_NODE: 5
+ ENTITY_NODE: 6
+ PROCESSING_INSTRUCTION_NODE: 7
+ COMMENT_NODE: 8
+ DOCUMENT_NODE: 9
+ DOCUMENT_TYPE_NODE: 10
+ DOCUMENT_FRAGMENT_NODE: 11
+ NOTATION_NODE: 12
+ DOCUMENT_POSITION_DISCONNECTED: 1
+ DOCUMENT_POSITION_PRECEDING: 2
+ DOCUMENT_POSITION_FOLLOWING: 4
+ DOCUMENT_POSITION_CONTAINS: 8
+ DOCUMENT_POSITION_CONTAINED_BY: 16
+ DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC: 32
+ isSameNode: function isSameNode() { [native code] }
+ isEqualNode: function isEqualNode() { [native code] }
+ compareDocumentPosition: function compareDocumentPosition() { [native code] }
+ contains: function contains() { [native code] }
+ addEventListener: function addEventListener() { [native code] }
+ removeEventListener: function removeEventListener() { [native code] }
+ dispatchEvent: function dispatchEvent() { [native code] }

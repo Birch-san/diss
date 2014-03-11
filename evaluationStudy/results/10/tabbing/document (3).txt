@@ -1,0 +1,263 @@
+page: http://www.bath.ac.uk/library/subjects/comp-sci/
+ clicked: http://www.bath.ac.uk/library/subjects/comp-sci/web.html
+ startTime: 1394461265647
+ endTime: 1394461276165
+ duration: 10518
+ durationHuman: 10s 518 ms
+
+ trueBegin: 1394461187385
+ trueBeginDate: 3/10/2014 2:19:47 PM
+ thinkDuration: 78262
+ thinkDurationHuman: 1min 18s 262 ms
+ wholeDuration: 88780
+ wholeDurationHuman: 1min 28s 780 ms
+
+ startDate: 3/10/2014 2:21:05 PM
+ endDate: 3/10/2014 2:21:16 PM
+
+ times: 1394461265647,1394461265918,1394461266141,1394461266349,1394461266541,1394461266741,1394461266982,1394461267229,1394461267469,1394461267677,1394461267845,1394461268005,1394461268149,1394461268309,1394461268469,1394461268629,1394461269130,1394461269215,1394461269299,1394461269383,1394461269467,1394461269551,1394461269636,1394461269719,1394461269804,1394461269888,1394461269972,1394461270056,1394461270140,1394461270224,1394461270309,1394461270393,1394461270477,1394461270561,1394461270646,1394461270729,1394461270813,1394461270897,1394461270981,1394461271065,1394461271149,1394461271234,1394461271318,1394461271402,1394461271486,1394461271571,1394461271655,1394461271739,1394461271823,1394461271907,1394461271990,1394461272074,1394461272159,1394461272243,1394461272328,1394461272412,1394461272504,1394461272588,1394461272670,1394461272747,1394461272831,1394461272915,1394461272999,1394461273083,1394461273167,1394461273252,1394461273336,1394461273420,1394461273504,1394461273587,1394461273672,1394461273756,1394461273840,1394461274781,1394461275029,1394461275397,1394461276165,
+ timesHuman: 3/10/2014 2:21:05 PM, 3/10/2014 2:21:05 PM, 3/10/2014 2:21:06 PM, 3/10/2014 2:21:06 PM, 3/10/2014 2:21:06 PM, 3/10/2014 2:21:06 PM, 3/10/2014 2:21:06 PM, 3/10/2014 2:21:07 PM, 3/10/2014 2:21:07 PM, 3/10/2014 2:21:07 PM, 3/10/2014 2:21:07 PM, 3/10/2014 2:21:08 PM, 3/10/2014 2:21:08 PM, 3/10/2014 2:21:08 PM, 3/10/2014 2:21:08 PM, 3/10/2014 2:21:08 PM, 3/10/2014 2:21:09 PM, 3/10/2014 2:21:09 PM, 3/10/2014 2:21:09 PM, 3/10/2014 2:21:09 PM, 3/10/2014 2:21:09 PM, 3/10/2014 2:21:09 PM, 3/10/2014 2:21:09 PM, 3/10/2014 2:21:09 PM, 3/10/2014 2:21:09 PM, 3/10/2014 2:21:09 PM, 3/10/2014 2:21:09 PM, 3/10/2014 2:21:10 PM, 3/10/2014 2:21:10 PM, 3/10/2014 2:21:10 PM, 3/10/2014 2:21:10 PM, 3/10/2014 2:21:10 PM, 3/10/2014 2:21:10 PM, 3/10/2014 2:21:10 PM, 3/10/2014 2:21:10 PM, 3/10/2014 2:21:10 PM, 3/10/2014 2:21:10 PM, 3/10/2014 2:21:10 PM, 3/10/2014 2:21:10 PM, 3/10/2014 2:21:11 PM, 3/10/2014 2:21:11 PM, 3/10/2014 2:21:11 PM, 3/10/2014 2:21:11 PM, 3/10/2014 2:21:11 PM, 3/10/2014 2:21:11 PM, 3/10/2014 2:21:11 PM, 3/10/2014 2:21:11 PM, 3/10/2014 2:21:11 PM, 3/10/2014 2:21:11 PM, 3/10/2014 2:21:11 PM, 3/10/2014 2:21:11 PM, 3/10/2014 2:21:12 PM, 3/10/2014 2:21:12 PM, 3/10/2014 2:21:12 PM, 3/10/2014 2:21:12 PM, 3/10/2014 2:21:12 PM, 3/10/2014 2:21:12 PM, 3/10/2014 2:21:12 PM, 3/10/2014 2:21:12 PM, 3/10/2014 2:21:12 PM, 3/10/2014 2:21:12 PM, 3/10/2014 2:21:12 PM, 3/10/2014 2:21:12 PM, 3/10/2014 2:21:13 PM, 3/10/2014 2:21:13 PM, 3/10/2014 2:21:13 PM, 3/10/2014 2:21:13 PM, 3/10/2014 2:21:13 PM, 3/10/2014 2:21:13 PM, 3/10/2014 2:21:13 PM, 3/10/2014 2:21:13 PM, 3/10/2014 2:21:13 PM, 3/10/2014 2:21:13 PM, 3/10/2014 2:21:14 PM, 3/10/2014 2:21:15 PM, 3/10/2014 2:21:15 PM, 3/10/2014 2:21:16 PM, 
+
+ timeDeltas: 0,271,223,208,192,200,241,247,240,208,168,160,144,160,160,160,501,85,84,84,84,84,85,83,85,84,84,84,84,84,85,84,84,84,85,83,84,84,84,84,84,85,84,84,84,85,84,84,84,84,83,84,85,84,85,84,92,84,82,77,84,84,84,84,84,85,84,84,84,83,85,84,84,941,248,368,768,
+ timeDeltasHuman: 0 ms, 271 ms, 223 ms, 208 ms, 192 ms, 200 ms, 241 ms, 247 ms, 240 ms, 208 ms, 168 ms, 160 ms, 144 ms, 160 ms, 160 ms, 160 ms, 501 ms, 85 ms, 84 ms, 84 ms, 84 ms, 84 ms, 85 ms, 83 ms, 85 ms, 84 ms, 84 ms, 84 ms, 84 ms, 84 ms, 85 ms, 84 ms, 84 ms, 84 ms, 85 ms, 83 ms, 84 ms, 84 ms, 84 ms, 84 ms, 84 ms, 85 ms, 84 ms, 84 ms, 84 ms, 85 ms, 84 ms, 84 ms, 84 ms, 84 ms, 83 ms, 84 ms, 85 ms, 84 ms, 85 ms, 84 ms, 92 ms, 84 ms, 82 ms, 77 ms, 84 ms, 84 ms, 84 ms, 84 ms, 84 ms, 85 ms, 84 ms, 84 ms, 84 ms, 83 ms, 85 ms, 84 ms, 84 ms, 941 ms, 248 ms, 368 ms, 768 ms, 
+
+ keyCount: 77
+ keys: 9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,-9,-9,-9,13,
+
+ CHIBIPOINT ON: false
+ FLYOUTS ON: false
+
+Clicked.. 
+ hash: 
+ search: 
+ pathname: /library/subjects/comp-sci/web.html
+ port: 
+ hostname: www.bath.ac.uk
+ host: www.bath.ac.uk
+ password: 
+ username: 
+ protocol: http:
+ origin: http://www.bath.ac.uk
+ href: http://www.bath.ac.uk/library/subjects/comp-sci/web.html
+ text: Useful websites
+ type: 
+ target: _self
+ shape: 
+ rev: 
+ rel: 
+ ping: 
+ name: 
+ hreflang: 
+ download: 
+ coords: 
+ charset: 
+ inputMethodContext: [object InputMethodContext]
+ onwaiting: null
+ onvolumechange: null
+ ontimeupdate: null
+ onsuspend: null
+ onsubmit: null
+ onstalled: null
+ onshow: null
+ onselect: null
+ onseeking: null
+ onseeked: null
+ onscroll: null
+ onreset: null
+ onratechange: null
+ onprogress: null
+ onplaying: null
+ onplay: null
+ onpause: null
+ onmousewheel: null
+ onmouseup: null
+ onmouseover: null
+ onmouseout: null
+ onmousemove: null
+ onmouseleave: null
+ onmouseenter: null
+ onmousedown: null
+ onloadstart: null
+ onloadedmetadata: null
+ onloadeddata: null
+ onload: null
+ onkeyup: null
+ onkeypress: null
+ onkeydown: null
+ oninvalid: null
+ oninput: null
+ onfocus: null
+ onerror: null
+ onended: null
+ onemptied: null
+ ondurationchange: null
+ ondrop: null
+ ondragstart: null
+ ondragover: null
+ ondragleave: null
+ ondragenter: null
+ ondragend: null
+ ondrag: null
+ ondblclick: null
+ oncuechange: null
+ oncontextmenu: null
+ onclose: null
+ onclick: null
+ onchange: null
+ oncanplaythrough: null
+ oncanplay: null
+ oncancel: null
+ onblur: null
+ onabort: null
+ spellcheck: true
+ isContentEditable: false
+ contentEditable: inherit
+ outerText: Useful websites
+ innerText: Useful websites
+ accessKey: 
+ hidden: false
+ webkitdropzone: 
+ draggable: true
+ tabIndex: 0
+ dir: 
+ translate: true
+ lang: 
+ title: 
+ webkitRegionOverset: undefined
+ shadowRoot: null
+ pseudo: 
+ childElementCount: 1
+ lastElementChild: [object HTMLElement]
+ firstElementChild: [object HTMLElement]
+ children: [object HTMLCollection]
+ nextElementSibling: null
+ previousElementSibling: null
+ onwheel: null
+ onwebkitfullscreenerror: null
+ onwebkitfullscreenchange: null
+ onselectstart: null
+ onsearch: null
+ onpaste: null
+ oncut: null
+ oncopy: null
+ onbeforepaste: null
+ onbeforecut: null
+ onbeforecopy: null
+ webkitShadowRoot: null
+ webkitPseudo: 
+ dataset: [object DOMStringMap]
+ classList: 
+ className: 
+ outerHTML: <a target="_self" href="/library/subjects/comp-sci/web.html"><b>Useful websites</b></a>
+ innerHTML: <b>Useful websites</b>
+ scrollHeight: 0
+ scrollWidth: 0
+ scrollTop: 0
+ scrollLeft: 0
+ clientHeight: 0
+ clientWidth: 0
+ clientTop: 0
+ clientLeft: 0
+ offsetParent: [object HTMLTableCellElement]
+ offsetHeight: 21
+ offsetWidth: 114
+ offsetTop: 62
+ offsetLeft: 21
+ localName: a
+ prefix: null
+ namespaceURI: http://www.w3.org/1999/xhtml
+ id: 
+ style: [object CSSStyleDeclaration]
+ attributes: [object NamedNodeMap]
+ tagName: A
+ parentElement: [object HTMLLIElement]
+ textContent: Useful websites
+ baseURI: http://www.bath.ac.uk/library/subjects/comp-sci/
+ ownerDocument: [object HTMLDocument]
+ nextSibling: [object Text]
+ previousSibling: null
+ lastChild: [object HTMLElement]
+ firstChild: [object HTMLElement]
+ childNodes: [object NodeList]
+ parentNode: [object HTMLLIElement]
+ nodeType: 1
+ nodeValue: null
+ nodeName: A
+ insertAdjacentText: function insertAdjacentText() { [native code] }
+ click: function click() { [native code] }
+ insertAdjacentElement: function insertAdjacentElement() { [native code] }
+ getAttribute: function getAttribute() { [native code] }
+ setAttribute: function setAttribute() { [native code] }
+ removeAttribute: function removeAttribute() { [native code] }
+ getAttributeNode: function getAttributeNode() { [native code] }
+ getElementsByTagName: function getElementsByTagName() { [native code] }
+ hasAttributes: function hasAttributes() { [native code] }
+ getAttributeNS: function getAttributeNS() { [native code] }
+ setAttributeNS: function setAttributeNS() { [native code] }
+ removeAttributeNS: function removeAttributeNS() { [native code] }
+ getElementsByTagNameNS: function getElementsByTagNameNS() { [native code] }
+ getAttributeNodeNS: function getAttributeNodeNS() { [native code] }
+ hasAttribute: function hasAttribute() { [native code] }
+ hasAttributeNS: function hasAttributeNS() { [native code] }
+ focus: function focus() { [native code] }
+ blur: function blur() { [native code] }
+ scrollIntoView: function scrollIntoView() { [native code] }
+ scrollIntoViewIfNeeded: function scrollIntoViewIfNeeded() { [native code] }
+ scrollByLines: function scrollByLines() { [native code] }
+ scrollByPages: function scrollByPages() { [native code] }
+ getElementsByClassName: function getElementsByClassName() { [native code] }
+ insertAdjacentHTML: function insertAdjacentHTML() { [native code] }
+ querySelector: function querySelector() { [native code] }
+ querySelectorAll: function querySelectorAll() { [native code] }
+ webkitMatchesSelector: function webkitMatchesSelector() { [native code] }
+ webkitCreateShadowRoot: function webkitCreateShadowRoot() { [native code] }
+ getClientRects: function getClientRects() { [native code] }
+ getBoundingClientRect: function getBoundingClientRect() { [native code] }
+ webkitRequestPointerLock: function webkitRequestPointerLock() { [native code] }
+ remove: function remove() { [native code] }
+ ALLOW_KEYBOARD_INPUT: 1
+ setAttributeNode: function setAttributeNode() { [native code] }
+ removeAttributeNode: function removeAttributeNode() { [native code] }
+ setAttributeNodeNS: function setAttributeNodeNS() { [native code] }
+ createShadowRoot: function createShadowRoot() { [native code] }
+ getDestinationInsertionPoints: function getDestinationInsertionPoints() { [native code] }
+ webkitRequestFullScreen: function webkitRequestFullScreen() { [native code] }
+ webkitRequestFullscreen: function webkitRequestFullscreen() { [native code] }
+ webkitGetRegionFlowRanges: function webkitGetRegionFlowRanges() { [native code] }
+ animate: function animate() { [native code] }
+ insertBefore: function insertBefore() { [native code] }
+ replaceChild: function replaceChild() { [native code] }
+ removeChild: function removeChild() { [native code] }
+ appendChild: function appendChild() { [native code] }
+ hasChildNodes: function hasChildNodes() { [native code] }
+ cloneNode: function cloneNode() { [native code] }
+ normalize: function normalize() { [native code] }
+ isSupported: function isSupported() { [native code] }
+ lookupPrefix: function lookupPrefix() { [native code] }
+ isDefaultNamespace: function isDefaultNamespace() { [native code] }
+ lookupNamespaceURI: function lookupNamespaceURI() { [native code] }
+ ELEMENT_NODE: 1
+ ATTRIBUTE_NODE: 2
+ TEXT_NODE: 3
+ CDATA_SECTION_NODE: 4
+ ENTITY_REFERENCE_NODE: 5
+ ENTITY_NODE: 6
+ PROCESSING_INSTRUCTION_NODE: 7
+ COMMENT_NODE: 8
+ DOCUMENT_NODE: 9
+ DOCUMENT_TYPE_NODE: 10
+ DOCUMENT_FRAGMENT_NODE: 11
+ NOTATION_NODE: 12
+ DOCUMENT_POSITION_DISCONNECTED: 1
+ DOCUMENT_POSITION_PRECEDING: 2
+ DOCUMENT_POSITION_FOLLOWING: 4
+ DOCUMENT_POSITION_CONTAINS: 8
+ DOCUMENT_POSITION_CONTAINED_BY: 16
+ DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC: 32
+ isSameNode: function isSameNode() { [native code] }
+ isEqualNode: function isEqualNode() { [native code] }
+ compareDocumentPosition: function compareDocumentPosition() { [native code] }
+ contains: function contains() { [native code] }
+ addEventListener: function addEventListener() { [native code] }
+ removeEventListener: function removeEventListener() { [native code] }
+ dispatchEvent: function dispatchEvent() { [native code] }

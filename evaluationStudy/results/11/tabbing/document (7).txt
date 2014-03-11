@@ -1,0 +1,263 @@
+page: http://en.wikipedia.org/wiki/Computer
+ clicked: http://en.wikipedia.org/wiki/Computer#The_modern_computer
+ startTime: 1394466730676
+ endTime: 1394466753714
+ duration: 23038
+ durationHuman: 23s 38 ms
+
+ trueBegin: 1394466486794
+ trueBeginDate: 3/10/2014 3:48:06 PM
+ thinkDuration: 243882
+ thinkDurationHuman: 4min 3s 882 ms
+ wholeDuration: 266920
+ wholeDurationHuman: 4min 26s 920 ms
+
+ startDate: 3/10/2014 3:52:10 PM
+ endDate: 3/10/2014 3:52:33 PM
+
+ times: 1394466730676,1394466731242,1394466732603,1394466732794,1394466732930,1394466734050,1394466734551,1394466734635,1394466735009,1394466735307,1394466735506,1394466735738,1394466735906,1394466736074,1394466736234,1394466736402,1394466736554,1394466736722,1394466736882,1394466737050,1394466737298,1394466737842,1394466738065,1394466738393,1394466738649,1394466738849,1394466739049,1394466742378,1394466742601,1394466742842,1394466743218,1394466743450,1394466743650,1394466743842,1394466744026,1394466744226,1394466744465,1394466744754,1394466745026,1394466745281,1394466747714,1394466748114,1394466748378,1394466748586,1394466748770,1394466748914,1394466749050,1394466749330,1394466749830,1394466750034,1394466750234,1394466751882,1394466752130,1394466752490,1394466752706,1394466752890,1394466753714,
+ timesHuman: 3/10/2014 3:52:10 PM, 3/10/2014 3:52:11 PM, 3/10/2014 3:52:12 PM, 3/10/2014 3:52:12 PM, 3/10/2014 3:52:12 PM, 3/10/2014 3:52:14 PM, 3/10/2014 3:52:14 PM, 3/10/2014 3:52:14 PM, 3/10/2014 3:52:15 PM, 3/10/2014 3:52:15 PM, 3/10/2014 3:52:15 PM, 3/10/2014 3:52:15 PM, 3/10/2014 3:52:15 PM, 3/10/2014 3:52:16 PM, 3/10/2014 3:52:16 PM, 3/10/2014 3:52:16 PM, 3/10/2014 3:52:16 PM, 3/10/2014 3:52:16 PM, 3/10/2014 3:52:16 PM, 3/10/2014 3:52:17 PM, 3/10/2014 3:52:17 PM, 3/10/2014 3:52:17 PM, 3/10/2014 3:52:18 PM, 3/10/2014 3:52:18 PM, 3/10/2014 3:52:18 PM, 3/10/2014 3:52:18 PM, 3/10/2014 3:52:19 PM, 3/10/2014 3:52:22 PM, 3/10/2014 3:52:22 PM, 3/10/2014 3:52:22 PM, 3/10/2014 3:52:23 PM, 3/10/2014 3:52:23 PM, 3/10/2014 3:52:23 PM, 3/10/2014 3:52:23 PM, 3/10/2014 3:52:24 PM, 3/10/2014 3:52:24 PM, 3/10/2014 3:52:24 PM, 3/10/2014 3:52:24 PM, 3/10/2014 3:52:25 PM, 3/10/2014 3:52:25 PM, 3/10/2014 3:52:27 PM, 3/10/2014 3:52:28 PM, 3/10/2014 3:52:28 PM, 3/10/2014 3:52:28 PM, 3/10/2014 3:52:28 PM, 3/10/2014 3:52:28 PM, 3/10/2014 3:52:29 PM, 3/10/2014 3:52:29 PM, 3/10/2014 3:52:29 PM, 3/10/2014 3:52:30 PM, 3/10/2014 3:52:30 PM, 3/10/2014 3:52:31 PM, 3/10/2014 3:52:32 PM, 3/10/2014 3:52:32 PM, 3/10/2014 3:52:32 PM, 3/10/2014 3:52:32 PM, 3/10/2014 3:52:33 PM, 
+
+ timeDeltas: 0,566,1361,191,136,1120,501,84,374,298,199,232,168,168,160,168,152,168,160,168,248,544,223,328,256,200,200,3329,223,241,376,232,200,192,184,200,239,289,272,255,2433,400,264,208,184,144,136,280,500,204,200,1648,248,360,216,184,824,
+ timeDeltasHuman: 0 ms, 566 ms, 1s 361 ms, 191 ms, 136 ms, 1s 120 ms, 501 ms, 84 ms, 374 ms, 298 ms, 199 ms, 232 ms, 168 ms, 168 ms, 160 ms, 168 ms, 152 ms, 168 ms, 160 ms, 168 ms, 248 ms, 544 ms, 223 ms, 328 ms, 256 ms, 200 ms, 200 ms, 3s 329 ms, 223 ms, 241 ms, 376 ms, 232 ms, 200 ms, 192 ms, 184 ms, 200 ms, 239 ms, 289 ms, 272 ms, 255 ms, 2s 433 ms, 400 ms, 264 ms, 208 ms, 184 ms, 144 ms, 136 ms, 280 ms, 500 ms, 204 ms, 200 ms, 1s 648 ms, 248 ms, 360 ms, 216 ms, 184 ms, 824 ms, 
+
+ keyCount: 57
+ keys: 9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,-9,-9,-9,-9,-9,13,
+
+ CHIBIPOINT ON: false
+ FLYOUTS ON: false
+
+Clicked.. 
+ hash: #The_modern_computer
+ search: 
+ pathname: /wiki/Computer
+ port: 
+ hostname: en.wikipedia.org
+ host: en.wikipedia.org
+ password: 
+ username: 
+ protocol: http:
+ origin: http://en.wikipedia.org
+ href: http://en.wikipedia.org/wiki/Computer#The_modern_computer
+ text: 2.3 The modern computer
+ type: 
+ target: 
+ shape: 
+ rev: 
+ rel: 
+ ping: 
+ name: 
+ hreflang: 
+ download: 
+ coords: 
+ charset: 
+ inputMethodContext: [object InputMethodContext]
+ onwaiting: null
+ onvolumechange: null
+ ontimeupdate: null
+ onsuspend: null
+ onsubmit: null
+ onstalled: null
+ onshow: null
+ onselect: null
+ onseeking: null
+ onseeked: null
+ onscroll: null
+ onreset: null
+ onratechange: null
+ onprogress: null
+ onplaying: null
+ onplay: null
+ onpause: null
+ onmousewheel: null
+ onmouseup: null
+ onmouseover: null
+ onmouseout: null
+ onmousemove: null
+ onmouseleave: null
+ onmouseenter: null
+ onmousedown: null
+ onloadstart: null
+ onloadedmetadata: null
+ onloadeddata: null
+ onload: null
+ onkeyup: null
+ onkeypress: null
+ onkeydown: null
+ oninvalid: null
+ oninput: null
+ onfocus: null
+ onerror: null
+ onended: null
+ onemptied: null
+ ondurationchange: null
+ ondrop: null
+ ondragstart: null
+ ondragover: null
+ ondragleave: null
+ ondragenter: null
+ ondragend: null
+ ondrag: null
+ ondblclick: null
+ oncuechange: null
+ oncontextmenu: null
+ onclose: null
+ onclick: null
+ onchange: null
+ oncanplaythrough: null
+ oncanplay: null
+ oncancel: null
+ onblur: null
+ onabort: null
+ spellcheck: true
+ isContentEditable: false
+ contentEditable: inherit
+ outerText: 2.3 The modern computer
+ innerText: 2.3 The modern computer
+ accessKey: 
+ hidden: false
+ webkitdropzone: 
+ draggable: true
+ tabIndex: 0
+ dir: 
+ translate: true
+ lang: 
+ title: 
+ webkitRegionOverset: undefined
+ shadowRoot: null
+ pseudo: 
+ childElementCount: 2
+ lastElementChild: [object HTMLSpanElement]
+ firstElementChild: [object HTMLSpanElement]
+ children: [object HTMLCollection]
+ nextElementSibling: [object HTMLUListElement]
+ previousElementSibling: null
+ onwheel: null
+ onwebkitfullscreenerror: null
+ onwebkitfullscreenchange: null
+ onselectstart: null
+ onsearch: null
+ onpaste: null
+ oncut: null
+ oncopy: null
+ onbeforepaste: null
+ onbeforecut: null
+ onbeforecopy: null
+ webkitShadowRoot: null
+ webkitPseudo: 
+ dataset: [object DOMStringMap]
+ classList: 
+ className: 
+ outerHTML: <a href="#The_modern_computer"><span class="tocnumber">2.3</span> <span class="toctext">The modern computer</span></a>
+ innerHTML: <span class="tocnumber">2.3</span> <span class="toctext">The modern computer</span>
+ scrollHeight: 0
+ scrollWidth: 0
+ scrollTop: 0
+ scrollLeft: 0
+ clientHeight: 0
+ clientWidth: 0
+ clientTop: 0
+ clientLeft: 0
+ offsetParent: [object HTMLDivElement]
+ offsetHeight: 14
+ offsetWidth: 140
+ offsetTop: 403
+ offsetLeft: 32
+ localName: a
+ prefix: null
+ namespaceURI: http://www.w3.org/1999/xhtml
+ id: 
+ style: [object CSSStyleDeclaration]
+ attributes: [object NamedNodeMap]
+ tagName: A
+ parentElement: [object HTMLLIElement]
+ textContent: 2.3 The modern computer
+ baseURI: http://en.wikipedia.org/wiki/Computer
+ ownerDocument: [object HTMLDocument]
+ nextSibling: [object Text]
+ previousSibling: null
+ lastChild: [object HTMLSpanElement]
+ firstChild: [object HTMLSpanElement]
+ childNodes: [object NodeList]
+ parentNode: [object HTMLLIElement]
+ nodeType: 1
+ nodeValue: null
+ nodeName: A
+ insertAdjacentText: function insertAdjacentText() { [native code] }
+ click: function click() { [native code] }
+ insertAdjacentElement: function insertAdjacentElement() { [native code] }
+ getAttribute: function getAttribute() { [native code] }
+ setAttribute: function setAttribute() { [native code] }
+ removeAttribute: function removeAttribute() { [native code] }
+ getAttributeNode: function getAttributeNode() { [native code] }
+ getElementsByTagName: function getElementsByTagName() { [native code] }
+ hasAttributes: function hasAttributes() { [native code] }
+ getAttributeNS: function getAttributeNS() { [native code] }
+ setAttributeNS: function setAttributeNS() { [native code] }
+ removeAttributeNS: function removeAttributeNS() { [native code] }
+ getElementsByTagNameNS: function getElementsByTagNameNS() { [native code] }
+ getAttributeNodeNS: function getAttributeNodeNS() { [native code] }
+ hasAttribute: function hasAttribute() { [native code] }
+ hasAttributeNS: function hasAttributeNS() { [native code] }
+ focus: function focus() { [native code] }
+ blur: function blur() { [native code] }
+ scrollIntoView: function scrollIntoView() { [native code] }
+ scrollIntoViewIfNeeded: function scrollIntoViewIfNeeded() { [native code] }
+ scrollByLines: function scrollByLines() { [native code] }
+ scrollByPages: function scrollByPages() { [native code] }
+ getElementsByClassName: function getElementsByClassName() { [native code] }
+ insertAdjacentHTML: function insertAdjacentHTML() { [native code] }
+ querySelector: function querySelector() { [native code] }
+ querySelectorAll: function querySelectorAll() { [native code] }
+ webkitMatchesSelector: function webkitMatchesSelector() { [native code] }
+ webkitCreateShadowRoot: function webkitCreateShadowRoot() { [native code] }
+ getClientRects: function getClientRects() { [native code] }
+ getBoundingClientRect: function getBoundingClientRect() { [native code] }
+ webkitRequestPointerLock: function webkitRequestPointerLock() { [native code] }
+ remove: function remove() { [native code] }
+ ALLOW_KEYBOARD_INPUT: 1
+ setAttributeNode: function setAttributeNode() { [native code] }
+ removeAttributeNode: function removeAttributeNode() { [native code] }
+ setAttributeNodeNS: function setAttributeNodeNS() { [native code] }
+ createShadowRoot: function createShadowRoot() { [native code] }
+ getDestinationInsertionPoints: function getDestinationInsertionPoints() { [native code] }
+ webkitRequestFullScreen: function webkitRequestFullScreen() { [native code] }
+ webkitRequestFullscreen: function webkitRequestFullscreen() { [native code] }
+ webkitGetRegionFlowRanges: function webkitGetRegionFlowRanges() { [native code] }
+ animate: function animate() { [native code] }
+ insertBefore: function insertBefore() { [native code] }
+ replaceChild: function replaceChild() { [native code] }
+ removeChild: function removeChild() { [native code] }
+ appendChild: function appendChild() { [native code] }
+ hasChildNodes: function hasChildNodes() { [native code] }
+ cloneNode: function cloneNode() { [native code] }
+ normalize: function normalize() { [native code] }
+ isSupported: function isSupported() { [native code] }
+ lookupPrefix: function lookupPrefix() { [native code] }
+ isDefaultNamespace: function isDefaultNamespace() { [native code] }
+ lookupNamespaceURI: function lookupNamespaceURI() { [native code] }
+ ELEMENT_NODE: 1
+ ATTRIBUTE_NODE: 2
+ TEXT_NODE: 3
+ CDATA_SECTION_NODE: 4
+ ENTITY_REFERENCE_NODE: 5
+ ENTITY_NODE: 6
+ PROCESSING_INSTRUCTION_NODE: 7
+ COMMENT_NODE: 8
+ DOCUMENT_NODE: 9
+ DOCUMENT_TYPE_NODE: 10
+ DOCUMENT_FRAGMENT_NODE: 11
+ NOTATION_NODE: 12
+ DOCUMENT_POSITION_DISCONNECTED: 1
+ DOCUMENT_POSITION_PRECEDING: 2
+ DOCUMENT_POSITION_FOLLOWING: 4
+ DOCUMENT_POSITION_CONTAINS: 8
+ DOCUMENT_POSITION_CONTAINED_BY: 16
+ DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC: 32
+ isSameNode: function isSameNode() { [native code] }
+ isEqualNode: function isEqualNode() { [native code] }
+ compareDocumentPosition: function compareDocumentPosition() { [native code] }
+ contains: function contains() { [native code] }
+ addEventListener: function addEventListener() { [native code] }
+ removeEventListener: function removeEventListener() { [native code] }
+ dispatchEvent: function dispatchEvent() { [native code] }

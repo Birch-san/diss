@@ -1,0 +1,298 @@
+page: https://www.kickstarter.com/signup?ref=nav
+ clicked: [object HTMLInputElement]
+ startTime: 1394448537370
+ endTime: 1394448547511
+ duration: 10141
+ durationHuman: 10s 141 ms
+
+ trueBegin: 1394448470278
+ trueBeginDate: 3/10/2014 10:47:50 AM
+ thinkDuration: 67092
+ thinkDurationHuman: 1min 7s 92 ms
+ wholeDuration: 77233
+ wholeDurationHuman: 1min 17s 233 ms
+
+ startDate: 3/10/2014 10:48:57 AM
+ endDate: 3/10/2014 10:49:07 AM
+
+ times: 1394448537370,1394448541993,1394448543561,1394448546216,1394448547511,
+ timesHuman: 3/10/2014 10:48:57 AM, 3/10/2014 10:49:01 AM, 3/10/2014 10:49:03 AM, 3/10/2014 10:49:06 AM, 3/10/2014 10:49:07 AM, 
+
+ timeDeltas: 0,4623,1568,2655,1295,
+ timeDeltasHuman: 0 ms, 4s 623 ms, 1s 568 ms, 2s 655 ms, 1s 295 ms, 
+
+ keyCount: 5
+ keys: Cmd_K,53,50,49,13,
+
+ CHIBIPOINT ON: true
+ FLYOUTS ON: false
+
+Clicked.. 
+ webkitEntries: 
+ webkitGrammar: false
+ webkitSpeech: false
+ webkitdirectory: false
+ list: null
+ onwebkitspeechchange: null
+ incremental: false
+ selectionDirection: none
+ selectionEnd: 0
+ selectionStart: 0
+ labels: [object NodeList]
+ validationMessage: 
+ validity: [object ValidityState]
+ willValidate: true
+ width: 0
+ valueAsNumber: NaN
+ valueAsDate: null
+ value: 
+ useMap: 
+ defaultValue: 
+ type: password
+ step: 
+ src: 
+ size: 20
+ required: false
+ readOnly: false
+ placeholder: Re-enter password
+ pattern: 
+ name: user[password_confirmation]
+ multiple: false
+ min: 
+ maxLength: 524288
+ max: 
+ indeterminate: false
+ height: 0
+ formTarget: 
+ formNoValidate: false
+ formMethod: 
+ formEnctype: 
+ formAction: 
+ files: null
+ form: [object HTMLFormElement]
+ disabled: false
+ dirName: 
+ checked: false
+ defaultChecked: false
+ autofocus: false
+ autocomplete: 
+ alt: 
+ align: 
+ accept: 
+ inputMethodContext: [object InputMethodContext]
+ onwaiting: null
+ onvolumechange: null
+ ontimeupdate: null
+ onsuspend: null
+ onsubmit: null
+ onstalled: null
+ onshow: null
+ onselect: null
+ onseeking: null
+ onseeked: null
+ onscroll: null
+ onreset: null
+ onratechange: null
+ onprogress: null
+ onplaying: null
+ onplay: null
+ onpause: null
+ onmousewheel: null
+ onmouseup: null
+ onmouseover: null
+ onmouseout: null
+ onmousemove: null
+ onmouseleave: null
+ onmouseenter: null
+ onmousedown: null
+ onloadstart: null
+ onloadedmetadata: null
+ onloadeddata: null
+ onload: null
+ onkeyup: null
+ onkeypress: null
+ onkeydown: null
+ oninvalid: null
+ oninput: null
+ onfocus: null
+ onerror: null
+ onended: null
+ onemptied: null
+ ondurationchange: null
+ ondrop: null
+ ondragstart: null
+ ondragover: null
+ ondragleave: null
+ ondragenter: null
+ ondragend: null
+ ondrag: null
+ ondblclick: null
+ oncuechange: null
+ oncontextmenu: null
+ onclose: null
+ onclick: null
+ onchange: null
+ oncanplaythrough: null
+ oncanplay: null
+ oncancel: null
+ onblur: null
+ onabort: null
+ spellcheck: true
+ isContentEditable: false
+ contentEditable: inherit
+ outerText: 
+ innerText: 
+ accessKey: 
+ hidden: false
+ webkitdropzone: 
+ draggable: false
+ tabIndex: 9
+ dir: 
+ translate: true
+ lang: 
+ title: 
+ webkitRegionOverset: undefined
+ shadowRoot: null
+ pseudo: 
+ childElementCount: 0
+ lastElementChild: null
+ firstElementChild: null
+ children: [object HTMLCollection]
+ nextElementSibling: null
+ previousElementSibling: [object HTMLLabelElement]
+ onwheel: null
+ onwebkitfullscreenerror: null
+ onwebkitfullscreenchange: null
+ onselectstart: null
+ onsearch: null
+ onpaste: null
+ oncut: null
+ oncopy: null
+ onbeforepaste: null
+ onbeforecut: null
+ onbeforecopy: null
+ webkitShadowRoot: null
+ webkitPseudo: 
+ dataset: [object DOMStringMap]
+ classList: input-text password
+ className: input-text password
+ outerHTML: <input class="input-text password" id="user_password_confirmation" name="user[password_confirmation]" placeholder="Re-enter password" tabindex="9" type="password" _handlertypes="focus">
+ innerHTML: 
+ scrollHeight: 16
+ scrollWidth: 208
+ scrollTop: 0
+ scrollLeft: 0
+ clientHeight: 28
+ clientWidth: 218
+ clientTop: 1
+ clientLeft: 1
+ offsetParent: [object HTMLBodyElement]
+ offsetHeight: 30
+ offsetWidth: 220
+ offsetTop: 465
+ offsetLeft: 603
+ localName: input
+ prefix: null
+ namespaceURI: http://www.w3.org/1999/xhtml
+ id: user_password_confirmation
+ style: [object CSSStyleDeclaration]
+ attributes: [object NamedNodeMap]
+ tagName: INPUT
+ parentElement: [object HTMLLIElement]
+ textContent: 
+ baseURI: https://www.kickstarter.com/signup?ref=nav
+ ownerDocument: [object HTMLDocument]
+ nextSibling: [object Text]
+ previousSibling: [object Text]
+ lastChild: null
+ firstChild: null
+ childNodes: [object NodeList]
+ parentNode: [object HTMLLIElement]
+ nodeType: 1
+ nodeValue: null
+ nodeName: INPUT
+ stepUp: function stepUp() { [native code] }
+ stepDown: function stepDown() { [native code] }
+ checkValidity: function checkValidity() { [native code] }
+ setCustomValidity: function setCustomValidity() { [native code] }
+ select: function select() { [native code] }
+ setRangeText: function setRangeText() { [native code] }
+ setSelectionRange: function setSelectionRange() { [native code] }
+ insertAdjacentText: function insertAdjacentText() { [native code] }
+ click: function click() { [native code] }
+ insertAdjacentElement: function insertAdjacentElement() { [native code] }
+ getAttribute: function getAttribute() { [native code] }
+ setAttribute: function setAttribute() { [native code] }
+ removeAttribute: function removeAttribute() { [native code] }
+ getAttributeNode: function getAttributeNode() { [native code] }
+ getElementsByTagName: function getElementsByTagName() { [native code] }
+ hasAttributes: function hasAttributes() { [native code] }
+ getAttributeNS: function getAttributeNS() { [native code] }
+ setAttributeNS: function setAttributeNS() { [native code] }
+ removeAttributeNS: function removeAttributeNS() { [native code] }
+ getElementsByTagNameNS: function getElementsByTagNameNS() { [native code] }
+ getAttributeNodeNS: function getAttributeNodeNS() { [native code] }
+ hasAttribute: function hasAttribute() { [native code] }
+ hasAttributeNS: function hasAttributeNS() { [native code] }
+ focus: function focus() { [native code] }
+ blur: function blur() { [native code] }
+ scrollIntoView: function scrollIntoView() { [native code] }
+ scrollIntoViewIfNeeded: function scrollIntoViewIfNeeded() { [native code] }
+ scrollByLines: function scrollByLines() { [native code] }
+ scrollByPages: function scrollByPages() { [native code] }
+ getElementsByClassName: function getElementsByClassName() { [native code] }
+ insertAdjacentHTML: function insertAdjacentHTML() { [native code] }
+ querySelector: function querySelector() { [native code] }
+ querySelectorAll: function querySelectorAll() { [native code] }
+ webkitMatchesSelector: function webkitMatchesSelector() { [native code] }
+ webkitCreateShadowRoot: function webkitCreateShadowRoot() { [native code] }
+ getClientRects: function getClientRects() { [native code] }
+ getBoundingClientRect: function getBoundingClientRect() { [native code] }
+ webkitRequestPointerLock: function webkitRequestPointerLock() { [native code] }
+ remove: function remove() { [native code] }
+ ALLOW_KEYBOARD_INPUT: 1
+ setAttributeNode: function setAttributeNode() { [native code] }
+ removeAttributeNode: function removeAttributeNode() { [native code] }
+ setAttributeNodeNS: function setAttributeNodeNS() { [native code] }
+ createShadowRoot: function createShadowRoot() { [native code] }
+ getDestinationInsertionPoints: function getDestinationInsertionPoints() { [native code] }
+ webkitRequestFullScreen: function webkitRequestFullScreen() { [native code] }
+ webkitRequestFullscreen: function webkitRequestFullscreen() { [native code] }
+ webkitGetRegionFlowRanges: function webkitGetRegionFlowRanges() { [native code] }
+ animate: function animate() { [native code] }
+ insertBefore: function insertBefore() { [native code] }
+ replaceChild: function replaceChild() { [native code] }
+ removeChild: function removeChild() { [native code] }
+ appendChild: function appendChild() { [native code] }
+ hasChildNodes: function hasChildNodes() { [native code] }
+ cloneNode: function cloneNode() { [native code] }
+ normalize: function normalize() { [native code] }
+ isSupported: function isSupported() { [native code] }
+ lookupPrefix: function lookupPrefix() { [native code] }
+ isDefaultNamespace: function isDefaultNamespace() { [native code] }
+ lookupNamespaceURI: function lookupNamespaceURI() { [native code] }
+ ELEMENT_NODE: 1
+ ATTRIBUTE_NODE: 2
+ TEXT_NODE: 3
+ CDATA_SECTION_NODE: 4
+ ENTITY_REFERENCE_NODE: 5
+ ENTITY_NODE: 6
+ PROCESSING_INSTRUCTION_NODE: 7
+ COMMENT_NODE: 8
+ DOCUMENT_NODE: 9
+ DOCUMENT_TYPE_NODE: 10
+ DOCUMENT_FRAGMENT_NODE: 11
+ NOTATION_NODE: 12
+ DOCUMENT_POSITION_DISCONNECTED: 1
+ DOCUMENT_POSITION_PRECEDING: 2
+ DOCUMENT_POSITION_FOLLOWING: 4
+ DOCUMENT_POSITION_CONTAINS: 8
+ DOCUMENT_POSITION_CONTAINED_BY: 16
+ DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC: 32
+ isSameNode: function isSameNode() { [native code] }
+ isEqualNode: function isEqualNode() { [native code] }
+ compareDocumentPosition: function compareDocumentPosition() { [native code] }
+ contains: function contains() { [native code] }
+ addEventListener: function addEventListener() { [native code] }
+ removeEventListener: function removeEventListener() { [native code] }
+ dispatchEvent: function dispatchEvent() { [native code] }

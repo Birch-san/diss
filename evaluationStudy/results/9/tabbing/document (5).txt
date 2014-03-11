@@ -1,0 +1,269 @@
+page: http://www.amazon.co.uk/s/ref=nb_sb_noss_2?url=search-alias%3Daps&field-keywords=pillow&rh=i%3Aaps%2Ck%3Apillow
+ clicked: http://www.amazon.co.uk/Polycotton-Hollowfibre-Non-Allergenic-Pillows-Pack/dp/B0029TA2LM/ref=sr_1_1?ie=UTF8&qid=1394450524&sr=8-1&keywords=pillow
+ startTime: 1394450623068
+ endTime: 1394450662779
+ duration: 39711
+ durationHuman: 39s 711 ms
+
+ trueBegin: 1394450528131
+ trueBeginDate: 3/10/2014 11:22:08 AM
+ thinkDuration: 94937
+ thinkDurationHuman: 1min 34s 937 ms
+ wholeDuration: 134648
+ wholeDurationHuman: 2min 14s 648 ms
+
+ startDate: 3/10/2014 11:23:43 AM
+ endDate: 3/10/2014 11:24:22 AM
+
+ times: 1394450623068,1394450623444,1394450623787,1394450624195,1394450624683,1394450625163,1394450625563,1394450625963,1394450626419,1394450626915,1394450627276,1394450627603,1394450628099,1394450628643,1394450629131,1394450629539,1394450630043,1394450630491,1394450630979,1394450631435,1394450631947,1394450632411,1394450632907,1394450633379,1394450633867,1394450634315,1394450634763,1394450635227,1394450638795,1394450643075,1394450643483,1394450643907,1394450644995,1394450650195,1394450651091,1394450651875,1394450652107,1394450652411,1394450653643,1394450656011,1394450656203,1394450656355,1394450656587,1394450656787,1394450657787,1394450662779,
+ timesHuman: 3/10/2014 11:23:43 AM, 3/10/2014 11:23:43 AM, 3/10/2014 11:23:43 AM, 3/10/2014 11:23:44 AM, 3/10/2014 11:23:44 AM, 3/10/2014 11:23:45 AM, 3/10/2014 11:23:45 AM, 3/10/2014 11:23:45 AM, 3/10/2014 11:23:46 AM, 3/10/2014 11:23:46 AM, 3/10/2014 11:23:47 AM, 3/10/2014 11:23:47 AM, 3/10/2014 11:23:48 AM, 3/10/2014 11:23:48 AM, 3/10/2014 11:23:49 AM, 3/10/2014 11:23:49 AM, 3/10/2014 11:23:50 AM, 3/10/2014 11:23:50 AM, 3/10/2014 11:23:50 AM, 3/10/2014 11:23:51 AM, 3/10/2014 11:23:51 AM, 3/10/2014 11:23:52 AM, 3/10/2014 11:23:52 AM, 3/10/2014 11:23:53 AM, 3/10/2014 11:23:53 AM, 3/10/2014 11:23:54 AM, 3/10/2014 11:23:54 AM, 3/10/2014 11:23:55 AM, 3/10/2014 11:23:58 AM, 3/10/2014 11:24:03 AM, 3/10/2014 11:24:03 AM, 3/10/2014 11:24:03 AM, 3/10/2014 11:24:04 AM, 3/10/2014 11:24:10 AM, 3/10/2014 11:24:11 AM, 3/10/2014 11:24:11 AM, 3/10/2014 11:24:12 AM, 3/10/2014 11:24:12 AM, 3/10/2014 11:24:13 AM, 3/10/2014 11:24:16 AM, 3/10/2014 11:24:16 AM, 3/10/2014 11:24:16 AM, 3/10/2014 11:24:16 AM, 3/10/2014 11:24:16 AM, 3/10/2014 11:24:17 AM, 3/10/2014 11:24:22 AM, 
+
+ timeDeltas: 0,376,343,408,488,480,400,400,456,496,361,327,496,544,488,408,504,448,488,456,512,464,496,472,488,448,448,464,3568,4280,408,424,1088,5200,896,784,232,304,1232,2368,192,152,232,200,1000,4992,
+ timeDeltasHuman: 0 ms, 376 ms, 343 ms, 408 ms, 488 ms, 480 ms, 400 ms, 400 ms, 456 ms, 496 ms, 361 ms, 327 ms, 496 ms, 544 ms, 488 ms, 408 ms, 504 ms, 448 ms, 488 ms, 456 ms, 512 ms, 464 ms, 496 ms, 472 ms, 488 ms, 448 ms, 448 ms, 464 ms, 3s 568 ms, 4s 280 ms, 408 ms, 424 ms, 1s 88 ms, 5s 200 ms, 896 ms, 784 ms, 232 ms, 304 ms, 1s 232 ms, 2s 368 ms, 192 ms, 152 ms, 232 ms, 200 ms, 1s 0 ms, 4s 992 ms, 
+
+ keyCount: 46
+ keys: 9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,-9,-9,-9,-9,-9,-9,9,9,9,9,9,9,9,9,9,-9,13,
+
+ CHIBIPOINT ON: false
+ FLYOUTS ON: false
+
+Clicked.. 
+ hash: 
+ search: ?ie=UTF8&qid=1394450524&sr=8-1&keywords=pillow
+ pathname: /Polycotton-Hollowfibre-Non-Allergenic-Pillows-Pack/dp/B0029TA2LM/ref=sr_1_1
+ port: 
+ hostname: www.amazon.co.uk
+ host: www.amazon.co.uk
+ password: 
+ username: 
+ protocol: http:
+ origin: http://www.amazon.co.uk
+ href: http://www.amazon.co.uk/Polycotton-Hollowfibre-Non-Allergenic-Pillows-Pack/dp/B0029TA2LM/ref=sr_1_1?ie=UTF8&qid=1394450524&sr=8-1&keywords=pillow
+ text: £7.99 £2.76
+ type: 
+ target: 
+ shape: 
+ rev: 
+ rel: 
+ ping: 
+ name: 
+ hreflang: 
+ download: 
+ coords: 
+ charset: 
+ inputMethodContext: [object InputMethodContext]
+ onwaiting: null
+ onvolumechange: null
+ ontimeupdate: null
+ onsuspend: null
+ onsubmit: null
+ onstalled: null
+ onshow: null
+ onselect: null
+ onseeking: null
+ onseeked: null
+ onscroll: null
+ onreset: null
+ onratechange: null
+ onprogress: null
+ onplaying: null
+ onplay: null
+ onpause: null
+ onmousewheel: null
+ onmouseup: null
+ onmouseover: null
+ onmouseout: null
+ onmousemove: null
+ onmouseleave: null
+ onmouseenter: null
+ onmousedown: null
+ onloadstart: null
+ onloadedmetadata: null
+ onloadeddata: null
+ onload: null
+ onkeyup: null
+ onkeypress: null
+ onkeydown: null
+ oninvalid: null
+ oninput: null
+ onfocus: null
+ onerror: null
+ onended: null
+ onemptied: null
+ ondurationchange: null
+ ondrop: null
+ ondragstart: null
+ ondragover: null
+ ondragleave: null
+ ondragenter: null
+ ondragend: null
+ ondrag: null
+ ondblclick: null
+ oncuechange: null
+ oncontextmenu: null
+ onclose: null
+ onclick: null
+ onchange: null
+ oncanplaythrough: null
+ oncanplay: null
+ oncancel: null
+ onblur: null
+ onabort: null
+ spellcheck: true
+ isContentEditable: false
+ contentEditable: inherit
+ outerText: £7.99 £2.76
+ innerText: £7.99 £2.76
+ accessKey: 
+ hidden: false
+ webkitdropzone: 
+ draggable: true
+ tabIndex: 0
+ dir: 
+ translate: true
+ lang: 
+ title: 
+ webkitRegionOverset: undefined
+ shadowRoot: null
+ pseudo: 
+ childElementCount: 2
+ lastElementChild: [object HTMLSpanElement]
+ firstElementChild: [object HTMLModElement]
+ children: [object HTMLCollection]
+ nextElementSibling: null
+ previousElementSibling: null
+ onwheel: null
+ onwebkitfullscreenerror: null
+ onwebkitfullscreenchange: null
+ onselectstart: null
+ onsearch: null
+ onpaste: null
+ oncut: null
+ oncopy: null
+ onbeforepaste: null
+ onbeforecut: null
+ onbeforecopy: null
+ webkitShadowRoot: null
+ webkitPseudo: 
+ dataset: [object DOMStringMap]
+ classList: 
+ className: 
+ outerHTML: <a href="http://www.amazon.co.uk/Polycotton-Hollowfibre-Non-Allergenic-Pillows-Pack/dp/B0029TA2LM/ref=sr_1_1?ie=UTF8&amp;qid=1394450524&amp;sr=8-1&amp;keywords=pillow"><del class="grey">£7.99</del>
+            <span class="bld lrg red"> £2.76</span>
+</a>
+ innerHTML: <del class="grey">£7.99</del>
+            <span class="bld lrg red"> £2.76</span>
+
+ scrollHeight: 0
+ scrollWidth: 0
+ scrollTop: 0
+ scrollLeft: 0
+ clientHeight: 0
+ clientWidth: 0
+ clientTop: 0
+ clientLeft: 0
+ offsetParent: [object HTMLDivElement]
+ offsetHeight: 13
+ offsetWidth: 66
+ offsetTop: 39
+ offsetLeft: 170
+ localName: a
+ prefix: null
+ namespaceURI: http://www.w3.org/1999/xhtml
+ id: 
+ style: [object CSSStyleDeclaration]
+ attributes: [object NamedNodeMap]
+ tagName: A
+ parentElement: [object HTMLDivElement]
+ textContent: £7.99
+             £2.76
+
+ baseURI: http://www.amazon.co.uk/s/ref=nb_sb_noss_2?url=search-alias%3Daps&field-keywords=pillow&rh=i%3Aaps%2Ck%3Apillow
+ ownerDocument: [object HTMLDocument]
+ nextSibling: null
+ previousSibling: [object Text]
+ lastChild: [object Text]
+ firstChild: [object HTMLModElement]
+ childNodes: [object NodeList]
+ parentNode: [object HTMLDivElement]
+ nodeType: 1
+ nodeValue: null
+ nodeName: A
+ insertAdjacentText: function insertAdjacentText() { [native code] }
+ click: function click() { [native code] }
+ insertAdjacentElement: function insertAdjacentElement() { [native code] }
+ getAttribute: function getAttribute() { [native code] }
+ setAttribute: function setAttribute() { [native code] }
+ removeAttribute: function removeAttribute() { [native code] }
+ getAttributeNode: function getAttributeNode() { [native code] }
+ getElementsByTagName: function getElementsByTagName() { [native code] }
+ hasAttributes: function hasAttributes() { [native code] }
+ getAttributeNS: function getAttributeNS() { [native code] }
+ setAttributeNS: function setAttributeNS() { [native code] }
+ removeAttributeNS: function removeAttributeNS() { [native code] }
+ getElementsByTagNameNS: function getElementsByTagNameNS() { [native code] }
+ getAttributeNodeNS: function getAttributeNodeNS() { [native code] }
+ hasAttribute: function hasAttribute() { [native code] }
+ hasAttributeNS: function hasAttributeNS() { [native code] }
+ focus: function focus() { [native code] }
+ blur: function blur() { [native code] }
+ scrollIntoView: function scrollIntoView() { [native code] }
+ scrollIntoViewIfNeeded: function scrollIntoViewIfNeeded() { [native code] }
+ scrollByLines: function scrollByLines() { [native code] }
+ scrollByPages: function scrollByPages() { [native code] }
+ getElementsByClassName: function getElementsByClassName() { [native code] }
+ insertAdjacentHTML: function insertAdjacentHTML() { [native code] }
+ querySelector: function querySelector() { [native code] }
+ querySelectorAll: function querySelectorAll() { [native code] }
+ webkitMatchesSelector: function webkitMatchesSelector() { [native code] }
+ webkitCreateShadowRoot: function webkitCreateShadowRoot() { [native code] }
+ getClientRects: function getClientRects() { [native code] }
+ getBoundingClientRect: function getBoundingClientRect() { [native code] }
+ webkitRequestPointerLock: function webkitRequestPointerLock() { [native code] }
+ remove: function remove() { [native code] }
+ ALLOW_KEYBOARD_INPUT: 1
+ setAttributeNode: function setAttributeNode() { [native code] }
+ removeAttributeNode: function removeAttributeNode() { [native code] }
+ setAttributeNodeNS: function setAttributeNodeNS() { [native code] }
+ createShadowRoot: function createShadowRoot() { [native code] }
+ getDestinationInsertionPoints: function getDestinationInsertionPoints() { [native code] }
+ webkitRequestFullScreen: function webkitRequestFullScreen() { [native code] }
+ webkitRequestFullscreen: function webkitRequestFullscreen() { [native code] }
+ webkitGetRegionFlowRanges: function webkitGetRegionFlowRanges() { [native code] }
+ animate: function animate() { [native code] }
+ insertBefore: function insertBefore() { [native code] }
+ replaceChild: function replaceChild() { [native code] }
+ removeChild: function removeChild() { [native code] }
+ appendChild: function appendChild() { [native code] }
+ hasChildNodes: function hasChildNodes() { [native code] }
+ cloneNode: function cloneNode() { [native code] }
+ normalize: function normalize() { [native code] }
+ isSupported: function isSupported() { [native code] }
+ lookupPrefix: function lookupPrefix() { [native code] }
+ isDefaultNamespace: function isDefaultNamespace() { [native code] }
+ lookupNamespaceURI: function lookupNamespaceURI() { [native code] }
+ ELEMENT_NODE: 1
+ ATTRIBUTE_NODE: 2
+ TEXT_NODE: 3
+ CDATA_SECTION_NODE: 4
+ ENTITY_REFERENCE_NODE: 5
+ ENTITY_NODE: 6
+ PROCESSING_INSTRUCTION_NODE: 7
+ COMMENT_NODE: 8
+ DOCUMENT_NODE: 9
+ DOCUMENT_TYPE_NODE: 10
+ DOCUMENT_FRAGMENT_NODE: 11
+ NOTATION_NODE: 12
+ DOCUMENT_POSITION_DISCONNECTED: 1
+ DOCUMENT_POSITION_PRECEDING: 2
+ DOCUMENT_POSITION_FOLLOWING: 4
+ DOCUMENT_POSITION_CONTAINS: 8
+ DOCUMENT_POSITION_CONTAINED_BY: 16
+ DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC: 32
+ isSameNode: function isSameNode() { [native code] }
+ isEqualNode: function isEqualNode() { [native code] }
+ compareDocumentPosition: function compareDocumentPosition() { [native code] }
+ contains: function contains() { [native code] }
+ addEventListener: function addEventListener() { [native code] }
+ removeEventListener: function removeEventListener() { [native code] }
+ dispatchEvent: function dispatchEvent() { [native code] }
