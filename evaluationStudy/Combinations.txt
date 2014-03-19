@@ -4,6 +4,52 @@ FLYOUTS, DRILL, TAB
 Participant 0: FDT [Pilot study]
 28 February 14.20
 
-Participant 1: FDT
-8 March 19.30
-Danni
+===
+
+Participant “2”: FDT
+8 March 21.30
+DT
+
+Participant “3”: FTD
+9 March 14.15
+RT
+
+Participant “4”: TFD
+9 March 16.00
+WR
+
+Participant “5”: TDF
+9 March 17.15
+PB
+
+Participant “6”: DTF
+9 March 18.00
+LJ
+
+Participant “7”: DFT
+9 March 19.00
+LW
+
+Participant “8”: FDT
+10 March 10.30
+WM
+
+Participant “9”: FTD
+10 March 11.15
+DP
+
+Participant “10”: TFD
+10 March 14.00
+MT
+
+Participant “11”: TDF
+10 March 15.40
+IE
+
+Participant “12”: DTF
+10 March 16.30
+RM
+
+Participant “13”: DFT
+10 March 18.15
+AT

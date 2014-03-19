@@ -37,6 +37,8 @@ define(["lib/jquery-2.1.0.min", "lib/FileSaver", "trace"], function(jq, saver, t
     evaluator.keyCountElem = keyCountElem;
     evaluator.timerElem = timerElem;
     
+    birchlabs.downloadTelemetry = false;
+    
     drawEvaluators();
   }
   
@@ -207,7 +209,9 @@ define(["lib/jquery-2.1.0.min", "lib/FileSaver", "trace"], function(jq, saver, t
     console.log(bb);
     //bb.append((new XMLSerializer).serializeToString(document));
     //var blob = bb.getBlob("application/xhtml+xml;charset=" + document.characterSet);
-    saver.saveAs(bb, "document.txt");
+    if (birchlabs.downloadTelemetry) {
+      saver.saveAs(bb, "document.txt");
+    }
   }
  
  return {makeEvaluators:makeEvaluators,

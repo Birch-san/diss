@@ -43,7 +43,8 @@ define(["lib/jquery-2.1.0.min", "lib/within", "lib/Blob", "evaluator", "trace", 
   
   function init() {
     birchlabs.evaluateTabMode = false;
-    birchlabs.flyoutsOn = false;
+    birchlabs.disallowTabbing = false;
+    birchlabs.flyoutsOn = true;
     if (birchlabs.evaluateTabMode) {
       birchlabs.flyoutsOn = false;
     }
@@ -207,9 +208,11 @@ define(["lib/jquery-2.1.0.min", "lib/within", "lib/Blob", "evaluator", "trace", 
               evaler.evaluatorIncrementKeys(code2);
               evaler.checkFocusAfterWait();
             } else {
-              alert("Please do not press tab during this experiment!");
-              lookup.stopEvent(ev);
-              document.activeElement.blur();
+              if (birchlabs.disallowTabbing) {
+                alert("Please do not press tab during this experiment!");
+                lookup.stopEvent(ev);
+                document.activeElement.blur();
+              }
             }
           }
           /*if (code == keycodes.spacebar) {
