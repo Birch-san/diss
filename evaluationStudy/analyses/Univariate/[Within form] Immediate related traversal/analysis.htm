@@ -1,0 +1,779 @@
+<HTML><HEAD><TITLE>analysis.htm</TITLE><META http-equiv="Content-Type" content="text/html; charset=UTF-8"></HEAD>
+<BODY><CENTER><H1><b><head><style type="text/css">p{color:0;font-family:SansSerif;font-size:18pt;font-style:normal;font-weight:bold;text-decoration:none}</style></head><BR>GGraph</b></H1></CENTER><BR><TABLE WIDTH="100%"><TR><TD ALIGN="LEFT">
+<TABLE WIDTH=409 BORDER="1">
+
+<TR>
+<TD STYLE="font-family:sans-serif; font-weight:bold; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="399" ALIGN="CENTER" VALIGN="CENTER" COLSPAN="3" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Notes</FONT></TD>
+</TR>
+
+<TR>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="237" ALIGN="LEFT" VALIGN="TOP" COLSPAN="2" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Output Created</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="162" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">20-MAR-2014 18:11:40</FONT></TD>
+</TR>
+
+<TR>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="237" ALIGN="LEFT" VALIGN="TOP" COLSPAN="2" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Comments</FONT></TD>
+<TD WIDTH="162" ALIGN="LEFT" VALIGN="CENTER" BGCOLOR="#ffffff">&nbsp</TD>
+</TR>
+
+<TR>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="77" ALIGN="LEFT" VALIGN="TOP" ROWSPAN="6" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Input</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="160" ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Data</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="162" ALIGN="LEFT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">/Users/birch/git/diss/evaluationStudy/analyses/Univariate/[Within form] Immediate related traversal.sav</FONT></TD>
+</TR>
+
+<TR>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="160" ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Active Dataset</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="162" ALIGN="LEFT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">DataSet15</FONT></TD>
+</TR>
+
+<TR>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="160" ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Filter</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="162" ALIGN="LEFT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">&lt;none&gt;</FONT></TD>
+</TR>
+
+<TR>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="160" ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Weight</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="162" ALIGN="LEFT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">&lt;none&gt;</FONT></TD>
+</TR>
+
+<TR>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="160" ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Split File</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="162" ALIGN="LEFT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">&lt;none&gt;</FONT></TD>
+</TR>
+
+<TR>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="160" ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">N of Rows in Working Data File</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="162" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">36</FONT></TD>
+</TR>
+
+<TR>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="237" ALIGN="LEFT" VALIGN="TOP" COLSPAN="2" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Syntax</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="162" ALIGN="LEFT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">GGRAPH<BR>  /GRAPHDATASET NAME=&quot;graphdataset&quot; VARIABLES=System MEANCI(Keystrokes, 95)[name=&quot;MEAN_Keystrokes&quot; LOW=&quot;MEAN_Keystrokes_LOW&quot; HIGH=&quot;MEAN_Keystrokes_HIGH&quot;] MISSING=LISTWISE REPORTMISSING=NO<BR>  /GRAPHSPEC SOURCE=INLINE.<BR>BEGIN GPL<BR>  SOURCE: s=userSource(id(&quot;graphdataset&quot;))<BR>  DATA: System=col(source(s), name(&quot;System&quot;), unit.category())<BR>  DATA: MEAN_Keystrokes=col(source(s), name(&quot;MEAN_Keystrokes&quot;))<BR>  DATA: LOW=col(source(s), name(&quot;MEAN_Keystrokes_LOW&quot;))<BR>  DATA: HIGH=col(source(s), name(&quot;MEAN_Keystrokes_HIGH&quot;))<BR>  GUIDE: axis(dim(1), label(&quot;System&quot;))<BR>  GUIDE: axis(dim(2), label(&quot;Mean Keystrokes&quot;))<BR>  GUIDE: text.footnote(label(&quot;Error Bars: 95% CI&quot;))<BR>  SCALE: linear(dim(2), include(0))<BR>  ELEMENT: interval(position(System*MEAN_Keystrokes), shape.interior(shape.square))<BR>  ELEMENT: interval(position(region.spread.range(System*(LOW+HIGH))), shape.interior(shape.ibeam))<BR>END GPL.</FONT></TD>
+</TR>
+
+<TR>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="77" ALIGN="LEFT" VALIGN="TOP" ROWSPAN="2" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Resources</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="160" ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Processor Time</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="162" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">00:00:00.32</FONT></TD>
+</TR>
+
+<TR>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="160" ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Elapsed Time</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="162" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">00:00:00.00</FONT></TD>
+</TR>
+
+</TABLE><BR></TD></TR></TABLE>
+<p align="left"><head><style type="text/css">p{color:0;font-family:Monospaced;font-size:14pt;font-style:normal;font-weight:normal;text-decoration:none}</style></head><BR>[DataSet15]&nbsp;/Users/birch/git/diss/evaluationStudy/analyses/Univariate/[Within&nbsp;form]&nbsp;Immediate&nbsp;related&nbsp;traversal.sav</p><BR><CENTER><IMG SRC ="analysis1.png"><BR></CENTER><p align="left"><html>
+  <head>
+    <style type="text/css">
+      <!--
+        p { font-family: Monospaced; color: 000000; text-decoration: none; font-style: normal; font-size: 14pt; font-weight: normal }
+      -->
+    </style>
+    
+  </head>
+  <body>
+    <font color="#000000" size="4" face="Monospaced">UNIANOVA&#160;Keystrokes&#160;BY&#160;System<br>&#160;&#160;/METHOD=SSTYPE(3)<br>&#160;&#160;/INTERCEPT=INCLUDE<br>&#160;&#160;/EMMEANS=TABLES(System)&#160;COMPARE&#160;ADJ(BONFERRONI)<br>&#160;&#160;/PRINT=OPOWER&#160;ETASQ&#160;DESCRIPTIVE<br>&#160;&#160;/CRITERIA=ALPHA(.05)<br>&#160;&#160;/DESIGN=System.</font>
+  </body>
+</html>
+</p><BR><CENTER><H1><b><head><style type="text/css">p{color:0;font-family:SansSerif;font-size:18pt;font-style:normal;font-weight:bold;text-decoration:none}</style></head><BR>Univariate&nbsp;Analysis&nbsp;of&nbsp;Variance</b></H1></CENTER><BR><TABLE WIDTH="100%"><TR><TD ALIGN="LEFT">
+<TABLE WIDTH=483 BORDER="1">
+
+<TR>
+<TD STYLE="font-family:sans-serif; font-weight:bold; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="473" ALIGN="CENTER" VALIGN="CENTER" COLSPAN="3" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Notes</FONT></TD>
+</TR>
+
+<TR>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="311" ALIGN="LEFT" VALIGN="TOP" COLSPAN="2" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Output Created</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="162" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">20-MAR-2014 18:12:18</FONT></TD>
+</TR>
+
+<TR>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="311" ALIGN="LEFT" VALIGN="TOP" COLSPAN="2" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Comments</FONT></TD>
+<TD WIDTH="162" ALIGN="LEFT" VALIGN="CENTER" BGCOLOR="#ffffff">&nbsp</TD>
+</TR>
+
+<TR>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="151" ALIGN="LEFT" VALIGN="TOP" ROWSPAN="6" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Input</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="160" ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Data</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="162" ALIGN="LEFT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">/Users/birch/git/diss/evaluationStudy/analyses/Univariate/[Within form] Immediate related traversal.sav</FONT></TD>
+</TR>
+
+<TR>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="160" ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Active Dataset</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="162" ALIGN="LEFT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">DataSet15</FONT></TD>
+</TR>
+
+<TR>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="160" ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Filter</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="162" ALIGN="LEFT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">&lt;none&gt;</FONT></TD>
+</TR>
+
+<TR>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="160" ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Weight</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="162" ALIGN="LEFT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">&lt;none&gt;</FONT></TD>
+</TR>
+
+<TR>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="160" ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Split File</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="162" ALIGN="LEFT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">&lt;none&gt;</FONT></TD>
+</TR>
+
+<TR>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="160" ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">N of Rows in Working Data File</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="162" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">36</FONT></TD>
+</TR>
+
+<TR>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="151" ALIGN="LEFT" VALIGN="TOP" ROWSPAN="2" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Missing Value Handling</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="160" ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Definition of Missing</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="162" ALIGN="LEFT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">User-defined missing values are treated as missing.</FONT></TD>
+</TR>
+
+<TR>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="160" ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Cases Used</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="162" ALIGN="LEFT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Statistics are based on all cases with valid data for all variables in the model.</FONT></TD>
+</TR>
+
+<TR>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="311" ALIGN="LEFT" VALIGN="TOP" COLSPAN="2" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Syntax</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="162" ALIGN="LEFT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">UNIANOVA Keystrokes BY System<BR>  /METHOD=SSTYPE(3)<BR>  /INTERCEPT=INCLUDE<BR>  /EMMEANS=TABLES(System) COMPARE ADJ(BONFERRONI)<BR>  /PRINT=OPOWER ETASQ DESCRIPTIVE<BR>  /CRITERIA=ALPHA(.05)<BR>  /DESIGN=System.</FONT></TD>
+</TR>
+
+<TR>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="151" ALIGN="LEFT" VALIGN="TOP" ROWSPAN="2" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Resources</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="160" ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Processor Time</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="162" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">00:00:00.02</FONT></TD>
+</TR>
+
+<TR>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="160" ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Elapsed Time</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="162" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">00:00:00.00</FONT></TD>
+</TR>
+
+</TABLE><BR></TD></TR></TABLE>
+<p align="left"><head><style type="text/css">p{color:0;font-family:Monospaced;font-size:14pt;font-style:normal;font-weight:normal;text-decoration:none}</style></head><BR>[DataSet15]&nbsp;/Users/birch/git/diss/evaluationStudy/analyses/Univariate/[Within&nbsp;form]&nbsp;Immediate&nbsp;related&nbsp;traversal.sav</p><BR><TABLE WIDTH="100%"><TR><TD ALIGN="LEFT">
+<TABLE WIDTH=294 BORDER="1">
+
+<TR>
+<TD STYLE="font-family:sans-serif; font-weight:bold; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="284" ALIGN="CENTER" VALIGN="CENTER" COLSPAN="3" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Between-Subjects Factors</FONT></TD>
+</TR>
+
+<TR>
+<TD WIDTH="218" ALIGN="LEFT" VALIGN="BOTTOM" COLSPAN="2" BGCOLOR="#ffffff">&nbsp</TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="66" ALIGN="CENTER" VALIGN="BOTTOM" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">N</FONT></TD>
+</TR>
+
+<TR>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="58" ALIGN="LEFT" VALIGN="TOP" ROWSPAN="3" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">System</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="160" ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Chibipoint (crosshairs AND flyouts)</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="66" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">12</FONT></TD>
+</TR>
+
+<TR>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="160" ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Chibipoint (crosshairs ONLY)</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="66" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">12</FONT></TD>
+</TR>
+
+<TR>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="160" ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Tabbing</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="66" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">12</FONT></TD>
+</TR>
+
+</TABLE><BR></TD></TR></TABLE>
+<TABLE WIDTH="100%"><TR><TD ALIGN="LEFT">
+<TABLE WIDTH=398 BORDER="1">
+
+<TR>
+<TD STYLE="font-family:sans-serif; font-weight:bold; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="388" ALIGN="CENTER" VALIGN="CENTER" COLSPAN="4" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Descriptive Statistics</FONT></TD>
+</TR>
+
+<TR><TD ALIGN="LEFT" COLSPAN="4">
+<table><tr><TD  STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal " ALIGN="LEFT" COLSPAN="1"  BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Dependent Variable: <SUP></SUP></FONT></TD>
+<TD  STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal " ALIGN="LEFT" COLSPAN="1"  BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Keystrokes<SUP></SUP></FONT></TD>
+</tr></table></TD></TR>
+
+<TR>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="160" ALIGN="LEFT" VALIGN="BOTTOM" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">System</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="66" ALIGN="CENTER" VALIGN="BOTTOM" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Mean</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="96" ALIGN="CENTER" VALIGN="BOTTOM" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Std. Deviation</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="66" ALIGN="CENTER" VALIGN="BOTTOM" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">N</FONT></TD>
+</TR>
+
+<TR>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="160" ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Chibipoint (crosshairs AND flyouts)</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="66" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">3.0000</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="96" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">.00000</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="66" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">12</FONT></TD>
+</TR>
+
+<TR>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="160" ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Chibipoint (crosshairs ONLY)</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="66" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">5.6667</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="96" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">.49237</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="66" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">12</FONT></TD>
+</TR>
+
+<TR>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="160" ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Tabbing</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="66" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">1.0000</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="96" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">.00000</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="66" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">12</FONT></TD>
+</TR>
+
+<TR>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="160" ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Total</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="66" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">3.2222</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="96" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">1.95830</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="66" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">36</FONT></TD>
+</TR>
+
+</TABLE><BR></TD></TR></TABLE>
+<TABLE WIDTH="100%"><TR><TD ALIGN="LEFT">
+<TABLE WIDTH=811 BORDER="1">
+
+<TR>
+<TD STYLE="font-family:sans-serif; font-weight:bold; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="801" ALIGN="CENTER" VALIGN="CENTER" COLSPAN="9" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Tests of Between-Subjects Effects</FONT></TD>
+</TR>
+
+<TR><TD ALIGN="LEFT" COLSPAN="9">
+<table><tr><TD  STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal " ALIGN="LEFT" COLSPAN="1"  BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Dependent Variable: <SUP></SUP></FONT></TD>
+<TD  STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal " ALIGN="LEFT" COLSPAN="1"  BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Keystrokes<SUP></SUP></FONT></TD>
+</tr></table></TD></TR>
+
+<TR>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="114" ALIGN="LEFT" VALIGN="BOTTOM" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Source</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="96" ALIGN="CENTER" VALIGN="BOTTOM" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Type III Sum of Squares</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="66" ALIGN="CENTER" VALIGN="BOTTOM" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">df</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="93" ALIGN="CENTER" VALIGN="BOTTOM" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Mean Square</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="78" ALIGN="CENTER" VALIGN="BOTTOM" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">F</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="66" ALIGN="CENTER" VALIGN="BOTTOM" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Sig.</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="96" ALIGN="CENTER" VALIGN="BOTTOM" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Partial Eta Squared</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="96" ALIGN="CENTER" VALIGN="BOTTOM" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Noncent. Parameter</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="96" ALIGN="CENTER" VALIGN="BOTTOM" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Observed Power<SUP>b</SUP></FONT></TD>
+</TR>
+
+<TR>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="114" ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Corrected Model</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="96" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">131.556<SUP>a</SUP></FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="66" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">2</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="93" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">65.778</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="78" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">814.000</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="66" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">.000</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="96" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">.980</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="96" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">1628.000</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="96" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">1.000</FONT></TD>
+</TR>
+
+<TR>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="114" ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Intercept</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="96" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">373.778</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="66" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">1</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="93" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">373.778</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="78" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">4625.500</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="66" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">.000</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="96" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">.993</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="96" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">4625.500</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="96" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">1.000</FONT></TD>
+</TR>
+
+<TR>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="114" ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">System</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="96" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">131.556</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="66" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">2</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="93" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">65.778</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="78" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">814.000</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="66" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">.000</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="96" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">.980</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="96" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">1628.000</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="96" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">1.000</FONT></TD>
+</TR>
+
+<TR>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="114" ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Error</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="96" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">2.667</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="66" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">33</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="93" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">.081</FONT></TD>
+<TD ALIGN="CENTER" VALIGN="CENTER" BGCOLOR="#ffffff">&nbsp</TD>
+<TD ALIGN="CENTER" VALIGN="CENTER" BGCOLOR="#ffffff">&nbsp</TD>
+<TD ALIGN="CENTER" VALIGN="CENTER" BGCOLOR="#ffffff">&nbsp</TD>
+<TD ALIGN="CENTER" VALIGN="CENTER" BGCOLOR="#ffffff">&nbsp</TD>
+<TD ALIGN="CENTER" VALIGN="CENTER" BGCOLOR="#ffffff">&nbsp</TD>
+</TR>
+
+<TR>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="114" ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Total</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="96" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">508.000</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="66" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">36</FONT></TD>
+<TD ALIGN="CENTER" VALIGN="CENTER" BGCOLOR="#ffffff">&nbsp</TD>
+<TD ALIGN="CENTER" VALIGN="CENTER" BGCOLOR="#ffffff">&nbsp</TD>
+<TD ALIGN="CENTER" VALIGN="CENTER" BGCOLOR="#ffffff">&nbsp</TD>
+<TD ALIGN="CENTER" VALIGN="CENTER" BGCOLOR="#ffffff">&nbsp</TD>
+<TD ALIGN="CENTER" VALIGN="CENTER" BGCOLOR="#ffffff">&nbsp</TD>
+<TD ALIGN="CENTER" VALIGN="CENTER" BGCOLOR="#ffffff">&nbsp</TD>
+</TR>
+
+<TR>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="114" ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Corrected Total</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="96" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">134.222</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="66" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">35</FONT></TD>
+<TD ALIGN="CENTER" VALIGN="CENTER" BGCOLOR="#ffffff">&nbsp</TD>
+<TD ALIGN="CENTER" VALIGN="CENTER" BGCOLOR="#ffffff">&nbsp</TD>
+<TD ALIGN="CENTER" VALIGN="CENTER" BGCOLOR="#ffffff">&nbsp</TD>
+<TD ALIGN="CENTER" VALIGN="CENTER" BGCOLOR="#ffffff">&nbsp</TD>
+<TD ALIGN="CENTER" VALIGN="CENTER" BGCOLOR="#ffffff">&nbsp</TD>
+<TD ALIGN="CENTER" VALIGN="CENTER" BGCOLOR="#ffffff">&nbsp</TD>
+</TR>
+
+<TR>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="801" ALIGN="LEFT" VALIGN="TOP" COLSPAN="9" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">a. R Squared = .980 (Adjusted R Squared = .979)</FONT></TD>
+</TR>
+
+<TR>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="801" ALIGN="LEFT" VALIGN="TOP" COLSPAN="9" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">b. Computed using alpha =</FONT></TD>
+</TR>
+
+</TABLE><BR></TD></TR></TABLE>
+<CENTER><H1><b><head><style type="text/css">p{color:0;font-family:SansSerif;font-size:18pt;font-style:normal;font-weight:bold;text-decoration:none}</style></head><BR>Estimated&nbsp;Marginal&nbsp;Means</b></H1></CENTER><BR><CENTER><H1><b><head><style type="text/css">p{color:0;font-family:SansSerif;font-size:18pt;font-style:normal;font-weight:bold;text-decoration:none}</style></head><BR>System</b></H1></CENTER><BR><TABLE WIDTH="100%"><TR><TD ALIGN="LEFT">
+<TABLE WIDTH=495 BORDER="1">
+
+<TR>
+<TD STYLE="font-family:sans-serif; font-weight:bold; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="485" ALIGN="CENTER" VALIGN="CENTER" COLSPAN="5" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Estimates</FONT></TD>
+</TR>
+
+<TR><TD ALIGN="LEFT" COLSPAN="5">
+<table><tr><TD  STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal " ALIGN="LEFT" COLSPAN="1"  BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Dependent Variable: <SUP></SUP></FONT></TD>
+<TD  STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal " ALIGN="LEFT" COLSPAN="1"  BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Keystrokes<SUP></SUP></FONT></TD>
+</tr></table></TD></TR>
+
+<TR>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="160" ALIGN="LEFT" VALIGN="BOTTOM" ROWSPAN="2" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">System</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="66" ALIGN="CENTER" VALIGN="BOTTOM" ROWSPAN="2" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Mean</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="73" ALIGN="CENTER" VALIGN="BOTTOM" ROWSPAN="2" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Std. Error</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="186" ALIGN="CENTER" VALIGN="BOTTOM" COLSPAN="2" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">95% Confidence Interval</FONT></TD>
+</TR>
+
+<TR>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="92" ALIGN="CENTER" VALIGN="BOTTOM" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Lower Bound</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="94" ALIGN="CENTER" VALIGN="BOTTOM" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Upper Bound</FONT></TD>
+</TR>
+
+<TR>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="160" ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Chibipoint (crosshairs AND flyouts)</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="66" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">3.000</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="73" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">.082</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="92" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">2.833</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="94" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">3.167</FONT></TD>
+</TR>
+
+<TR>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="160" ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Chibipoint (crosshairs ONLY)</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="66" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">5.667</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="73" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">.082</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="92" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">5.500</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="94" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">5.834</FONT></TD>
+</TR>
+
+<TR>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="160" ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Tabbing</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="66" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">1.000</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="73" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">.082</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="92" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">.833</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="94" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">1.167</FONT></TD>
+</TR>
+
+</TABLE><BR></TD></TR></TABLE>
+<TABLE WIDTH="100%"><TR><TD ALIGN="LEFT">
+<TABLE WIDTH=757 BORDER="1">
+
+<TR>
+<TD STYLE="font-family:sans-serif; font-weight:bold; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="747" ALIGN="CENTER" VALIGN="CENTER" COLSPAN="7" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Pairwise Comparisons</FONT></TD>
+</TR>
+
+<TR><TD ALIGN="LEFT" COLSPAN="7">
+<table><tr><TD  STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal " ALIGN="LEFT" COLSPAN="1"  BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Dependent Variable: <SUP></SUP></FONT></TD>
+<TD  STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal " ALIGN="LEFT" COLSPAN="1"  BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Keystrokes<SUP></SUP></FONT></TD>
+</tr></table></TD></TR>
+
+<TR>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="160" ALIGN="LEFT" VALIGN="BOTTOM" ROWSPAN="2" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">(I) System</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="160" ALIGN="LEFT" VALIGN="BOTTOM" ROWSPAN="2" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">(J) System</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="96" ALIGN="CENTER" VALIGN="BOTTOM" ROWSPAN="2" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Mean Difference (I-J)</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="73" ALIGN="CENTER" VALIGN="BOTTOM" ROWSPAN="2" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Std. Error</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="66" ALIGN="CENTER" VALIGN="BOTTOM" ROWSPAN="2" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Sig.<SUP>b</SUP></FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="192" ALIGN="CENTER" VALIGN="BOTTOM" COLSPAN="2" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">95% Confidence Interval for Difference<SUP>b</SUP></FONT></TD>
+</TR>
+
+<TR>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="96" ALIGN="CENTER" VALIGN="BOTTOM" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Lower Bound</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="96" ALIGN="CENTER" VALIGN="BOTTOM" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Upper Bound</FONT></TD>
+</TR>
+
+<TR>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="160" ALIGN="LEFT" VALIGN="TOP" ROWSPAN="2" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Chibipoint (crosshairs AND flyouts)</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="160" ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Chibipoint (crosshairs ONLY)</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="96" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">-2.667<SUP>*</SUP></FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="73" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">.116</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="66" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">.000</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="96" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">-2.959</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="96" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">-2.374</FONT></TD>
+</TR>
+
+<TR>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="160" ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Tabbing</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="96" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">2.000<SUP>*</SUP></FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="73" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">.116</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="66" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">.000</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="96" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">1.707</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="96" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">2.293</FONT></TD>
+</TR>
+
+<TR>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="160" ALIGN="LEFT" VALIGN="TOP" ROWSPAN="2" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Chibipoint (crosshairs ONLY)</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="160" ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Chibipoint (crosshairs AND flyouts)</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="96" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">2.667<SUP>*</SUP></FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="73" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">.116</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="66" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">.000</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="96" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">2.374</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="96" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">2.959</FONT></TD>
+</TR>
+
+<TR>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="160" ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Tabbing</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="96" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">4.667<SUP>*</SUP></FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="73" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">.116</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="66" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">.000</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="96" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">4.374</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="96" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">4.959</FONT></TD>
+</TR>
+
+<TR>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="160" ALIGN="LEFT" VALIGN="TOP" ROWSPAN="2" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Tabbing</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="160" ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Chibipoint (crosshairs AND flyouts)</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="96" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">-2.000<SUP>*</SUP></FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="73" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">.116</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="66" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">.000</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="96" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">-2.293</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="96" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">-1.707</FONT></TD>
+</TR>
+
+<TR>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="160" ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Chibipoint (crosshairs ONLY)</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="96" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">-4.667<SUP>*</SUP></FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="73" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">.116</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="66" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">.000</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="96" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">-4.959</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="96" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">-4.374</FONT></TD>
+</TR>
+
+<TR>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="747" ALIGN="LEFT" VALIGN="TOP" COLSPAN="7" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Based on estimated marginal means</FONT></TD>
+</TR>
+
+<TR>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="747" ALIGN="LEFT" VALIGN="TOP" COLSPAN="7" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">*. The mean difference is significant at the</FONT></TD>
+</TR>
+
+<TR>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="747" ALIGN="LEFT" VALIGN="TOP" COLSPAN="7" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">b. Adjustment for multiple comparisons: Bonferroni.</FONT></TD>
+</TR>
+
+</TABLE><BR></TD></TR></TABLE>
+<TABLE WIDTH="100%"><TR><TD ALIGN="LEFT">
+<TABLE WIDTH=755 BORDER="1">
+
+<TR>
+<TD STYLE="font-family:sans-serif; font-weight:bold; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="745" ALIGN="CENTER" VALIGN="CENTER" COLSPAN="9" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Univariate Tests</FONT></TD>
+</TR>
+
+<TR><TD ALIGN="LEFT" COLSPAN="9">
+<table><tr><TD  STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal " ALIGN="LEFT" COLSPAN="1"  BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Dependent Variable: <SUP></SUP></FONT></TD>
+<TD  STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal " ALIGN="LEFT" COLSPAN="1"  BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Keystrokes<SUP></SUP></FONT></TD>
+</tr></table></TD></TR>
+
+<TR>
+<TD WIDTH="66" ALIGN="LEFT" VALIGN="BOTTOM" BGCOLOR="#ffffff">&nbsp</TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="96" ALIGN="CENTER" VALIGN="BOTTOM" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Sum of Squares</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="66" ALIGN="CENTER" VALIGN="BOTTOM" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">df</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="93" ALIGN="CENTER" VALIGN="BOTTOM" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Mean Square</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="70" ALIGN="CENTER" VALIGN="BOTTOM" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">F</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="66" ALIGN="CENTER" VALIGN="BOTTOM" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Sig.</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="96" ALIGN="CENTER" VALIGN="BOTTOM" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Partial Eta Squared</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="96" ALIGN="CENTER" VALIGN="BOTTOM" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Noncent. Parameter</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="96" ALIGN="CENTER" VALIGN="BOTTOM" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Observed Power<SUP>a</SUP></FONT></TD>
+</TR>
+
+<TR>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="66" ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Contrast</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="96" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">131.556</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="66" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">2</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="93" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">65.778</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="70" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">814.000</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="66" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">.000</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="96" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">.980</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="96" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">1628.000</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="96" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">1.000</FONT></TD>
+</TR>
+
+<TR>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="66" ALIGN="LEFT" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">Error</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="96" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">2.667</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="66" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">33</FONT></TD>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="93" ALIGN="RIGHT" VALIGN="CENTER" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">.081</FONT></TD>
+<TD ALIGN="CENTER" VALIGN="CENTER" BGCOLOR="#ffffff">&nbsp</TD>
+<TD ALIGN="CENTER" VALIGN="CENTER" BGCOLOR="#ffffff">&nbsp</TD>
+<TD ALIGN="CENTER" VALIGN="CENTER" BGCOLOR="#ffffff">&nbsp</TD>
+<TD ALIGN="CENTER" VALIGN="CENTER" BGCOLOR="#ffffff">&nbsp</TD>
+<TD ALIGN="CENTER" VALIGN="CENTER" BGCOLOR="#ffffff">&nbsp</TD>
+</TR>
+
+<TR>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="745" ALIGN="LEFT" VALIGN="TOP" COLSPAN="9" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">The F tests the effect of System. This test is based on the linearly independent pairwise comparisons among the estimated marginal means.</FONT></TD>
+</TR>
+
+<TR>
+<TD STYLE="font-family:sans-serif; font-weight:normal; font-size:9.0pt; font-style:normal; text-decoration:normal" WIDTH="745" ALIGN="LEFT" VALIGN="TOP" COLSPAN="9" BGCOLOR="#ffffff">
+<FONT COLOR="#000000">a. Computed using alpha =</FONT></TD>
+</TR>
+
+</TABLE><BR></TD></TR></TABLE>
+</BODY></HTML>

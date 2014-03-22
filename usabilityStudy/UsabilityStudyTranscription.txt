@@ -1,0 +1,261 @@
+First system, Flyouts ON.
+
+Start the system by pressing Apple K.
+	Okay, is there an Apple on here?
+Yeah, I’ve mapped Ctrl to Apple.
+	Okay, great.
+	I’ll do what I have to do to get started, and…
+*Presses Apple K*
+*Chibipoint interface appears*
+	Okay.
+
+Your mission, should you choose to accept it, is to search for the Olympics.
+	Oh, search, okay, so…
+*Presses indicated key to drill toward top-right quadrant, where search is*
+// No instruction required on how to point, or what keys to use!
+	And now, the question is… oh, I see.
+*Continues drilling toward search box*
+
+	Uh, it keeps coming…
+*Continues drilling toward search box.*
+[Field is now in crosshairs.]
+	Ah!
+	Am I there yet?
+*Guesses key*
+	Nope. Do I have to hit return or something?
+*Hits return*
+*Search field is selected*
+// No instructions required!
+*Types Olympics, submits search*
+
+	Who would search for the olympics… haha! Okay, now what?
+	I might have to do the same again. Ctrl K?
+*Presses Apple K*
+*Chibipoint interface appears*
+	Okay, what have I got to do?
+
+Let me think, what would be a good idea.. try and hit that article, Sochi 2014 [top result].
+	Hm, oh the first Sochi 2012? Sochi 2014, dude! Haha.
+	The one with that guy, the one with the picture.
+*Drills toward article*
+*Drills toward article*
+	And it’s missed the link..
+	Oh, I see.
+*Activates an appropriate flyout*
+// Unprompted! Only one lookup later than expert perf.
+	It does that. Very clever of you, that extra thing.
+
+	Hm, okay. This is great! I would totally take this.
+*Presses Apple K*
+*Chibipoint interface appears*
+	Especially as it’s keyboard, and it saves you from moving to it.
+	And it’s not slower than, uh, mouse; you don’t have to move it to. So that’s great.
+	I used to keep the mouse on this; it’s obnoxiously slow. I used to use that in 1998, when I was working for Lego, I was so screwed up I did use that sometimes.
+	Anyway, yes.
+
+Now click on Sport.
+Err, that sport.
+	Oh, that sport up there.
+*Drills toward*
+	Mm, (counting noises)
+*Presses wrong flyout*
+	Oops, missed. So what’s the back button?
+Backspace.
+*Presses back*
+
+	Let’s try again.
+*Presses Apple K*
+*Chibipoint interface appears*
+	Okay.
+*Drills toward*
+	Mm.
+*Again activates inappropriate flyout*
+	Ah, it’s, it’s.. there’s something wrong.
+	I hate to tell you this, but I’m definitely clicking on the right thing. Haha.
+
+Okay, uh..
+	I guess I could therefore try to compensate for that one, cause..
+*Drills toward*
+I dunno how much I should say..
+*Activates correct flyout*
+	Yeah, okay. I compensated, but there’s definitely something wrong. Haha.
+
+Okay, how about a different website; go to Amazon.
+*Changes website*
+*Presses Apple K*
+*Chibipoint interface appears*
+Let’s do a… I dunno; let’s do a search.
+	Okay.
+*Drills toward*
+*Many flyouts appear close together with tags tying them to their buttons in various directions*
+	Hah! That’s really all over.
+*Presses appropriate flyout for search field*
+Hm, what’s your favourite book?
+	[search term redacted]
+	[discussion of how to select suggested products using arrow keys on accessible input device]
+*search submitted*
+
+Try and click on [author for first result redacted].
+*Some unproductive inputs [accessible input device typing in wrong mode]*
+	Hello?
+	Oh, I’ve got to…
+*Presses Apple K*
+*Chibipoint interface appears*
+*Drills toward*
+*Presses appropriate flyout*
+//  Expert performance already!
+
+I wonder if that’s enough for Amazon. Let’s go to Wikipedia.
+Looks like it’s already selected the input field. Shall we pretend it didn’t?
+	Why? Why don’t you just have me go to the German [Wikipedia] or something?
+*Presses Apple K*
+*Chibipoint interface appears*
+	Let’s go to the German one.
+Okay.
+*Presses appropriate flyout*
+// No drilling required!
+
+	Okay, now what?
+*Presses Apple K*
+*Chibipoint interface appears*
+*Drills toward search*
+*Drills toward search*
+*Drills toward search*
+German foods?
+*Presses appropriate flyout*
+*Searches currywurst*
+
+Let’s go to the bottom; there should be some interesting markup there.
+*Scrolls to end*
+Alright, let’s go to Über Wikipedia.
+	Alright.
+*Drills toward*
+*Presses appropriate flyout*
+
+[Discussion to find an inaccessible website to navigate next]
+
+*Google searches Bath Chronicle.*
+*Presses Apple K*
+*Chibipoint interface appears*
+*Presses key for appropriate flyout*
+*Bug in Chibipoint means the key press is caught by Google instead*
+	That’s interesting. So the ‘J’ got captured.
+*More typing*
+	Yeah, every time you type something, Google’s capturing it.
+	Yeah, so, can’t… it’s just totally failing now.
+
+Yeah, there’s still other ways to use Google with the keyboard.
+I found this earlier. I don’t know how to make my key listeners the highest priority.
+It’s JavaScript injected into the page, so it’s fighting the rest of the page.
+	So we can cheat briefly.
+*Clicks news article of Bath Chronicle*
+
+	So now..
+*Presses Apple K*
+*Chibipoint interface appears*
+	So what do you want me to click?
+*Drills toward top-left*
+Click ‘place an advert’.
+*Presses appropriate flyout*
+
+Register. Let’s see how it does with forms.
+	Okay.
+*Presses Apple K*
+*Chibipoint interface appears*
+*Drills toward Register*
+*Closes Chibipoint accidentally*
+	Oops.
+*Presses Apple K*
+*Chibipoint interface appears*
+*(Immediately) drills to original position*
+// Appears to be able to reproduce practiced spatial traversals quickly without pausing to think.
+	…That’s a ’Z’; okay. [Text was obscured, so appeared as numeral 7]
+*Drills toward*
+*Drills toward*
+[No flyouts have appeared for this button; clickable detection failed, so crosshairs are the only option. It’s now in crosshairs.]
+*Presses enter*
+
+[A form appears]
+*Tabs a few times to enter form*
+// Candidate seems to notice that both systems can co-exist. This tab journey was a short one.
+	Oops.
+*Presses Apple K*
+*Chibipoint interface appears*
+[First 6 fields of form have flyouts suggested, without drilling.]
+*Presses flyout for first form element*
+*Focuses drop-down menu*
+	Heh. Yeah, thanks. [Presumably wanted menu to open, as with a real click].
+*Starts filling out form (unprompted) without Chibipoint*
+*Accidentally closes window.*
+
+*Restores window.*
+*Presses Apple K*
+*Chibipoint interface appears*
+*Drills toward ‘Address lookup’ button*
+*Drills toward [non-trivial because it’s on an edge after each drill, and also because no flyouts are offered; clickables detection failed]*
+*Drills toward [now in crosshairs]*
+*Presses Return*
+*Address lookup is clicked; panel appears overlaying existing content*
+
+*Presses tab to attempt to focus panel*
+*Keyboard focus leaves browser*
+*Presses Apple K*
+*Chibipoint interface appears*
+*Attempts to drill, but keyboard focus is in the address bar; types into address instead.*
+[Much attempting to regain focus and resume drilling, but even tabbing fails]
+[Resort to mouse click to put focus back in browser content pane]
+
+*Drills toward address*
+*Drills toward*
+*Drills toward address [now in crosshairs, though never detected by flyouts]*
+*Presses return*
+*Click sent, element flashes, but no change in form*
+// Without mouseover probing, we cannot get affordances for which element needs to be clicked, and confused results can occur.
+[Attempt to verify using mouse which element is meant to be clicked]
+[Panel closes]
+
+[Recover panel by refreshing page and re-opening Address lookup]
+[Clicks same element again with Chibipoint; form option remains unclicked]
+	It must want [me to click] the checkbox next to it.
+*Presses Apple K*
+*Chibipoint interface appears*
+*Drills toward*
+*Drills toward*
+*Drills toward*
+[Button is not yet in crosshairs. Drilling labels now hidden since grid is small.]
+	Hmh.
+*Presses return*
+	Yeah, I have no idea. It doesn’t seem to be..
+	So, does that..
+*Hovers mouse over to confirm feedback*
+	[The button] doesn’t seem to notice [with Chibipoint] that something’s there.
+	Obviously there’s no signal that [an emulated mouse cursor is above].
+	‘Cause the [cursor] changes into a hand when you hover over it.
+[Repeats previous navigation:]
+*Presses Apple K*
+*Chibipoint interface appears*
+*Drills toward*
+*Drills toward*
+*Drills toward*
+[Button is not yet in crosshairs. Drilling labels now hidden since grid is small.]
+*Presses return*
+// Seems to think that when the drilling labels are gone, it is not possible to continue drilling.
+
+*Reopens Chibipoint, drills lightly into an alternative journey.*
+*Closes Chibipoint without clicking*
+
+*Reopens Chibipoint, redoing a previous journey.*
+	Yeah, nothing I do seems to get the tick.
+Try pressing [bottom-left quadrant (now unlabelled)]
+*Drills*
+And again.
+*Drills*
+You can inch closer.
+
+Boxes aren’t perfect sub-boxes; they grow a little bit.
+	Okay. I didn’t see Z as an action, so…
+Ah. Yes, it… I can’t make text any smaller.
+	Well, is that enough information?
+
+*Presses Apple K*
+*Chibipoint interface appears*
