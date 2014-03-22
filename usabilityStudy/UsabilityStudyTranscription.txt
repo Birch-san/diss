@@ -1,3 +1,5 @@
+====Flyouts On=====
+
 First system, Flyouts ON.
 
 Start the system by pressing Apple K.
@@ -257,5 +259,217 @@ Boxes aren’t perfect sub-boxes; they grow a little bit.
 Ah. Yes, it… I can’t make text any smaller.
 	Well, is that enough information?
 
+
+
+
+
+====Flyouts Off=====
+
+Now try a version with the Flyouts turned off.
+	Okay.
+[On BBC homepage]
 *Presses Apple K*
 *Chibipoint interface appears*
+Try and watch Top Gear. [This is at the very bottom edge of the grid]
+	Okay, down there.	
+*Drills toward*
+*Drills toward*
+*Drills toward*
+*Presses return*
+[Page navigates]
+// Even buttons in tricky positions were able to be clicked easily.
+
+*Presses Apple K*
+*Chibipoint interface appears*
+[Top Gear Flash pane is painted wholly by Chibipoint; inner structure not detected]
+*Presses space bar to attempt to play video*
+[Page scrolls upon space bar since video does not have focus]
+*Drills toward Flash pane*
+*Drills toward centre of Flash pane*
+*Presses return*
+[Flash pane is clicked, but no meaningful change occurs]
+*Presses key to scroll up*
+[Page does not scroll, despite input]
+	How do you scroll up?
+Your focus is trapped by Flash.
+[Mouse recruited to recover focus]
+[Page scrolled back to beginning]
+
+*Presses Apple K*
+*Chibipoint interface appears*
+	So, is the big yellow thing..? I’m sure if it could just see which button I’m trying to click..
+	No, it’s not doing anything.
+*Presses Apple K*
+*Chibipoint interface appears*
+*Closes Chibipoint*
+
+So I’ll spoil that; Flash players can’t take clicks [from ChibiPoint].
+	Oh, okay.
+So you’ve discovered that.
+
+[We return to BBC homepage]
+Try to click something on the bottom of the page - that’s not on-screen.
+Music.
+*Presses Apple K*
+*Chibipoint interface appears*
+*Scrolls using Page Down*
+// Unprompted, understands that page scrolling keys co-exist with ChibiPoint.
+*Drills toward an element in the same list as ‘Music’*
+	Too late; I’m going to go into ‘Learning’.
+	Although it’s actually not what you said.
+[Actual ‘Learning’ text is not highlighted, but clicking the box that contains it worked in this case; did not have to drill too specifically]
+*Presses return*
+[Navigates to Learning]
+
+Let’s see if there’s anything hard to click on; keep scrolling.
+*Presses Page Down*
+Click the ‘Accessibility Help’.
+	Okay.
+*Presses Apple K*
+*Chibipoint interface appears*
+*Drills toward*
+	Hmm..
+*Drills toward*
+[Painting of link container obscures the white hyperlinks within]
+Oh god.
+*Drills toward*
+[Presently highlighted element is the link below Accessibility Help]
+	And then, how do you move it around? Did you say the Z key..
+The keybindings continue to be exactly the same.
+	Oh, but I didn’t memorise them.
+Uhh.. they’re this grid.
+[Demonstrates grid of 9 keys on accessibility hardware that map to on-screen controls]
+	Oh, okay, so..
+*Drills toward*
+*Presses enter*
+[Accessibility Help is clicked]
+
+So, did you notice that they were…
+	No, I totally didn’t notice that they were,
+and I shouldn’t, since there was a cue.
+// Mapping was not noticed nor memorised; singular lack of incidental information.
+	Okay.
+	
+	Okay, so..
+[Decides to click one of the webpage accessibility articles]
+*Presses Apple K*
+*Chibipoint interface appears*
+*Drills toward*
+*Drills toward*
+*Drills toward*
+*Presses return*
+
+	Well anyway, this doesn’t seem to be a problem, so..
+Right, I’ll end.
+
+
+
+
+
+====Feedback=====
+
+What do you think of the two systems you tried (flyouts on, off)?
+	I couldn’t tell the difference, I’m afraid.
+	What was the… oh, I dunno… oh, the flyouts with commas and periods and things?
+Yeah.
+	Yeah, I liked the commas and periods and things. They were pretty good guesses. Although it was a bit cluttered. I’d like to be able to switch back and forth depending on what I was trying to do.
+Uhh, by switch back and forth, do you mean ``hide them’’?
+	Yeah. Exactly, so like mostly it’s great. Although anyway you can hide it with Ctrl-K, so I guess that’s enough.
+
+Was the problem that [the flyouts] obscured [what you were trying to point at]?
+	It just looks a bit cluttered sometimes. But it was really useful, so I think I’d probably mostly just have them on. I could just imagine, I dunno some time I might want to turn them off…
+
+Would it be useful to have, like, holding down SHIFT dispels the interface?
+	What?
+Uhm, there’s a lot of heads-up display on the page; you could hold down a modifying key to hide stuff temporarily, but not lose where your grid is.
+	Uhh, I don’t know what… one thing is that Ctrl-K doesn’t work very well for me, ‘cause I use emacs; that’s why it was after a little while when I was doing the wrong things because I doing the wrong commands, because I was confusing all the commands.
+	So for me it would be better if it was something different, like Alt+something, just because I hardly ever use Alt. Then I’d remember it; I could remember that. And also, when I’m on emacs, I’d be able to control it.
+
+There’s a limit to what keyboard shortcuts I’m allowed to choose. Actually, it’s a limit to what I can `suggest’ as a keyboard shortcut, but the user can override the system ones if they manually choose them.
+	Okay. Yeah.
+So that could be done.
+
+	Yeah, but it was really nice. It was a nice way to do it.
+	I could imagine using that a lot.
+	Although now I’m pretty much just using the pen tablet.
+	But it saves you find the tablet - the pen, tablet; it’s just right there.
+
+Were there any things that you didn’t understand?
+	Oh yeah, like I said, I didn’t notice that the grid was continuing; or rather I didn’t pick up that - they just looked like random letters to me. I didn’t know why you were doing it.
+	But had I noticed… ‘cause, the thing is that in the old days, my first guess would’ve been, was the right hand.
+	In the old days, the arrow keys used to be right around there.
+	I should’ve picked up that you were using the left hand instead, but I didn’t.
+I’m less worried about that, because it usually would be the numpad, but it’s [accessible input device] mode.
+	Yeah, okay. The problem would be the - because they were slowing down the typist, when you’re in Qwerty, all the characters that you use are mostly on the left, so you wouldn’t normally expect them to use the right hand for the arrow keys.
+Okay, so they can be swapped.
+
+Did you ever desire to be able to `undo’ a drill-down, and retreat?
+	Yeah, once, and what I did was just Ctrl+K to start over, but there was, like, one time.
+Okay. There’s a feature I should’ve disclosed to you; there is a key that can `back up’.
+	Okay. Yeah, no, I would’ve wanted that if I was, I got it.
+	But that was pretty fast; considering how long it took me to get… quite a lot of usability stuff downloads, the first time you try using a pen tablet(!), yeah, so that was, I was able to get into that; that was fine.
+	Again, I am old, and I did used to navigate with the arrow keys on the other hand(!)
+
+Would you say it’s intuitive?
+	It was largely intuitive; I mean, there was a couple things you didn’t know. It might be nice to have, like, a little helping thing that could pop up and tell you the cheat sheet, to tell you if there’s any other stuff.
+	‘Cause usually what I do is, I hack around a bit with the command, and then I go and read the manual, and see if there’s anything I’ve missed.
+	So this was a very successful first hack-around, but then you would want somewhere to be able to read and find out what you’d missed.
+Maybe I’ll print a cheat-sheet rather than coding one.
+	Yeah, sure.
+
+Were the `clickable’ suggestions - made by the flyouts - were they good enough guesses?
+	Yeah! Yeah, they were highly accurate; I was very impressed by that.
+	I especially liked that they were sometimes, you picked the wrong region, and they still guessed that it was just slightly off the region; it was like, way! Thinking outside the box.
+
+Did you find that there were any things that it didn’t seem to be able to see?
+	I didn’t notice any in particular - except for something, you know, that one thing that we tried over and over again, and couldn’t get anything to see.
+That button didn’t seem to be marked up properly.
+	Yeah.
+It has a lot of intelligence to work out if something’s clickable, but…
+	But somehow, like I said with the mouse you could hover over it and it would change into a pointy thing, so there must be something there, but it wasn’t much.
+I put in a feature to force it to `mouseover’ anything that the crosshairs are on. But it doesn’t seem to… I told it to trigger the mouseovers, but it never happens.
+	I never really `got’ the crosshairs, so I hadn’t realised - right until the end you showed it to me - but I didn’t earlier pick up on that.
+
+Yeah, it’s problematic that as well as the flyouts, there’s also the crosshairs.
+	Okay. I wasn’t really noticing [the crosshairs], because the other system was working so well for me, so I was sort of reflecting, and concentrating on what I saw.
+And yet, once you were switched to the system without flyouts, you were happy to use crosshairs.
+	Well, once you showed me how to use them, that you could still navigate even if there’s no letters, and then I was like, okay, well that was like what I was used to before with the [accessible input device], so I learned my lesson.
+
+Would you say you could understand how to get to a place?
+	Yeah, obviously; you just saw me do it(!)
+Was the grid-splitting an intuitive way?
+	Yeah, no, I thought that was fine; that was great. Uh, yeah, that made sense. I liked that it was very bright, and there was this little {unclear}.
+	I’m probably not your best - it depends how you think about it. I’m probably not the most stereotypical - it’s not like taking home a heavier[?] - somebody who doesn’t use a computer - to try it.
+Well, it’s designed for [people with accessibility requirements]. You’d probably be a pretty good sample for accessibility needs.
+	Well, if it’s designed for disabled people with a lot of experience with different tech, so that’s what I’m saying - you’d need to find some other people who haven’t had the same breadth of experience of available tech.
+
+If we want to model performance of an expert, that’s fine though.
+	Yeah, no, that’s fine. I’m just saying that you should realise I’m not a typical user. In fact, that’s one of the things that Google will tell you, probably(!) is that their problem is that all the people they hire are not at all - can’t even conceive of the problems that their users have. Figuring out, for example, that keyboards {unclear}(!)
+	Uhm, yeah, we’re not the normal. I’m particularly mechanically inclined, so I tend to figure these things out pretty quickly.
+	But still, it was good. I’m just saying that the hacking through it might not… well of course, to be fair, who does hack through your stuff? People who are good at hacking. Look at the manual.
+
+How do you feel this system compares to navigating using tabbing around a page?
+	Oh, it’s obviously faster because it’s hierarchical. My first-years should be able to answer that question.
+Would you prefer this system?
+	To tabbing? Of course, yeah. As long as it didn’t interfere with anything else.
+
+Bonus question: how does it compare to the mouse?
+	Uh, like I said, the main benefit is… well, there’s actually two benefits. The main benefit is that for me, because of whatever - I don’t know if everybody has this - is that especially by the time you get your hand over, and you find the mouse, that sort of thing, it was just much faster to have it right on the keyboard.
+	So, that’s… and the other thing is that, honestly, sometimes it’s really hard to click on, so being able to choose a letter is just better than, than just, life, you know, even with a pointing device.
+	But, yeah. So, basically, dunno, I’d have to try it. Uh, it might be… the other, the downside is that one of the problems with typing injuries is that you are too much in the same posture doing the same thing all the time, so it is good to use other devices if you have them, just to move around a bit.
+	In fact especially when you have to go searching for the pen, that’s always good.
+
+Would you use it alongside tabbing?
+	Tabbing? No, probably I would just use this, once I was used to it. I probably wouldn’t use tabbing unless [Chibipoint] was breaking.
+	But if you see that [what you want to focus] is the next thing, then you tab because you have no reason to go through a hierarchy. ‘Cause it was one, if it is in a form, then it’s one keystroke to get to the next thing. If you [use Chibipoint, it’s] always 2 keystrokes because you first have to call it up, and then you have to go again.
+	So I would use the tab - I would always go for the fewest keystrokes. So you can answer your own question by saying how many times would you have to press tab to get to the next point.
+
+Okay. So you would see yourself using the two systems together?
+	Yeah, I think so because - but, well, I - yeah, depending on what you’re trying to do. But for the average page, you would never ever tab through it, but it’s gonna be just how many - like I said - I’m always gonna try and use the fewest keystrokes in the shortest amount of time. So, but, that’s, you know, for a form that’s gonna be tab, because you have to fill everything in.
+	But for any normal page, like on the BBC page, where you’re skipping around, then of course you don’t wanna use the tab.
+
+And, how predictable was it?
+	I thought it was pretty predictable, I found. Except from, you know, there were bugs. The capture problems.
+Was it more predictable than tabbing?
+	Yeah. Absolutely. Who knows what’s gonna - yeah, when people {unclear}, I never figured it out. Use the tab to, like, {unclear}, you’re just like, why did they need that? You know. And sometimes they skip over things, that were just not so {unclear}. I do a lot of {unclear}, so you know {unclear}.
+
