@@ -1,0 +1,100 @@
+\documentclass[a4paper, 12pt]{report}
+\usepackage{times}
+
+\usepackage[leftcaption]{sidecap}
+\usepackage{subfigure} % figures can have sub chunks
+\usepackage{geometry} % this maxes page usage, making the below unnecessary
+\textwidth = 6.75in
+\oddsidemargin = -0.25in
+\textheight = 10in
+\topmargin = -0.5in
+\headheight = 15pt
+\usepackage{fancyhdr}
+\usepackage{pdfpages}
+
+\pagestyle{fancy}
+\lhead{{\it Alex Birch}}
+\chead{ChibiPoint: Accessible Pointing for Web Applications}
+\rhead{}
+\lfoot{}
+\cfoot{\thepage}
+\rfoot{}
+
+% for capitals font in signature
+\usepackage[T1]{fontenc}
+
+\usepackage{amsmath}
+
+% For figures
+\usepackage{graphicx}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg}
+\usepackage{float}
+
+\usepackage[sorting=none,backend=bibtex]{biblatex}
+\bibliography{Diss}
+
+\usepackage[colorlinks]{hyperref}
+\usepackage{cleveref}
+\crefformat{section}{section #2#1#3}
+\crefdefaultlabelformat{[#2#1#3]}
+
+\usepackage[nomain,acronym,toc,section,numberedsection=autolabel]{glossaries} % make a separate list of acronyms
+%\makeindex
+\makeglossaries
+
+\title{ChibiPoint: Accessible Pointing for Web Applications}
+\author{Alexander Birch}
+\date{November 2013}
+\begin{document}
+\include{Diss-glossary}
+\maketitle
+\tableofcontents
+%\pagebreak
+
+%\chapter*{Introduction}
+
+\chapter{Introduction}
+
+\section{Context and Motivation}
+\section{Literature \& Technology Review}
+% SUMMARY of literature review
+\section{Problem statement and Hypothesis}
+% Concise statement of problem
+% State efficiency goal
+\section{Goals and Methods}
+% What we intend to solve, and how
+\section{Results / Contributions}
+% Summarise our most important findings
+% Cast findings as contributions to research field
+\section{Thesis overview}
+% Overview of remainder of thesis
+
+\chapter{Literature \& Technology Review}
+
+\chapter{Requirements \& Design}
+
+\chapter{Implementation}
+
+\chapter{Evaluation}
+\section{Overview}
+\section{Usability Study}
+\section{Pilot Study}
+\section{Study of Pointing Systems}
+
+\chapter{Results}
+
+\chapter{Conclusions \& Future work}
+
+\chapter{Figures}
+\pagebreak
+\printglossary[title=Terms]
+
+%\nocite{*}
+%\nocite{Doe:2009:Online}
+\pagebreak
+\printbibliography
+
+\pagebreak
+\chapter{Appendices}
+
+\end{document}
