@@ -77,9 +77,72 @@
 
 \chapter{Evaluation}
 \section{Overview}
-\section{Usability Study}
-\section{Pilot Study}
-\section{Study of Pointing Systems}
+The primary system comparison we sought to pursue was `ChibiPoint' versus `tabbing navigation'. We aimed also to evaluate the contribution made by the `flyouts' feature of ChibiPoint: whether it helps or hinders. As such, we evaluated three systems:
+\begin{enumerate}
+\item Tabbing navigation
+\item ChibiPoint (with just the crosshairs feature enabled)
+\item ChibiPoint (with both the crosshairs feature AND the flyouts feature enabled)
+\end{enumerate}
+
+We aimed to quantitatively evaluate the following things:
+\begin{enumerate}
+\item Which system is the most efficient for each class of navigation tested
+\item Which system is the fastest for each class of navigation tested
+\item Which system is preferred by the participants
+\item Which system is considered by the participants to be easiest to use
+\item How reasonable is the amount of keypressing demanded by each system, according to the participants
+\end{enumerate}
+
+Qualitative data was useful also, as it offered feedback on specific advantages or disadvantages of each system, as well as providing insight to usability and the reasons for user preferences.
+
+We performed first a usability study, as a precursor to the more detailed quantitative testing. The usability study was expected to reveal how a new user approaches the system --- what level of instruction is necessary, and what problems are encountered with usage. Addressing issues here would reduce problems in the larger, quantitative study that followed.
+
+Regarding the quantitative study: a pilot study was conducted first, to ensure that the study approach was effective, before widening the participation. Omissions from that pilot study were addressed.
+A larger study then recruited 12 users to evaluate the systems in a counterbalanced $3 \times 8$ ANOVA (three systems, 8 navigation types).
+% This would reveal which system was most suited to which kinds of pointing. Qualitative data was gathered also, to capture user preference.
+
+\section{Study 1: Usability Study}
+\section{Study 2: Quantitative Comparison of Pointing Systems}
+\subsection{Outline}
+A pilot study set the sequence for the full study to follow. The main output of the study was the evaluation of pointing systems; participants were instructed to complete several tasks of the following ilk:
+\begin{enumerate}
+\item Go to a specified website.
+\item Using the specified pointing system, click a specified button/page element.
+\end{enumerate}
+After completing this set of tasks with one pointing system, the participant was asked to repeat it with another of the pointing systems under test, until all three systems had been tested. We counterbalanced the order in which pointing systems were allocated to participants, to reduce biases in learning the tasks or systems.
+
+In addition to this evaluation of system performance, participants were asked to fill out two questionnaires. The first questionnaire was posed before the pointing tasks: participants declared their proficiencies with the computing concepts involved, as well as describing their demographic. The second questionnaire was posed after the pointing tasks, and asked the participants to give subjective feedback on the systems they used.
+
+\subsection{Methodology}
+The following describes the methodology for the full study. Deviations exclusive to the pilot study are disclosed in its separate section.
+
+The researcher followed a script to ensure that all instances of the study were performed the same way.
+
+Participants were briefed on the purpose of the dissertation and of the study, as well as what participation in the study would entail. They were assured that no identifying information would be kept about them, that it was the system performance being measured rather than their personal performance, and that they were free to withdraw participation at any point. With these explained, participants were asked to sign a permission slip, and were offered also a copy in case they wished to contact the researchers after the fact.
+
+Participants were assigned a unique number. This enabled both the questionnaires they would fill in to be related as being from the same participant. Additionally participants were assigned a sequence in which to evaluate the three systems. Biases pertaining to the order in which systems are used, were counterbalanced by testing using all sequence permutations of the three systems equally. There were 6 permutations, so the study recruited a multiple of this: 12 participants.
+
+The study began with the first questionnaire's being allocated. This asked participants to disclose their demographic (occupation, gender and age). All participants were known personally by the researcher, with a majority (9) explicitly identifying as being current Computer Science students.
+%INSERT AGE AVERAGE%
+%INSERT HOURS AVERAGE%
+%INSERT POINTING SCORE AVERAGE%
+
+Regarding participant's exposure to accessibility needs or solutions, three had used Dragon NaturallySpeaking speech-to-text. The two who elaborated on the extent of their use of speech-to-text described only limited use. No participant had --- at the time, or ever --- had computer-relevant vision difficulties. Two had had in the past minor experiences with RSI, with one describing ``RSI from mouse use, but nothing too severe to require a large change in typing/clicking'', the other elaborating ``Have changed input device due to pain in very specific circumstances.''. No participants had RSI at the time of the study.
+
+A majority (11) used mainly Windows as their desktop Operating System. Browser choice was more divided, with 7 participants using mainly Google Chrome, 3 Firefox and 1 `Other' (at the time disclosed to be Safari, which was not an option offered on the questionnaire).
+%INSERT TOUCH-TYPING PROFICIENCIES%
+
+The participants began the testing activity by reading instructions on the system they had been allocated. The researcher then guided them through a training scenario to confirm that they had understood the instructions. During this training period, the researcher would answer any questions and correct any mistakes that occurred. In the case of learning the system `ChibiPoint with crosshairs AND flyouts' before learning the system `ChibiPoint with crosshairs ONLY', participants were trained in the use of both features in turn.
+
+
+\subsection{Metrics}
+The metric that was most important to study was efficiency --- how many keypresses (and by extension, how much exertion) are required for a given navigation task. Secondary to this metric was time taken by each system to perform a navigation task --- it is preferred, but not essential, for the system to be fast; the main priority is reducing exertion, which is connected to efficiency.
+
+During the navigation tasks, user keypresses were recorded, as well as the times that they occurred. We recorded only keypresses relevant to pointing with the current system. For example, attempts to use the `tab' key during use of ChibiPoint were intercepted, and answered with an alert to the user that tabbing was disallowed. We disregarded keyboard input that did not invoke functionality within tabbing or the currently activated version of ChibiPoint. Page scrolling via the keyboard was considered unrelated to pointing, and so was not recorded. Attempts to invoke flyouts were only recorded when said flyout was present; if no flyouts were created (for example because no clickables are in the specified area, or if flyouts are disabled altogether), then the keypress was disregarded.
+
+The post-task questionnaire asked participants to give subjective feedback on the systems they used. Some of the feedback was quantitative --- which was the preferred pointing system, how easy was each system to use, and how reasonable was the amount of key pressing required --- and some of the feedback was qualitative, asking for general thoughts on the task and systems.
+
+\subsection{Pilot Study}
 
 \chapter{Results}
 
