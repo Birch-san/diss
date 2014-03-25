@@ -113,6 +113,24 @@ After completing this set of tasks with one pointing system, the participant was
 
 In addition to this evaluation of system performance, participants were asked to fill out two questionnaires. The first questionnaire was posed before the pointing tasks: participants declared their proficiencies with the computing concepts involved, as well as describing their demographic. The second questionnaire was posed after the pointing tasks, and asked the participants to give subjective feedback on the systems they used.
 
+\subsection{Demographic}
+All participants were known personally by the researcher, with a majority (9) explicitly identifying as being current Computer Science students.
+
+The mean average age for participants was 22.58, with a standard deviation of 2.151. The range was 21--28. These data are tabulated in Figure \ref{fig:partic_age}.
+A quarter of participants were female, the rest were male (Figure \ref{fig:partic_gender}).
+
+\subsubsection{Proficiencies}
+Most participants were frequent users of computing devices; 5 using computers or smartphones for 13+ hours per day, 5 using the same for 7-9 hours, and just 2 using devices for 4-6 hours. Other categories (0-1, 2-3, 10-12) were offered, but no participants identified with these. These frequencies can be seen in Figure \ref{fig:partic_computerHours}.
+
+Many participants (5) preferred to navigate using a mouse, with a majority (6) recruiting hotkeys in addition to the mouse. Only one participant actually preferred keyboard controls, and no participant identified with completely requiring full mouse support or full keyboard support (Figure \ref{fig:partic_proficiency}).
+
+Touch-typing proficiency was rated on a five-point scale ranging from the sentiment `I look at every key before pressing' to `I always type without even a reference glance at the keyboard' (Figure \ref{fig:partic_ttype}. Participants on (mean) average considered themselves a 3.42. A standard deviation of 1.084 was observed. Two primary users of the Dvorak keyboard layout were asked to use the (familiar, but not preferred) Qwerty layout during this study, and rated their touch-typing with respect to the constraint that they would be typing in Qwerty during this time.
+
+A majority (11) used mainly Windows as their desktop Operating System. Browser choice was more divided, with 7 participants using mainly Google Chrome, 3 Firefox and 1 `Other' (at the time disclosed to be Safari, which was not an option offered on the questionnaire).
+
+\subsubsection{Disability}
+Regarding participant's exposure to accessibility needs or solutions, three had used Dragon NaturallySpeaking speech-to-text. The two who elaborated on the extent of their use of speech-to-text described only limited use. No participant had --- at the time, or ever --- had computer-relevant vision difficulties. Two had had in the past minor experiences with RSI, with one describing ``RSI from mouse use, but nothing too severe to require a large change in typing/clicking'', the other elaborating ``Have changed input device due to pain in very specific circumstances.''. No participants had RSI at the time of the study.
+
 \subsection{Methodology}
 The following describes the methodology for the full study. Deviations exclusive to the pilot study are disclosed in its separate section.
 
@@ -122,18 +140,11 @@ Participants were briefed on the purpose of the dissertation and of the study, a
 
 Participants were assigned a unique number. This enabled both the questionnaires they would fill in to be related as being from the same participant. Additionally participants were assigned a sequence in which to evaluate the three systems. Biases pertaining to the order in which systems are used, were counterbalanced by testing using all sequence permutations of the three systems equally. There were 6 permutations, so the study recruited a multiple of this: 12 participants.
 
-The study began with the first questionnaire's being allocated. This asked participants to disclose their demographic (occupation, gender and age). All participants were known personally by the researcher, with a majority (9) explicitly identifying as being current Computer Science students.
-%INSERT AGE AVERAGE%
-%INSERT HOURS AVERAGE%
-%INSERT POINTING SCORE AVERAGE%
-
-Regarding participant's exposure to accessibility needs or solutions, three had used Dragon NaturallySpeaking speech-to-text. The two who elaborated on the extent of their use of speech-to-text described only limited use. No participant had --- at the time, or ever --- had computer-relevant vision difficulties. Two had had in the past minor experiences with RSI, with one describing ``RSI from mouse use, but nothing too severe to require a large change in typing/clicking'', the other elaborating ``Have changed input device due to pain in very specific circumstances.''. No participants had RSI at the time of the study.
-
-A majority (11) used mainly Windows as their desktop Operating System. Browser choice was more divided, with 7 participants using mainly Google Chrome, 3 Firefox and 1 `Other' (at the time disclosed to be Safari, which was not an option offered on the questionnaire).
-%INSERT TOUCH-TYPING PROFICIENCIES%
+The study began with the first questionnaire's being allocated. This asked participants to disclose their demographic (occupation, gender and age).
 
 The participants began the testing activity by reading instructions on the system they had been allocated. The researcher then guided them through a training scenario to confirm that they had understood the instructions. During this training period, the researcher would answer any questions and correct any mistakes that occurred. In the case of learning the system `ChibiPoint with crosshairs AND flyouts' before learning the system `ChibiPoint with crosshairs ONLY', participants were trained in the use of both features in turn.
 
+[INCOMPLETE]
 
 \subsection{Metrics}
 The metric that was most important to study was efficiency --- how many keypresses (and by extension, how much exertion) are required for a given navigation task. Secondary to this metric was time taken by each system to perform a navigation task --- it is preferred, but not essential, for the system to be fast; the main priority is reducing exertion, which is connected to efficiency.
@@ -149,6 +160,55 @@ The post-task questionnaire asked participants to give subjective feedback on th
 \chapter{Conclusions \& Future work}
 
 \chapter{Figures}
+%[trim=0.0cm 11cm 0.0cm 11cm,clip]
+%[viewport=0 0 390 610,clip,width=8in]
+%[viewport=0 0 11cm 5cm,clip]
+%fbox
+\begin{figure}[ht]
+\centerline{\includegraphics{figures/ComputerHours.pdf}}
+\caption{Device usage by participant}
+\label{fig:partic_computerHours}
+\end{figure}
+
+\begin{figure}[ht]
+\centerline{\includegraphics{figures/Age.pdf}}
+\caption{Age of participant}
+\label{fig:partic_age}
+\end{figure}
+
+\begin{figure}[ht]
+\centerline{\includegraphics{figures/Gender.pdf}}
+\caption{Gender of participant}
+\label{fig:partic_gender}
+\end{figure}
+
+\begin{figure}[ht]
+\centerline{\includegraphics{figures/Proficiency.pdf}}
+\caption{Keyboard Navigation Proficiency of Participants}
+\label{fig:partic_proficiency}
+\medskip
+\small
+Participants were asked to pick which of these sentiments they identified best with. The statements attempted to describe a proficiency scale for keyboard usage:
+\begin{enumerate}
+\item I need a mouse/pointing device
+\item I prefer a mouse/pointing device
+\item I use hotkeys in addition to a mouse/pointing device
+\item I prefer keyboard controls where possible
+\item I strongly prefer full keyboard support
+\end{enumerate}
+Votes were cast only for the middle descriptors, 2--4.
+\end{figure}
+
+\begin{figure}[ht]
+\centerline{\includegraphics{figures/TouchTyping.pdf}}
+\caption{Touch-Typing Proficiency of Participants}
+\label{fig:partic_ttype}
+\medskip
+\small
+Touch-typing proficiency was rated on a five-point scale ranging from the sentiment `I look at every key before pressing' to `I always type without even a reference glance at the keyboard'.
+\end{figure}
+
+
 \pagebreak
 \printglossary[title=Terms]
 
