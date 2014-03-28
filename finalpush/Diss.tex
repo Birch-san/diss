@@ -12,6 +12,14 @@
 \usepackage{fancyhdr}
 \usepackage{pdfpages}
 
+% list spacing
+\usepackage{enumitem}
+\setlist{nolistsep}
+\setlist{noitemsep}
+% paragraph spacing
+\setlength{\parskip}{0.5em}
+\setlength{\parindent}{0cm}
+
 \pagestyle{fancy}
 \lhead{{\it Alex Birch}}
 \chead{ChibiPoint: Accessible Pointing for Web Applications}
@@ -59,6 +67,15 @@
 \section{Literature \& Technology Review}
 % SUMMARY of literature review
 \section{Problem statement and Hypothesis}
+\subsection{Hypothesis}
+\subsubsection{Hypothesis 1: ChibiPoint is generally more efficient at web navigation than tabbing}
+We hypothesise that our system, \textbf{ChibiPoint, requires significantly fewer keypresses to navigate webpages, than does `tabbing navigation'} (the current standards-prescribed method for keyboard navigation).
+`Navigate webpages' is a broad term, as there are many classes of pointing that need to be analysed. The more detailed hypothesis is that, \textbf{given several distinct classes of pointing, ChibiPoint requires fewer (or equal) keypresses, for a large majority of these scenarios}. Since we analyse two versions of ChibiPoint, it should be understood that we require at least one of these to outperform tabbing in a majority of tasks.
+
+\subsubsection{Hypothesis 2: ChibiPoint's `flyouts' feature, reduces further the required keypresses for web navigation}
+We hypothesise that the novel `flyouts' feature of ChibiPoint, which assigns hotkeys to suggested buttons on the webpage, contributes to reducing the number of keypresses required by ChibiPoint for web navigation, compared to using just its standard pointing method of hierarchically drilling through the page and pointing at elements using crosshairs.
+In other words, we hypothesise that ChibiPoint `with crosshairs and flyouts enabled' performs a large majority of pointing scenarios in fewer keypresses than ChibiPoint `with just crosshairs enabled'.
+
 % Concise statement of problem
 % State efficiency goal
 \section{Goals and Methods}
@@ -156,6 +173,207 @@ The post-task questionnaire asked participants to give subjective feedback on th
 \subsection{Pilot Study}
 
 \chapter{Results}
+\section{Overview}
+We compared, for each of the eight navigation tasks, the number of keystrokes each system required to complete that navigation. Time was compared also, but as this was of secondary interest, less analysis was performed.
+\subsection{Keystrokes}
+Each system was found to have different strengths. Tabbing was found to excel significantly at just one task: traversing short distances in forms (for example, from username field to password field). For longer form traversals, it was matched or beaten by the various ChibiPoint systems, and it even failed to surpass ChibiPoint at accessing visually early elements.
+In the remaining five cases, both versions of ChibiPoint greatly outperformed tabbing. In all but one case, the `flyouts' feature of ChibiPoint reduced the number of keypresses. For the remaining case, `Visually Early Element', there was no significant difference between the versions of ChibiPoint.
+\subsection{Time}
+\section{Analysis used}
+Keystroke results were analysed, for each task, using a repeated measures ANOVA. Greenhouse-Geisser correction was used to determine how significantly the mean keystrokes differed between systems. This correction was used because sphericity could not be assumed of our data; there is no homogeneity of variance, as tabbing variance emerges very differently to ChibiPoint variance (tabbing is deterministic excepting mistakes, whereas ChibiPoint navigation can take multiple valid routes).
+ %(as well as the size of that effect, given by Partial $\eta^2$)
+
+After ascertaining whether there existed within that task a significant difference in performance between the systems, we performed --- using Bonferroni correction --- post-hoc tests pairwise between each combination of systems used. This told us whether, between any two systems, there existed a significant difference in keystrokes.
+\section{Keystroke Performance}
+\newcounter{TaskType}
+\newcommand{\navtask}[1]{\stepcounter{TaskType} \subsection{Task \arabic{TaskType}: #1}}
+For shorthand, the ChibiPoint systems will be named: CX (ChibiPoint with just crosshairs feature enabled) and CX+F (ChibiPoint with crosshairs and flyouts enabled).
+
+We consider statistical significance for p < 0.01.
+
+\navtask{[Within form] Immediate related traversal}
+\begin{tabular}{l l}
+\hline\hline %inserts double horizontal lines 
+System & Keypresses Mean (s.d.) \\ [0.5ex] % inserts table 
+%heading 
+\hline % inserts single horizontal line 
+CX & 5.67 (.492)\\
+CX+F & 3.00 (.000)\\
+Tabbing & 1.00 (.000)\\ [1ex] % [1ex] adds vertical space 
+\hline %inserts single line 
+\end{tabular}
+
+Mean keystrokes differed statistically significantly between systems.\\
+(F(1, 11) = 814.000, p < 0.001).
+
+CX keystrokes significantly greater than Tabbing (p < 0.001).\\
+Analysis failed to produce significance value for CX+F vs Tabbing.
+
+CX+F keystrokes significantly fewer than CX (p < 0.001).
+
+Hypothesis 1 refuted in this case.\\
+Hypothesis 2 supported.
+
+\navtask{[Within form] distant related traversal}
+\begin{tabular}{l l}
+\hline\hline %inserts double horizontal lines 
+System & Keypresses Mean (s.d.) \\ [0.5ex] % inserts table 
+%heading 
+\hline % inserts single horizontal line 
+CX & 4.67 (.492)\\
+CX+F & 2.25 (.452)\\
+Tabbing & 4.33 (1.155)\\ [1ex] % [1ex] adds vertical space 
+\hline %inserts single line 
+\end{tabular}
+
+Mean keystrokes differed statistically significantly between systems.\\
+(F(1.574, 17.311) = 33.543, p < 0.001).
+
+CX keystrokes non-significantly different to Tabbing (p = 1.000).\\
+CX+F keystrokes significantly fewer than Tabbing (p = .001).
+
+CX+F keystrokes significantly fewer than CX (p < .001).
+
+Hypothesis 1 supported (for CX+F only).\\
+Hypothesis 2 supported.
+
+\navtask{Visually early element}
+\begin{tabular}{l l}
+\hline\hline %inserts double horizontal lines 
+System & Keypresses Mean (s.d.) \\ [0.5ex] % inserts table 
+%heading 
+\hline % inserts single horizontal line 
+CX & 5.00 (.603)\\
+CX+F & 4.67 (.888)\\
+Tabbing & 7.00 (.000)\\ [1ex] % [1ex] adds vertical space 
+\hline %inserts single line 
+\end{tabular}
+
+Mean keystrokes differed statistically significantly between systems.\\
+(F(1.590, 17.489) = 54.057, p < 0.001).
+
+CX keystrokes significantly fewer than Tabbing (p < .001).\\
+CX+F keystrokes significantly fewer than Tabbing (p < .001).
+
+CX+F keystrokes non-significantly different to CX (p = .797).
+
+Hypothesis 1 supported.\\
+Hypothesis 2 not supported.
+
+\navtask{Visually late element}
+\begin{tabular}{l l}
+\hline\hline %inserts double horizontal lines 
+System & Keypresses Mean (s.d.) \\ [0.5ex] % inserts table 
+%heading 
+\hline % inserts single horizontal line 
+CX & 5.25 (.452)\\
+CX+F & 3.17 (.577)\\
+Tabbing & 72.50 (1.732)\\ [1ex] % [1ex] adds vertical space 
+\hline %inserts single line 
+\end{tabular}
+
+Mean keystrokes differed statistically significantly between systems.\\
+(F(1.246, 13.701) = 15056.088, p < 0.001).
+
+CX keystrokes significantly fewer than Tabbing (p < .001).\\
+CX+F keystrokes significantly fewer than Tabbing (p < .001).
+
+CX+F keystrokes significantly fewer than CX (p < .001).
+
+Hypothesis 1 supported.\\
+Hypothesis 2 supported.
+
+\navtask{[Within form] Spatially close, markup distant traversal}
+\begin{tabular}{l l}
+\hline\hline %inserts double horizontal lines 
+System & Keypresses Mean (s.d.) \\ [0.5ex] % inserts table 
+%heading 
+\hline % inserts single horizontal line 
+CX & 4.42 (.996)\\
+CX+F & 2.92 (.289)\\
+Tabbing & 29.75 (9.324)\\ [1ex] % [1ex] adds vertical space 
+\hline %inserts single line 
+\end{tabular}
+
+Mean keystrokes differed statistically significantly between systems.\\
+(F(1.017, 11.188) = 91.990, p < 0.001).
+
+CX keystrokes significantly fewer than Tabbing (p < .001).\\
+CX+F keystrokes significantly fewer than Tabbing (p < .001).
+
+CX+F keystrokes significantly fewer than CX (p = .002).
+
+Hypothesis 1 supported.\\
+Hypothesis 2 supported.
+
+\navtask{Low visual indicator of focus}
+\begin{tabular}{l l}
+\hline\hline %inserts double horizontal lines 
+System & Keypresses Mean (s.d.) \\ [0.5ex] % inserts table 
+%heading 
+\hline % inserts single horizontal line 
+CX & 6.42 (3.204)\\
+CX+F & 2.33 (.492)\\
+Tabbing & 48.50 (30.485)\\ [1ex] % [1ex] adds vertical space 
+\hline %inserts single line 
+\end{tabular}
+
+Mean keystrokes differed statistically significantly between systems.\\
+(F(1.012, 11.128) = 24.176, p < 0.001).
+
+CX keystrokes significantly fewer than Tabbing (p = .002).\\
+CX+F keystrokes significantly fewer than Tabbing (p = .001).
+
+CX+F keystrokes significantly fewer than CX (p = .001).
+
+Hypothesis 1 supported.\\
+Hypothesis 2 supported.
+
+\navtask{Scrolled element}
+\begin{tabular}{l l}
+\hline\hline %inserts double horizontal lines 
+System & Keypresses Mean (s.d.) \\ [0.5ex] % inserts table 
+%heading 
+\hline % inserts single horizontal line 
+CX & 5.83 (1.115)\\
+CX+F & 3.50 (1.087)\\
+Tabbing & 23.33 (11.155)\\ [1ex] % [1ex] adds vertical space 
+\hline %inserts single line 
+\end{tabular}
+
+Mean keystrokes differed statistically significantly between systems.\\
+(F(1.349, 14.837) = 1304.682, p < 0.001).
+
+CX keystrokes significantly fewer than Tabbing (p < .001).\\
+CX+F keystrokes significantly fewer than Tabbing (p < .001).
+
+CX+F keystrokes significantly fewer than CX (p = .001).
+
+Hypothesis 1 supported.\\
+Hypothesis 2 supported.
+
+\navtask{Link surrounded by links}
+\begin{tabular}{l l}
+\hline\hline %inserts double horizontal lines 
+System & Keypresses Mean (s.d.) \\ [0.5ex] % inserts table 
+%heading 
+\hline % inserts single horizontal line 
+CX & 6.67 (1.371)\\
+CX+F & 3.75 (.452)\\
+Tabbing & 48.67 (2.934)\\ [1ex] % [1ex] adds vertical space 
+\hline %inserts single line 
+\end{tabular}
+
+Mean keystrokes differed statistically significantly between systems.\\
+(F(1.387, 15.257) = 2296.627, p < 0.001).
+
+CX keystrokes significantly fewer than Tabbing (p < .001).\\
+CX+F keystrokes significantly fewer than Tabbing (p < .001).
+
+CX+F keystrokes significantly fewer than CX (p < .001).
+
+Hypothesis 1 supported.\\
+Hypothesis 2 supported.
 
 \chapter{Conclusions \& Future work}
 
