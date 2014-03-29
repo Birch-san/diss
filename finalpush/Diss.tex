@@ -12,6 +12,9 @@
 \usepackage{fancyhdr}
 \usepackage{pdfpages}
 
+%temp
+\usepackage{color}
+
 % list spacing
 \usepackage{enumitem}
 \setlist{nolistsep}
@@ -22,6 +25,15 @@
 
 % table width control
 \usepackage{tabularx}
+
+% captions in minipage
+\usepackage{caption}
+
+% float barrier
+\usepackage[section]{placeins}
+
+% multi-page figure type
+\usepackage{listings}
 
 \pagestyle{fancy}
 \lhead{{\it Alex Birch}}
@@ -45,7 +57,7 @@
 \bibliography{Diss}
 
 \usepackage[colorlinks]{hyperref}
-\usepackage{cleveref}
+\usepackage[noabbrev]{cleveref}
 \crefformat{section}{section #2#1#3}
 \crefdefaultlabelformat{[#2#1#3]}
 
@@ -71,6 +83,8 @@
 % SUMMARY of literature review
 \section{Problem statement and Hypothesis}
 \subsection{Hypothesis}
+We predict the performance of our keyboard navigation system, ChibiPoint, as follows:
+
 \subsubsection{Hypothesis 1: ChibiPoint is generally more efficient at web navigation than tabbing}
 We hypothesise that our system, \textbf{ChibiPoint, requires significantly fewer keypresses to navigate webpages, than does `tabbing navigation'} (the current standards-prescribed method for keyboard navigation).
 `Navigate webpages' is a broad term, as there are many classes of pointing that need to be analysed. The more detailed hypothesis is that, \textbf{given several distinct classes of pointing, ChibiPoint requires fewer (or equal) keypresses, for a large majority (>80\%) of these scenarios}. Since we analyse two versions of ChibiPoint, it should be understood that we require at least one of these to outperform tabbing in a majority of tasks.
@@ -122,6 +136,10 @@ A larger study then recruited 12 users to evaluate the systems in a counterbalan
 % This would reveal which system was most suited to which kinds of pointing. Qualitative data was gathered also, to capture user preference.
 
 \section{Study 1: Usability Study}
+We recruited a lecturer of Computer Science for this study. The participant was chosen due to being a known power user of keyboard navigation. We hoped that this participant could bring out the full potential of our system, and reveal what an expert of keyboard navigation expected from a system, as well as what strategies they tried when learning said system.
+
+A full transcript of the session can be found in \Cref{lst:usabilityTrans}.
+
 \section{Study 2: Quantitative Comparison of Pointing Systems}
 \subsection{Outline}
 A pilot study set the sequence for the full study to follow. The main output of the study was the evaluation of pointing systems; participants were instructed to complete several tasks of the following ilk:
@@ -136,15 +154,15 @@ In addition to this evaluation of system performance, participants were asked to
 \subsection{Demographic}
 All participants were known personally by the researcher. Participants were asked to volunteer, and offered a chocolate biscuit as recompense. A majority (9) explicitly identified as being current Computer Science students. One further was known to be a graduate of Computer Science, another pursuing an `EngD in Digital Media' and the final participant a Physics student.
 
-The mean average age for participants was 22.58, with a standard deviation of 2.151. The range was 21--28. These data are tabulated in Figure \ref{fig:partic_age}.
-A quarter of participants were female, the rest were male (Figure \ref{fig:partic_gender}).
+The mean average age for participants was 22.58, with a standard deviation of 2.151. The range was 21--28. These data are tabulated in \Cref{fig:partic_age}.
+A quarter of participants were female, the rest were male (\Cref{fig:partic_gender}).
 
 \subsubsection{Proficiencies}
-Most participants were frequent users of computing devices; 5 using computers or smartphones for 13+ hours per day, 5 using the same for 7-9 hours, and just 2 using devices for 4-6 hours. Other categories (0-1, 2-3, 10-12) were offered, but no participants identified with these. These frequencies can be seen in Figure \ref{fig:partic_computerHours}.
+Most participants were frequent users of computing devices; 5 using computers or smartphones for 13+ hours per day, 5 using the same for 7-9 hours, and just 2 using devices for 4-6 hours. Other categories (0-1, 2-3, 10-12) were offered, but no participants identified with these. These frequencies can be seen in \Cref{fig:partic_computerHours}.
 
-Many participants (5) preferred to navigate using a mouse, with a majority (6) recruiting hotkeys in addition to the mouse. Only one participant actually preferred keyboard controls, and no participant identified with completely requiring full mouse support or full keyboard support (Figure \ref{fig:partic_proficiency}).
+Many participants (5) preferred to navigate using a mouse, with a majority (6) recruiting hotkeys in addition to the mouse. Only one participant actually preferred keyboard controls, and no participant identified with completely requiring full mouse support or full keyboard support (\Cref{fig:partic_proficiency}).
 
-Touch-typing proficiency was rated on a five-point scale ranging from the sentiment `I look at every key before pressing' to `I always type without even a reference glance at the keyboard' (Figure \ref{fig:partic_ttype}. Participants on (mean) average considered themselves a 3.42. A standard deviation of 1.084 was observed. Two primary users of the Dvorak keyboard layout were asked to use the (familiar, but not preferred) Qwerty layout during this study, and rated their touch-typing with respect to the constraint that they would be typing in Qwerty during this time.
+Touch-typing proficiency was rated on a five-point scale ranging from the sentiment `I look at every key before pressing' to `I always type without even a reference glance at the keyboard' (\Cref{fig:partic_ttype}. Participants on (mean) average considered themselves a 3.42. A standard deviation of 1.084 was observed. Two primary users of the Dvorak keyboard layout were asked to use the (familiar, but not preferred) Qwerty layout during this study, and rated their touch-typing with respect to the constraint that they would be typing in Qwerty during this time.
 
 A majority (11) used mainly Windows as their desktop Operating System. Browser choice was more divided, with 7 participants using mainly Google Chrome, 3 Firefox and 1 `Other' (at the time disclosed to be Safari, which was not an option offered on the questionnaire).
 
@@ -197,7 +215,7 @@ The post-task questionnaire asked participants to give subjective feedback on th
 \subsection{Pilot Study}
 The pilot study existed as a `dry run' to catch problems in the method of the larger study, before scaling up.
 
-We recruited a Software Research Engineer with experience developing and assessing accessibility software. His preliminary questionnaire response (Figure \ref{fig:partic_pilotpre}) describe a proficient computer user (with 13+ hours/day of device usage, 5/5 self-rating for touch typing, and a user of hotkeys).
+We recruited a Software Research Engineer with experience developing and assessing accessibility software. His preliminary questionnaire response (\Cref{fig:partic_pilotpre}) describe a proficient computer user (with 13+ hours/day of device usage, 5/5 self-rating for touch typing, and a user of hotkeys).
 
 A list of pointing tasks was created, but these proved to be uninformative --- many of them duplicated classes of navigation already tested, and overall they did not test a wide enough spread of navigation types --- to the extent that tabbing's strengths in form traversal were not represented. Additionally it was not clear what the delineation was between task setup and the actual recorded portion. The larger study uses a clearer separation of actions and setup.
 
@@ -251,7 +269,7 @@ The pilot study also caught the omission of instructions for the use of tabbing 
 
 \textit{For shorthand, the ChibiPoint systems will be named: CX (ChibiPoint with just crosshairs feature enabled) and CX+F (ChibiPoint with crosshairs and flyouts enabled).}
 
-The participant's post-questionnaire response can be seen in Figure \ref{fig:partic_pilotpost}. His favourite system was CX+F. Overall he found easier the use of both ChibiPoint modes (CX = 4/5, CX+F = 5/5) to tabbing (1/5). The amount of keypressing required by ChibiPoint was considered reasonable (`unreasonability' rating CX = 2/5, CX+F = 1/5), and tabbing considered completely unreasonable (5/5). He refers in feedback to its being problematic to select the intended element with crosshairs (``Crosshairs without flyouts can be difficult to accurately pinpoint the desired text.''). This was a known problem with how crosshairs paints even elements which are not `clickables'. We decided to address this by mentioning it in future training.
+The participant's post-questionnaire response can be seen in \Cref{fig:partic_pilotpost}. His favourite system was CX+F. Overall he found easier the use of both ChibiPoint modes (CX = 4/5, CX+F = 5/5) to tabbing (1/5). The amount of keypressing required by ChibiPoint was considered reasonable (`unreasonability' rating CX = 2/5, CX+F = 1/5), and tabbing considered completely unreasonable (5/5). He refers in feedback to its being problematic to select the intended element with crosshairs (``Crosshairs without flyouts can be difficult to accurately pinpoint the desired text.''). This was a known problem with how crosshairs paints even elements which are not `clickables'. We decided to address this by mentioning it in future training.
 
 \subsection{Navigation tasks}
 For the larger study, a concrete set of tasks was chosen, to try to represent many discrete classes of pointing.
@@ -301,7 +319,7 @@ For the larger study, a concrete set of tasks was chosen, to try to represent ma
 	\end{enumerate}
 \end{enumerate}
 
-Each task's recorded portion is the `Then' step; everything before is just setup to get the focus in the desired starting point. A list of URLs used are provided in Appendix \ref{fig:fullStudyURLs}.
+Each task's recorded portion is the `Then' step; everything before is just setup to get the focus in the desired starting point. A list of URLs used are provided in \Cref{fig:fullStudyURLs}.
 
 An explanation of the task classifications follows:
 
@@ -556,8 +574,15 @@ It should also be observed that in the non-supported task, no refute was seen to
 
 \chapter{Conclusions \& Future work}
 
+\pagebreak
+\chapter{Glossary}
+\printglossary
+
 \chapter{Figures}
 \begin{figure}[ht]
+% table row height
+\renewcommand{\arraystretch}{1.5}
+
 \begin{tabularx}{\textwidth}{X|X}
 \hline\hline %inserts double horizontal lines 
 Question & Response \\ [0.5ex] % inserts table 
@@ -582,6 +607,9 @@ What is your occupation?	&	Software research engineer	\\ [1ex] % [1ex] adds vert
 \end{figure}
 
 \begin{figure}[ht]
+% table row height
+\renewcommand{\arraystretch}{1.5}
+
 \begin{tabularx}{\textwidth}{X|X}
 \hline\hline %inserts double horizontal lines 
 Question & Response \\ [0.5ex] % inserts table 
@@ -648,9 +676,7 @@ Votes were cast only for the middle descriptors, 2--4.
 Touch-typing proficiency was rated on a five-point scale ranging from the sentiment `I look at every key before pressing' to `I always type without even a reference glance at the keyboard'.
 \end{figure}
 
-
-\pagebreak
-\printglossary[title=Terms]
+\FloatBarrier
 
 %\nocite{*}
 %\nocite{Doe:2009:Online}
@@ -658,7 +684,536 @@ Touch-typing proficiency was rated on a five-point scale ranging from the sentim
 \printbibliography
 
 \pagebreak
-\chapter{Appendices}
+\appendix
+%\addcontentsline{toc}{chapter}{APPENDICES}
+
+\chapter{Usability Study}
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\lstdefinelanguage{custom}
+{
+morekeywords={R},
+ndkeywords={P},
+sensitive=false,
+morecomment=[l]{//},
+morecomment=[s]{/*}{*/},
+morestring=[b]{*},
+moreemph=[4][b]{=}
+}
+
+\lstdefinestyle{basic}{ %
+  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+  basicstyle=\footnotesize\ttfamily,        % the size of the fonts that are used for the code
+  %\ttfamily
+  %\sffamily
+  emphstyle=\color{red},
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=t,                    % sets the caption-position to bottom
+  commentstyle=\color{mygreen},    % comment style
+  deletekeywords={...},            % if you want to delete keywords from the given language
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  frame=single,                    % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\color{blue}\bfseries,       % keyword style
+  ndkeywordstyle=\color{red}, % another keyword style
+  %language=Octave,                 % the language of the code
+  morekeywords={*,...},            % if you want to add more keywords to the set
+  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=20pt,                   % how far the line-numbers are from the code
+  numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  stringstyle=\color{violet},     % string literal style
+  tabsize=4,                       % sets default tabsize to 2 spaces
+  %title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
+
+\begin{lstlisting}[caption={Transcript of Usability Study}, label={lst:usabilityTrans}, style=basic, language=custom, flexiblecolumns=true]
+====Flyouts On====
+
+	First system, Flyouts ON.
+
+R:	Start the system by pressing Apple K.
+P:		Okay, is there an Apple on here?
+R:	Yeah, I've mapped Ctrl to Apple.
+P:		Okay, great.
+P:		I'll do what I have to do to get started, and...
+		*Presses Apple K*
+		*Chibipoint interface appears*
+P:		Okay.
+
+R:	Your mission, should you choose to accept it, is to search for the Olympics.
+P:		Oh, search, okay, so...
+		*Presses indicated key to drill toward top-right quadrant, where search is*
+		// No instruction required on how to point, or what keys to use!
+P:		And now, the question is... oh, I see.
+		*Continues drilling toward search box*
+
+P:		Uh, it keeps coming...
+		*Continues drilling toward search box.*
+R:	[Field is now in crosshairs.]
+P:		Ah!
+P:		Am I there yet?
+		*Guesses key*
+P:		Nope. Do I have to hit return or something?
+		*Hits return*
+		*Search field is selected*
+		// No instructions required!
+		*Types Olympics, submits search*
+
+P:		Who would search for the olympics... haha! Okay, now what?
+P:		I might have to do the same again. Ctrl K?
+		*Presses Apple K*
+		*Chibipoint interface appears*
+P:		Okay, what have I got to do?
+
+R:	Let me think, what would be a good idea.. try and hit that article, Sochi 2014 [top result].
+P:		Hm, oh the first Sochi 2012? Sochi 2014, dude! Haha.
+P:		The one with that guy, the one with the picture.
+		*Drills toward article*
+		*Drills toward article*
+P:		And it's missed the link..
+P:		Oh, I see.
+		*Activates an appropriate flyout*
+		// Unprompted! Only one lookup later than expert perf.
+P:		It does that. Very clever of you, that extra thing.
+
+P:		Hm, okay. This is great! I would totally take this.
+		*Presses Apple K*
+		*Chibipoint interface appears*
+P:		Especially as it's keyboard, and it saves you from moving to it.
+P:		And it's not slower than, uh, mouse; you don't have to move it to. So that's great.
+P:		I used to keep the mouse on this; it's obnoxiously slow. I used to use that in 1998, when I was working for Lego, I was so screwed up I did use that sometimes.
+P:		Anyway, yes.
+
+R:	Now click on Sport.
+R:	Err, that sport.
+P:		Oh, that sport up there.
+		*Drills toward*
+P:		Mm, (counting noises)
+		*Presses wrong flyout*
+P:		Oops, missed. So what's the back button?
+R:	Backspace.
+		*Presses back*
+
+P:		Let's try again.
+		*Presses Apple K*
+		*Chibipoint interface appears*
+P:		Okay.
+		*Drills toward*
+P:		Mm.
+		*Again activates inappropriate flyout*
+P:		Ah, it's, it's.. there's something wrong.
+P:		I hate to tell you this, but I'm definitely clicking on the right thing. Haha.
+
+R:	Okay, uh..
+P:		I guess I could therefore try to compensate for that one, cause..
+		*Drills toward*
+R:	I dunno how much I should say..
+		*Activates correct flyout*
+P:		Yeah, okay. I compensated, but there's definitely something wrong. Haha.
+
+R:	Okay, how about a different website; go to Amazon.
+		*Changes website*
+		*Presses Apple K*
+		*Chibipoint interface appears*
+R:	Let's do a... I dunno; let's do a search.
+P:		Okay.
+		*Drills toward*
+		*Many flyouts appear close together with tags tying them to their buttons in various directions*
+P:		Hah! That's really all over.
+		*Presses appropriate flyout for search field*
+R:	Hm, what's your favourite book?
+P:		[search term redacted]
+P:		[discussion of how to select suggested products using arrow keys on accessible input device]
+		*search submitted*
+
+R:	Try and click on [author for first result redacted].
+		*Some unproductive inputs [accessible input device typing in wrong mode]*
+P:		Hello?
+P:		Oh, I've got to...
+		*Presses Apple K*
+		*Chibipoint interface appears*
+		*Drills toward*
+		*Presses appropriate flyout*
+		//  Expert performance already!
+
+R:	I wonder if that's enough for Amazon. Let's go to Wikipedia.
+R:	Looks like it's already selected the input field. Shall we pretend it didn't?
+P:		Why? Why don't you just have me go to the German [Wikipedia] or something?
+		*Presses Apple K*
+		*Chibipoint interface appears*
+P:		Let's go to the German one.
+R:	Okay.
+		*Presses appropriate flyout*
+		// No drilling required!
+
+P:		Okay, now what?
+		*Presses Apple K*
+		*Chibipoint interface appears*
+		*Drills toward search*
+		*Drills toward search*
+		*Drills toward search*
+R:	German foods?
+		*Presses appropriate flyout*
+		*Searches currywurst*
+
+R:	Let's go to the bottom; there should be some interesting markup there.
+		*Scrolls to end*
+R:	Alright, let's go to Über Wikipedia.
+P:		Alright.
+		*Drills toward*
+		*Presses appropriate flyout*
+
+R:	[Discussion to find an inaccessible website to navigate next]
+
+		*Google searches Bath Chronicle.*
+		*Presses Apple K*
+		*Chibipoint interface appears*
+		*Presses key for appropriate flyout*
+		*Bug in Chibipoint means the key press is caught by Google instead*
+P:		That's interesting. So the ‘J' got captured.
+		*More typing*
+P:		Yeah, every time you type something, Google's capturing it.
+P:		Yeah, so, can't... it's just totally failing now.
+
+R:	Yeah, there's still other ways to use Google with the keyboard.
+R:	I found this earlier. I don't know how to make my key listeners the highest priority.
+R:	It's JavaScript injected into the page, so it's fighting the rest of the page.
+P:		So we can cheat briefly.
+		*Clicks news article of Bath Chronicle*
+
+P:		So now..
+		*Presses Apple K*
+		*Chibipoint interface appears*
+P:		So what do you want me to click?
+		*Drills toward top-left*
+R:	Click ‘place an advert'.
+		*Presses appropriate flyout*
+
+R:	Register. Let's see how it does with forms.
+P:		Okay.
+		*Presses Apple K*
+		*Chibipoint interface appears*
+		*Drills toward Register*
+		*Closes Chibipoint accidentally*
+P:		Oops.
+		*Presses Apple K*
+		*Chibipoint interface appears*
+		*(Immediately) drills to original position*
+		// Appears to be able to reproduce practiced spatial traversals quickly without pausing to think.
+P:		...That's a 'Z'; okay. [Text was obscured, so appeared as numeral 7]
+		*Drills toward*
+		*Drills toward*
+R:	[No flyouts have appeared for this button; clickable detection failed, so crosshairs are the only option. It's now in crosshairs.]
+		*Presses enter*
+
+R:	[A form appears]
+		*Tabs a few times to enter form*
+		// Candidate seems to notice that both systems can co-exist. This tab journey was a short one.
+P:		Oops.
+		*Presses Apple K*
+		*Chibipoint interface appears*
+R:	[First 6 fields of form have flyouts suggested, without drilling.]
+		*Presses flyout for first form element*
+		*Focuses drop-down menu*
+P:		Heh. Yeah, thanks. [Presumably wanted menu to open, as with a real click].
+		*Starts filling out form (unprompted) without Chibipoint*
+		*Accidentally closes window.*
+
+		*Restores window.*
+		*Presses Apple K*
+		*Chibipoint interface appears*
+		*Drills toward ‘Address lookup' button*
+		*Drills toward [non-trivial because it's on an edge after each drill, and also because no flyouts are offered; clickables detection failed]*
+		*Drills toward [now in crosshairs]*
+		*Presses Return*
+		*Address lookup is clicked; panel appears overlaying existing content*
+
+		*Presses tab to attempt to focus panel*
+		*Keyboard focus leaves browser*
+		*Presses Apple K*
+		*Chibipoint interface appears*
+		*Attempts to drill, but keyboard focus is in the address bar; types into address instead.*
+R:	[Much attempting to regain focus and resume drilling, but even tabbing fails]
+R:	[Resort to mouse click to put focus back in browser content pane]
+
+		*Drills toward address*
+		*Drills toward*
+		*Drills toward address [now in crosshairs, though never detected by flyouts]*
+		*Presses return*
+		*Click sent, element flashes, but no change in form*
+		// Without mouseover probing, we cannot get affordances for which element needs to be clicked, and confused results can occur.
+R:	[Attempt to verify using mouse which element is meant to be clicked]
+R:	[Panel closes]
+
+R:	[Recover panel by refreshing page and re-opening Address lookup]
+R:	[Clicks same element again with Chibipoint; form option remains unclicked]
+P:		It must want [me to click] the checkbox next to it.
+		*Presses Apple K*
+		*Chibipoint interface appears*
+		*Drills toward*
+		*Drills toward*
+		*Drills toward*
+R:	[Button is not yet in crosshairs. Drilling labels now hidden since grid is small.]
+P:		Hmh.
+		*Presses return*
+P:		Yeah, I have no idea. It doesn't seem to be..
+P:		So, does that..
+		*Hovers mouse over to confirm feedback*
+P:		[The button] doesn't seem to notice [with Chibipoint] that something's there.
+P:		Obviously there's no signal that [an emulated mouse cursor is above].
+P:		‘Cause the [cursor] changes into a hand when you hover over it.
+R:	[Repeats previous navigation:]
+		*Presses Apple K*
+		*Chibipoint interface appears*
+		*Drills toward*
+		*Drills toward*
+		*Drills toward*
+R:	[Button is not yet in crosshairs. Drilling labels now hidden since grid is small.]
+		*Presses return*
+		// Seems to think that when the drilling labels are gone, it is not possible to continue drilling.
+
+		*Reopens Chibipoint, drills lightly into an alternative journey.*
+		*Closes Chibipoint without clicking*
+
+		*Reopens Chibipoint, redoing a previous journey.*
+P:		Yeah, nothing I do seems to get the tick.
+R:	Try pressing [bottom-left quadrant (now unlabelled)]
+		*Drills*
+R:	And again.
+		*Drills*
+R:	You can inch closer.
+
+R:	Boxes aren't perfect sub-boxes; they grow a little bit.
+P:		Okay. I didn't see Z as an action, so...
+R:	Ah. Yes, it... I can't make text any smaller.
+P:		Well, is that enough information?
+
+
+
+
+
+	====Flyouts Off====
+
+R:	Now try a version with the Flyouts turned off.
+P:		Okay.
+R:	[On BBC homepage]
+		*Presses Apple K*
+		*Chibipoint interface appears*
+R:	Try and watch Top Gear. [This is at the very bottom edge of the grid]
+P:		Okay, down there.	
+		*Drills toward*
+		*Drills toward*
+		*Drills toward*
+		*Presses return*
+R:	[Page navigates]
+		// Even buttons in tricky positions were able to be clicked easily.
+
+		*Presses Apple K*
+		*Chibipoint interface appears*
+R:	[Top Gear Flash pane is painted wholly by Chibipoint; inner structure not detected]
+		*Presses space bar to attempt to play video*
+R:	[Page scrolls upon space bar since video does not have focus]
+		*Drills toward Flash pane*
+		*Drills toward centre of Flash pane*
+		*Presses return*
+R:	[Flash pane is clicked, but no meaningful change occurs]
+		*Presses key to scroll up*
+R:	[Page does not scroll, despite input]
+P:		How do you scroll up?
+R:	Your focus is trapped by Flash.
+R:	[Mouse recruited to recover focus]
+R:	[Page scrolled back to beginning]
+
+		*Presses Apple K*
+		*Chibipoint interface appears*
+P:		So, is the big yellow thing..? I'm sure if it could just see which button I'm trying to click..
+P:		No, it's not doing anything.
+		*Presses Apple K*
+		*Chibipoint interface appears*
+		*Closes Chibipoint*
+
+R:	So I'll spoil that; Flash players can't take clicks [from ChibiPoint].
+P:		Oh, okay.
+R:	So you've discovered that.
+
+R:	[We return to BBC homepage]
+R:	Try to click something on the bottom of the page - that's not on-screen.
+R:	Music.
+		*Presses Apple K*
+		*Chibipoint interface appears*
+		*Scrolls using Page Down*
+		// Unprompted, understands that page scrolling keys co-exist with ChibiPoint.
+		*Drills toward an element in the same list as ‘Music'*
+P:		Too late; I'm going to go into ‘Learning'.
+P:		Although it's actually not what you said.
+R:	[Actual ‘Learning' text is not highlighted, but clicking the box that contains it worked in this case; did not have to drill too specifically]
+		*Presses return*
+R:	[Navigates to Learning]
+
+R:	Let's see if there's anything hard to click on; keep scrolling.
+		*Presses Page Down*
+R:	Click the ‘Accessibility Help'.
+P:		Okay.
+		*Presses Apple K*
+		*Chibipoint interface appears*
+		*Drills toward*
+P:		Hmm..
+		*Drills toward*
+R:	[Painting of link container obscures the white hyperlinks within]
+R:	Oh god.
+		*Drills toward*
+R:	[Presently highlighted element is the link below Accessibility Help]
+P:		And then, how do you move it around? Did you say the Z key..
+R:	The keybindings continue to be exactly the same.
+P:		Oh, but I didn't memorise them.
+R:	Uhh.. they're this grid.
+R:	[Demonstrates grid of 9 keys on accessibility hardware that map to on-screen controls]
+P:		Oh, okay, so..
+		*Drills toward*
+		*Presses enter*
+R:	[Accessibility Help is clicked]
+
+R:	So, did you notice that they were...
+P:		No, I totally didn't notice that they were,
+R:	and I shouldn't, since there was a cue.
+		// Mapping was not noticed nor memorised; singular lack of incidental information.
+P:		Okay.
+P:		
+P:		Okay, so..
+R:	[Decides to click one of the webpage accessibility articles]
+		*Presses Apple K*
+		*Chibipoint interface appears*
+		*Drills toward*
+		*Drills toward*
+		*Drills toward*
+		*Presses return*
+
+P:		Well anyway, this doesn't seem to be a problem, so..
+R:	Right, I'll end.
+
+
+
+
+
+	====Feedback====
+
+R:	What do you think of the two systems you tried (flyouts on, off)?
+P:		I couldn't tell the difference, I'm afraid.
+P:		What was the... oh, I dunno... oh, the flyouts with commas and periods and things?
+R:	Yeah.
+P:		Yeah, I liked the commas and periods and things. They were pretty good guesses. Although it was a bit cluttered. I'd like to be able to switch back and forth depending on what I was trying to do.
+R:	Uhh, by switch back and forth, do you mean `hide them'?
+P:		Yeah. Exactly, so like mostly it's great. Although anyway you can hide it with Ctrl-K, so I guess that's enough.
+
+R:	Was the problem that [the flyouts] obscured [what you were trying to point at]?
+P:		It just looks a bit cluttered sometimes. But it was really useful, so I think I'd probably mostly just have them on. I could just imagine, I dunno some time I might want to turn them off...
+
+R:	Would it be useful to have, like, holding down SHIFT dispels the interface?
+P:		What?
+R:	Uhm, there's a lot of heads-up display on the page; you could hold down a modifying key to hide stuff temporarily, but not lose where your grid is.
+P:		Uhh, I don't know what... one thing is that Ctrl-K doesn't work very well for me, ‘cause I use emacs; that's why it was after a little while when I was doing the wrong things because I doing the wrong commands, because I was confusing all the commands.
+P:		So for me it would be better if it was something different, like Alt+something, just because I hardly ever use Alt. Then I'd remember it; I could remember that. And also, when I'm on emacs, I'd be able to control it.
+
+R:	There's a limit to what keyboard shortcuts I'm allowed to choose. Actually, it's a limit to what I can `suggest' as a keyboard shortcut, but the user can override the system ones if they manually choose them.
+P:		Okay. Yeah.
+R:	So that could be done.
+
+P:		Yeah, but it was really nice. It was a nice way to do it.
+P:		I could imagine using that a lot.
+P:		Although now I'm pretty much just using the pen tablet.
+P:		But it saves you find the tablet - the pen, tablet; it's just right there.
+
+R:	Were there any things that you didn't understand?
+P:		Oh yeah, like I said, I didn't notice that the grid was continuing; or rather I didn't pick up that - they just looked like random letters to me. I didn't know why you were doing it.
+P:		But had I noticed... ‘cause, the thing is that in the old days, my first guess would've been, was the right hand.
+P:		In the old days, the arrow keys used to be right around there.
+P:		I should've picked up that you were using the left hand instead, but I didn't.
+R:	I'm less worried about that, because it usually would be the numpad, but it's [accessible input device] mode.
+P:		Yeah, okay. The problem would be the - because they were slowing down the typist, when you're in Qwerty, all the characters that you use are mostly on the left, so you wouldn't normally expect them to use the right hand for the arrow keys.
+R:	Okay, so they can be swapped.
+
+R:	Did you ever desire to be able to `undo' a drill-down, and retreat?
+P:		Yeah, once, and what I did was just Ctrl+K to start over, but there was, like, one time.
+R:	Okay. There's a feature I should've disclosed to you; there is a key that can `back up'.
+P:		Okay. Yeah, no, I would've wanted that if I was, I got it.
+P:		But that was pretty fast; considering how long it took me to get... quite a lot of usability stuff downloads, the first time you try using a pen tablet(!), yeah, so that was, I was able to get into that; that was fine.
+P:		Again, I am old, and I did used to navigate with the arrow keys on the other hand(!)
+
+R:	Would you say it's intuitive?
+P:		It was largely intuitive; I mean, there was a couple things you didn't know. It might be nice to have, like, a little helping thing that could pop up and tell you the cheat sheet, to tell you if there's any other stuff.
+P:		‘Cause usually what I do is, I hack around a bit with the command, and then I go and read the manual, and see if there's anything I've missed.
+P:		So this was a very successful first hack-around, but then you would want somewhere to be able to read and find out what you'd missed.
+R:	Maybe I'll print a cheat-sheet rather than coding one.
+P:		Yeah, sure.
+
+R:	Were the `clickable' suggestions - made by the flyouts - were they good enough guesses?
+P:		Yeah! Yeah, they were highly accurate; I was very impressed by that.
+P:		I especially liked that they were sometimes, you picked the wrong region, and they still guessed that it was just slightly off the region; it was like, way! Thinking outside the box.
+
+R:	Did you find that there were any things that it didn't seem to be able to see?
+P:		I didn't notice any in particular - except for something, you know, that one thing that we tried over and over again, and couldn't get anything to see.
+R:	That button didn't seem to be marked up properly.
+P:		Yeah.
+R:	It has a lot of intelligence to work out if something's clickable, but...
+P:		But somehow, like I said with the mouse you could hover over it and it would change into a pointy thing, so there must be something there, but it wasn't much.
+R:	I put in a feature to force it to `mouseover' anything that the crosshairs are on. But it doesn't seem to... I told it to trigger the mouseovers, but it never happens.
+P:		I never really `got' the crosshairs, so I hadn't realised - right until the end you showed it to me - but I didn't earlier pick up on that.
+
+R:	Yeah, it's problematic that as well as the flyouts, there's also the crosshairs.
+P:		Okay. I wasn't really noticing [the crosshairs], because the other system was working so well for me, so I was sort of reflecting, and concentrating on what I saw.
+R:	And yet, once you were switched to the system without flyouts, you were happy to use crosshairs.
+P:		Well, once you showed me how to use them, that you could still navigate even if there's no letters, and then I was like, okay, well that was like what I was used to before with the [accessible input device], so I learned my lesson.
+
+R:	Would you say you could understand how to get to a place?
+P:		Yeah, obviously; you just saw me do it(!)
+R:	Was the grid-splitting an intuitive way?
+P:		Yeah, no, I thought that was fine; that was great. Uh, yeah, that made sense. I liked that it was very bright, and there was this little {unclear}.
+P:		I'm probably not your best - it depends how you think about it. I'm probably not the most stereotypical - it's not like taking home a heavier[?] - somebody who doesn't use a computer - to try it.
+R:	Well, it's designed for [people with accessibility requirements]. You'd probably be a pretty good sample for accessibility needs.
+P:		Well, if it's designed for disabled people with a lot of experience with different tech, so that's what I'm saying - you'd need to find some other people who haven't had the same breadth of experience of available tech.
+
+R:	If we want to model performance of an expert, that's fine though.
+P:		Yeah, no, that's fine. I'm just saying that you should realise I'm not a typical user. In fact, that's one of the things that Google will tell you, probably(!) is that their problem is that all the people they hire are not at all - can't even conceive of the problems that their users have. Figuring out, for example, that keyboards {unclear}(!)
+P:		Uhm, yeah, we're not the normal. I'm particularly mechanically inclined, so I tend to figure these things out pretty quickly.
+P:		But still, it was good. I'm just saying that the hacking through it might not... well of course, to be fair, who does hack through your stuff? People who are good at hacking. Look at the manual.
+
+R:	How do you feel this system compares to navigating using tabbing around a page?
+P:		Oh, it's obviously faster because it's hierarchical. My first-years should be able to answer that question.
+R:	Would you prefer this system?
+P:		To tabbing? Of course, yeah. As long as it didn't interfere with anything else.
+
+R:	Bonus question: how does it compare to the mouse?
+P:		Uh, like I said, the main benefit is... well, there's actually two benefits. The main benefit is that for me, because of whatever - I don't know if everybody has this - is that especially by the time you get your hand over, and you find the mouse, that sort of thing, it was just much faster to have it right on the keyboard.
+P:		So, that's... and the other thing is that, honestly, sometimes it's really hard to click on, so being able to choose a letter is just better than, than just, life, you know, even with a pointing device.
+P:		But, yeah. So, basically, dunno, I'd have to try it. Uh, it might be... the other, the downside is that one of the problems with typing injuries is that you are too much in the same posture doing the same thing all the time, so it is good to use other devices if you have them, just to move around a bit.
+P:		In fact especially when you have to go searching for the pen, that's always good.
+
+R:	Would you use it alongside tabbing?
+P:		Tabbing? No, probably I would just use this, once I was used to it. I probably wouldn't use tabbing unless [Chibipoint] was breaking.
+P:		But if you see that [what you want to focus] is the next thing, then you tab because you have no reason to go through a hierarchy. ‘Cause it was one, if it is in a form, then it's one keystroke to get to the next thing. If you [use Chibipoint, it's] always 2 keystrokes because you first have to call it up, and then you have to go again.
+P:		So I would use the tab - I would always go for the fewest keystrokes. So you can answer your own question by saying how many times would you have to press tab to get to the next point.
+
+R:	Okay. So you would see yourself using the two systems together?
+P:		Yeah, I think so because - but, well, I - yeah, depending on what you're trying to do. But for the average page, you would never ever tab through it, but it's gonna be just how many - like I said - I'm always gonna try and use the fewest keystrokes in the shortest amount of time. So, but, that's, you know, for a form that's gonna be tab, because you have to fill everything in.
+P:		But for any normal page, like on the BBC page, where you're skipping around, then of course you don't wanna use the tab.
+
+R:	And, how predictable was it?
+P:		I thought it was pretty predictable, I found. Except from, you know, there were bugs. The capture problems.
+R:	Was it more predictable than tabbing?
+P:		Yeah. Absolutely. Who knows what's gonna - yeah, when people {unclear}, I never figured it out. Use the tab to, like, {unclear}, you're just like, why did they need that? You know. And sometimes they skip over things, that were just not so {unclear}. I do a lot of {unclear}, so you know {unclear}.
+\end{lstlisting}
+
+\FloatBarrier
 
 \begin{figure}[ht]
 	\begin{enumerate}
