@@ -12,8 +12,12 @@
 \usepackage{fancyhdr}
 \usepackage{pdfpages}
 
-%temp
+%highlighting
 \usepackage{color}
+
+% accents in listings
+%\usepackage[utf8]{inputenc}
+%\usepackage{listingsutf8}
 
 % list spacing
 \usepackage{enumitem}
@@ -136,9 +140,45 @@ A larger study then recruited 12 users to evaluate the systems in a counterbalan
 % This would reveal which system was most suited to which kinds of pointing. Qualitative data was gathered also, to capture user preference.
 
 \section{Study 1: Usability Study}
-We recruited a lecturer of Computer Science for this study. The participant was chosen due to being a known power user of keyboard navigation. We hoped that this participant could bring out the full potential of our system, and reveal what an expert of keyboard navigation expected from a system, as well as what strategies they tried when learning said system.
+We recruited a lecturer of Computer Science for this study. The participant was chosen due to her being a known power user of keyboard navigation. Additionally she had large experience with using accessibility hardware and software. We hoped that this participant could bring out the full potential of our system, and reveal what an expert of keyboard navigation expected from a system, as well as what strategies they tried when learning said system.
 
 A full transcript of the session can be found in \Cref{lst:usabilityTrans}.
+
+The participant controlled the system using a complex accessible keyboard, with which she was already well-trained. This was an opportunity to confirm the concept that ChibiPoint's key input does not need to come from a conventional keyboard input device. No problems piloting ChibiPoint arose from this input choice, although the mapping of `numpad layout' to drilling direction was not possible, since there was no numpad available (hotkeys had to be mapped elsewhere). It was found that, with the chosen drilling mapping (left hand of Qwerty, QWE|ASD|ZXC), the participant did not notice the spatial connection until it was pointed out explicitly. Perhaps if the user configured the mapping themselves, they would learn the relation (although this is out of scope for the proof-of-concept). For the evaluation study, instructions will be given to the participant, pointing out the mapping.
+
+\subsection{Intuitivity}
+Generally the system was found to be quite intuitive. Exploratory use was encouraged, with the researcher disclosing only the ChibiPoint initial invocation shortcut (Cmd K).
+
+The participant understood that the labels upon each quadrant were keyboard shortcuts. She understood immediately that these shortcuts directed ChibiPoint's search into that region. Additionally, unlabelled shortcuts were able to be guessed; she worked out within two attempts that `Enter' was the shortcut to click the element under the crosshairs.
+
+The participant soon noticed the flyouts, and understood them to be keyboard-activated suggestions. Even on her first use of these, her efficiency was just one keystroke short of expert performance.
+
+The participant understood intuitively that page scrolling keys co-operate with the ChibiPoint interface; she was able to click off-screen elements by scrolling to them and then invoking ChibiPoint, without instruction.
+
+\subsection{Interface problems}
+The BBC website had complicated nesting of clickables within its navigation bar. It became difficult to distinguish which flyout referred to which button. Judgement of which element the flyout was bound to, appeared to be based on the position of the label. This was an incorrect mental model; the label's position is only a heuristic for which interface element is bound. In reality, the arrow coming off the label is the indicator of which element will be clicked. Observation of the video suggests that the arrows were barely visible in this situation; their dark arrows were flush with the (also dark) frame of the webpage. Ultimately the participant was able to recover from the situation by relying on ChibiPoint's other pointing mechanism, crosshairs. This showed that the participant learned that both could be used situationally.
+
+More contrast would help highlight the existence of the flyout arrows. Another solution is to uniquely color-match the flyout with the element it was bound to, so that the pairing is visualized. This led us in the next version of ChibiPoint to `paint' flyout-bound elements, in the same way ChibiPoint's crosshairs paint their target. Flyouts were also given discretely different colors to each other, for further identity.
+
+The participant was seen to crane toward the screen to read flyouts. We decided to respond to this by increasing the size and legibility.
+
+The participant noted that the crosshairs did not wholly emulate a mouse, since they did not trigger mouseover or hover events, nor display a `mouseover' cursor. A cursory effort was made to address this, but no fix could be found at the time. Further work could pursue a solution for this, to improve the feedback of the system and complete the cursor metaphor.
+
+The participant assumed incorrectly that drilling could not continue beyond the point where the quadrant labels were hidden. The grid gets smaller each time, and past a threshold the text and gridlines are removed so as not to occlude the content in the quadrants. However, drilling remains possible provided the user recalls the shortcuts. To address any misconceptions, we decided to explictly cover this behaviour in future training.
+
+\subsection{Implementation problems}
+ChibiPoint could not click buttons within Flash Player interfaces (such as `play' buttons on web-based video). For a proof-of-concept this is unimportant. More work could investigate communicating with Flash elements.
+
+Additionally key listener conflicts were seen when ChibiPoint was used on the Google Search page; input to ChibiPoint was intercepted by the webpage, rendering the system unusable. Again this is not important at proof-of-concept stage. Possibly the reason lies in the order in which key listeners are bound; ChibiPoint waits for the page to be loaded in its entirety before setting up its event listeners. Future work could investigate whether establishing event listeners earlier makes a difference.
+
+A problem was encountered with detecting clickables on the \textit{The Bath Chronicle} (\url{http://bath.thisisads.co.uk/register.php}) registration page. Flyouts were not able to be provided for several buttons on this page. A later investigation revealed that the clickables were created using inline DOM level 0 events, which ChibiPoint does not look for. Future work could extend clickable detection to include these.
+
+\subsection{Feedback}
+Overall, the participant was enthusiastic about ChibiPoint. She felt that she was able to learn the system ``pretty fast'', especially compared to ``quite a lot of usability stuff''. She liked the flyouts feature, expressing that ``they were pretty good guesses''. She understood how to point with it, and felt that the grid drilling was a ``great'' way to point. She said that she would prefer this system to tabbing ``of course'', and that it was ``obviously faster because it's hierarchical. My first-years should be able to answer that question''. She described the system as ``pretty predictable [excepting bugs]'', and compared to tabbing ``absolutely [more predictable]''.
+
+As for extending the system, the participant expressed that it would be useful to be able to hide the interface when it gets cluttered. However she also conceded that the existing feature for closing the interface sufficed. She advised that a cheatsheet or documentation would be useful for discovering hidden features. We resolved to print all controls on the evaluation study instructions.
+
+The participant also assented with the notion that she would desire sometimes a method to undo `drilling down' (``there was, like, one time''). However this feature already existed, so we resolved to improve its visibility with future instructions.
 
 \section{Study 2: Quantitative Comparison of Pointing Systems}
 \subsection{Outline}
@@ -701,7 +741,10 @@ sensitive=false,
 morecomment=[l]{//},
 morecomment=[s]{/*}{*/},
 morestring=[b]{*},
-moreemph=[4][b]{=}
+moreemph=[4][b]{=},
+literate={ö}{{\"o}}1
+           {Ü}{{\"U}}1
+           {ü}{{\"u}}1
 }
 
 \lstdefinestyle{basic}{ %
@@ -734,9 +777,13 @@ moreemph=[4][b]{=}
   stringstyle=\color{violet},     % string literal style
   tabsize=4,                       % sets default tabsize to 2 spaces
   %title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+  %inputencoding=utf8/latin1
 }
 
 \begin{lstlisting}[caption={Transcript of Usability Study}, label={lst:usabilityTrans}, style=basic, language=custom, flexiblecolumns=true]
+R: (Researcher)
+P: (Participant)
+
 ====Flyouts On====
 
 	First system, Flyouts ON.
@@ -759,7 +806,7 @@ P:		And now, the question is... oh, I see.
 
 P:		Uh, it keeps coming...
 		*Continues drilling toward search box.*
-R:	[Field is now in crosshairs.]
+	[Field is now in crosshairs.]
 P:		Ah!
 P:		Am I there yet?
 		*Guesses key*
@@ -832,8 +879,8 @@ P:		Okay.
 P:		Hah! That's really all over.
 		*Presses appropriate flyout for search field*
 R:	Hm, what's your favourite book?
-P:		[search term redacted]
-P:		[discussion of how to select suggested products using arrow keys on accessible input device]
+		[search term redacted]
+		[discussion of how to select suggested products using arrow keys on accessible input device]
 		*search submitted*
 
 R:	Try and click on [author for first result redacted].
@@ -873,14 +920,14 @@ P:		Alright.
 		*Drills toward*
 		*Presses appropriate flyout*
 
-R:	[Discussion to find an inaccessible website to navigate next]
+	[Discussion to find an inaccessible website to navigate next]
 
 		*Google searches Bath Chronicle.*
 		*Presses Apple K*
 		*Chibipoint interface appears*
 		*Presses key for appropriate flyout*
 		*Bug in Chibipoint means the key press is caught by Google instead*
-P:		That's interesting. So the ‘J' got captured.
+P:		That's interesting. So the `J' got captured.
 		*More typing*
 P:		Yeah, every time you type something, Google's capturing it.
 P:		Yeah, so, can't... it's just totally failing now.
@@ -896,7 +943,7 @@ P:		So now..
 		*Chibipoint interface appears*
 P:		So what do you want me to click?
 		*Drills toward top-left*
-R:	Click ‘place an advert'.
+R:	Click `place an advert'.
 		*Presses appropriate flyout*
 
 R:	Register. Let's see how it does with forms.
@@ -913,16 +960,16 @@ P:		Oops.
 P:		...That's a 'Z'; okay. [Text was obscured, so appeared as numeral 7]
 		*Drills toward*
 		*Drills toward*
-R:	[No flyouts have appeared for this button; clickable detection failed, so crosshairs are the only option. It's now in crosshairs.]
+	[No flyouts have appeared for this button; clickable detection failed, so crosshairs are the only option. It's now in crosshairs.]
 		*Presses enter*
 
-R:	[A form appears]
+	[A form appears]
 		*Tabs a few times to enter form*
 		// Candidate seems to notice that both systems can co-exist. This tab journey was a short one.
 P:		Oops.
 		*Presses Apple K*
 		*Chibipoint interface appears*
-R:	[First 6 fields of form have flyouts suggested, without drilling.]
+	[First 6 fields of form have flyouts suggested, without drilling.]
 		*Presses flyout for first form element*
 		*Focuses drop-down menu*
 P:		Heh. Yeah, thanks. [Presumably wanted menu to open, as with a real click].
@@ -932,19 +979,19 @@ P:		Heh. Yeah, thanks. [Presumably wanted menu to open, as with a real click].
 		*Restores window.*
 		*Presses Apple K*
 		*Chibipoint interface appears*
-		*Drills toward ‘Address lookup' button*
+		*Drills toward `Address lookup' button*
 		*Drills toward [non-trivial because it's on an edge after each drill, and also because no flyouts are offered; clickables detection failed]*
 		*Drills toward [now in crosshairs]*
 		*Presses Return*
 		*Address lookup is clicked; panel appears overlaying existing content*
 
-		*Presses tab to attempt to focus panel*
+		*A focusing keypress is made, possibly tab or Apple L (select address bar). It is not clear if this is intentional.*
 		*Keyboard focus leaves browser*
 		*Presses Apple K*
 		*Chibipoint interface appears*
 		*Attempts to drill, but keyboard focus is in the address bar; types into address instead.*
-R:	[Much attempting to regain focus and resume drilling, but even tabbing fails]
-R:	[Resort to mouse click to put focus back in browser content pane]
+	[Much attempting to regain focus and resume drilling, but even tabbing fails]
+	[Resort to mouse click to put focus back in browser content pane]
 
 		*Drills toward address*
 		*Drills toward*
@@ -952,18 +999,18 @@ R:	[Resort to mouse click to put focus back in browser content pane]
 		*Presses return*
 		*Click sent, element flashes, but no change in form*
 		// Without mouseover probing, we cannot get affordances for which element needs to be clicked, and confused results can occur.
-R:	[Attempt to verify using mouse which element is meant to be clicked]
-R:	[Panel closes]
+	[Attempt to verify using mouse which element is meant to be clicked]
+	[Panel closes]
 
-R:	[Recover panel by refreshing page and re-opening Address lookup]
-R:	[Clicks same element again with Chibipoint; form option remains unclicked]
+	[Recover panel by refreshing page and re-opening Address lookup]
+	[Clicks same element again with Chibipoint; form option remains unclicked]
 P:		It must want [me to click] the checkbox next to it.
 		*Presses Apple K*
 		*Chibipoint interface appears*
 		*Drills toward*
 		*Drills toward*
 		*Drills toward*
-R:	[Button is not yet in crosshairs. Drilling labels now hidden since grid is small.]
+	[Button is not yet in crosshairs. Drilling labels now hidden since grid is small.]
 P:		Hmh.
 		*Presses return*
 P:		Yeah, I have no idea. It doesn't seem to be..
@@ -971,14 +1018,14 @@ P:		So, does that..
 		*Hovers mouse over to confirm feedback*
 P:		[The button] doesn't seem to notice [with Chibipoint] that something's there.
 P:		Obviously there's no signal that [an emulated mouse cursor is above].
-P:		‘Cause the [cursor] changes into a hand when you hover over it.
-R:	[Repeats previous navigation:]
+P:		`Cause the [cursor] changes into a hand when you hover over it.
+	[Repeats previous navigation:]
 		*Presses Apple K*
 		*Chibipoint interface appears*
 		*Drills toward*
 		*Drills toward*
 		*Drills toward*
-R:	[Button is not yet in crosshairs. Drilling labels now hidden since grid is small.]
+	[Button is not yet in crosshairs. Drilling labels now hidden since grid is small.]
 		*Presses return*
 		// Seems to think that when the drilling labels are gone, it is not possible to continue drilling.
 
@@ -1006,7 +1053,7 @@ P:		Well, is that enough information?
 
 R:	Now try a version with the Flyouts turned off.
 P:		Okay.
-R:	[On BBC homepage]
+	[On BBC homepage]
 		*Presses Apple K*
 		*Chibipoint interface appears*
 R:	Try and watch Top Gear. [This is at the very bottom edge of the grid]
@@ -1015,24 +1062,24 @@ P:		Okay, down there.
 		*Drills toward*
 		*Drills toward*
 		*Presses return*
-R:	[Page navigates]
+	[Page navigates]
 		// Even buttons in tricky positions were able to be clicked easily.
 
 		*Presses Apple K*
 		*Chibipoint interface appears*
-R:	[Top Gear Flash pane is painted wholly by Chibipoint; inner structure not detected]
+	[Top Gear Flash pane is painted wholly by Chibipoint; inner structure not detected]
 		*Presses space bar to attempt to play video*
-R:	[Page scrolls upon space bar since video does not have focus]
+	[Page scrolls upon space bar since video does not have focus]
 		*Drills toward Flash pane*
 		*Drills toward centre of Flash pane*
 		*Presses return*
-R:	[Flash pane is clicked, but no meaningful change occurs]
+	[Flash pane is clicked, but no meaningful change occurs]
 		*Presses key to scroll up*
-R:	[Page does not scroll, despite input]
+	[Page does not scroll, despite input]
 P:		How do you scroll up?
 R:	Your focus is trapped by Flash.
-R:	[Mouse recruited to recover focus]
-R:	[Page scrolled back to beginning]
+	[Mouse recruited to recover focus]
+	[Page scrolled back to beginning]
 
 		*Presses Apple K*
 		*Chibipoint interface appears*
@@ -1046,51 +1093,51 @@ R:	So I'll spoil that; Flash players can't take clicks [from ChibiPoint].
 P:		Oh, okay.
 R:	So you've discovered that.
 
-R:	[We return to BBC homepage]
+	[We return to BBC homepage]
 R:	Try to click something on the bottom of the page - that's not on-screen.
 R:	Music.
 		*Presses Apple K*
 		*Chibipoint interface appears*
 		*Scrolls using Page Down*
 		// Unprompted, understands that page scrolling keys co-exist with ChibiPoint.
-		*Drills toward an element in the same list as ‘Music'*
-P:		Too late; I'm going to go into ‘Learning'.
+		*Drills toward an element in the same list as `Music'*
+P:		Too late; I'm going to go into `Learning'.
 P:		Although it's actually not what you said.
-R:	[Actual ‘Learning' text is not highlighted, but clicking the box that contains it worked in this case; did not have to drill too specifically]
+	[Actual `Learning' text is not highlighted, but clicking the box that contains it worked in this case; did not have to drill too specifically]
 		*Presses return*
-R:	[Navigates to Learning]
+	[Navigates to Learning]
 
 R:	Let's see if there's anything hard to click on; keep scrolling.
 		*Presses Page Down*
-R:	Click the ‘Accessibility Help'.
+R:	Click the `Accessibility Help'.
 P:		Okay.
 		*Presses Apple K*
 		*Chibipoint interface appears*
 		*Drills toward*
 P:		Hmm..
 		*Drills toward*
-R:	[Painting of link container obscures the white hyperlinks within]
+	[Painting of link container obscures the white hyperlinks within]
 R:	Oh god.
 		*Drills toward*
-R:	[Presently highlighted element is the link below Accessibility Help]
+	[Presently highlighted element is the link below Accessibility Help]
 P:		And then, how do you move it around? Did you say the Z key..
 R:	The keybindings continue to be exactly the same.
 P:		Oh, but I didn't memorise them.
 R:	Uhh.. they're this grid.
-R:	[Demonstrates grid of 9 keys on accessibility hardware that map to on-screen controls]
+	[Demonstrates grid of 9 keys on accessibility hardware that map to on-screen controls]
 P:		Oh, okay, so..
 		*Drills toward*
 		*Presses enter*
-R:	[Accessibility Help is clicked]
+	[Accessibility Help is clicked]
 
 R:	So, did you notice that they were...
 P:		No, I totally didn't notice that they were,
-R:	and I shouldn't, since there was a cue.
+P:		and I shouldn't, since there was a cue.
 		// Mapping was not noticed nor memorised; singular lack of incidental information.
 P:		Okay.
 P:		
 P:		Okay, so..
-R:	[Decides to click one of the webpage accessibility articles]
+	[Decides to click one of the webpage accessibility articles]
 		*Presses Apple K*
 		*Chibipoint interface appears*
 		*Drills toward*
@@ -1121,7 +1168,7 @@ P:		It just looks a bit cluttered sometimes. But it was really useful, so I thin
 R:	Would it be useful to have, like, holding down SHIFT dispels the interface?
 P:		What?
 R:	Uhm, there's a lot of heads-up display on the page; you could hold down a modifying key to hide stuff temporarily, but not lose where your grid is.
-P:		Uhh, I don't know what... one thing is that Ctrl-K doesn't work very well for me, ‘cause I use emacs; that's why it was after a little while when I was doing the wrong things because I doing the wrong commands, because I was confusing all the commands.
+P:		Uhh, I don't know what... one thing is that Ctrl-K doesn't work very well for me, `cause I use emacs; that's why it was after a little while when I was doing the wrong things because I doing the wrong commands, because I was confusing all the commands.
 P:		So for me it would be better if it was something different, like Alt+something, just because I hardly ever use Alt. Then I'd remember it; I could remember that. And also, when I'm on emacs, I'd be able to control it.
 
 R:	There's a limit to what keyboard shortcuts I'm allowed to choose. Actually, it's a limit to what I can `suggest' as a keyboard shortcut, but the user can override the system ones if they manually choose them.
@@ -1135,7 +1182,7 @@ P:		But it saves you find the tablet - the pen, tablet; it's just right there.
 
 R:	Were there any things that you didn't understand?
 P:		Oh yeah, like I said, I didn't notice that the grid was continuing; or rather I didn't pick up that - they just looked like random letters to me. I didn't know why you were doing it.
-P:		But had I noticed... ‘cause, the thing is that in the old days, my first guess would've been, was the right hand.
+P:		But had I noticed... `cause, the thing is that in the old days, my first guess would've been, was the right hand.
 P:		In the old days, the arrow keys used to be right around there.
 P:		I should've picked up that you were using the left hand instead, but I didn't.
 R:	I'm less worried about that, because it usually would be the numpad, but it's [accessible input device] mode.
@@ -1151,7 +1198,7 @@ P:		Again, I am old, and I did used to navigate with the arrow keys on the other
 
 R:	Would you say it's intuitive?
 P:		It was largely intuitive; I mean, there was a couple things you didn't know. It might be nice to have, like, a little helping thing that could pop up and tell you the cheat sheet, to tell you if there's any other stuff.
-P:		‘Cause usually what I do is, I hack around a bit with the command, and then I go and read the manual, and see if there's anything I've missed.
+P:		`Cause usually what I do is, I hack around a bit with the command, and then I go and read the manual, and see if there's anything I've missed.
 P:		So this was a very successful first hack-around, but then you would want somewhere to be able to read and find out what you'd missed.
 R:	Maybe I'll print a cheat-sheet rather than coding one.
 P:		Yeah, sure.
@@ -1200,7 +1247,7 @@ P:		In fact especially when you have to go searching for the pen, that's always 
 
 R:	Would you use it alongside tabbing?
 P:		Tabbing? No, probably I would just use this, once I was used to it. I probably wouldn't use tabbing unless [Chibipoint] was breaking.
-P:		But if you see that [what you want to focus] is the next thing, then you tab because you have no reason to go through a hierarchy. ‘Cause it was one, if it is in a form, then it's one keystroke to get to the next thing. If you [use Chibipoint, it's] always 2 keystrokes because you first have to call it up, and then you have to go again.
+P:		But if you see that [what you want to focus] is the next thing, then you tab because you have no reason to go through a hierarchy. `Cause it was one, if it is in a form, then it's one keystroke to get to the next thing. If you [use Chibipoint, it's] always 2 keystrokes because you first have to call it up, and then you have to go again.
 P:		So I would use the tab - I would always go for the fewest keystrokes. So you can answer your own question by saying how many times would you have to press tab to get to the next point.
 
 R:	Okay. So you would see yourself using the two systems together?
