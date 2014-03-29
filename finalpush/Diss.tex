@@ -70,11 +70,11 @@
 \subsection{Hypothesis}
 \subsubsection{Hypothesis 1: ChibiPoint is generally more efficient at web navigation than tabbing}
 We hypothesise that our system, \textbf{ChibiPoint, requires significantly fewer keypresses to navigate webpages, than does `tabbing navigation'} (the current standards-prescribed method for keyboard navigation).
-`Navigate webpages' is a broad term, as there are many classes of pointing that need to be analysed. The more detailed hypothesis is that, \textbf{given several distinct classes of pointing, ChibiPoint requires fewer (or equal) keypresses, for a large majority of these scenarios}. Since we analyse two versions of ChibiPoint, it should be understood that we require at least one of these to outperform tabbing in a majority of tasks.
+`Navigate webpages' is a broad term, as there are many classes of pointing that need to be analysed. The more detailed hypothesis is that, \textbf{given several distinct classes of pointing, ChibiPoint requires fewer (or equal) keypresses, for a large majority (>80\%) of these scenarios}. Since we analyse two versions of ChibiPoint, it should be understood that we require at least one of these to outperform tabbing in a majority of tasks.
 
 \subsubsection{Hypothesis 2: ChibiPoint's `flyouts' feature, reduces further the required keypresses for web navigation}
 We hypothesise that the novel `flyouts' feature of ChibiPoint, which assigns hotkeys to suggested buttons on the webpage, contributes to reducing the number of keypresses required by ChibiPoint for web navigation, compared to using just its standard pointing method of hierarchically drilling through the page and pointing at elements using crosshairs.
-In other words, we hypothesise that ChibiPoint `with crosshairs and flyouts enabled' performs a large majority of pointing scenarios in fewer keypresses than ChibiPoint `with just crosshairs enabled'.
+In other words, we hypothesise that ChibiPoint `with crosshairs and flyouts enabled' performs a large majority (>80\%) of pointing scenarios in fewer keypresses than ChibiPoint `with just crosshairs enabled'.
 
 % Concise statement of problem
 % State efficiency goal
@@ -131,7 +131,7 @@ After completing this set of tasks with one pointing system, the participant was
 In addition to this evaluation of system performance, participants were asked to fill out two questionnaires. The first questionnaire was posed before the pointing tasks: participants declared their proficiencies with the computing concepts involved, as well as describing their demographic. The second questionnaire was posed after the pointing tasks, and asked the participants to give subjective feedback on the systems they used.
 
 \subsection{Demographic}
-All participants were known personally by the researcher, with a majority (9) explicitly identifying as being current Computer Science students.
+All participants were known personally by the researcher. Participants were asked to volunteer, and offered a chocolate biscuit as recompense. A majority (9) explicitly identified as being current Computer Science students. One further was known to be a graduate of Computer Science, another pursuing an `EngD in Digital Media' and the final participant a Physics student.
 
 The mean average age for participants was 22.58, with a standard deviation of 2.151. The range was 21--28. These data are tabulated in Figure \ref{fig:partic_age}.
 A quarter of participants were female, the rest were male (Figure \ref{fig:partic_gender}).
@@ -153,7 +153,7 @@ The following describes the methodology for the full study. Deviations exclusive
 
 The researcher followed a script to ensure that all instances of the study were performed the same way.
 
-Participants were briefed on the purpose of the dissertation and of the study, as well as what participation in the study would entail. They were assured that no identifying information would be kept about them, that it was the system performance being measured rather than their personal performance, and that they were free to withdraw participation at any point. With these explained, participants were asked to sign a permission slip, and were offered also a copy in case they wished to contact the researchers after the fact.
+Participants were briefed on the purpose of the dissertation and of the study, as well as what participation in the study would entail. They were assured that no identifying information would be kept about them, that it was the system performance being measured rather than their personal performance, and that they were free to withdraw participation at any point. They were told that there was no desire for them to generate any particular outcome, and that we simply wanted to compare the performance of the systems. With these explained, participants were asked to sign a permission slip, and were offered also a copy in case they wished to contact the researchers after the fact.
 
 Participants were assigned a unique number. This enabled both the questionnaires they would fill in to be related as being from the same participant. Additionally participants were assigned a sequence in which to evaluate the three systems. Biases pertaining to the order in which systems are used, were counterbalanced by testing using all sequence permutations of the three systems equally. There were 6 permutations, so the study recruited a multiple of this: 12 participants.
 
@@ -161,18 +161,97 @@ The study began with the first questionnaire's being allocated. This asked parti
 
 The participants began the testing activity by reading instructions on the system they had been allocated. The researcher then guided them through a training scenario to confirm that they had understood the instructions. During this training period, the researcher would answer any questions and correct any mistakes that occurred. In the case of learning the system `ChibiPoint with crosshairs AND flyouts' before learning the system `ChibiPoint with crosshairs ONLY', participants were trained in the use of both features in turn.
 
-[INCOMPLETE]
+After training, all test websites were opened, and the participant was directed to the attend to the first \gls{browsingcontext}, which was navigated to the website for task 1. The researcher would point out to them the page element that needed to be clicked in this task. The pointing objectives were also printed on a piece of paper that they could refer to.
+
+The participant completes a task by clicking the specified element using the pointing system they have been allocated. At this point, telemetry (of keypress count and timing) is automatically downloaded by the browser extension (that is, ChibiPoint --- which is repurposed as a keylogger --- whether its pointing features are in use or not). The researcher then confirms whether the correct button was clicked.
+
+If the correct button was clicked (or some equivalent, such as a caption with the same hyperlink), the participant moved to the next task. If some other button was clicked by mistake, then the telemetry was discarded by the researcher, and the participant was directed to attempt that task again.
+
+Once the participant completed all navigation tasks, they were allocated the next system to use for pointing, and given instructions and training in it (in the same way as before). They would repeat the array of tasks from before with this new system. This process was completed until all three systems were tested.
+
+With all systems tested, the participants were finally asked to fill in a post-experiment questionnaire, describing their preferences and thoughts on the systems tested.
+
+Upon completion, the participants were thanked, and were offered a chocolate biscuit.
+
+\subsection{Limitations}
+Only successful task completion is logged; mistakes are discarded. Thus any measurements will not necessarily be a model of `first-time' usage; we capture instead `beginner' usage of ChibiPoint.
+
+In the same way, users of tabbing could perhaps improve their performance if they retried after an attempt where mistakes are made. So again this does not model `first-time' usage of tabbing. Here we cannot assert that users are `beginners' of tabbing, either: general keyboard navigation proficiency was assessed in the questionnaire, but from this no confident assertion can be made about the tabbing navigation experience. However, tabbing navigation is very deterministic in journey, so provided no overshooting occurs, the number of keypresses from a beginner is no different to an expert's.
+
+We perform no analysis to assess the tabbing skill level of our participants (that is, how close to expert performance they achieve), but necessarily the tabbing performance measured is `at least that of a beginner', and ChibiPoint performance is `at most that of a beginner', so our comparison should be interpreted in the context of those boundaries.
+
+Skiplinks are one exception to the non-determinism of tabbing journeys. We chose to disallow the use of these, as they are website-dependent, and would therefore not represent the performance of a general browsing mechanism. Thus variance for tabbing is arguably not as large as it could be. However the tests chosen were not ones whose performance could have been improved upon with the available skip links (with the possible exception of Test 8 on Wikipedia, but this Skiplink is broken on Google Chrome, the browser in use, so provides no benefit).
 
 \subsection{Metrics}
 The metric that was most important to study was efficiency --- how many keypresses (and by extension, how much exertion) are required for a given navigation task. Secondary to this metric was time taken by each system to perform a navigation task --- it is preferred, but not essential, for the system to be fast; the main priority is reducing exertion, which is connected to efficiency.
 
 During the navigation tasks, user keypresses were recorded, as well as the times that they occurred. We recorded only keypresses relevant to pointing with the current system. For example, attempts to use the `tab' key during use of ChibiPoint were intercepted, and answered with an alert to the user that tabbing was disallowed. We disregarded keyboard input that did not invoke functionality within tabbing or the currently activated version of ChibiPoint. Page scrolling via the keyboard was considered unrelated to pointing, and so was not recorded. Attempts to invoke flyouts were only recorded when said flyout was present; if no flyouts were created (for example because no clickables are in the specified area, or if flyouts are disabled altogether), then the keypress was disregarded.
 
+Time was measured from the first to last keypress, so no time was measured during page load or task explanation.
+
 The post-task questionnaire asked participants to give subjective feedback on the systems they used. Some of the feedback was quantitative --- which was the preferred pointing system, how easy was each system to use, and how reasonable was the amount of key pressing required --- and some of the feedback was qualitative, asking for general thoughts on the task and systems.
 
 \subsection{Pilot Study}
+The pilot study existed as a `dry run' to catch problems in the method of the larger study, before scaling up.
 
-\chapter{Results}
+We recruited a Software Research Engineer with experience developing and assessing accessibility software. His preliminary questionnaire response (Figure \ref{fig:partic_pilotpre}) describe a proficient computer user (with 13+ hours/day of device usage, 5/5 self-rating for touch typing, and a user of hotkeys).
+
+A list of pointing tasks was created, but these proved to be uninformative --- many of them duplicated classes of navigation already tested, and overall they did not test a wide enough spread of navigation types --- to the extent that tabbing's strengths in form traversal were not represented. Though these inspired the eventual classifications we would use for tasks in the full study, they do not in themselves paint a full picture of system performance.
+
+These tasks were as follows:
+
+\begin{enumerate}
+\item Search `piano' on YouTube
+	\begin{enumerate}
+        \item Then, select first result
+        \item Then, select `Favorite videos'
+    \end{enumerate}
+	
+\item Search `sport' on BBC
+	\begin{enumerate}
+		\item Then, select first result
+	\end{enumerate}
+	
+\item Search `pillow' on Amazon
+	\begin{enumerate}
+		\item Then, select first result
+	\end{enumerate}
+
+\item View first article on Engadget.com
+
+\item Google `slam'
+	\begin{enumerate}
+		\item Then, select first result
+	\end{enumerate}
+
+\item Select `Archives' on Megatokyo.com
+
+\item Search `computer' on Wikipedia
+	\begin{enumerate}
+		\item Then, select `Section 2.3: The modern computer'
+	\end{enumerate}
+\end{enumerate}
+
+Some tests (for example the Google search) were found to be invalid, as ChibiPoint could not activate on this website due to key listener conflicts. The later study withdrew such tests.
+
+Bugs in the instrumentation were found --- certain actions, such as invoking flyouts --- were not being recorded, so some keypress counts were artificially low. Luckily these were predictable and could be detected before reporting results. Additionally, it highlighted the need for waiting for the first keypress before starting a timer; explanations given at the start of each task were being accounted in the measurements, but less explanation was needed for each repeat of a task.
+
+The study highlighted the need for automation. A lot of intervention was needed to navigate to the webpages used for tasks, and start the focus in consistent places. As well, extra unmeasured pointing tasks were added just to set up the task that followed. This was labour-intensive and distracting. The larger study designed tasks to use webpages where focus began in the desired starting point (for example, inside a form). Additionally, a bookmark folder was created so that all tasks could be opened in batch. The later versions of the instrumentation also added support for detecting form traversal (which effects a `focus' event rather than a `click' event), so more types of navigation could be studied.
+
+The need was seen for a record of what the next task was.
+
+Questionnaire errors were found, with some copy-paste mistakes being identified in the questions.
+
+The pilot study also caught the omission of instructions for the use of tabbing navigation, which was needed for a fair comparison. Additionally it was decided that an explicit training period would be necessary to ensure that all participants started with the same minimum amount of knowledge.
+
+\textit{For shorthand, the ChibiPoint systems will be named: CX (ChibiPoint with just crosshairs feature enabled) and CX+F (ChibiPoint with crosshairs and flyouts enabled).}
+
+The participant's post-questionnaire response can be seen in Figure \ref{fig:partic_pilotpost}. His favourite system was CX+F. Overall he found easier the use of both ChibiPoint modes (CX = 4/5, CX+F = 5/5) to tabbing (1/5). The amount of keypressing required by ChibiPoint was considered reasonable (`unreasonability' rating CX = 2/5, CX+F = 1/5), and tabbing considered completely unreasonable (5/5). He refers in feedback to its being problematic to select the intended element with crosshairs (``Crosshairs without flyouts can be difficult to accurately pinpoint the desired text.''). This was a known problem with how crosshairs paints even elements which are not `clickables'. We decided to address this by mentioning it in future training.
+
+\subsection{Navigation tasks}
+For the larger study, a concrete set of tasks was chosen, to try to represent many discrete classes of pointing.
+
+\chapter{Results of larger study}
 \section{Overview}
 We compared, for each of the eight navigation tasks, the number of keystrokes each system required to complete that navigation. Time was compared also, but as this was of secondary interest, less analysis was performed.
 \subsection{Keystrokes}
@@ -375,9 +454,65 @@ CX+F keystrokes significantly fewer than CX (p < .001).
 Hypothesis 1 supported.\\
 Hypothesis 2 supported.
 
+\section{Summary}
+Hypothesis 1 is supported for both versions of ChibiPoint in tasks 1--6.\\
+Hypothesis 1 is supported also for CX+F in task 2.\\
+Hypothesis 1 is refuted in task 2.\\
+CX+F reduced keypresses compared to tabbing in 7 of 8 tasks, which we consider to be a large majority (>80\%).\\
+CX reduced keypresses compared to tabbing in 6 of 8 tasks (75\%), which is certainly overall an improvement, but not the large majority sought by the hypothesis.\\
+Since one mode of ChibiPoint (CX+F) meets the requirements, Hypothesis 1 holds.
+
+Hypothesis 2 is supported for tasks 1--2 inclusive, and 4--8 inclusive.\\
+Hypothesis 2 is not refuted in task 3 --- it is merely not supported.
+Thus CX+F reduced keypresses compared to CX in 7 of 8 tasks, which we consider to be a large majority (>80\%), as required.\\
+It should also be observed that in the non-supported task, no refute was seen to the claim; in all cases, CX+F either outperforms or matches CX.
+
 \chapter{Conclusions \& Future work}
 
 \chapter{Figures}
+\begin{figure}[ht]
+\begin{tabular}{l l}
+\hline\hline %inserts double horizontal lines 
+Question & Response \\ [0.5ex] % inserts table 
+%heading 
+Gender	&	Male	\\
+Age	&	23	\\
+How many hours a day do you use a computer or smartphone?	&	13+	\\
+How proficient are you at controlling computers with just the keyboard?	&	I use hotkeys in addition to a mouse/pointing device	\\
+Do you /currently/ have any motor impairments/disabilities that hinder computer usage? If so, please explain.	&	None	\\
+Do you presently have any difficulty reading the screen? If so, please explain.	&	None	\\
+Have you ever had any motor impairments/disabilities that hinder computer usage? If so, please explain.	&	None	\\
+What is the main desktop OS you use?	&	Windows	\\
+What is the main web browser you use?	&	Internet Explorer	\\
+Have you ever used any accessibility software or hardware to control computers? If so, please explain which, and the extent to which you used them.	&	Developed and used adaptive interface software for World of Warcraft.	\\
+Is there any additional information you wish to declare?	&	None	\\
+How proficient are you at touch-typing?	&	5	\\
+What is your occupation?	&	Software research engineer	\\ [1ex] % [1ex] adds vertical space 
+\hline %inserts single line 
+\end{tabular}
+\caption{Questionnaire response of Pilot Study participant}
+\label{fig:partic_pilotpre}
+\end{figure}
+
+\begin{figure}[ht]
+\begin{tabular}{l l}
+\hline\hline %inserts double horizontal lines 
+Question & Response \\ [0.5ex] % inserts table 
+Which system did you prefer using?	&	ChibiPoint (with crosshairs AND flyouts)	\\
+How easy was it to point using `tabbing navigation'?	&	1	\\
+How was the amount of keypressing required in `tabbing navigation'?	&	5	\\
+How easy was it to point using `ChibiPoint (with just crosshairs)'?	&	4	\\
+How was the amount of keypressing required in `ChibiPoint (with just crosshairs)'?	&	2	\\
+How easy was it to point using `ChibiPoint (with crosshairs AND flyouts)'?	&	5	\\
+How was the amount of keypressing required in `ChibiPoint (with crosshairs AND flyouts)'?	&	1	\\
+Have you any other feedback?	&	Crosshairs without flyouts can be difficult to accurately pinpoint the desired text.	\\
+\hline %inserts single line 
+\end{tabular}
+\caption{Post-experiment questionnaire response of Pilot Study participant}
+Ratings were all on a five-point scale, 1--5.
+\label{fig:partic_pilotpost}
+\end{figure}
+
 %[trim=0.0cm 11cm 0.0cm 11cm,clip]
 %[viewport=0 0 390 610,clip,width=8in]
 %[viewport=0 0 11cm 5cm,clip]
