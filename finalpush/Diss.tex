@@ -20,6 +20,9 @@
 \setlength{\parskip}{0.5em}
 \setlength{\parindent}{0cm}
 
+% table width control
+\usepackage{tabularx}
+
 \pagestyle{fancy}
 \lhead{{\it Alex Birch}}
 \chead{ChibiPoint: Accessible Pointing for Web Applications}
@@ -196,7 +199,9 @@ The pilot study existed as a `dry run' to catch problems in the method of the la
 
 We recruited a Software Research Engineer with experience developing and assessing accessibility software. His preliminary questionnaire response (Figure \ref{fig:partic_pilotpre}) describe a proficient computer user (with 13+ hours/day of device usage, 5/5 self-rating for touch typing, and a user of hotkeys).
 
-A list of pointing tasks was created, but these proved to be uninformative --- many of them duplicated classes of navigation already tested, and overall they did not test a wide enough spread of navigation types --- to the extent that tabbing's strengths in form traversal were not represented. Though these inspired the eventual classifications we would use for tasks in the full study, they do not in themselves paint a full picture of system performance.
+A list of pointing tasks was created, but these proved to be uninformative --- many of them duplicated classes of navigation already tested, and overall they did not test a wide enough spread of navigation types --- to the extent that tabbing's strengths in form traversal were not represented. Additionally it was not clear what the delineation was between task setup and the actual recorded portion. The larger study uses a clearer separation of actions and setup.
+
+Though these inspired the eventual classifications we would use for tasks in the full study, they do not in themselves paint a full picture of system performance.
 
 These tasks were as follows:
 
@@ -250,6 +255,88 @@ The participant's post-questionnaire response can be seen in Figure \ref{fig:par
 
 \subsection{Navigation tasks}
 For the larger study, a concrete set of tasks was chosen, to try to represent many discrete classes of pointing.
+
+\begin{enumerate}
+\item Go to (bookmarked) Halifax.co.uk login page
+	\begin{enumerate}
+        \item Then, click the `password' field
+    \end{enumerate}
+	
+\item Go to (bookmarked) Kickstarter.com signup page
+	\begin{enumerate}
+		\item Then, click the `Re-enter password' field
+	\end{enumerate}
+	
+\item Go to BBC.co.uk
+	\begin{enumerate}
+		\item Then, click the `Sport' tab
+	\end{enumerate}
+
+\item Go to (bookmarked) University of Bath Library's `Computer Science' resources page
+	\begin{enumerate}
+		\item Then, click `Useful websites'
+	\end{enumerate}
+
+\item Go to Youtube.com
+	\begin{enumerate}
+		\item Search for `piano' \textit{This is just setup; not measured.}
+		\item \textit{The page will change, which is the true start point of the test}
+		\item Then, click the first search result
+	\end{enumerate}
+
+\item Go to (bookmarked) Amazon.co.uk search page for `pillow'
+	\begin{enumerate}
+		\item Then, click the first search result
+	\end{enumerate}
+
+\item Go to Megatokyo.com
+	\begin{enumerate}
+		\item \textit{Using the arrow keys, scroll the page until you see the `Archives' button.}
+		\item Then, click `Archives'
+	\end{enumerate}
+
+\item Go to (bookmarked) Wikipedia.org page for `Computer'
+	\begin{enumerate}
+		\item Then, click `Section 2.3: The modern computer'
+	\end{enumerate}
+\end{enumerate}
+
+Each task's recorded portion is the `Then' step; everything before is just setup to get the focus in the desired starting point. A list of URLs used are provided in Appendix \ref{fig:fullStudyURLs}.
+
+An explanation of the task classifications follows:
+
+\newcommand{\TaskDef}[2]{\item \textbf{#1}: #2}
+
+\begin{enumerate}
+	\TaskDef{[Within form] Immediate related traversal}{the Halifax login form places focus automatically inside the `Username' field. Move focus to the next item in the form, `password'.}
+	\TaskDef{[Within form] distant related traversal}{the Kickstarter signup page places focus automatically inside `Full Name' field. Move focus to the final field in the medium-sized form, `Re-enter password'. \textit{Note: Computer must not be logged into Kickstarter at the time, as an existing login will cancel the registration process}}
+	\TaskDef{Visually early element}{the BBC front-page has a navigation bar, which is the first visual element. Click one of the buttons within this, `Sport'.}
+	\TaskDef{Visually late element}{the University of Bath Library's `Computer Science' resources page has many. 
+	many hyperlinks on it, in content and also in sidebars. Click `Useful websites', a hyperlink that is relatively far down the list.}
+	\TaskDef{[Within form] Spatially close, markup distant traversal}{navigating to a YouTube search page from the front-page search guarantees that your focus starts in the `search' field. From here, the first search result is right next to the search form, but it is a far longer journey in the page markup. Click that first search result.}
+	\TaskDef{Low visual indicator of focus}{Amazon is one of many websites where, in Google Chrome, focusing a page element will provide no visual feedback. With this being the case, click the first search result.}
+	\TaskDef{Scrolled element}{Megatokyo hosts a tall webcomic, which fills some screens. There are buttons beneath this, but it is necessary to first scroll to see these. Click one of these off-screen elements, `Archive'.}
+	\TaskDef{Link surrounded by links}{the Table of Contents for a Wikipedia article contains many hyperlinks cramped together. Click one of these, `2.3 the mdern computer'.}
+\end{enumerate}
+
+An explanation of the pointing ramifications of these tasks follows. We describe why these classes of navigation create different situations for tabbing's relative, linear, markup traversal, compared to ChibiPoint's absolute, hierachical navigation.
+
+\begin{enumerate}
+	\TaskDef{[Within form] Immediate related traversal}{focusing an adjacent element in an already-focused form is trivial for tabbing, which traverses the markup adjacent to the focused element. ChibiPoint does not use relative navigation, and has no such advantage.}
+	\TaskDef{[Within form] distant related traversal}{focusing distant elements in forms is also trivial for tabbing, which traverses contiguous markup in a linear fashion. But hierarchical navigation can theoretically catch up quickly with a linear traversal --- ChibiPoint may be able to perform comparably over this distance.}
+	\TaskDef{Visually early element}{in lieu of any other starting focus, tabbing traversal begins at the start of a webpage's markup. Assuming that early visual elements will be earlier in markup (admittedly not guaranteed, since styling is powerful), navigation bars will be very early in the tab order of a webpage. Thus tabbing can have an advantage navigating to elements in navigation bars. Again, absolute hierarchical navigation does not have this advantage.}
+	\TaskDef{Visually late element}{this is the polar opposite of the previous test. The relative nature of tabbing forces it into a longer journey when the element is visually far away. Absolute navigation is not harmed by this.}
+	\TaskDef{[Within form] Spatially close, markup distant traversal}{this test shows that visual proximity is, at best, only a heuristic for how far away an element is in markup. Tabbing may not do as well here as it appears it should. Absolute navigation is not harmed by this.}
+	\TaskDef{Low visual indicator of focus}{this test is likely to harm tabbing, where seeing the currently focused element is crucial to estimating how far the user is from the target, and also whether they are already on the target. Mistakes and backtracking may be seen if the situation is confusing enough. ChibiPoint produces its own focus indicators, so should not be so affected by the page markup.}
+	\TaskDef{Scrolled element}{this is mainly a confirmation of effectiveness; early iterations of ChibiPoint did not follow the page as it scrolled, so it was seen that this was a class of navigation that a system can have varying success at. The only reason this differs from `Visually late element' is because the position ChibiPoint is launched from affects the pointing journey; an expert user could scroll an element into the middle of the screen so that the crosshairs would begin in the right place, saving keypresses.}
+	\TaskDef{Link surrounded by links}{this class of pointing could cause problems for ChibiPoint flyouts; many suggestions need to be squeezed into a small space. Though the keypress count might not be affected, reading time may be harmed. Additionally, in the case of tabbing, there will be more elements to tab past.}
+\end{enumerate}
+
+Admittedly these are not completely isolated classes; for example, visual indicator of focus happens also to use an element that is late in markup, as well as testing the general lack of visual feedback. So some keypress count will be attributed to unrelated factors. However, we feel this correctly represents the real usage context of a navigation system --- the web is not so kind as to be designed as a set of isolated pointing cases.
+
+Ultimately what we test is `at least' the described pointing case. Unrelated factors such as the starting point in the page, or how many clickables there are along the way, will always add or subtract from the difficulty. We cannot know whether a keypress difference is caused primarily by unrelated factors or by the actual task intention.
+
+Were a large discrepancy to be caused by such unrelated factors, then the tested system would be seen to be so vulnerable to outside influence that it could not complete the task without being overwhelmed by those factors. Perhaps capturing this is similar enough to finding that the system is bad at that class of navigation --- since we found we cannot rely on this system to always cope with that class of navigation, due to its existing vulnerabilities.
 
 \chapter{Results of larger study}
 \section{Overview}
@@ -471,7 +558,7 @@ It should also be observed that in the non-supported task, no refute was seen to
 
 \chapter{Figures}
 \begin{figure}[ht]
-\begin{tabular}{l l}
+\begin{tabularx}{\textwidth}{X|X}
 \hline\hline %inserts double horizontal lines 
 Question & Response \\ [0.5ex] % inserts table 
 %heading 
@@ -489,13 +576,13 @@ Is there any additional information you wish to declare?	&	None	\\
 How proficient are you at touch-typing?	&	5	\\
 What is your occupation?	&	Software research engineer	\\ [1ex] % [1ex] adds vertical space 
 \hline %inserts single line 
-\end{tabular}
+\end{tabularx}
 \caption{Questionnaire response of Pilot Study participant}
 \label{fig:partic_pilotpre}
 \end{figure}
 
 \begin{figure}[ht]
-\begin{tabular}{l l}
+\begin{tabularx}{\textwidth}{X|X}
 \hline\hline %inserts double horizontal lines 
 Question & Response \\ [0.5ex] % inserts table 
 Which system did you prefer using?	&	ChibiPoint (with crosshairs AND flyouts)	\\
@@ -507,7 +594,7 @@ How easy was it to point using `ChibiPoint (with crosshairs AND flyouts)'?	&	5	\
 How was the amount of keypressing required in `ChibiPoint (with crosshairs AND flyouts)'?	&	1	\\
 Have you any other feedback?	&	Crosshairs without flyouts can be difficult to accurately pinpoint the desired text.	\\
 \hline %inserts single line 
-\end{tabular}
+\end{tabularx}
 \caption{Post-experiment questionnaire response of Pilot Study participant}
 Ratings were all on a five-point scale, 1--5.
 \label{fig:partic_pilotpost}
@@ -572,5 +659,22 @@ Touch-typing proficiency was rated on a five-point scale ranging from the sentim
 
 \pagebreak
 \chapter{Appendices}
+
+\begin{figure}[ht]
+	\begin{enumerate}
+		\item \url{https://www.halifax-online.co.uk/personal/logon/login.jsp}
+		\item \url{https://www.kickstarter.com/signup?ref=nav}
+		\item \url{http://www.bbc.co.uk/}
+		\item \url{http://www.bath.ac.uk/library/subjects/comp-sci/}
+		\item \url{http://www.youtube.com/}
+		\item \url{http://www.amazon.co.uk/s/ref=nb_sb_noss_2?url=search-alias%3Daps&field-keywords=pillow&rh=i%3Aaps%2Ck%3Apillow}
+		\item \url{http://www.megatokyo.com/}
+		\item \url{http://en.wikipedia.org/wiki/Computer}
+	\end{enumerate}
+	\caption{URLs used in tasks (full study)}
+	\label{fig:fullStudyURLs}
+	\medskip
+	\small
+\end{figure}
 
 \end{document}
