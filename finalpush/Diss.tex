@@ -75,6 +75,10 @@
 \begin{document}
 \include{Diss-glossary}
 \maketitle
+%\newpage
+\begin{abstract}
+\end{abstract}
+
 \tableofcontents
 %\pagebreak
 
@@ -86,8 +90,23 @@
 \section{Literature \& Technology Review}
 % SUMMARY of literature review
 \section{Problem statement and Hypothesis}
+\subsection{Problem statement}
+Websites are designed to be used with mice. Pointing at them without a mouse is difficult, because tabbing navigation --- the standards-blessed mechanism for mouseless navigation --- is ineffective, unpredictable and inefficient. It is challenging to optimise websites to accommodate tabbing navigation. In practice the web remains inaccessible, despite the availability of standards for accessible development.
+
+Even using tabbing navigation within a tab-accessible website is not an ideal browsing experience. This pointing mechanism is inherently limited, so \textbf{a more suitable mouseless pointing mechanism needs to be developed: one that is designed to cope with real websites, rather than idealized ones.}
+
+As for why a mechanism for mouseless pointing is needed, this is due to input restrictions:
+\begin{enumerate}
+\item Some users are too disabled to use the input device offered to them
+\item More suitable input hardware can be hard to prescribe or procure
+\item Some devices inherently enforce a standard, limited input hardware
+\end{enumerate}
+
+To solve mouseless pointing on a wide variety of input hardware, a mechanism is required that maps well to that wide variety of input hardware.
+%Many input devices generate input which can be parsed as discrete symbols; for example gestures or speech samples. A keyboard-based proof-of-concept could be mapped to work with symbols
+
 \subsection{Hypothesis}
-We predict the performance of our keyboard navigation system, ChibiPoint, as follows:
+We believe that our keyboard navigation system for the web, ChibiPoint, provides an improved mechanism for pointing as compared to tabbing.
 
 \subsubsection{Hypothesis 1: ChibiPoint is generally more efficient at web navigation than tabbing}
 We hypothesise that our system, \textbf{ChibiPoint, requires significantly fewer keypresses to navigate webpages, than does `tabbing navigation'} (the current standards-prescribed method for keyboard navigation).
@@ -101,19 +120,48 @@ In other words, we hypothesise that ChibiPoint `with crosshairs and flyouts enab
 % State efficiency goal
 \section{Goals and Methods}
 % What we intend to solve, and how
+\subsection{Goals}
+We intend to demonstrate that a more effective, efficient, and predictable mouseless pointing mechanism than `tabbing navigation' can be made for the web. The mechanism needs to be capable of achieving widespread availability --- across many browsers and input systems.
+
+The input mechanism used by the web browser extension should be input hardware-agnostic: that is, it must accept as input a language that can be mapped to by a wide variety of input methods.
+
+\subsection{Methods}
+We will produce a proof-of-concept web browser extension (for Google Chrome), that provides mouseless pointing in a variety of real-world websites. The implementation will recruit only technologies that are available to all web browsers (i.e. HTML5, CSS and Javascript). This foundation enables it inherently to be completely cross-platform and cross-browser. Any external libraries used must be free in cost, so as not to impose a price barrier to availability.
+
+The input language for the system will be an instance of symbol-based input: keystroke sequences. Thus a keyboard-based interface theoretically serves as a proof-of-concept for other input systems that can produce a vocabulary of discrete inputs, for example gestures or spoken words. The more limited this proof-of-concept's vocabulary is, the more devices it allows to map to its space.
+
+We will improve upon the efficiency of tabbing navigation's linear trawl, by using a hierarchical traversal.
+
+We will solve tabbing navigation's effectiveness problems: we avoid falling into `focus traps' by avoiding a relative traversal.
+Additionally we solve the feedback problem represented by `lack of visual indicator of focus', by painting our own visual indicators on elements.
+
+We will improve predictability of navigation by using a spatial traversal rather than tabbing navigation's markup-driven traversal.
+
 \section{Results / Contributions}
 % Summarise our most important findings
 % Cast findings as contributions to research field
 \section{Thesis overview}
+\newcommand{\chapterref}[2]{\Cref{#1}, \textit{#2},}
 % Overview of remainder of thesis
+The remainder of the thesis is composed as follows:
+
+\chapterref{chap:litreview}{Literature \& Technology Review} confirms the need for an alternative web pointing mechanism, and explores the approaches recommended, as well as reviewing what solutions have been attempted already.\\ %We review what factors exist in designing for accessible keyboard control.
+\chapterref{chap:reqanddesign}{Requirements \& Design} details the design of our system and pointing mechanism.\\
+\chapterref{chap:implementation}{Implementation} describes how we built our web browser extension.\\
+\chapterref{chap:evaluation}{Evaluation} determines how our web browser extension compares to tabbing navigation, and also determines the contribution of our novel.\\
+\chapterref{chap:conclusions}{Conclusions \& Future Work} discusses our contribution to the field, and ways to extend the work.
 
 \chapter{Literature \& Technology Review}
+\label{chap:litreview}
 
 \chapter{Requirements \& Design}
+\label{chap:reqanddesign}
 
 \chapter{Implementation}
+\label{chap:implementation}
 
 \chapter{Evaluation}
+\label{chap:evaluation}
 \section{Overview}
 The primary system comparison we sought to pursue was `ChibiPoint' versus `tabbing navigation'. We aimed also to evaluate the contribution made by the `flyouts' feature of ChibiPoint: whether it helps or hinders. As such, we evaluated three systems:
 \begin{enumerate}
@@ -178,7 +226,7 @@ Overall, the participant was enthusiastic about ChibiPoint. She felt that she wa
 
 As for extending the system, the participant expressed that it would be useful to be able to hide the interface when it gets cluttered. However she also conceded that the existing feature for closing the interface sufficed. She advised that a cheatsheet or documentation would be useful for discovering hidden features. We resolved to print all controls on the evaluation study instructions.
 
-The participant also assented with the notion that she would desire sometimes a method to undo `drilling down' (``there was, like, one time''). However this feature already existed, so we resolved to improve its visibility with future instructions.
+The participant also assented with the notion that she would desire sometimes a method to undo `drilling down' (``there was, like, one time''). However this feature already existed, so we resolved simply to improve its visibility with future instructions.
 
 \section{Study 2: Quantitative Comparison of Pointing Systems}
 \subsection{Outline}
@@ -613,6 +661,7 @@ Thus CX+F reduced keypresses compared to CX in 7 of 8 tasks, which we consider t
 It should also be observed that in the non-supported task, no refute was seen to the claim; in all cases, CX+F either outperforms or matches CX.
 
 \chapter{Conclusions \& Future work}
+\label{chap:conclusions}
 
 \pagebreak
 \chapter{Glossary}
