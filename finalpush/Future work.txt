@@ -1,0 +1,6 @@
+Communicate with Flash
+Investigate key listener priority
+DOM level 0 events
+Mouseover detection, metaphor
+
+Evaluate effectiveness formally?
