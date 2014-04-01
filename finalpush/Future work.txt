@@ -4,3 +4,12 @@ DOM level 0 events
 Mouseover detection, metaphor
 
 Evaluate effectiveness formally?
+
+Desire:
+http://superuser.com/questions/452413/virtual-mouse-using-the-keyboard
+(Dead link) keyboard implementation:
+http://8887.eu/mSoftware/index.php/home/windows-software/mouse-grid.html
+Voice Finger
+http://voicefinger.cozendey.com/
+Uses much larger vocabulary, predictable sequence. Have to think of more thinks at once?
+http://en.wikipedia.org/wiki/File:Voice_finger_screenshot.jpg
