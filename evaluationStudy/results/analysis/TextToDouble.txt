@@ -1,0 +1,8 @@
+[Within form] Immediate related traversal
+[Within form] distant related traversal
+Visually early element
+Visually late element
+[Within form] Spatially close, markup distant traversal
+Low visual indicator of focus
+Scrolled element
+Link surrounded by links

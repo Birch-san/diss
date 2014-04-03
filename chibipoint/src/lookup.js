@@ -1,3 +1,7 @@
+// some of this code is borrowed from tokland's typeahead-find project.
+// https://code.google.com/p/chrome-type-ahead/
+// GNU GPL v3
+
 define([], function() {
 
 function setAlternativeActiveDocument(doc) {

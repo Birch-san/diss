@@ -1,3 +1,7 @@
+// from nonowarn's example Content Script with RequireJS
+// https://github.com/nonowarn/content-script-with-requirejs
+// no license provided
+
 require.load = function (context, moduleName, url) {
   var xhr = new XMLHttpRequest(),
       evalResponseText = function(xhr) {

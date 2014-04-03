@@ -1,4 +1,6 @@
-// almost all of this code is borrowed from the typeahead-find project.
+// almost all of this code is borrowed from tokland's typeahead-find project.
+// https://code.google.com/p/chrome-type-ahead/
+// GNU GPL v3
 
 //alert("sup");
 

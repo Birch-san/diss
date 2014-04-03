@@ -1,7 +1,7 @@
 {
   "name": "ChibiPoint",
   "description": "Point at webpages using the keyboard",
-  "version": "0.1",
+  "version": "0.5",
 	"content_scripts": [
 		{
 			"matches": ["http://*/*", "https://*/*"],
@@ -21,7 +21,7 @@
         "default": "Ctrl+K",
         "mac": "Command+K"
       },
-      "description": "Toggle feature foo"
+      "description": "Invoke ChibiPoint"
     }
   },
   "manifest_version": 2,
