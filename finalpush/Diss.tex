@@ -19,6 +19,9 @@
 %\usepackage[utf8]{inputenc}
 %\usepackage{listingsutf8}
 
+% Japanese
+\usepackage{CJKutf8}
+
 % list spacing
 \usepackage{enumitem}
 \setlist{nolistsep}
@@ -57,7 +60,9 @@
 \DeclareGraphicsExtensions{.pdf,.png,.jpg}
 \usepackage{float}
 
+%,bibencoding=utf8
 \usepackage[sorting=none,backend=bibtex]{biblatex}
+%\usepackage[sorting=none,backend=biber,bibencoding=utf8]{biblatex}
 \bibliography{Diss}
 
 \usepackage[colorlinks]{hyperref}
@@ -71,7 +76,7 @@
 
 \title{ChibiPoint: Accessible Pointing for Web Applications}
 \author{Alexander Birch}
-\date{November 2013}
+\date{\today}
 \begin{document}
 \include{Diss-glossary}
 \maketitle
@@ -146,14 +151,17 @@ The pointing mechanism provided by `tabbing navigation' is inherently limited, s
 To solve mouseless pointing on a wide variety of input hardware, a mechanism is required that maps well to that wide variety of input hardware. One that is effective, predictable and efficient.
 %Many input devices generate input which can be parsed as discrete symbols; for example gestures or speech samples. A keyboard-based proof-of-concept could be mapped to work with symbols
 
-\subsection{Hypothesis}
+\subsection{Hypotheses}
+\label{chap:hypotheses}
 We believe that our keyboard navigation system for the web, ChibiPoint, provides an improved mechanism for pointing as compared to tabbing.
 
-\subsubsection{Hypothesis 1: ChibiPoint is generally more efficient at web navigation than tabbing}
+\newcommand{\hypone}{Hypothesis 1: ChibiPoint is generally more efficient at web navigation than tabbing}
+\subsubsection{\hypone}
 We hypothesise that our system, \textbf{ChibiPoint, requires significantly fewer keypresses to navigate webpages, than does `tabbing navigation'} (the current standards-prescribed method for keyboard navigation).
 `Navigate webpages' is a broad term, as there are many classes of pointing that need to be analysed. The more detailed hypothesis is that, \textbf{given several distinct classes of pointing, ChibiPoint requires fewer (or equal) keypresses, for a large majority (>80\%) of these scenarios}. Since we analyse two versions of ChibiPoint, it should be understood that we require at least one of these to outperform tabbing in a majority of tasks.
 
-\subsubsection{Hypothesis 2: ChibiPoint's `flyouts' feature, reduces further the required keypresses for web navigation}
+\newcommand{\hyptwo}{Hypothesis 2: ChibiPoint's `flyouts' feature, reduces further the required keypresses for web navigation}
+\subsubsection{\hyptwo}
 We hypothesise that the novel `flyouts' feature of ChibiPoint, which assigns hotkeys to suggested buttons on the webpage, contributes to reducing the number of keypresses required by ChibiPoint for web navigation, compared to using just its standard pointing method of hierarchically drilling through the page and pointing at elements using crosshairs.
 In other words, we hypothesise that ChibiPoint `with crosshairs and flyouts enabled' performs a large majority (>80\%) of pointing scenarios in fewer keypresses than ChibiPoint `with just crosshairs enabled'.
 
@@ -303,6 +311,7 @@ The primary purpose of the accessibility layer is to achieve effective pointing 
 
 The system will aim to solve better the pointing situations to which tab navigation~\footnote{Side-note: the term `tab navigation' is used in this document always to refer to focusing interface elements via the tab key (sometimes known as `tabbing navigation') --- not to be confused with `tab navigation', where a user switches browsing contexts represented as `tabs' in their windowing system.} is less suited. Pointing contexts such as form navigation, at which tab navigation is satisfactorily effective, need not be a focus of the novel system. Ideally the novel system would co-exist with tab navigation, allowing the user to fall back on tab navigation in cases where it is suitably effective (or more effective).
 \subsubsection{Software solution}
+\label{sec:softwaresolution}
 The choice of browser for implementation is immaterial; the same logic can be applied to any extensible browser. This work will concern itself with Google Chrome, but the choice is arbitrary.
 The accessibility layer will be implemented in the form of a \gls{browserextension}, as this meets the criteria of sitting between browser and content, persists between page navigations, and doesn't incur work on the website developer's end.
 
@@ -593,6 +602,7 @@ This accounts for all design criteria except for the production of `suggestions'
 
 Our provision of `suggestions' is the key to the novelty that our pointing system will deliver.
 
+\label{sec:clickablesExplained}
 We introduce the term `clickable' --- a button, hyperlink or other element, which performs an action upon being `clicked'. Any `clickable' is potentially the target of a user's pointing. Having expressive access to the structure of the page is an advantage the web gives us: unlike with desktop applications, we do not require the application layout to expose accessibility information. We do not need developers to disclose which elements are clickable, or expose explicity access to them. However an obstacle exists: many things on the web can behave like buttons, so we need to provide our own robust mechanism for classifying which elements are clickable.
 %Microsoft Active Accessibility
 %http://msdn.microsoft.com/en-us/library/windows/desktop/dd373660(v=vs.85).aspx
@@ -610,9 +620,80 @@ There are further advantages to using a smaller number of flyouts: the input voc
 
 Incidentally: one metaphor for flyouts, is a space-constrained, constant-time tab navigation. That is: if tabbing could be directed to only traverse elements within a specified screen portion, and also if instead of highlighting a single element for clicking, several were suggested (any able to be activated in a single keypress), then it would somewhat resemble this `flyouts' system.
 
+The chosen name for the pointing system was `ChibiPoint' (stylized in Japanese as \begin{CJK}{UTF8}{min}ちび点\end{CJK}). `Chibi' (\begin{CJK}{UTF8}{min}ちび\end{CJK}) was felt to describe the youth of our pointing system, as it is used to refer to small, cute things. The chosen English pronunciation is `chibby', although this is an oversimplification. The use of the `\begin{CJK}{UTF8}{min}点\end{CJK}' kanji to refer to `point' (as in point score, rather than spatial pointing) is a deliberate pun: an allusion to our hopes that the system will perform well.
+
 \chapter{Implementation}
 \label{chap:implementation}
-[PLACEHOLDER]
+\section{Chapter Purpose}
+The primary objective of this chapter is to disclose external software that we relied upon. It is not the purpose of this dissertation to explain web development in detail; much of the engineering involved in ChibiPoint is irrelevant from an academic perspective. We make exceptions in the case of non-trivial engineering problems that required novel solutions.
+
+\section{Primary Technology}
+We decided (as per \Cref{changingwebbrowser} and \Cref{sec:softwaresolution}) that ChibiPoint would be implemented as a browser extension, for the arbitrarily-chosen browser of Google Chrome. It was felt that a proof-of-concept with any browser would validate the approach for use in other browsers, especially if no browser-specific code was relied upon.
+
+To keep the system browser-agnostic, we ensured that all code necessary for proving our concept, recruited only standard, widely-available web technologies. That is: HTML5, CSS and JavaScript. Respectively these provide any modern web browser with page markup, presentation, and interaction. This is more of a theoretical taxonomy than a practical one, as in reality the lines between their roles are heavily blurred.
+
+Google Chrome's browser extension architecture offers various ways to extend the browser. The relevant method for our needs was a `content script'\cite{contentscript}. Google defines these as: ``JavaScript files that run in the context of web pages. By using the standard Document Object Model (DOM), they can read details of the web pages the browser visits, or make changes to them''.
+Thus a content script has the power to present a user interface within an existing webpage, as well as capture and effect interactions. This gave us all the power we needed to:
+
+\begin{enumerate}
+\item Capture input from user
+\item Draw the ChibiPoint interface
+\item Effect interactions within the page, at the user's request
+\end{enumerate}
+
+Additionally, since `content script' development asks only that the entire system to be comprised of web technologies, the same system could just as easily be embedded into a webpage. This gave two benefits:
+
+\begin{enumerate}
+\item The system could be tested independently from the context of a web extension; packaging problems such as privileges and permissions need not obstruct development.
+\item The system gains a delivery option: it can exist within a website, so that users who have not installed it, can still enjoy its functionality. Perhaps this provides a cheap solution for people who are prepared to develop their website for accessible pointing.
+\end{enumerate}
+
+\section{External Libraries}
+\subsection{Libraries Required for General Operation}
+We utilised, as a foundation for our key-capture and display of interface, code from the open-source Google Chrome browser extension Type-Ahead-Find~\cite{typeaheadfind,typeaheadfindsource} (which we describe in \Cref{novelpointing}). The source code to Type-Ahead-Find is made available under the GNU GPL v3\cite{gnugpl} license.
+
+\textit{Side-note: The GNU GPL v3 license dictates that derivative works, such as ChibiPoint, must make their source code available under the same terms. Thus ChibiPoint, too, is unavoidably licensed under the GNU GPL v3.}
+
+Our JavaScript code was to be split into many modules. There existed a need to manage dependencies, and their loading order, because otherwise code could be invoked that had not yet loaded. We wanted to avoid solutions that relied upon the browser extension's packaging system, since such solutions would be browser-dependent. Ultimately we used RequireJS\cite{requirejs}, an open-source Javascript module loader. RequireJS is available under the `new BSD' or MIT license\cite{requirejslicense,mitlicense}.
+
+Our system needed often to select page elements and modify them: for example applying highlights to code on the webpage that was being pointed at, or else just changing ChibiPoint's own interface. We used JQuery\cite{jquery} for much of our querying and selecting of page elements. JQuery is distributed under the MIT license\cite{mitlicense}.
+
+Often there was a need to search for page elements within some specified coordinates. To achieve this, we adapted code from the jquery++\cite{jquerypp} helper library for JQuery. It, too, is distributed under the MIT license\cite{mitlicense}.
+
+\subsection{Libraries Used for Performance Evaluation}
+For the quantitative study of our system that would follow, we needed to be able to measure keypresses, and save this data out for analysis. Tracking keypresses was trivial, as we already listened for input from the user, to control the system. Saving out this data was the technical challenge that remained.
+
+We decided, upon effecting a `click' in ChibiPoint, to dump all recorded data into a string, convert that string into a `Blob' data type, and force a download of that `Blob'. For saving the Blob, we used Eli Grey's implementation of the W3C File API's saveAs() function\cite{filesaver}. Our legacy code includes also Eli Grey's Blob implementation\cite{blob}, but this particular code is no longer needed by the system. Both are available under the X11/MIT license\cite{x11license}.
+
+\section{Novel Problems}
+\subsection{Detecting `Clickables'}
+A crucial requirement of our system was the ability to detect `clickables' (as described in \Cref{sec:clickablesExplained}) --- we needed to do this in order to suggest shortcuts to users.
+
+Detection of clickables is problematic, because there are many ways in HTML5 webpages to make page elements respond to clicks. \citeauthor{events} provides a taxonomy\cite{events}:
+
+\begin{itemize}
+	\item DOM Level 0 - inline model\cite{inlineevents}
+	\item DOM Level 0 - traditional model\cite{traditionalevents}
+	\item DOM Level 2 - event listeners, W3C model\cite{advancedevents}
+	\item DOM Level 2 - event listeners, Microsoft model
+\end{itemize}
+
+There exists also a DOM Level 3 specification for events\cite{domlevel3}, which is, at the time of writing, a work in progress.
+
+Detecting clickables is further complicated by event delegation\cite{franklin2013more}: an element can listen out for events fired by its descendants (as opposed to events fired by itself). For example, a list that contains hyperlinks can be `delegated' responsibility for listening to click events on all of those hyperlinks. In this situation, a whole set of distinct `clickables' can exist, but are described by just one event listener.
+
+Our proof-of-concept is blind to delegated events, but 
+
+% W3C gave up:
+%http://stackoverflow.com/a/7814692/3250976
+%	Visual Event mentions this too: http://www.sprymedia.co.uk/article/visual+event+2
+
+% Console API support:
+%https://developers.google.com/chrome-developer-tools/docs/commandline-api#geteventlistenersobject
+% list of ways to attach events:
+% http://stackoverflow.com/questions/446892/how-to-find-event-listeners-on-a-dom-node
+% actual solution:
+% http://stackoverflow.com/q/8915461/3250976
 
 \chapter{Evaluation}
 \label{chap:evaluation}
@@ -918,6 +999,11 @@ For shorthand, the ChibiPoint systems will be named: CX (ChibiPoint with just cr
 
 We consider statistical significance for p < 0.01.
 
+We remind the reader of our hypotheses (whose detail can be read in full at \Cref{chap:hypotheses}):
+
+\textbf{\hypone}\\
+\textbf{\hyptwo}\\
+
 \navtask{[Within form] Immediate related traversal}
 \begin{tabular}{l l}
 \hline\hline %inserts double horizontal lines 
@@ -1103,6 +1189,12 @@ Hypothesis 1 supported.\\
 Hypothesis 2 supported.
 
 \section{Summary}
+We remind the reader again of our hypotheses (whose detail can be read in full at \Cref{chap:hypotheses}):
+
+\textbf{\hypone}\\
+\textbf{\hyptwo}\\
+
+\subsection{Support for Hypothesis 1}
 Hypothesis 1 is supported for both versions of ChibiPoint in tasks 1--6.\\
 Hypothesis 1 is supported also for CX+F in task 2.\\
 Hypothesis 1 is refuted in task 2.\\
@@ -1110,6 +1202,7 @@ CX+F reduced keypresses compared to tabbing in 7 of 8 tasks, which we consider t
 CX reduced keypresses compared to tabbing in 6 of 8 tasks (75\%), which is certainly overall an improvement, but not the large majority sought by the hypothesis.\\
 Since one mode of ChibiPoint (CX+F) meets the requirements, Hypothesis 1 holds.
 
+\subsection{Support for Hypothesis 2}
 Hypothesis 2 is supported for tasks 1--2 inclusive, and 4--8 inclusive.\\
 Hypothesis 2 is not refuted in task 3 --- it is merely not supported.
 Thus CX+F reduced keypresses compared to CX in 7 of 8 tasks, which we consider to be a large majority (>80\%), as required.\\
