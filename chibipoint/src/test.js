@@ -76,56 +76,82 @@ define(["lib/jquery-2.1.0.min", "lib/within", "lib/Blob", "evaluator", "trace", 
       "activate": 167
     };
     
+    // Do you have a numpad?
     var numpad = true;
     
     if (numpad) {
-      // numpad
+      // Drilling: numpad
+      // 7 8 9
+      // 4 5 6
+      // 1 2 3
       var numpadMappings = {"7":[55,7], "8":[56,8], "9":[57,9],
                          "4":[52,4], "5":[53,5], "6":[54,6],
                          "1":[49,1], "2":[50,2], "3":[51,3]};
       var zeroKey = keycodes.zero;
+      // Undo drilling:
+      // 0
     }
     
+    // Are you one of.. those?
     var dvorak = false;
     
     if (dvorak) {
-      // dvorak flyouts
+      // Flyouts: right hand dvorak grid
+      // G C R
+      // H T N
+      // M W V
       var flyoutShortcuts = [103,99,114,
                           104,116,110,
                           109,119,118];
       
       if (!numpad) {
+        // Drilling: left hand dvorak grid
+        // ' , .
+        // A O E
+        // ; Q J
         var numpadMappings = {"7":[39,7], "8":[44,8], "9":[46,9],
                            "4":[97,4], "5":[111,5], "6":[101,6],
                            "1":[59,1], "2":[113,2], "3":[106,3]};
+        // Undo drilling:
+        // K
         var zeroKey = 107;
       }
     } else {
-      // qwerty flyouts
+      // Flyouts: left hand qwerty grid
+      // Q W E
+      // A S D
+      // Z X C
       var flyoutShortcuts = [113,119,101,
                           97,115,100,
                           122,120,99];
       
       // alphabet flyouts
+      // nah, these won't help anyone
       /*var flyoutShortcuts = [97,98,99,
                           100,101,102,
                           103,104,105];*/
       
       if (!numpad) {
-      // left hand qwerty
+        // Flyouts: right hand qwerty grid
+        // U I O
+        // J K L
+        // N M ,
         var flyoutShortcuts = [117,105,111,
                           106,107,108,
                           109,44,46];
-        // qwerty grid    
+        
+        // Drilling: left hand qwerty grid
+        // Q W E
+        // A S D
+        // Z X C
         var numpadMappings = {"7":[113,7], "8":[119,8], "9":[101,9],
                            "4":[97,4], "5":[115,5], "6":[100,6],
                            "1":[122,1], "2":[120,2], "3":[99,3]};
+        // Undo drilling:
+        // V
         var zeroKey = 118;
       }
     }
-    
-    // numpad grid
-    // I'm so sorry
     
     birchlabs.numpadMappings = numpadMappings;
     

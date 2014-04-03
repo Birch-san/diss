@@ -24,9 +24,6 @@
       "description": "Toggle feature foo"
     }
   },
-  "browser_action": {
-    "default_title": "Point at this page!"
-  },
   "manifest_version": 2,
   "web_accessible_resources": [
     "*.js"

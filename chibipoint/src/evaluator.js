@@ -206,7 +206,7 @@ define(["lib/jquery-2.1.0.min", "lib/FileSaver", "trace"], function(jq, saver, t
     output += finalElem;
     
     var bb = new Blob([output]);
-    console.log(bb);
+    //console.log(bb);
     //bb.append((new XMLSerializer).serializeToString(document));
     //var blob = bb.getBlob("application/xhtml+xml;charset=" + document.characterSet);
     if (birchlabs.downloadTelemetry) {
