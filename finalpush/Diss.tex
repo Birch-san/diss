@@ -459,6 +459,12 @@ Keyboard navigation of websites is a problem. Correcting the way people develop 
     \setcounter{reqcount}{\value{reqcountbackup}}
 }
 
+% Used to define the start of the requirements
+\newcommand{\reqreset}{
+    \setcounter{reqcountbackup}{0}
+    \setcounter{reqcount}{0}
+}
+
 % Used to define the end of the requirements
 \newcommand{\reqend}{
     % Important part: take the value of the used counter (after
@@ -504,9 +510,9 @@ Likewise there is no telling in advance which keybindings will cause conflicts w
 
 That is to say, they are desirable but not essential.
 
-\subsection{Non-functional requirements}
+\subsection{Functional requirements}
 
-\textbf{These requirements have a high priority:}
+\textbf{These requirements have a low priority:}
 \reqstart
 	\reqitem{Efficient navigation (semantically unrelated elements)}{Navigation to elements that exist in separate visual containers to the currently focused element, should be possible in less than 4 keypresses.}
 	\reqitem{Efficient navigation (semantically related, but distant elements)}{Navigation to elements that exist in the same visual container as the currently focused element, should be possible in less than 4 keypresses.}
@@ -583,13 +589,14 @@ We intend to cope with this minefield of design traps, by prescribing the follow
 
 These criteria suggest a system that:
 
-\begin{enumerate}
+\newcommand{\designcriteria}{\begin{enumerate}
 	\item Directs navigation spatially
 	\item Simulates at least the pointing behaviour of a mouse cursor (but not limited only to this)
 	\item Constrains search to a bounded, predictable space
 	\item `Drills down' through search space hierarchically 
 	\item Makes a variety of suggestions at each stage of traversal
-\end{enumerate}
+\end{enumerate}}
+\designcriteria
 
 \label{sec:ourmousegrid}
 Most of these factors are fulfilled by a mechanism akin to that used by `MouseGrid' (see \Cref{novelpointing}).
@@ -598,6 +605,8 @@ That is: the viewport of the browser is divided into a ($3\times3$) grid, and ea
 Grids are constructed within grids, and a set of `crosshairs' (like on the sight of a gun) can follow the center of the most specific grid, and provide mouse behaviour (sending `click' and `hover' events) at those coordinates.
 
 MouseGrid on its own is not, in itself, entirely novel. More unique about this application of it, is that it is hosted within a webpage, rather than being a first-class OS citizen. A web-based implementation can recruit information from the context of the page, for example responding to content updates, or changes in zoom or scroll. Styling could be programmed to respond to the content underneath, or even be customized by the user in CSS. Though we may not pursue all of these options, it is certainly a flexible foundation that can be developed to meet emergent user needs.
+
+`Crosshairs' pointing can be made more predictable by `painting' a highlight on the element it targets. In this way, the user knows, before they send a click, which element will be clicked.
 
 This accounts for all design criteria except for the production of `suggestions'.
 
@@ -725,6 +734,7 @@ In response to those priorities, this is the algorithm we used to generate a sho
 \end{enumerate}
 
 \subsection{Citizenship}
+\subsubsection{Keybindings}
 We had to be careful to avoid blocking the user's interaction with websites. In this vein, the ChibiPoint interface is not even rendered until the time it is invoked. When capturing keyboard input from the user, we ensured first that keyboard focus was not in use to interact with forms.
 
 The hotkey to invoke ChibiPoint was given first-level citizenship in the web browser, so that it did not clash with other keybindings. This was a feature afforded to us by the Chrome Extension packaging, so it violates our browser-independence rule. As such, we assigned also for invocation, an obscure key (keycode 167 --- on Mac, this is the `section sign' character, \S). We felt that use of this rare key was a fair compromise on citizenship (it is unlikely to be listened for in standard web browsing), whilst still enabling use of ChibiPoint's featureset on all platforms.
@@ -732,6 +742,109 @@ The hotkey to invoke ChibiPoint was given first-level citizenship in the web bro
 One advantage of giving ChibiPoint invocation a keybinding with first-level browser citizenship, is that such a keybinding is not used in form interaction --- thus, the system could be invoked with this shortcut, even from within a form context. Other keys used by ChibiPoint do not enjoy the same privilege, and could be intercepted in contexts like forms. However that is not a problem following invocation, since by then we have seized focus and escaped any form context we might have been in.
 
 Whenever a keypress event is captured by ChibiPoint, we ascertain whether the key is mapped to any functionality within ChibiPoint. If so, that functionality is invoked, and we end propagation of the event, so that the website does not receive the same keypress. However, if said keypress does not match any of our mappings (for example: the tab key), then we take no action, and allow the event to propagate to other event listeners. In this way, we allow co-citizenship for all keypresses that are not relevant to our system, and crucially we maintain compatibility with tabbing.
+
+\subsubsection{Performance}
+Performance was important, as ChibiPoint resides in all \glspl{browsingcontext} that are opened. Querying the page for clickables and their coordinates was very intensive, so we had to ensure that this was done sparingly, and onl on user request. As such, production of suggestions was only effected in response to user input --- invocation of ChibiPoint, or drilling into a grid segment were the ways to effect re-appraisal of suggestions.
+
+\subsubsection{Respecting Viewport Changes}
+We had to respect that the page could resize or scroll at any time. To cope with this, the entire interface is specified in relative dimensions; changes to the viewport size stretched ChibiPoint appropriately, and scrolling did not move the ChibiPoint interface out of view, as its coordinates are `fixed' relative to the viewport itself.
+
+Upon scroll or size change, the `flyouts' suggestions have to move. They stay `clipped' to the clickable they describe (and scroll with it). Once the clickable itself is off-screen, we remove the flyout --- the user does not need keybindings applied to elements they can't see, as this would offer unpredictable behaviour. The `crosshairs' pointing mechanism behaves slightly differently --- instead of following the target at which it points, it stays fixed in space, and allows new elements to scroll into its reticule. This allows it to aim like a mouse. For visual indication, it continues to `paint' its latest target (and `unpaint' targets it loses).
+
+\subsubsection{Markup}
+Our system shares a DOM with the webpage in which it is hosted. Thus there is the possibility the markup we introduce could get caught in the crossfire of existing scripts or styles on the webpage --- selectors that apply a universal text style could also modify ChibiPoint, for example.
+
+We cannot make our interface resilient to all types of interface change --- the hosting webpage has just as much power to change our interface as we do, as it uses the same technologies in the same context. The only difference is that they are not trying to change our interface, and do not know it exists! Conflicts can occur by accident, though, if generous selectors are used to edit webpages.
+
+To protect our markup, we prefaced all our CSS class names with `chibiPoint\_', to reduce the likelihood of accidentally being selected by queries or styles on a webpage. This turned out to be a necessary decision --- early versions of ChibiPoint were being accidentally re-styled by some websites, such as Kotaku.com.
+
+Some websites, such as Facebook, had interface that occluded ChibiPoint's. We fixed this by explicitly reserving the highest z-index in the draw order.
+
+Use of the browser's Developer Mode became troublesome, since the ChibiPoint interface occludes all elements behind it; it became difficult to inspect elements, as they could not be clicked on when ChibiPoint was loaded. We provided a partial fix to this --- the ChibiPoint interface is now rendered only when it is actually in use. Thus elements behind it can be inspected, provided it is closed.
+
+Aside from Developer Mode selections, we needed to make sure also that regular clicking was still possible whilst ChibiPoint was loaded. Thus we use a `\begin{verbatim}pointer-events: none;\end{verbatim}' style to ensure that ChibiPoint does not intercept clicks, even when it is present.
+
+Regarding the markup of our grids within grids, we considered using a Composite pattern\cite{gamma1994design}, so that all grid levels could be treated the same way in code. However we realised that is was more useful to be able to give special treatment to certain grid levels --- in particular, the existence of a top-level grid is an important factor in the state of the system: it determines whether ChibiPoint is in use. We can also bound any page changes we make to be constrained to within this container, keeping good citizenship.
+
+Thus we specify a particular container, `chibiPoint\_gridContainer', in which to build grids. This container was always present, whether there were grids within it or not, so it provided a consistent place to check the state of the system. We were able also to apply transformations to that high-level container when we wanted to modify the entire grid, such as removing the interface from render.
+
+Necessary conflicts existed also --- in cases where we `painted' page elements (for example to show which clickables are designated by each flyout, and also which element is targeted by crosshairs), we had to be careful not to paint them in a manner that would break other code that interacted with it. We add a `chibiPoint\_painted' class to such elements, or otherwise look for and remove that class to `unpaint' them afterward. Admittedly this produces conflicts for code which is not expecting multiple classes to exist on some element. This is a regrettable problem of our browser extension's sharing a DOM with the page it resides in. ChibiPoint does not modify elements unless it is in use, so even if problems are caused by this mechanism, the user can still fall back on their standard web browsing experience if they close ChibiPoint. A more insulated painting mechanism could be achieved by `painting' an element owned by ChibiPoint (as opposed to painting the element directly), in a similar manner to how flyouts provide their own arrows to point to targets.
+
+\subsection{Interface Malleability}
+\subsubsection{Philosophy}
+Since we were creating a novel navigation system, it was useful to have a lot of expression over how the interface works. In fact we wanted to extend this flexibility to the user --- users can provide custom stylesheets\cite{stylebot} to change the way web content is presented to them. Additionally, different form factor devices such as mobile phones with small screens could benefit from an alternative interface style (for example, text size differences.
+
+We place a lot of power in the styling of the interface, by using the presentation layer to inform the state of the system. That is: the pointing grid's size is specified in terms relative to the viewport of the window, and this affects where the system will point (as crosshairs are aligned to the center of the most specific grid). If a user had different requirements, they could specify the dimension rules of the grid differently.
+
+\subsubsection{Example Usage: `Grid Growing'}
+To give a specific example of the interaction power that emerges through styling, we present `grid growing': a rule used to specify sizes of nested grids. Here is the problem that `grid growing' solves:
+
+Consider the case where a user wishes to click a button that exists along an edge of the pointing grid. Crosshairs only target at the center of the most specific grid. Thus edge-aligned elements are difficult to point at, because grids nested within a grid will also be built flush with the edges of their parent grid --- drilling down with the objective of converging towards some grid edge takes many lookups, with necessarily less and less distance travelled each time the user drills.
+
+With `grid growing', nested grids are not strictly bounded inside their parent; they float over it, and are allowed to be slightly larger than the segment from which they were constructed. Crucially, the edges of nested grids are not flush with their parent grid segment; their boundaries are expanded by a small percentage compared to that parent (though still guaranteeing that the grids are always more specific than their parent). Thus, convergence of the crosshair position towards a grid edge is enabled in possibly fewer lookups, as each step allows the user to travel more distance.
+
+Since clickable dimensions are not highly-specific (ie, buttons need to be designed large to be easy to click), it is better to use `grid growing', as this biases the system towards travelling less specific (farther) distances, rather than more specific distances. This allows less lookups for the expected general case: clicking on relatively large buttons --- in exchange for slightly more lookups being required for tiny buttons. We perform no analysis of which is the more effective default, but the fact that `grid growing' is achieved and parameterized entirely in CSS stylesheets, allows the user to tweak this behaviour if they have different needs.
+
+\subsubsection{Architecture}
+Incidentally, we found that we had a need for macro language and inheritance in our CSS stylesheets --- often colours needed to be repeated, or otherwise we had portions of our styles that needed often to be re-used in other styles. CSS does not classically support concepts like variables, or true inheritance. Admittedly something like inheritance can be achieved on the markup level --- for example by defining some object in terms of multiple styles --- but no semantics exist to enforce this relationship, so maintenance becomes a problem.
+
+We chose an architecture that allowed us to control the relations between styles, and allow our system to be defined by re-usable parameters --- such as line thicknesses or color schemes. Even the `grid growing' percentage is able to be defined like this, so it can be trivially turned off. To achieve this, we wrote styles in the LESS (Leaner CSS)\cite{lesscss} pre-processor, which compiles down to CSS. This gave us the feature-set that we needed from a styling technology, without breaking our commitment to use widely-available web technologies in our implementation.
+
+\section{Summary}
+\subsection{Conformance to requirements}
+Here we summarise how well we delivered on our requirements:
+
+\subsubsection{Delivery on Non-functional requirements}
+
+\reqreset
+\textbf{We responded in the following ways to these high-priority requirements:}
+\reqstart
+    \reqitem{High availability}{Our software is free in price, and theoretically independent of browser, as well as using as input a key-based vocubulary that many devices can map to.}
+    \reqitem{Good citizenship (input)}{Invocation is possible with a shortcut blessed by the browser (though this is browser-specific). ChibiPoint gives priority to form input, and does not intercept keypresses unless it is in use and sees a key it can act upon.}
+    \reqitem{Good citizenship (output)}{Interface can be closed, and is semi-opaque to allow content to be read. Flyouts attempt to fan out to reveal the clickables they target.}
+    \reqitem{Predictability}{User can choose direction to navigate, with increasing specificity. All targets the user can click on are painted beforehand, disclosing in advance what will be clicked.}
+    \reqitem{Intuitivity (output)}{Indicators are provided for which element will be clicked, and a flashing animation is used to show that a click has been sent (regardless of whether it achieves the expected result).}
+    \reqitem{Intuitivity (input)}{Primary keyboard mappings are presented in the interface, adorning the controls they invoke. Invocation shortcut can be specified by the user.}
+    \reqitem{No time constraints}{There are no time-sensitive aspects to the interface interaction.}
+    \reqitem{Independent of markup}{The system detects clickables and navigates through the page spatially, so is largely independent of the markup used (although there exist types of clickable we cannot detect).}
+    \reqitem{Resilient to change}{The system survives scrolling and resizing. Elements that exist within collapsed forms are not suggested as clickables until they are visible.}
+    %\reqitem{}{}
+\reqend
+
+Overall we meet well all our high-priority non-functional requirements.
+
+\textbf{We responded in the following ways to these low-priority requirements:}
+\reqstart
+    \reqitem{Co-citizenship with tabbing}{Tabbing presses are not intercepted, so tabbing can be used alongside ChibiPoint. Moreover, tab focus does not preclude the usage of ChibiPoint, as its browser-blessed shortcut can be observed even when typing in a form context.}
+\reqend
+
+Even our low-priority non-functional requirements were met.
+
+\subsection{Delivery on Functional requirements}
+
+\textbf{We responded in the following ways to these high-priority requirements:}
+\reqstart
+	\reqitem{Efficient navigation (semantically unrelated elements)}{The system uses a hierarchical navigation system, so efficient navigation is expected. Certainly we are not vulnerable to markup distance between each focusable element, as we traverse spatially. A more rigorous evaluation of efficiency will be pursued in the quantitive evaluation that follows.}
+	\reqitem{Efficient navigation (semantically related, but distant elements)}{This will be ascertained in the quantitative evaluation. However the hierarchical navigation should mean that travelling distance is efficient.}
+	\reqitem{Efficient navigation (arbitrary position)}{This, too, will be ascertained in the quantitative evaluation. Certainly hierarchical traversal is suited for efficient access to arbitrary locations though.}
+    %\reqitem{}{}
+\reqend
+
+These will be evaluated more fully in \Cref{chap:evaluation}, but theoretically we can expect an efficient solution.
+
+\subsection{Conformance to design}
+We succeeded in meeting our design criteria --- we produced a system that:
+
+% \begin{enumerate}
+% 	\item Directs navigation spatially
+% 	\item Simulates at least the pointing behaviour of a mouse cursor (but not limited only to this)
+% 	\item Constrains search to a bounded, predictable space
+% 	\item `Drills down' through search space hierarchically 
+% 	\item Makes a variety of suggestions at each stage of traversal
+% \end{enumerate}
+\designcriteria
+
+That is: a MouseGrid-like system provided predictable spatial navigation, and provided pointing via crosshairs. We produced a shortlist of clickables for every stage of traversal.
 
 \chapter{Evaluation}
 \label{chap:evaluation}
