@@ -591,6 +591,7 @@ These criteria suggest a system that:
 	\item Makes a variety of suggestions at each stage of traversal
 \end{enumerate}
 
+\label{sec:ourmousegrid}
 Most of these factors are fulfilled by a mechanism akin to that used by `MouseGrid' (see \Cref{novelpointing}).
 That is: the viewport of the browser is divided into a ($3\times3$) grid, and each cell assigned a keyboard shortcut. The user specifies by keypress which cell contains the element they are interested in. Then a new, smaller grid is constructed within that cell, and the process repeats itself.
 %the viewport is split into segments, and the user specifies which segment contains the element they are interested in. That segment is then itself split into several segments, and the user can continue to `drill down' through segments until they have specified the portion of the screen they are interested in clicking.
@@ -632,7 +633,7 @@ We decided (as per \Cref{changingwebbrowser} and \Cref{sec:softwaresolution}) th
 
 To keep the system browser-agnostic, we ensured that all code necessary for proving our concept, recruited only standard, widely-available web technologies. That is: HTML5, CSS and JavaScript. Respectively these provide any modern web browser with page markup, presentation, and interaction. This is more of a theoretical taxonomy than a practical one, as in reality the lines between their roles are heavily blurred.
 
-Google Chrome's browser extension architecture offers various ways to extend the browser. The relevant method for our needs was a `content script'\cite{contentscript}. Google defines these as: ``JavaScript files that run in the context of web pages. By using the standard Document Object Model (DOM), they can read details of the web pages the browser visits, or make changes to them''.
+Google Chrome's browser extension architecture offers various ways to extend the browser. The relevant method for our needs was a `content script'\cite{contentscript}. Google defines these as: ``JavaScript files that run in the context of web pages. By using the standard \gls{dom}, they can read details of the web pages the browser visits, or make changes to them''.
 Thus a content script has the power to present a user interface within an existing webpage, as well as capture and effect interactions. This gave us all the power we needed to:
 
 \begin{enumerate}
@@ -656,9 +657,13 @@ We utilised, as a foundation for our key-capture and display of interface, code 
 
 Our JavaScript code was to be split into many modules. There existed a need to manage dependencies, and their loading order, because otherwise code could be invoked that had not yet loaded. We wanted to avoid solutions that relied upon the browser extension's packaging system, since such solutions would be browser-dependent. Ultimately we used RequireJS\cite{requirejs}, an open-source Javascript module loader. RequireJS is available under the `new BSD' or MIT license\cite{requirejslicense,mitlicense}.
 
+To make RequireJS loading compatible with browser extensions, we used a RequireJS extension provided in an example by `\citeauthor{requirejscs}'\cite{requirejslicense}. No license was attributed to this code.
+
 Our system needed often to select page elements and modify them: for example applying highlights to code on the webpage that was being pointed at, or else just changing ChibiPoint's own interface. We used JQuery\cite{jquery} for much of our querying and selecting of page elements. JQuery is distributed under the MIT license\cite{mitlicense}.
 
 Often there was a need to search for page elements within some specified coordinates. To achieve this, we adapted code from the jquery++\cite{jquerypp} helper library for JQuery. It, too, is distributed under the MIT license\cite{mitlicense}.
+
+For detection of clickables, we used code from StackOverflow.com discussions\cite{eventlistenerprototype}. All StackOverflow discussions are distributed under a CC BY-SA 3.0 license\cite{soverflowlicense}.
 
 \subsection{Libraries Used for Performance Evaluation}
 For the quantitative study of our system that would follow, we needed to be able to measure keypresses, and save this data out for analysis. Tracking keypresses was trivial, as we already listened for input from the user, to control the system. Saving out this data was the technical challenge that remained.
@@ -669,31 +674,64 @@ We decided, upon effecting a `click' in ChibiPoint, to dump all recorded data in
 \subsection{Detecting `Clickables'}
 A crucial requirement of our system was the ability to detect `clickables' (as described in \Cref{sec:clickablesExplained}) --- we needed to do this in order to suggest shortcuts to users.
 
+\subsubsection{Taxonomy of Clickables}
 Detection of clickables is problematic, because there are many ways in HTML5 webpages to make page elements respond to clicks. \citeauthor{events} provides a taxonomy\cite{events}:
 
 \begin{itemize}
-	\item DOM Level 0 - inline model\cite{inlineevents}
-	\item DOM Level 0 - traditional model\cite{traditionalevents}
-	\item DOM Level 2 - event listeners, W3C model\cite{domlevel2,advancedevents}
-	\item DOM Level 2 - event listeners, Microsoft model
+	\item \gls{dom} Level 0 - inline model\cite{inlineevents}
+	\item \gls{dom} Level 0 - traditional model\cite{traditionalevents}
+	\item \gls{dom} Level 2 - event listeners, W3C model\cite{domlevel2,advancedevents}
+	\item \gls{dom} Level 2 - event listeners, Microsoft model
 \end{itemize}
 
-There exists also a DOM Level 3 specification for events\cite{domlevel3}, which is, at the time of writing, a work in progress.
+There exists also a \gls{dom} Level 3 specification for events\cite{domlevel3}, which is, at the time of writing, a work in progress.
 
-Detecting clickables is further complicated by event delegation\cite{franklin2013more}: an element can listen out for events fired by its descendants (as opposed to events fired by itself). For example, a list that contains hyperlinks can be `delegated' responsibility for listening to click events on all of those hyperlinks. In this situation, a whole set of distinct `clickables' can exist, but are described by just one event listener.
+Detecting clickables is further complicated by the concept of event delegation\cite{franklin2013more}: it is incorrect to conclude that an element with no events must be `not clickable', because an element's ancesters can listen for these events. For example, a list that contains graphics can be `delegated' responsibility for listening to click events on all of those graphics. In this situation, a whole set of distinct `clickables' can exist, described by just one event listener.
 
-Our proof-of-concept is blind to delegated events, but 
+We chose not to look into the `delegates' problem --- we can demonstrate that our pointing system works on a conceptual level, so long as at least some types of clickables are detected. We felt we could capture a large portion of clickables by targeting at least those bound as `\gls{dom} Level 2 - event listeners, W3C model' events --- this is the event binding strategy used by JQuery, a library adopted by upwards of 58.2\% of websites\cite{jquerypopularity}. Other popular alternatives, such as PrototypeJS\cite{prototypejs}, use this strategy also.
 
-% W3C gave up:
-%http://stackoverflow.com/a/7814692/3250976
-%	Visual Event mentions this too: http://www.sprymedia.co.uk/article/visual+event+2
+We draw attention also to the fact that clickable suggestions are not the only pointing mechanism in ChibiPoint --- in cases where detection fails, the MouseGrid-style crosshairs mechanism we describe in \Cref{sec:ourmousegrid}, can be used as a fallback to send click events to any element that the user can point at.
 
-% Console API support:
-%https://developers.google.com/chrome-developer-tools/docs/commandline-api#geteventlistenersobject
-% list of ways to attach events:
-% http://stackoverflow.com/questions/446892/how-to-find-event-listeners-on-a-dom-node
-% actual solution:
-% http://stackoverflow.com/q/8915461/3250976
+\subsubsection{Detection}
+It was challenging to detect which elements were listening for click events. There exists no standardised way to retrieve the list of event listeners bound to an element. Rather, an attempt was made to introduce such a standard in the W3C \gls{dom} Level 3 Events specification\cite{dom3attempt}, but this addition was later redacted\cite{domlevel3}. User agents (that is, web browsers) can expose access to their own internal representations of event listener lists. In fact, our browser extension could perhaps use Chrome's Command Line API\cite{commandlineapi} to look up such event listener lists --- but this requires its Developer Tools Console to be open, and removes our browser-independence. A such, a different solution was needed.
+
+A discussion on StackOverflow.com provided the answer we needed\cite{eventlistenerprototype}: before the \gls{dom} is constructed, overwrite the definition of `addEventListener' used in the prototype for HTML elements. In this way, we can ensure that, any time an event listener is added to an element, it is tracked in a list on that element (which we can later query for). After this it was trivial to, using JQuery, select all elements in the page which have this list attributed to them.
+
+For additional coverage, we infer `clickability' of elements simply by reading their tag name. For example, all `anchor' tags are assumed (admittedly generously) to be purposed as hyperlinks. Admittedly it is possible to confirm the role of the anchor tag as clickable (for example by checking whether it has a URL associated with it), but it is not too harmful to present false positives --- users are given multiple other suggestions, so assuming that user realizes they do not need to click the element, it does not cause them great problems. Form elements are assumed also to be of interest always to the user, so we register these as clickables.
+
+A visibility check is performed, since this is a visual pointing system and users have no need to click on elements they are not aware of. For this we simply check whether the value of an element's `hidden' and `visible' attributes.
+
+\subsubsection{Candidacy for Recommendation to User}
+On all clickables that are detected, we perform coordinate tests to detect which grid quadrant they fall into, if any. Coordinate comparisons are performed relative to the browser's viewport of the page, so scrolling is respected. We were generous with coordinate comparison --- a partial overlap was sufficient to qualify as `within bounds'. Incidentally, coordinate lookup was performance-intensive, so we made sure to filter the list of page elements down to just the clickables before we persued coordinate comparisons. Additionally, any coordinate lookups that would be used in further comparisons were cached, to avoid repeated lookup.
+
+We tried to observe these priorities for building a useful shortlist of clickables were as follows:
+
+\begin{enumerate}
+\item To be eligible, a clickable needs to be within coordinate bounds of most specific grid
+\item Clickables from differing directions are preferred, to improve the variety of content detected
+\item If there are no clickables available in varied directions, then it is permissible for clickables from a similar direction to be offered
+\end{enumerate}
+
+In response to those priorities, this is the algorithm we used to generate a shortlist of clickable suggestions for the user:
+\begin{enumerate}
+\item Create list of all clickables on the page (using JQuery selector)
+\item Narrow down that list to those clickables within our most specific grid
+\item Categorise each clickable --- which grid segment(s) do they overlap?
+\item Each grid segment attempts to elect as their suggestion, one clickable found within them (and this is removed as a candidate for proceeding suggestions)
+	\begin{itemize}
+		\item Any grid segment that finds no clickables within them, is permitted to elect instead clickables found in other grid segments --- we end up with multiple suggestions from the same area, but this is preferable to making no suggestion at all. This clickable is removed as a candidate for proceeding suggestions.
+	\end{itemize}
+\item Present `flyouts' for each clickable suggestion elected on the shortlist
+\end{enumerate}
+
+\subsection{Citizenship}
+We had to be careful to avoid blocking the user's interaction with websites. In this vein, the ChibiPoint interface is not even rendered until the time it is invoked. When capturing keyboard input from the user, we ensured first that keyboard focus was not in use to interact with forms.
+
+The hotkey to invoke ChibiPoint was given first-level citizenship in the web browser, so that it did not clash with other keybindings. This was a feature afforded to us by the Chrome Extension packaging, so it violates our browser-independence rule. As such, we assigned also for invocation, an obscure key (keycode 167 --- on Mac, this is the `section sign' character, \S). We felt that use of this rare key was a fair compromise on citizenship (it is unlikely to be listened for in standard web browsing), whilst still enabling use of ChibiPoint's featureset on all platforms.
+
+One advantage of giving ChibiPoint invocation a keybinding with first-level browser citizenship, is that such a keybinding is not used in form interaction --- thus, the system could be invoked with this shortcut, even from within a form context. Other keys used by ChibiPoint do not enjoy the same privilege, and could be intercepted in contexts like forms. However that is not a problem following invocation, since by then we have seized focus and escaped any form context we might have been in.
+
+Whenever a keypress event is captured by ChibiPoint, we ascertain whether the key is mapped to any functionality within ChibiPoint. If so, that functionality is invoked, and we end propagation of the event, so that the website does not receive the same keypress. However, if said keypress does not match any of our mappings (for example: the tab key), then we take no action, and allow the event to propagate to other event listeners. In this way, we allow co-citizenship for all keypresses that are not relevant to our system, and crucially we maintain compatibility with tabbing.
 
 \chapter{Evaluation}
 \label{chap:evaluation}
@@ -754,7 +792,7 @@ ChibiPoint could not click buttons within Flash Player interfaces (such as `play
 
 Additionally key listener conflicts were seen when ChibiPoint was used on the Google Search page; input to ChibiPoint was intercepted by the webpage, rendering the system unusable. Again this is not important at proof-of-concept stage. Possibly the reason lies in the order in which key listeners are bound; ChibiPoint waits for the page to be loaded in its entirety before setting up its event listeners. Future work could investigate whether establishing event listeners earlier makes a difference.
 
-A problem was encountered with detecting clickables on the \textit{The Bath Chronicle} (\url{http://bath.thisisads.co.uk/register.php}) registration page. Flyouts were not able to be provided for several buttons on this page. A later investigation revealed that the clickables were created using inline DOM level 0 events, which ChibiPoint does not look for. Future work could extend clickable detection to include these.
+A problem was encountered with detecting clickables on the \textit{The Bath Chronicle} (\url{http://bath.thisisads.co.uk/register.php}) registration page. Flyouts were not able to be provided for several buttons on this page. A later investigation revealed that the clickables were created using inline \gls{dom} level 0 events, which ChibiPoint does not look for. Future work could extend clickable detection to include these.
 
 \subsection{Feedback}
 Overall, the participant was enthusiastic about ChibiPoint. She felt that she was able to learn the system ``pretty fast'', especially compared to ``quite a lot of usability stuff''. She liked the flyouts feature, expressing that ``they were pretty good guesses''. She understood how to point with it, and felt that the grid drilling was a ``great'' way to point. She said that she would prefer this system to tabbing ``of course'', and that it was ``obviously faster because it's hierarchical. My first-years should be able to answer that question''. She described the system as ``pretty predictable [excepting bugs]'', and compared to tabbing ``absolutely [more predictable]''.
