@@ -1429,12 +1429,20 @@ It should also be observed that in the non-supported task, no refute was seen to
 
 %\nocite{*}
 %\nocite{Doe:2009:Online}
-\pagebreak
+\clearpage
+
+%\renewcommand*{\theHchapter}{\Alph{chapter}}
+%\stepcounter{chapter}
+
+\phantomsection
+\addcontentsline{toc}{chapter}{References}
 \printbibliography
 
-\pagebreak
-\appendix
+\clearpage
+\phantomsection
+%\pagebreak
 \addcontentsline{toc}{chapter}{APPENDICES}
+\appendix
 \chapter{Pilot Study}
 
 \begin{figure}[ht]
