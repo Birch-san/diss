@@ -142,7 +142,7 @@ We conclude that the root of the problem is that standards push a navigation mec
 % \end{itemize}
 % \end{itemize}
 % SUMMARY of literature review
-\section{Problem statement and Hypothesis}
+\section{Problem statement and Hypotheses}
 \subsection{Problem statement}
 Existing work focuses around making websites conform to accessibility standards. Yet even using tabbing navigation within a tab-accessible website is not an ideal browsing experience.
 
@@ -570,8 +570,8 @@ That is to say, they are desirable but not essential.
 \someprob{Multi-modal Elements}{Elements can change size or state, for example collapsible components. Any representation the system stores about the layout of the webpage should be sensitive to this possibility of change.}
 %\someprob{}{}
 
-\pagebreak
-We intend to cope with this minefield of design traps, by prescribing the following design criteria:
+\subsection{Design Criteria}
+We intend to cope with the aforementioned minefield of design traps, by prescribing the following design criteria:
 \setcounter{problemdomainfigcount}{0}
 
 \someprob{Navigation bar floats above content}{Our system will only point within the current viewport of the browser. As for elements hidden in collapsed menus, we should not offer clicking for these until such time as that menu is opened --- in other words, we must offer pointing only for currently visible elements.}
@@ -587,6 +587,7 @@ We intend to cope with this minefield of design traps, by prescribing the follow
 \someprob{Multiple Infinite Scrollers}{Our system will avoid optimizing based on assumptions of page markup --- it will be entirely visually aimed, like with the mouse, so it can cope in a familiar way to content  that flows off-screen, or has no fixed size, or has a complex role --- and it does not need to know that these factors defined those page elements.}
 \someprob{Multi-modal Elements}{The system will not rely on a cached representation of the page. Should suggestions be made that have gone out of date, re-scanning should be possible.}
 
+\subsection{Suggested Solution}
 These criteria suggest a system that:
 
 \newcommand{\designcriteria}{\begin{enumerate}
@@ -598,8 +599,9 @@ These criteria suggest a system that:
 \end{enumerate}}
 \designcriteria
 
+\subsection{Mechanism 1: Pointing at coordinates with `crosshairs'}
 \label{sec:ourmousegrid}
-Most of these factors are fulfilled by a mechanism akin to that used by `MouseGrid' (see \Cref{novelpointing}).
+Most of these design criteria are fulfilled by a mechanism akin to that used by `MouseGrid' (see \Cref{novelpointing}).
 That is: the viewport of the browser is divided into a ($3\times3$) grid, and each cell assigned a keyboard shortcut. The user specifies by keypress which cell contains the element they are interested in. Then a new, smaller grid is constructed within that cell, and the process repeats itself.
 %the viewport is split into segments, and the user specifies which segment contains the element they are interested in. That segment is then itself split into several segments, and the user can continue to `drill down' through segments until they have specified the portion of the screen they are interested in clicking.
 Grids are constructed within grids, and a set of `crosshairs' (like on the sight of a gun) can follow the center of the most specific grid, and provide mouse behaviour (sending `click' and `hover' events) at those coordinates.
@@ -609,7 +611,8 @@ MouseGrid on its own is not, in itself, entirely novel. More unique about this a
 `Crosshairs' pointing can be made more predictable by `painting' a highlight on the element it targets. In this way, the user knows, before they send a click, which element will be clicked.
 
 This accounts for all design criteria except for the production of `suggestions'.
-
+\subsection{Mechanism 2: Pre-empting user needs by suggesting a shortlist of `clickables'}
+\subsubsection{Mechanism}
 Our provision of `suggestions' is the key to the novelty that our pointing system will deliver.
 
 \label{sec:clickablesExplained}
@@ -622,20 +625,25 @@ The smaller a `clickable' is, the more precision is required to specify its loca
 
 Suggestions can complement the grid-drilling approach. They can be re-evaluated and constrained to the space of the latest grid, every time the user `drills down', allowing increasingly more informed suggestions to be made. These suggestions will be keyboard-activated, and thus need to display labels of the shortcut that invokes them, as well as indicating which element, upon invocation, will be clicked.
 
+\subsubsection{Visiblity Concerns}
 In order to allow the clickable underneath the suggestion to be seen clearly, the label that designates the shortcut for activating the clickable should `fly out' from that element. An arrow will denote the relationship between the label and the element it `flys out' from. Such suggestions will be referred to henceforth as `flyouts'. Their presence provides necessarily a visual indicator of what the user can click --- one which is not guaranteed in tabbing navigation.
 
 If many flyouts are densely-packed, there exists a risk that flyouts will cover each other up, or the elements that they are responsible for. Hence we will implement some avoidance strategy to make them fan out from their respective targets in separate directions, allowing the clickables beneath to be seen. Additionally we shall endeavour to limit the number of flyouts.
 
 There are further advantages to using a smaller number of flyouts: the input vocabulary of the system is kept small. We will use one flyout per grid segment --- a total of nine. This also allows some symmetry with the vocabulary size for drilling; perhaps a modal input system could take advantage of this, and map at any time to either drilling shortcuts or flyout shortcuts.
 
+\subsubsection{Metaphor}
 Incidentally: one metaphor for flyouts, is a space-constrained, constant-time tab navigation. That is: if tabbing could be directed to only traverse elements within a specified screen portion, and also if instead of highlighting a single element for clicking, several were suggested (any able to be activated in a single keypress), then it would somewhat resemble this `flyouts' system.
 
+\section{System Name}
 The chosen name for the pointing system was `ChibiPoint' (stylized in Japanese as \begin{CJK}{UTF8}{min}ちび点\end{CJK}). `Chibi' (\begin{CJK}{UTF8}{min}ちび\end{CJK}) was felt to describe the youth of our pointing system, as it is used to refer to small, cute things. The chosen English pronunciation is `chibby', although this is an oversimplification. The use of the `\begin{CJK}{UTF8}{min}点\end{CJK}' kanji to refer to `point' (as in point score, rather than spatial pointing) is a deliberate pun: an allusion to our hopes that the system will perform well.
 
 \chapter{Implementation}
 \label{chap:implementation}
 \section{Chapter Purpose}
-The primary objective of this chapter is to disclose external software that we relied upon. It is not the purpose of this dissertation to explain web development in detail; much of the engineering involved in ChibiPoint is irrelevant from an academic perspective. We make exceptions in the case of non-trivial engineering problems that required novel solutions.
+The primary objective of this chapter is to disclose and attribute the external software that we relied upon. It is not the purpose of this dissertation to explain web development in detail: we require the reader to have a working knowledge of web development and technologies.
+
+Much of the engineering involved in ChibiPoint is not of academic interest. We focus here on non-trivial engineering problems, or ones that required novel solutions.
 
 \section{Primary Technology}
 We decided (as per \Cref{changingwebbrowser} and \Cref{sec:softwaresolution}) that ChibiPoint would be implemented as a browser extension, for the arbitrarily-chosen browser of Google Chrome. It was felt that a proof-of-concept with any browser would validate the approach for use in other browsers, especially if no browser-specific code was relied upon.
@@ -1144,8 +1152,7 @@ Keystroke results were analysed, for each task, using a repeated measures ANOVA.
 
 After ascertaining whether there existed within that task a significant difference in performance between the systems, we performed --- using Bonferroni correction --- post-hoc tests pairwise between each combination of systems used. This told us whether, between any two systems, there existed a significant difference in keystrokes.
 \section{Keystroke Performance}
-\newcounter{TaskType}
-\newcommand{\navtask}[1]{\stepcounter{TaskType} \subsection{Task \arabic{TaskType}: #1}}
+\subsection{Analysis Preamble}
 For shorthand, the ChibiPoint systems will be named: CX (ChibiPoint with just crosshairs feature enabled) and CX+F (ChibiPoint with crosshairs and flyouts enabled).
 
 We consider statistical significance for p < 0.01.
@@ -1154,7 +1161,21 @@ We remind the reader of our hypotheses (whose detail can be read in full at \Cre
 
 \textbf{\hypone}\\
 \textbf{\hyptwo}\\
+\pagebreak
+\subsection{Overview}
+We provide in \Cref{fig:exertion} a clustered bar chart to show the performance difference between each system, on a per-task basis:
+\begin{figure}[ht]
+\centerline{\includegraphics[width=8in]{figures/Exertion2.pdf}}
+\caption{Exertion (in keypresses) per navigation task.}
+\label{fig:exertion}
+\end{figure}
+\FloatBarrier
+Visually it is evident that in the latter five tasks, the number of keypresses required for pointing by tabbing navigation is very large (>20). However, tabbing performance is lower (<10) for the first three tasks. Thus the performance across task types is inconsistent. Both ChibiPoint systems appear to have more stable behaviour --- never exceeding 10 keypresses. This is likely because hierarchical navigation can account for exponentially more targets with every lookup used, so it quickly becomes likely that a target can be pointed at.
 
+More detailed statistical analysis ensues in the following sections. \Cref{sec:efficiencydiscussion} will appraise also the task differences in a qualitative sense, and explain the differences in performance.
+
+\newcounter{TaskType}
+\newcommand{\navtask}[1]{\stepcounter{TaskType} \subsection{Task \arabic{TaskType}: #1}}
 \navtask{[Within form] Immediate related traversal}
 \begin{tabular}{l l}
 \hline\hline %inserts double horizontal lines 
@@ -1339,6 +1360,10 @@ CX+F keystrokes significantly fewer than CX (p < .001).
 Hypothesis 1 supported.\\
 Hypothesis 2 supported.
 
+\section{Discussion}
+\label{sec:efficiencydiscussion}
+[UNFINISHED]
+
 \section{Summary}
 We remind the reader again of our hypotheses (whose detail can be read in full at \Cref{chap:hypotheses}):
 
@@ -1346,14 +1371,49 @@ We remind the reader again of our hypotheses (whose detail can be read in full a
 \textbf{\hyptwo}\\
 
 \subsection{Support for Hypothesis 1}
-Hypothesis 1 is supported for both versions of ChibiPoint in tasks 1--6.\\
-Hypothesis 1 is supported also for CX+F in task 2.\\
-Hypothesis 1 is refuted in task 2.\\
-CX+F reduced keypresses compared to tabbing in 7 of 8 tasks, which we consider to be a large majority (>80\%).\\
+\newcounter{tasktablecounter}
+\newcommand{\tasktablenumber}{\stepcounter{tasktablecounter}\arabic{tasktablecounter}.~}
+\begin{tabular}{l l}
+\hline\hline %inserts double horizontal lines 
+Task & Supports / Refutes Hyp.1 \\ [0.5ex] % inserts table 
+%heading 
+\hline % inserts single horizontal line 
+\tasktablenumber [Within form] Immediate related traversal & Refuted\\ \relax
+\tasktablenumber [Within form] distant related traversal & Supported (for CX+F only)\\ \relax
+\tasktablenumber Visually early element & Supported\\ \relax
+\tasktablenumber Visually late element & Supported\\ \relax
+\tasktablenumber [Within form] Spatially close, markup distant traversal & Supported\\ \relax
+\tasktablenumber Low visual indicator of focus & Supported\\ \relax
+\tasktablenumber Scrolled element & Supported\\ \relax
+\tasktablenumber Link surrounded by links & Supported\\ [1ex] % [1ex] adds vertical space 
+\hline %inserts single line 
+\end{tabular}
+
+Hypothesis 1 is supported for both versions of ChibiPoint in tasks 3--8 inclusive.\\
+Hypothesis 1 is supported for CX+F, too, in task 2.\\
+Hypothesis 1 is refuted in task 1 only.\\
+Thus CX+F reduced keypresses compared to tabbing in 7 of 8 tasks, which we consider to be a large majority (>80\%).\\
 CX reduced keypresses compared to tabbing in 6 of 8 tasks (75\%), which is certainly overall an improvement, but not the large majority sought by the hypothesis.\\
 Since one mode of ChibiPoint (CX+F) meets the requirements, Hypothesis 1 holds.
 
 \subsection{Support for Hypothesis 2}
+\setcounter{tasktablecounter}{0}
+\begin{tabular}{l l}
+\hline\hline %inserts double horizontal lines 
+Task & Supports / Refutes Hyp.2 \\ [0.5ex] % inserts table 
+%heading 
+\hline % inserts single horizontal line 
+\tasktablenumber [Within form] Immediate related traversal & Supported\\ \relax
+\tasktablenumber [Within form] distant related traversal & Supported\\ \relax
+\tasktablenumber Visually early element & Not Supported\\ \relax
+\tasktablenumber Visually late element & Supported\\ \relax
+\tasktablenumber [Within form] Spatially close, markup distant traversal & Supported\\ \relax
+\tasktablenumber Low visual indicator of focus & Supported\\ \relax
+\tasktablenumber Scrolled element & Supported\\ \relax
+\tasktablenumber Link surrounded by links & Supported\\ [1ex] % [1ex] adds vertical space 
+\hline %inserts single line 
+\end{tabular}
+
 Hypothesis 2 is supported for tasks 1--2 inclusive, and 4--8 inclusive.\\
 Hypothesis 2 is not refuted in task 3 --- it is merely not supported.
 Thus CX+F reduced keypresses compared to CX in 7 of 8 tasks, which we consider to be a large majority (>80\%), as required.\\
@@ -1367,7 +1427,16 @@ It should also be observed that in the non-supported task, no refute was seen to
 \chapter{Glossary}
 \printglossary
 
-\chapter{Figures}
+%\nocite{*}
+%\nocite{Doe:2009:Online}
+\pagebreak
+\printbibliography
+
+\pagebreak
+\appendix
+\addcontentsline{toc}{chapter}{APPENDICES}
+\chapter{Pilot Study}
+
 \begin{figure}[ht]
 % table row height
 \renewcommand{\arraystretch}{1.5}
@@ -1375,6 +1444,7 @@ It should also be observed that in the non-supported task, no refute was seen to
 \begin{tabularx}{\textwidth}{X|X}
 \hline\hline %inserts double horizontal lines 
 Question & Response \\ [0.5ex] % inserts table 
+\hline
 %heading 
 Gender	&	Male	\\
 Age	&	23	\\
@@ -1401,7 +1471,8 @@ What is your occupation?	&	Software research engineer	\\ [1ex] % [1ex] adds vert
 
 \begin{tabularx}{\textwidth}{X|X}
 \hline\hline %inserts double horizontal lines 
-Question & Response \\ [0.5ex] % inserts table 
+Question & Response \\ [0.5ex] % inserts table
+\hline 
 Which system did you prefer using?	&	ChibiPoint (with crosshairs AND flyouts)	\\
 How easy was it to point using `tabbing navigation'?	&	1	\\
 How was the amount of keypressing required in `tabbing navigation'?	&	5	\\
@@ -1416,65 +1487,6 @@ Have you any other feedback?	&	Crosshairs without flyouts can be difficult to ac
 Ratings were all on a five-point scale, 1--5.
 \label{fig:partic_pilotpost}
 \end{figure}
-
-%[trim=0.0cm 11cm 0.0cm 11cm,clip]
-%[viewport=0 0 390 610,clip,width=8in]
-%[viewport=0 0 11cm 5cm,clip]
-%fbox
-\begin{figure}[ht]
-\centerline{\includegraphics{figures/ComputerHours.pdf}}
-\caption{Device usage by participant}
-\label{fig:partic_computerHours}
-\end{figure}
-
-\begin{figure}[ht]
-\centerline{\includegraphics{figures/Age.pdf}}
-\caption{Age of participant}
-\label{fig:partic_age}
-\end{figure}
-
-\begin{figure}[ht]
-\centerline{\includegraphics{figures/Gender.pdf}}
-\caption{Gender of participant}
-\label{fig:partic_gender}
-\end{figure}
-
-\begin{figure}[ht]
-\centerline{\includegraphics{figures/Proficiency.pdf}}
-\caption{Keyboard Navigation Proficiency of Participants}
-\label{fig:partic_proficiency}
-\medskip
-\small
-Participants were asked to pick which of these sentiments they identified best with. The statements attempted to describe a proficiency scale for keyboard usage:
-\begin{enumerate}
-\item I need a mouse/pointing device
-\item I prefer a mouse/pointing device
-\item I use hotkeys in addition to a mouse/pointing device
-\item I prefer keyboard controls where possible
-\item I strongly prefer full keyboard support
-\end{enumerate}
-Votes were cast only for the middle descriptors, 2--4.
-\end{figure}
-
-\begin{figure}[ht]
-\centerline{\includegraphics{figures/TouchTyping.pdf}}
-\caption{Touch-Typing Proficiency of Participants}
-\label{fig:partic_ttype}
-\medskip
-\small
-Touch-typing proficiency was rated on a five-point scale ranging from the sentiment `I look at every key before pressing' to `I always type without even a reference glance at the keyboard'.
-\end{figure}
-
-\FloatBarrier
-
-%\nocite{*}
-%\nocite{Doe:2009:Online}
-\pagebreak
-\printbibliography
-
-\pagebreak
-\appendix
-\addcontentsline{toc}{chapter}{APPENDICES}
 
 \chapter{Usability Study}
 
@@ -2008,8 +2020,60 @@ P:		I thought it was pretty predictable, I found. Except from, you know, there w
 R:	Was it more predictable than tabbing?
 P:		Yeah. Absolutely. Who knows what's gonna - yeah, when people {unclear}, I never figured it out. Use the tab to, like, {unclear}, you're just like, why did they need that? You know. And sometimes they skip over things, that were just not so {unclear}. I do a lot of {unclear}, so you know {unclear}.
 \end{lstlisting}
-
 \FloatBarrier
+
+\chapter{Quantitative Study}
+
+%[trim=0.0cm 11cm 0.0cm 11cm,clip]
+%[viewport=0 0 390 610,clip,width=8in]
+%[viewport=0 0 11cm 5cm,clip]
+%fbox
+\begin{figure}[ht]
+\centerline{\includegraphics{figures/ComputerHours.pdf}}
+\caption{Device usage by participant}
+\label{fig:partic_computerHours}
+\end{figure}
+
+\begin{figure}[ht]
+\centerline{\includegraphics{figures/Age.pdf}}
+\caption{Age of participant}
+\label{fig:partic_age}
+\end{figure}
+
+\begin{figure}[ht]
+\centerline{\includegraphics{figures/Gender.pdf}}
+\caption{Gender of participant}
+\label{fig:partic_gender}
+\end{figure}
+
+\begin{figure}[ht]
+\centerline{\includegraphics{figures/Proficiency.pdf}}
+\label{fig:partic_proficiency}
+\medskip
+\small
+Participants were asked to pick which of these sentiments they identified best with. The statements attempted to describe a proficiency scale for keyboard usage:
+\begin{enumerate}
+\item I need a mouse/pointing device
+\item I prefer a mouse/pointing device
+\item I use hotkeys in addition to a mouse/pointing device
+\item I prefer keyboard controls where possible
+\item I strongly prefer full keyboard support
+\end{enumerate}
+Votes were cast only for the middle descriptors, 2--4.
+\caption{Keyboard Navigation Proficiency of Participants}
+
+\end{figure}
+
+\begin{figure}[ht]
+\centerline{\includegraphics{figures/TouchTyping.pdf}}
+\label{fig:partic_ttype}
+\medskip
+\small
+Touch-typing proficiency was rated on a five-point scale ranging from the sentiment `I look at every key before pressing' to `I always type without even a reference glance at the keyboard'.
+\caption{Touch-Typing Proficiency of Participants}
+\end{figure}
+
+%\FloatBarrier
 
 \begin{figure}[ht]
 	\begin{enumerate}
