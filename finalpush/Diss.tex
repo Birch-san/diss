@@ -22,6 +22,12 @@
 % Japanese
 \usepackage{CJKutf8}
 
+% for textnumero symbol
+\usepackage{textcomp}
+
+% sideways tables
+\usepackage{rotating}
+
 % list spacing
 \usepackage{enumitem}
 \setlist{nolistsep}
@@ -266,6 +272,7 @@ Guidance is provided on how to develop accessible web applications, in the form 
 \paragraph{Making interface tab-accessible}
    It is difficult to develop a tab-accessible web application~\cite{watanabe2012using}. Since the only pointing expression assumed is the tab key, layout must be linearized. Not only is this hard to design and develop for (requiring explicit effort and markup changes), the end result is not that impressive; content that is far away in the tab order unavoidably requires repeated hammering of the tab key (making it far harder to reach with the keyboard than with a pointing device). Plus linearization doesn't suit web content, which often has navigation bars, side bars, feeds or some similar multi-dimensional layout.
 \subparagraph{Short-circuiting tab journey with skip-links}
+\label{sec:skiplinks}
   An exception to the content linearization problem is skip links, which can short-circuit the tab journey around a page by allowing the user to choose alternative insertion points. These again require effort and understanding from the developer. It is hard to provide a suitable set of skip links, and again the best case is still a hamfisted pointing experience, where the user can't predict where they are going to or from.
 \paragraph{Conclusion}
   Even a website designed with accessibility standards in mind can be quite hard to navigate; web standards prescribe only a very limited amount of keyboard expression, so meeting these provides a very limited experience.
@@ -1151,7 +1158,7 @@ Keystroke results were analysed, for each task, using a repeated measures ANOVA.
  %(as well as the size of that effect, given by Partial $\eta^2$)
 
 After ascertaining whether there existed within that task a significant difference in performance between the systems, we performed --- using Bonferroni correction --- post-hoc tests pairwise between each combination of systems used. This told us whether, between any two systems, there existed a significant difference in keystrokes.
-\section{Keystroke Performance}
+\section{Analysis of Efficiency}
 \subsection{Analysis Preamble}
 For shorthand, the ChibiPoint systems will be named: CX (ChibiPoint with just crosshairs feature enabled) and CX+F (ChibiPoint with crosshairs and flyouts enabled).
 
@@ -1162,7 +1169,7 @@ We remind the reader of our hypotheses (whose detail can be read in full at \Cre
 \textbf{\hypone}\\
 \textbf{\hyptwo}\\
 \pagebreak
-\subsection{Overview}
+\subsection{Overview of Efficiency}
 We provide in \Cref{fig:exertion} a clustered bar chart to show the performance difference between each system, on a per-task basis:
 \begin{figure}[ht]
 \centerline{\includegraphics[width=8in]{figures/Exertion2.pdf}}
@@ -1174,8 +1181,9 @@ Visually it is evident that in the latter five tasks, the number of keypresses r
 
 More detailed statistical analysis ensues in the following sections. \Cref{sec:efficiencydiscussion} will appraise also the task differences in a qualitative sense, and explain the differences in performance.
 
+\subsection{Efficiency Analysis by Task}
 \newcounter{TaskType}
-\newcommand{\navtask}[1]{\stepcounter{TaskType} \subsection{Task \arabic{TaskType}: #1}}
+\newcommand{\navtask}[1]{\stepcounter{TaskType} \subsubsection{Task \arabic{TaskType}: #1}}
 \navtask{[Within form] Immediate related traversal}
 \begin{tabular}{l l}
 \hline\hline %inserts double horizontal lines 
@@ -1360,12 +1368,85 @@ CX+F keystrokes significantly fewer than CX (p < .001).
 Hypothesis 1 supported.\\
 Hypothesis 2 supported.
 
-\section{Discussion}
-\label{sec:efficiencydiscussion}
-[UNFINISHED]
+%
+%
+%
+%
+%
 
-\section{Summary}
-We remind the reader again of our hypotheses (whose detail can be read in full at \Cref{chap:hypotheses}):
+\subsection{Observational Analysis by Task}
+\label{sec:efficiencydiscussion}
+\setcounter{TaskType}{0}
+\navtask{[Within form] Immediate related traversal}
+This task demanded traversal in a login form from a `Username' field to its markup-adjacent `Password field'. Naturally this is a perfect task for tabbing, which achieves the navigation in just 1 keypress.
+
+Both versions of ChibiPoint take at least that many keypresses just to invoke the interface.
+
+In this particular case, pointing at the field's location took CX a relatively high number of lookups (>5). In some cases elements happen to line up in the center of one of the first constructed grids, allowing traversal in few lookups. Likewise there can also be positions on the page that take more lookups to navigate to, like this one. 
+
+CX+F, once invoked, took only 2 keypresses (no variance), which is admirable efficiency considering ChibiPoint is not recruiting any data from the markup or current focus --- this is, for all intents and purposes, an arbitrary clickable in ChibiPoint's eyes.
+
+\navtask{[Within form] distant related traversal}
+This task, too, utilises tabbing's strength in form traversal --- however, it has to navigate this time to the end of a medium-sized form. This journey will be quite predictable (provided the form is marked up correctly), so the user knows in advance they have to press tab as many times as there are form elements to traverse.
+
+Incidentally, some variance is seen in the tabbing results, despite the journey's being entirely deterministic. This is due to one participant's backpedaling through the form, possibly due to misunderstanding which target was the destination.
+
+Unavoidably, tabbing demands more keypresses to traverse further in forms. Thus CX catches up in performance to tabbing in this task, with a non-significant difference in their means.
+
+Meanwhile CX+F manages to overtake both systems significantly --- suggestions allow many form elements to be accessed, and CX+F can quickly drill through space enough to specify interest in the form.
+
+\navtask{Visually early element}
+Similarly to distant form traversal, tabbing is strong at traversing the first elements in a page's markup. There is some lack of predictability here, as it is non-guaranteed that the first element visually will be first also in the markup. Additionally there are invisible elements in the tab order: a `skip link' (see \Cref{sec:skiplinks}) to the page content, and a link to view an `accessibility help' document.
+
+As early as the intended button is in the tab order, there are nonetheless enough elements in the way that the ChibiPoint systems' hierarchical trawls catch up with tabbing's linear trawl.
+
+CX+F had the potential to out-perform CX here, but due to confusion in determining which flyout referred to which element, participants grew to either over-specify their target (until no other flyouts were offered), or otherwise fall back on the crosshairs mechanism for pointing. Thus in this case, the flyouts system did not significantly aid navigation.
+
+It is worth disclosing also, that in this scenario, many mis-clicks were made due to CX+F's hard-to-distinguish suggestions. We discarded such attempts and had the participants attempt the task again until they succeeded. Thus this `first-time' performance is not strictly captured here.
+
+Nevertheless, both ChibiPoint systems outperformed tabbing.
+
+\navtask{Visually late element}
+This test was particularly bad for tabbing, with >70 keypresses. If visual distance from the start of the page is to be taken as a heuristic for how much markup needs to be traversed to reach that element, then we should expect tabbing to require many lookups to reach the visually late element.
+
+In particular, this was a page with many hyperlinks. There was a site-wide navigation bar at the top, as well as a navigation sidebar, each filled with hyperlinks to traverse. Even the page itself had many hyperlinks on it. Without a skipping mechanism, or starting the traversal from a position relatively close to the element in question, tabbing was at a disadvantage in this sort of task.
+
+The performance of the ChibiPoint systems remained similar to the figures they had been producing until now; all elements are arbitrary to ChibiPoint, so it is immaterial how late the element is situated in the visual flow of the page.
+
+CX+F out-performed CX here, since it was quickly able to convey interest in a specific area containing the hyperlink.
+
+\navtask{[Within form] Spatially close, markup distant traversal}
+This was a highly typical navigation case --- choosing the top search result after performing a search. This YouTube interface was task-oriented in its visual design, with the search results immediately adjacent to the search form. Here we test how well the heuristic of `visually close implies markup close' applies.
+
+The markup of the page specified a longer journey than did its visual design. As such, tabbing exited the search form, and proceeded to traverse elements such as the login controls, then the site navigator, playlists and channel subscriptions. Only after this detour did it begin to navigate the search results.
+
+Some variance was seen in tabbing, because with so many elements to be traversed, and an unpredictable journey, participants had little heuristic for how far they were from their target, and often overshot their destination in an attempt to hurry the navigation.
+
+By comparison, both ChibiPoint systems performed significantly better, as they were not affected by this detour. CX+F's suggestions worked particularly well, as the search results were visually large, and thus featured in even broad spatial selections.
+
+\navtask{Low visual indicator of focus}
+This task showed well the potential ineffectiveness of tabbing. Amazon.co.uk was styled (intentionally or otherwise) to have no visual indicator of keyboard focus for a vast majority of its interacting elements. Though highlights existed, it was found that its controls listen for `mouseover' events rather than `focus', and thus give feedback only to the mouse.
+
+Participants had to infer from the browser's `status bar' (a control which visualizes, amongst other things, the URL of any currently focused hyperlink), which element was focused. This information could come in forms such as: ``\begin{verbatim}http://www.amazon.co.uk/Polycotton-Hollowfibre-Non-Allergenic-Pillows-Pack/dp/B0029TA2LM/ref=sr_1_1?ie=UTF8&qid=1396716329&sr=8-1&keywords=pillow\end{verbatim}'', which was complex enough to be missed by many participants, who were observed to overshoot their target by pages, and even miss it on the way back also after backpedaling.
+
+Far more effective were the ChibiPoint systems, which provided their own visual indicators over targeted elements. They were also more efficient, performing in far fewer lookups than tabbing.
+
+\navtask{Scrolled element}
+This task existed mainly to confirm that all systems were compatible with off-screen elements; once scrolled, this is simply equivalent to the `visually late element' test. It remains nevertheless an essential class of navigation to be compatible with, but the efficiency comparison is less important here.
+
+Of particular note was that some participants realized in this task that they could recruit page scrolling as another vector to move elements under the ChibiPoint crosshairs, which re-assess targets on every viewport change.
+
+\navtask{Link surrounded by links}
+This task was designed to create problems for a suggestion-based system like `flyouts' --- it would explore whether users can cope with many suggestions packed densely into one place. This is more of a concern for time performance than it is for efficiency, as the number of keypresses is not affected (unless the user chooses to over-specify their target to reduce the number of suggestions to trawl through).
+
+For tabbing this was not an interesting problem, although in a page populated densely with links, tabbing naturally has to traverse more controls.
+
+We found that the number of keypresses required for flyout lookup was still a significant improvement on CX and on tabbing, so this situation apparently did not compromise CX+F's efficiency.
+
+\section{Discussion}
+\subsection{Support for Hypotheses}
+% Hey, maybe ChibiPoint should be a less good citizen and always be listening for a numpad press? Or always be open?
+The primary purpose of this evaluation was to ascertain whether our hypotheses, which pertain to system efficiency, were supported. We remind the reader again of those hypotheses (whose detail can be read in full at \Cref{chap:hypotheses}):
 
 \textbf{\hypone}\\
 \textbf{\hyptwo}\\
@@ -1418,6 +1499,12 @@ Hypothesis 2 is supported for tasks 1--2 inclusive, and 4--8 inclusive.\\
 Hypothesis 2 is not refuted in task 3 --- it is merely not supported.
 Thus CX+F reduced keypresses compared to CX in 7 of 8 tasks, which we consider to be a large majority (>80\%), as required.\\
 It should also be observed that in the non-supported task, no refute was seen to the claim; in all cases, CX+F either outperforms or matches CX.
+
+\subsection{Discussion of Task Performance}
+% Qualitative stuff here
+
+\section{Summary}
+
 
 \chapter{Conclusions \& Future work}
 \label{chap:conclusions}
@@ -2036,25 +2123,25 @@ P:		Yeah. Absolutely. Who knows what's gonna - yeah, when people {unclear}, I ne
 %[viewport=0 0 390 610,clip,width=8in]
 %[viewport=0 0 11cm 5cm,clip]
 %fbox
-\begin{figure}[ht]
+\begin{table}[ht]
 \centerline{\includegraphics{figures/ComputerHours.pdf}}
 \caption{Device usage by participant}
 \label{fig:partic_computerHours}
-\end{figure}
+\end{table}
 
-\begin{figure}[ht]
+\begin{table}[ht]
 \centerline{\includegraphics{figures/Age.pdf}}
 \caption{Age of participant}
 \label{fig:partic_age}
-\end{figure}
+\end{table}
 
-\begin{figure}[ht]
+\begin{table}[ht]
 \centerline{\includegraphics{figures/Gender.pdf}}
 \caption{Gender of participant}
 \label{fig:partic_gender}
-\end{figure}
+\end{table}
 
-\begin{figure}[ht]
+\begin{table}[ht]
 \centerline{\includegraphics{figures/Proficiency.pdf}}
 \label{fig:partic_proficiency}
 \medskip
@@ -2070,34 +2157,83 @@ Participants were asked to pick which of these sentiments they identified best w
 Votes were cast only for the middle descriptors, 2--4.
 \caption{Keyboard Navigation Proficiency of Participants}
 
-\end{figure}
+\end{table}
 
-\begin{figure}[ht]
+\begin{table}[ht]
 \centerline{\includegraphics{figures/TouchTyping.pdf}}
 \label{fig:partic_ttype}
 \medskip
 \small
 Touch-typing proficiency was rated on a five-point scale ranging from the sentiment `I look at every key before pressing' to `I always type without even a reference glance at the keyboard'.
 \caption{Touch-Typing Proficiency of Participants}
-\end{figure}
+\end{table}
 
 %\FloatBarrier
 
-\begin{figure}[ht]
-	\begin{enumerate}
-		\item \url{https://www.halifax-online.co.uk/personal/logon/login.jsp}
-		\item \url{https://www.kickstarter.com/signup?ref=nav}
-		\item \url{http://www.bbc.co.uk/}
-		\item \url{http://www.bath.ac.uk/library/subjects/comp-sci/}
-		\item \url{http://www.youtube.com/}
-		\item \url{http://www.amazon.co.uk/s/ref=nb_sb_noss_2?url=search-alias%3Daps&field-keywords=pillow&rh=i%3Aaps%2Ck%3Apillow}
-		\item \url{http://www.megatokyo.com/}
-		\item \url{http://en.wikipedia.org/wiki/Computer}
-	\end{enumerate}
-	\caption{URLs used in tasks (full study)}
-	\label{fig:fullStudyURLs}
-	\medskip
-	\small
-\end{figure}
+\newcommand{\anumero}{{\fontfamily{cmr}\selectfont\textnumero}}
+
+\begin{table}[ht]
+\newcounter{ahref}
+\newcommand{\studyhref}{\stepcounter{ahref}\arabic{ahref}}
+\begin{tabularx}{\textwidth}{l|X}
+\hline\hline %inserts double horizontal lines 
+Task \anumero & URL \\ [0.5ex] % inserts table 
+\hline 
+\studyhref & \url{https://www.halifax-online.co.uk/personal/logon/login.jsp} \\
+\studyhref & \url{https://www.kickstarter.com/signup?ref=nav} \\
+\studyhref & \url{http://www.bbc.co.uk/} \\
+\studyhref & \url{http://www.bath.ac.uk/library/subjects/comp-sci/} \\
+\studyhref & \url{http://www.youtube.com/} \\
+\studyhref & \url{http://www.amazon.co.uk/s/ref=nb_sb_noss_2?url=search-alias\%3Daps&field-keywords=pillow&rh=i\%3Aaps\%2Ck\%3Apillow} \\
+\studyhref & \url{http://www.megatokyo.com/} \\
+\studyhref & \url{http://en.wikipedia.org/wiki/Computer} \\
+\hline %inserts single line 
+\end{tabularx}
+\caption{URLs used in tasks (full study)}
+\label{fig:fullStudyURLs}
+\end{table}
+
+\newcommand*\rot{\rotatebox{90}}
+\newcommand{\psize}{1.5cm}
+\newcommand{\reasonable}{\rot{(1= Reasonable, 5=Unreasonable)}}
+
+\begin{table}[ht]
+\begin{tabular}{|p{\psize}*{8}{|p{\psize}}|}
+\hline\hline %inserts double horizontal lines 
+\rot{Participant \anumero}	&	\rot{Which system did you prefer using?}	&	\rot{How easy was it to point using Tabbing?}	&	\rot{How was the amount of keypressing}~\rot{required in Tabbing?}~\reasonable	&	\rot{How easy was it to point using CX?}	&	\rot{How was the amount of keypressing}~\rot{required in CX?}~\reasonable	&	\rot{How easy was it to point using CX+F?}	&	\rot{How was the amount of keypressing}~\rot{required in CX+F?}~\reasonable	\\ [0.5ex]
+\hline 
+1	&	CX+F	&	2	&	5	&	4	&	2	&	5	&	1	\\
+2	&	CX	&	2	&	5	&	4	&	1	&	4	&	1	\\
+3	&	CX	&	1	&	5	&	5	&	2	&	5	&	1	\\
+4	&	CX+F	&	1	&	5	&	3	&	3	&	4	&	2	\\
+5	&	CX+F	&	1	&	5	&	5	&	2	&	5	&	1	\\
+7	&	CX+F	&	4	&	5	&	4	&	2	&	5	&	2	\\
+6	&	CX+F	&	2	&	4	&	4	&	3	&	5	&	2	\\
+8	&	CX+F	&	2	&	5	&	4	&	2	&	5	&	1	\\
+9	&	CX+F	&	1	&	5	&	4	&	3	&	5	&	2	\\
+10	&	CX+F	&	4	&	4	&	4	&	3	&	5	&	2	\\
+11	&	CX+F	&	2	&	4	&	4	&	1	&	5	&	1	\\
+12	&	CX+F	&	3	&	5	&	5	&	1	&	4	&	1	\\
+\hline %inserts single line 
+\end{tabular}
+\caption{Post-experiment questionnaire responses of Quantitative Study participants}
+Ratings were all on a five-point scale, 1--5.
+\label{fig:quantpost}
+\end{table}
+
+% \begin{tabularx}{\textwidth}{X|X}
+% \hline\hline %inserts double horizontal lines 
+%Task \anumero & URL \\ [0.5ex] % inserts table 
+% \hline
+% \studyhref & \url{https://www.halifax-online.co.uk/personal/logon/login.jsp} \\
+% \studyhref & \url{https://www.kickstarter.com/signup?ref=nav} \\
+% \studyhref & \url{http://www.bbc.co.uk/} \\
+% \studyhref & \url{http://www.bath.ac.uk/library/subjects/comp-sci/} \\
+% \studyhref & \url{http://www.youtube.com/} \\
+% \studyhref & \url{http://www.amazon.co.uk/s/ref=nb_sb_noss_2?url=search-alias%3Daps&field-keywords=pillow&rh=i%3Aaps%2Ck%3Apillow} \\
+% \studyhref & \url{http://www.megatokyo.com/} \\
+% \studyhref & \url{http://en.wikipedia.org/wiki/Computer} \\
+% \hline %inserts single line 
+% \end{tabularx}
 
 \end{document}
