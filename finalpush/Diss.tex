@@ -28,6 +28,11 @@
 % sideways tables
 \usepackage{rotating}
 
+% longtable tabularx
+\usepackage{ltxtable}
+\usepackage{array}
+\usepackage{longtable}
+
 % list spacing
 \usepackage{enumitem}
 \setlist{nolistsep}
@@ -188,12 +193,18 @@ We will produce a proof-of-concept web browser extension (for Google Chrome), th
 The input language for the system will be an instance of symbol-based input: keystroke sequences. Thus a keyboard-based interface theoretically serves as a proof-of-concept for other input systems that can produce a vocabulary of discrete inputs, for example gestures or spoken words. The more limited this proof-of-concept's vocabulary is, the more devices it allows to map to its space.
 
 \subsubsection{Qualitative difference}
-We will improve upon the efficiency of tabbing navigation's linear trawl, by using a hierarchical traversal.
+\label{sec:qualitative_promises}
+We aim to deliver the following qualitative improvements over `tabbing' navigation:
+\begin{itemize}
+\item We will improve upon the efficiency of tabbing navigation's linear trawl, by using a hierarchical traversal.
 
-We will solve tabbing navigation's effectiveness problems: we avoid falling into `focus traps' by avoiding a relative traversal.
-Additionally we solve the feedback problem represented by `lack of visual indicator of focus', by painting our own visual indicators on elements.
+\begin{itemize}
+\item We will solve tabbing navigation's effectiveness problems: we avoid falling into `focus traps' by avoiding a relative traversal.
+\item We will solve the feedback problem represented by `lack of visual indicator of focus', by painting our own visual indicators on elements.
+\end{itemize}
 
-We will improve predictability of navigation by using a spatial traversal rather than tabbing navigation's markup-driven traversal.
+\item We will improve predictability of navigation by using a spatial traversal rather than tabbing navigation's markup-driven traversal.
+\end{itemize}
 
 \section{Results / Contributions}
 Both our hypotheses are confirmed: ChibiPoint provides a significantly more efficient pointing mechanism than tabbing. The novel `flyouts' feature contributes further to ChibiPoint's efficiency.
@@ -804,6 +815,37 @@ Since clickable dimensions are not highly-specific (ie, buttons need to be desig
 Incidentally, we found that we had a need for macro language and inheritance in our CSS stylesheets --- often colours needed to be repeated, or otherwise we had portions of our styles that needed often to be re-used in other styles. CSS does not classically support concepts like variables, or true inheritance. Admittedly something like inheritance can be achieved on the markup level --- for example by defining some object in terms of multiple styles --- but no semantics exist to enforce this relationship, so maintenance becomes a problem.
 
 We chose an architecture that allowed us to control the relations between styles, and allow our system to be defined by re-usable parameters --- such as line thicknesses or color schemes. Even the `grid growing' percentage is able to be defined like this, so it can be trivially turned off. To achieve this, we wrote styles in the LESS (Leaner CSS)\cite{lesscss} pre-processor, which compiles down to CSS. This gave us the feature-set that we needed from a styling technology, without breaking our commitment to use widely-available web technologies in our implementation.
+
+\subsection{Avoiding Flyout Overlap}
+\label{sec:avoidance}
+Several conflicting factors existed for effective display of suggestions:
+
+\begin{itemize}
+\item Flyout labels should not obscure their own clickable.
+\item Flyout labels should not obscure each other.
+\item Flyout labels should not obscure other suggested clickables.
+\item Flyout labels should not obscure more specific areas in the grid the user might choose to navigate to.
+\end{itemize}
+
+Not all of these could be solved with one solution, as they produce conflicts.
+
+Attaching flyout labels to the corners of clickables could allow the label to live offset from its clickable, whilst still being proximal enough to signify a relationship. However the label could then obstruct some over adjacent clickable. Worse, it could erroneously imply a relationship with that clickable.
+
+Having all flyout labels situated within the grid could create problems in small, specific grids --- the labels would obscure much of the contents of the grid, making it hard for the user to tell which direction to drill into next.
+
+As the grid becomes more specific, flyouts start proportionally to consume a larger portion of the visual space of the grid contents, so we become more concerned about obscuring grid contents. We felt that if we focused on this problem, we could improve the state of the other problems at the same time.
+
+By making flyout labels `fly out' away from the clickable, with a line to signify relatedness, we gained some freedom to position the label.
+
+By making each of the flyouts `fly out' in different directions, we provide some protection against flyouts obscuring each other, and also avoid covering their own clickables. There is still a danger of this movement obscuring anothers' clickable. However, the lines that join flyout labels to their clickables will have distinct angles, providing each flyout with a more distinct identity --- possibly this improves the ability to distinguish which flyout is meant for which clickable.
+
+As for the final problem --- obscuring regions of interest in higher-specificity grids --- we decided to attend to this more as the grids became more specific. Thus flyout labels must give more and more berth (separation) to their clickables as the grid becomes more specific. We used `distance of current flyout label from center of most specific grid' as a heuristic for how specific the grid had become. We controlled berth with an inverse cubic relationship to that distance, as this was found to produce an effective rate of separation. Berth was capped with a maximum distance.
+
+Flyouts fan out in the direction that leads away from the center of the most specific grid. This allows them to choose unique directions without communicating with each other.
+
+Flyout positions are constrained to the viewport boundaries, as it is more important for the flyout to be visible than for it to be ideally separated from its clickable.
+
+Flyout positions are re-evaluated when the viewport changes (due to scroll or resize). The labels move live with these changes, their lines always clipped to their clickable. Once scrolled off-screen, a flyout is disabled (but can be re-enabled by scrolling back into the viewport).
 
 \section{Summary}
 \subsection{Conformance to requirements}
@@ -1499,6 +1541,41 @@ Hypothesis 2 is supported for tasks 1--2 inclusive, and 4--8 inclusive.\\
 Hypothesis 2 is not refuted in task 3 --- it is merely not supported.
 Thus CX+F reduced keypresses compared to CX in 7 of 8 tasks, which we consider to be a large majority (>80\%), as required.\\
 It should also be observed that in the non-supported task, no refute was seen to the claim; in all cases, CX+F either outperforms or matches CX.
+
+\subsection{How `effective' are the pointing systems under test?}
+\subsubsection{Definition of effectiveness}
+We promised in \Cref{sec:qualitative_promises} to deliver a more `effective' pointing system than tabbing. By this we mean, a system which is capable of completing the required pointing tasks. Tabbing was felt to be insufficient here, because its relative traversal was vulnerable to focus traps --- page regions beyond which focus cannot advance, or which indefinitely load new content into the path of traversal. Additionally tabbing was believed to be vulnerable to a `lack of visual indicator of focus' --- a situation where webpage elements provide no visual feedback upon keyboard focus, leaving the user lost.
+
+\subsubsection{Tabbing effectiveness}
+We did not attempt to capture the former effectiveness problem (focus traps), since we cannot do a quantitative comparison where one system is unable altogether to point at the target. However we capture some evidence for the latter effectiveness problem (lack of visual indicator of focus). This occurs, of course, in Task 6: Low Visual Indicator of Focus. A huge standard deviation in keystrokes (30.485) was measured on this task, especially considering the tabbing journey is deterministic, so no deviation need occur at all unless the user overshoots their target and has to backtrack.
+
+Admittedly in many cases, participants overshoot on purpose, as they use the visual progress of the tab focus as a heuristic for how many keypresses they need to input --- allowing them to pause less often to verify the element under focus. Hence a certain amount of deviation can be expected in longer navigations, as participants titrate their speed to traverse the long distances quickly.
+
+Nevertheless, we feel the abnormally high deviation in the `low visual indicator of focus' task to be symptomatic of participants missing their target when using tabbing navigation --- they did not know that they were pointing at their target, and so continued traversing past it. This was confirmed by our observations of the task performance, and also from feedback the participants gave: \textit{``in some cases, e.g. Amazon, the button's were not highlighted so it required some careful investigation to find out what I was about to press''}, \textit{``when performing tabbing on the amazon page, I had very little knowledge about the current `location' of the tab. Even on websites that did show the location, it was often just a very faint dotted border, which really isn't much easier to see''}.
+
+We assert at least that there exists an effectiveness problem with tabbing. However, ChibiPoint came with its own effectiveness problems.
+
+\subsubsection{Flyout effectiveness}
+Flyouts were found to obscure the elements that participants tried to point at: \textit{``Sometimes when using flyouts on an area with many links, the suggestions would become a bit cluttered making it slightly difficult to see what I was pointing at''}. The same participant, however, was unperturbed by this: \textit{``However, by choosing flyouts, this is a sacrifice I am willing to make (and understand why)''}, suggesting that this is still an acceptable level of effectiveness. It must also be pointed out that tasks such as `Link surrounded by many links' were designed to be worst-case scenarios for the flyouts system.
+
+Using colour-matching to designate which flyout referred to which clickable was felt to be at least partially ineffective: \textit{``question the effectiveness of the use of colours to highlight the link suggestions. On a webpage with a lot of colours this just because [sic] confusing''}. The positioning of the flyouts was felt to be confusing also \textit{``especially when the key shortcuts [...] overlapped and the shortcut appeared over the face of other links''}. This is a hard problem to solve, but we suggest nevertheless some alternative designs:
+
+\begin{itemize}
+\item Positioning the flyout on the clickable it describes could make it easier to determine which element it refers to, but at the same time it necessarily obscures that clickable. However the user might not need to see the entirety of a clickable to be able to act on it, so this could be fine, and work better than the current confusion.
+\item Reducing the number of flyouts could sacrifice efficiency to improve effectiveness; less colours will be in use, and less flyouts exist to overlap each other or each others' clickables.
+\item Change the avoidance algorithm (see \Cref{sec:avoidance}) so that flyouts further avoid overlapping each other, and perhaps design it also to avoid overlapping each others' clickables.
+\end{itemize}
+
+\subsubsection{Crosshair effectiveness}
+Crosshairs did not utilise the same `clickable' detection that flyouts enjoyed. We chose this implementation because there was an advantage to this: clicks could be sent to elements which were not recognised as clickable by our system.
+
+However this posed an effectiveness problem: participants were unsure whether the targeted element was one that a click could be sent to. Especially when containers existed around clickables, participants sometimes clicked these in stead of the clickable itself, assuming that it listened for click events.
+
+Feedback reveals such experiences: \textit{``Chibi with just crosshairs was unique and I found it efficient, though having the html container light up was confusing''}.
+
+Possibly a compromise design exists: allow users to click elements with crosshairs regardless of whether a clickable is detected, but `paint' that target a specific colour whenever it is known for certain to be clickable. This solution gives the user power to click whatever they want, but also feedback of what might happen if they do.
+
+\subsection{How `predictable' are the pointing systems under test?}
 
 \subsection{Discussion of Task Performance}
 % Qualitative stuff here
@@ -2220,6 +2297,13 @@ Task \anumero & URL \\ [0.5ex] % inserts table
 Ratings were all on a five-point scale, 1--5.
 \label{fig:quantpost}
 \end{table}
+
+%\begin{table}[ht]
+%\renewcommand{\arraystretch}{1.5}
+\LTXtable{\textwidth}{figures/Quantitative_PostFeedbackTable.tex}
+%\caption{(Continued) Post-experiment questionnaire responses of Quantitative Study participants}
+%\label{fig:quantpost_feedback}
+%\end{table}
 
 % \begin{tabularx}{\textwidth}{X|X}
 % \hline\hline %inserts double horizontal lines 

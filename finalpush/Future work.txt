@@ -4,6 +4,8 @@ DOM level 0 events
 Mouseover detection, metaphor
 Extend to other browsers
 
+VIMIUM!!
+
 Evaluate effectiveness formally?
 
 Desire:
@@ -14,3 +16,12 @@ Voice Finger
 http://voicefinger.cozendey.com/
 Uses much larger vocabulary, predictable sequence. Have to think of more thinks at once?
 http://en.wikipedia.org/wiki/File:Voice_finger_screenshot.jpg
+
+
+\begin{itemize}
+\item Positioning the flyout on the clickable it describes could make it easier to determine which element it refers to, but at the same time it necessarily obscures that clickable. However the user might not need to see the entirety of a clickable to be able to act on it, so this could be fine, and work better than the current confusion.
+\item Reducing the number of flyouts could sacrifice efficiency to improve effectiveness; less colours will be in use, and less flyouts exist to overlap each other or each others' clickables.
+\item Change the avoidance algorithm (see \Cref{sec:avoidance}) so that flyouts further avoid overlapping each other, and perhaps design it also to avoid overlapping each others' clickables.
+\end{itemize}
+
+Possibly a compromise design exists: allow users to click elements with crosshairs regardless of whether a clickable is detected, but `paint' that target a specific colour whenever it is known for certain to be clickable. This solution gives the user power to click whatever they want, but also feedback of what might happen if they do.
