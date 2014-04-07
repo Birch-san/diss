@@ -539,7 +539,7 @@ That is to say, they are desirable but not essential.
 \reqend
 
 \subsection{Anti-requirements}
-
+\label{sec:anti-req}
 \textbf{The following are explicitly \textit{not} aims of the system, so performance in these areas need not be measured.}
 
 \reqstart
@@ -767,6 +767,7 @@ The hotkey to invoke ChibiPoint was given first-level citizenship in the web bro
 
 One advantage of giving ChibiPoint invocation a keybinding with first-level browser citizenship, is that such a keybinding is not used in form interaction --- thus, the system could be invoked with this shortcut, even from within a form context. Other keys used by ChibiPoint do not enjoy the same privilege, and could be intercepted in contexts like forms. However that is not a problem following invocation, since by then we have seized focus and escaped any form context we might have been in.
 
+\label{sec:tabbing_cocitizenship}
 Whenever a keypress event is captured by ChibiPoint, we ascertain whether the key is mapped to any functionality within ChibiPoint. If so, that functionality is invoked, and we end propagation of the event, so that the website does not receive the same keypress. However, if said keypress does not match any of our mappings (for example: the tab key), then we take no action, and allow the event to propagate to other event listeners. In this way, we allow co-citizenship for all keypresses that are not relevant to our system, and crucially we maintain compatibility with tabbing.
 
 \subsubsection{Performance}
@@ -1190,16 +1191,27 @@ Were a large discrepancy to be caused by such unrelated factors, then the tested
 \chapter{Results of larger study}
 \section{Overview}
 We compared, for each of the eight navigation tasks, the number of keystrokes each system required to complete that navigation. Time was compared also, but as this was of secondary interest, less analysis was performed.
-\subsection{Keystrokes}
+\subsection{Efficiency (Keystrokes required)}
 Each system was found to have different strengths. Tabbing was found to excel significantly at just one task: traversing short distances in forms (for example, from username field to password field). For longer form traversals, it was matched or beaten by the various ChibiPoint systems, and it even failed to surpass ChibiPoint at accessing visually early elements.
+
 In the remaining five cases, both versions of ChibiPoint greatly outperformed tabbing. In all but one case, the `flyouts' feature of ChibiPoint reduced the number of keypresses. For the remaining case, `Visually Early Element', there was no significant difference between the versions of ChibiPoint.
-\subsection{Time}
-[PLACEHOLDER]
+\subsection{Speed (Time taken)}
+Overall, our informal analysis found that ChibiPoint systems outperformed or matched the speed of tabbing in 5 tasks (4--8 inclusive). Moreover, the `flyouts' feature of ChibiPoint improved upon the speed of crosshairs-only ChibiPoint in all 7 of 8 tasks, with the exception being a underperformance we attribute to visual confusion.
+
+This is heartening, as it means that the appraisal time-cost that the `flyouts' feature introduces to ChibiPoint, results generally in a net time benefit. Additionally, for most navigation tasks, ChibiPoint systems deliver a speed improvement or equivalence to tabbing. As ChibiPoint is built to co-exist with tabbing (see \Cref{sec:tabbing_cocitizenship}), users could choose the navigation system most suitable to their current pointing task.
+
 \section{Analysis used}
+\subsection{Analysis used for Efficiency}
 Keystroke results were analysed, for each task, using a repeated measures ANOVA. Greenhouse-Geisser correction was used to determine how significantly the mean keystrokes differed between systems. This correction was used because sphericity could not be assumed of our data; there is no homogeneity of variance, as tabbing variance emerges very differently to ChibiPoint variance (tabbing is deterministic excepting mistakes, whereas ChibiPoint navigation can take multiple valid routes).
  %(as well as the size of that effect, given by Partial $\eta^2$)
 
 After ascertaining whether there existed within that task a significant difference in performance between the systems, we performed --- using Bonferroni correction --- post-hoc tests pairwise between each combination of systems used. This told us whether, between any two systems, there existed a significant difference in keystrokes.
+
+\subsection{Analysis used for Speed}
+Less formal analysis techniques were used to assess the speed of each system, as speed is not a goal of the system (as explained in \Cref{sec:anti-req}). However this data was trivially obtainable, so we provide an informal analysis.
+
+It is worth bearing in mind that participants were not told their performance was being timed on these experiments --- we hoped that by asking participants to `complete the task' rather than to `race to complete the task', we would capture performance more representative of standard browsing. Naturally we do not capture the fastest possible or `expert' times.
+
 \section{Analysis of Efficiency}
 \subsection{Analysis Preamble}
 For shorthand, the ChibiPoint systems will be named: CX (ChibiPoint with just crosshairs feature enabled) and CX+F (ChibiPoint with crosshairs and flyouts enabled).
@@ -1210,9 +1222,9 @@ We remind the reader of our hypotheses (whose detail can be read in full at \Cre
 
 \textbf{\hypone}\\
 \textbf{\hyptwo}\\
-\pagebreak
+\clearpage
 \subsection{Overview of Efficiency}
-We provide in \Cref{fig:exertion} a clustered bar chart to show the performance difference between each system, on a per-task basis:
+We provide in \Cref{fig:exertion} a clustered bar chart to show the difference in efficiency between each system, on a per-task basis:
 \begin{figure}[ht]
 \centerline{\includegraphics[width=8in]{figures/Exertion2.pdf}}
 \caption{Exertion (in keypresses) per navigation task.}
@@ -1485,6 +1497,39 @@ For tabbing this was not an interesting problem, although in a page populated de
 
 We found that the number of keypresses required for flyout lookup was still a significant improvement on CX and on tabbing, so this situation apparently did not compromise CX+F's efficiency.
 
+\clearpage
+\section{Analysis of Speed}
+We provide in \Cref{fig:speed} a clustered bar chart to show the difference in speed between each system, on a per-task basis:
+\begin{figure}[ht]
+\centerline{\includegraphics[width=8in]{figures/TimeGraph2.pdf}}
+\caption{Time taken (secs) per navigation task.}
+\label{fig:speed}
+\end{figure}
+
+This graph plots the number of seconds elapsed between the first and final keypress of each navigation task. Naturally, tasks that take 1 keypress (i.e. `[Within form] immediate related traversal') incur zero time. Shorter bars represent a faster system.
+
+Of interest is that speed is not entirely correlated to efficiency. CX+F is seen to be slower than CX, in the case of `Visually early element' --- whereas in efficiency, CX+F always outperformed or matched CX. Moreover, `tabbing' tasks known to require a lot of keypresses did not necessarily incur so much time: `Visually late element' --- the task which required the most keypresses from tabbing --- did not differ as egregiously in speed from the performance of the other systems.
+
+Overall, tabbing appears to compare much more favourably in speed than it does efficiency --- tasks such as `Visually early element' it wins outright, whereas its efficiency performance in the same task was a clear loser. Additionally its huge efficiency difference in `Link surrounded by links' is made up for by its highly comparable speed performance in the same task.
+
+Generally the speed differences between CX+F and CX can be explained by the complications we observed during those tasks --- `Visually early element' was known to produce suggestions that were hard to distinguish from each other, and hence more discrimination was needed to decide which suggestion to use. Indeed some participants forewent the flyouts feature for pointing in these cases, choosing instead to fall back on crosshairs --- but not before investing time in evaluating the suggestions.
+
+Crucially, we see that a lot of time is invested by users of Tabbing in `Low visual indicator of focus'. This reflects the extra time required to verify the element under focus, where no focus indicator is provided.
+
+Overall CX+F outperforms or matches CX in most tasks. Thus, despite its introducing a necessary time overhead of evaluating suggestions at each stage of drilling, it saves the users enough time in specification of their targets to make up for this. Its aforementioned failure to outperform CX in `Visually early element' is attributed to design choices which are remediable (or otherwise able to be understood better by an expert user).
+
+The first three tasks --- which concern tabbing-optimized scenarios (form traversal and early element selection) --- are favourable to Tabbing. Moreover, in the latter two of these tasks, where ChibiPoint was known to compare favourably in effiency, it is seen here to fail in speed. This is perhaps because ChibiPoint enforces a necessary startup cost for any navigation --- the user must invoke the system, then evaluate their options for traversal and make a decision. By contrast, tabbing requires much less appraisal and decision-making: the user need only hammer the `tab' key, and wait until their intended target is highlighted.
+
+Thus, we conclude that tabbing is a choice which requires less cognition, but whose speed is inexorably tied to the distance in markup it needs to traverse. ChibiPoint systems can beat this speed provided its invocation, appraisal and decision-making amount to less time expenditure than a long, linear page-trawl. CX+F exacerbates these time costs, introducing more appraisal cost (as flyouts need to be evaluated). To deliver an improved speed over CX, CX+F needs to provide suggestions that are helpful enough to deliver a return on their appraisal cost.
+
+For speed comparisons, we will not invest in a formal significance analysis. We will consider a difference as relevant where means and their error bars are lower than those of another bar. `Comparable' performance is considered when error bars overlap.
+
+We feel that in many of these tasks (1--2, 4, 6--8), CX+F does indeed provide an appreciable speed improvement over CX, in spite of the appraisal cost it introduces.
+
+CX+F provides a speed improvement over Tabbing in many tasks also (4--7), as well as matching it in task 8. Whereas CX alone only delivers a definite speed increase over Tabbing in a minority of tasks (4--6), and matches its performance in tasks 7--8. Thus both ChibiPoint systems outperform or match the speed of Tabbing in a majority of tasks (4--8).
+
+Speed scores are, in any case, an aside --- we restate that the goal of the system is not to provide faster navigation, though it is welcome if it emerges.
+
 \section{Discussion}
 \subsection{Support for Hypotheses}
 % Hey, maybe ChibiPoint should be a less good citizen and always be listening for a numpad press? Or always be open?
@@ -1493,7 +1538,7 @@ The primary purpose of this evaluation was to ascertain whether our hypotheses, 
 \textbf{\hypone}\\
 \textbf{\hyptwo}\\
 
-\subsection{Support for Hypothesis 1}
+\subsubsection{Support for Hypothesis 1}
 \newcounter{tasktablecounter}
 \newcommand{\tasktablenumber}{\stepcounter{tasktablecounter}\arabic{tasktablecounter}.~}
 \begin{tabular}{l l}
@@ -1519,7 +1564,7 @@ Thus CX+F reduced keypresses compared to tabbing in 7 of 8 tasks, which we consi
 CX reduced keypresses compared to tabbing in 6 of 8 tasks (75\%), which is certainly overall an improvement, but not the large majority sought by the hypothesis.\\
 Since one mode of ChibiPoint (CX+F) meets the requirements, Hypothesis 1 holds.
 
-\subsection{Support for Hypothesis 2}
+\subsubsection{Support for Hypothesis 2}
 \setcounter{tasktablecounter}{0}
 \begin{tabular}{l l}
 \hline\hline %inserts double horizontal lines 
@@ -1567,8 +1612,8 @@ Using colour-matching to designate which flyout referred to which clickable was 
 \begin{itemize}
 \item Positioning the flyout on the clickable it describes could make it easier to determine which element it refers to, but at the same time it necessarily obscures that clickable. However the user might not need to see the entirety of a clickable to be able to act on it, so this could be fine, and work better than the current confusion.
 \item Reducing the number of flyouts could sacrifice efficiency to improve effectiveness; less colours will be in use, and less flyouts exist to overlap each other or each others' clickables.
-\item Change the avoidance algorithm (see \Cref{sec:avoidance}) so that flyouts further avoid overlapping each other, and perhaps design it also to avoid overlapping each others' clickables.
-\item Make flyouts partially transparent, to limit the occlusion they can cause.
+\item Changing the avoidance algorithm (see \Cref{sec:avoidance}) so that flyouts further avoid overlapping each other, and perhaps design them to avoid also overlap of each others' clickables.
+\item Making flyouts partially transparent, to limit the occlusion they can cause.
 \end{itemize}
 
 It has to be cautioned also that we have not captured expert performance in this study --- the current design could be acceptable to an experienced user.
