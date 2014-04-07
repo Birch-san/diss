@@ -1544,19 +1544,23 @@ It should also be observed that in the non-supported task, no refute was seen to
 
 \subsection{How `effective' are the pointing systems under test?}
 \subsubsection{Definition of effectiveness}
-We promised in \Cref{sec:qualitative_promises} to deliver a more `effective' pointing system than tabbing. By this we mean, a system which is capable of completing the required pointing tasks. Tabbing was felt to be insufficient here, because its relative traversal was vulnerable to focus traps --- page regions beyond which focus cannot advance, or which indefinitely load new content into the path of traversal. Additionally tabbing was believed to be vulnerable to a `lack of visual indicator of focus' --- a situation where webpage elements provide no visual feedback upon keyboard focus, leaving the user lost.
+We promised in \Cref{sec:qualitative_promises} to deliver a more `effective' pointing system than tabbing. By this we mean: a system which is capable of completing the required pointing tasks. Tabbing was felt to be insufficient here, because its relative traversal was vulnerable to focus traps --- page regions beyond which focus cannot advance, or which indefinitely load new content into the path of traversal. Additionally tabbing was believed to be vulnerable to a `lack of visual indicator of focus' --- a situation where webpage elements provide no visual feedback upon keyboard focus, leaving the user lost.
 
 \subsubsection{Tabbing effectiveness}
+\label{sec:tabbing_effectiveness}
 We did not attempt to capture the former effectiveness problem (focus traps), since we cannot do a quantitative comparison where one system is unable altogether to point at the target. However we capture some evidence for the latter effectiveness problem (lack of visual indicator of focus). This occurs, of course, in Task 6: Low Visual Indicator of Focus. A huge standard deviation in keystrokes (30.485) was measured on this task, especially considering the tabbing journey is deterministic, so no deviation need occur at all unless the user overshoots their target and has to backtrack.
 
-Admittedly in many cases, participants overshoot on purpose, as they use the visual progress of the tab focus as a heuristic for how many keypresses they need to input --- allowing them to pause less often to verify the element under focus. Hence a certain amount of deviation can be expected in longer navigations, as participants titrate their speed to traverse the long distances quickly.
+Admittedly in many cases, participants overshoot on purpose, as they use (we believe) the visual progress of the tab focus as a heuristic for how many keypresses they need to input --- allowing them to pause less often to verify the element under focus. Hence a certain amount of deviation can be expected in longer navigations, as participants titrate their speed to traverse the long distances quickly.
 
 Nevertheless, we feel the abnormally high deviation in the `low visual indicator of focus' task to be symptomatic of participants missing their target when using tabbing navigation --- they did not know that they were pointing at their target, and so continued traversing past it. This was confirmed by our observations of the task performance, and also from feedback the participants gave: \textit{``in some cases, e.g. Amazon, the button's were not highlighted so it required some careful investigation to find out what I was about to press''}, \textit{``when performing tabbing on the amazon page, I had very little knowledge about the current `location' of the tab. Even on websites that did show the location, it was often just a very faint dotted border, which really isn't much easier to see''}.
 
 We assert at least that there exists an effectiveness problem with tabbing. However, ChibiPoint came with its own effectiveness problems.
 
 \subsubsection{Flyout effectiveness}
-Flyouts were found to obscure the elements that participants tried to point at: \textit{``Sometimes when using flyouts on an area with many links, the suggestions would become a bit cluttered making it slightly difficult to see what I was pointing at''}. The same participant, however, was unperturbed by this: \textit{``However, by choosing flyouts, this is a sacrifice I am willing to make (and understand why)''}, suggesting that this is still an acceptable level of effectiveness. It must also be pointed out that tasks such as `Link surrounded by many links' were designed to be worst-case scenarios for the flyouts system.
+\label{sec:flyout_effectiveness}
+There existed some praise for the flyouts system, with one participant saying \textit{``Chibi with flyovers [sic] worked great!''} --- possibly this can be interpreted as an assessment that it solved the tasks well, which would imply effectiveness. In the same vein, ChibiPoint with flyouts was described to \textit{``work just as well and often better in all cases [than tabbing]''}.
+
+Flyouts were found, however, to obscure the elements that participants tried to point at: \textit{``Sometimes when using flyouts on an area with many links, the suggestions would become a bit cluttered making it slightly difficult to see what I was pointing at''}. The same participant, however, was unperturbed by this: \textit{``However, by choosing flyouts, this is a sacrifice I am willing to make (and understand why)''}, suggesting that this is still an acceptable level of effectiveness. It must also be pointed out that tasks such as `Link surrounded by many links' were designed to be worst-case scenarios for the flyouts system.
 
 Using colour-matching to designate which flyout referred to which clickable was felt to be at least partially ineffective: \textit{``question the effectiveness of the use of colours to highlight the link suggestions. On a webpage with a lot of colours this just because [sic] confusing''}. The positioning of the flyouts was felt to be confusing also \textit{``especially when the key shortcuts [...] overlapped and the shortcut appeared over the face of other links''}. This is a hard problem to solve, but we suggest nevertheless some alternative designs:
 
@@ -1564,7 +1568,10 @@ Using colour-matching to designate which flyout referred to which clickable was 
 \item Positioning the flyout on the clickable it describes could make it easier to determine which element it refers to, but at the same time it necessarily obscures that clickable. However the user might not need to see the entirety of a clickable to be able to act on it, so this could be fine, and work better than the current confusion.
 \item Reducing the number of flyouts could sacrifice efficiency to improve effectiveness; less colours will be in use, and less flyouts exist to overlap each other or each others' clickables.
 \item Change the avoidance algorithm (see \Cref{sec:avoidance}) so that flyouts further avoid overlapping each other, and perhaps design it also to avoid overlapping each others' clickables.
+\item Make flyouts partially transparent, to limit the occlusion they can cause.
 \end{itemize}
+
+It has to be cautioned also that we have not captured expert performance in this study --- the current design could be acceptable to an experienced user.
 
 \subsubsection{Crosshair effectiveness}
 Crosshairs did not utilise the same `clickable' detection that flyouts enjoyed. We chose this implementation because there was an advantage to this: clicks could be sent to elements which were not recognised as clickable by our system.
@@ -1575,10 +1582,36 @@ Feedback reveals such experiences: \textit{``Chibi with just crosshairs was uniq
 
 Possibly a compromise design exists: allow users to click elements with crosshairs regardless of whether a clickable is detected, but `paint' that target a specific colour whenever it is known for certain to be clickable. This solution gives the user power to click whatever they want, but also feedback of what might happen if they do.
 
-\subsection{How `predictable' are the pointing systems under test?}
+Overall (it is unclear if flyouts are included in this assessment), ChibiPoint was felt to be \textit{``far less variable than tabbing.''}. That is, its performance was consistent over a variety of tasks. This in itself can be taken as a type of effectiveness --- it is suited to more pointing contexts.
 
-\subsection{Discussion of Task Performance}
-% Qualitative stuff here
+\subsection{How `predictable' are the pointing systems under test?}
+\subsubsection{Definition of predictability}
+We promised in \Cref{sec:qualitative_promises} to deliver a more `predictable' pointing system than tabbing. By this we mean: a pointing system where the user knows in advance what the outcomes of their actions will be (ie, what output will arise from each of their inputs). We felt tabbing to be fundamentally `unpredictable' because it traverses with respect to the page markup --- its journey is based on code the user cannot see. 
+
+\subsubsection{Tabbing predictability}
+We capture quantitatively some evidence for a predictability problem in tabbing. Since the system is meant to take a deterministic route through the page (the markup does not change, and the route cannot branch, except with skiplinks which we did not use), one might expect there to be no deviation in the scores of participants. But as discussed in \Cref{sec:tabbing_effectiveness}, one reason for deviation in keystroke scores of participants, is that users overshoot their target in their haste to pre-empt how many keypresses are required. This is because a visual heuristic is used to judge progress in a (non-visual) markup traversal.
+
+\subsubsection{Flyouts predictability}
+% usability study covers some stuff, right?
+One participant suggested implementing \textit{``a priority system in the background that chooses which keys to highlight based on previous browsing history rather than what seems like random''}, implying that the suggestions produced by flyouts could not be pre-empted. This is not a huge failing: the flyout feature on its own is not intended to enhance predictability; its primary goal is adding efficiency.
+
+In any case, participants were observed to exercise some control over their shortlist of flyouts, as evidenced by their over-specifying of elements on tasks like `visually early element', to remove confusing suggestions. So users understood how to constrain their search, bounding the possible suggestions, even if they did not know which possibilities would be presented.
+
+\subsubsection{Crosshairs predictability}
+ChibiPoint overall was described by one participant as \texit{``very intuitive and was simple to use. Also, it mapped well to the Numpad which made navigation easier and more `familiar' so to speak''}. We take this `intuitivity' to meet our definition of predictability --- a user's knowing in advance what the outcomes of their actions will be. Mappings to numpad directions were understood, so it is possible that this participant understood that they had non-arbitrary control over the direction of traversal.
+
+Incidentally, several participants warned that losing this spatial mapping of inputs would harm the system --- \texit{``Numpad is very handy for the grid interface and touch typing. It would be tricky to use the number row on a laptop keyboard, though''}. For laptop keyboards we have developed another $3\times3$ grid mapping of keybindings, that does not require a numpad (and uses instead a grid of alphabet keys). This has been received well (outside of a formal study context) by users who lacked a numpad.
+
+\subsection{User Preferences}
+User preferences are tabulated in \Cref{fig:quantpost}. 10 participants (83\%) chose CX+F as their preferred system. The only deviations from these were 2 participants who chose CX. No participant preferred Tabbing. That any users explicitly preferred to not have flyouts is symptomatic that there are matters other than efficiency involved in system preference. This might be accounted for by the effectiveness problems we discussed in \Cref{sec:flyout_effectiveness}. Overall though, it is heartening to see that both ChibiPoint systems are preferred to Tabbing.
+
+Asked to rate ease of use on a 5-point scale (with 1 being the lowest), ChibiPoint systems averaged highly (CX = 4.17/5, CX+F = 4.75/5), and certainly higher than tabbing (2.08/5).
+
+Despite effectiveness issues raised by flyouts, users felt it made ChibiPoint easier to use. Of course, this is a subjective question and `ease of use' may have been felt to include the number of keypresses required --- users could just be referring to efficiency here.
+
+The amount of keypressing required by ChibiPoint was considered reasonable (`unreasonability' rating CX = 2.08/5, CX+F = 1.42/5), and tabbing considered completely unreasonable (4.75/5).
+
+Thus it was seen that users agree with the hypotheses we have supported quantitatively --- that ChibiPoint systems are more efficient than tabbing, and also that flyouts improve that efficiency further.
 
 \section{Summary}
 
