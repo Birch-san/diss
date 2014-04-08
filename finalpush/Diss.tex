@@ -85,7 +85,7 @@
 %\makeindex
 \makeglossaries
 
-\title{ChibiPoint: Accessible Pointing for Web Applications}
+\title{ChibiPoint (\begin{CJK}{UTF8}{min}ちび点\end{CJK}): Accessible Pointing for Web Applications}
 \author{Alexander Birch}
 \date{\today}
 \begin{document}
@@ -93,7 +93,7 @@
 \maketitle
 %\newpage
 \begin{abstract}
-[Revisit this once Results section is finalized, and once Conclusions section is written]
+The web is designed for pointing devices like mice. Many users cannot use such input devices, due to disability or device restrictions. The existing accessible standard for mouseless pointing on the web is `tabbing navigation', which we find to be ineffective, unpredictable and inefficient. We design, develop and evaluate `ChibiPoint (\begin{CJK}{UTF8}{min}ちび点\end{CJK})': a pointing mechanism designed for modern websites.
 \end{abstract}
 
 \tableofcontents
@@ -441,9 +441,11 @@ TypeAheadFind (now Find As You Type), referred to previously in \cref{changingwe
 %http://www.microsoft.com/enable/demos/windowsvista/trans_speech.aspx
 %http://sean.wenzel.net/voicerecognition/mousegrid/#documentation
 %http://www.nuance.com/naturallyspeaking/customer-portal/documentation/userguide/chapter4/ug_chapter4_moving_clicking_mouse.asp
-One promising approach is `MouseGrid', recruited by many speech-control systems. It exists within Windows Vista's speech recognition, is available as a plugin for Dragon NaturallySpeaking (made by Hippocampus), and is an official feature in Dragon Dictate. Once invoked, a grid is drawn, dividing the screen into segments. Each segment of the grid is labelled with a number the user can say to `drill down' into that segment. Upon doing so, a smaller grid is made within that grid segment, and the user is invited again to specify a segment to navigate towards. Ultimately the user tries to steer the grid closer to some button they wish to press.
+One promising approach is `MouseGrid', recruited by many speech-control systems. It exists within Windows Vista's speech recognition~\cite{vistamousegrid}, is available as a plugin for Dragon NaturallySpeaking (made by Hippocampus~\cite{hippogrid}), and is an official feature in Dragon Dictate\cite{nuancegrid}. Once invoked, a grid is drawn, dividing the screen into segments. Each segment of the grid is labelled with a number the user can say to `drill down' into that segment. Upon doing so, a smaller grid is made within that grid segment, and the user is invited again to specify a segment to navigate towards. Ultimately the user tries to steer the grid closer to some button they wish to press.
 At all times, a click can be effected in the center of the most specific grid. This recursive split of the screen divides the search space of the screen logarithmically, and so enables the user to express interest in a huge variety of screen locations, using very few lookups.
 This approach uses a small vocabulary of speech inputs (just a grid of numbers 1-9, plus a `click' command, and on/off). As such, it could be easily mapped to the keyboard. It could well provide an efficient means for specifying buttons on the web.
+
+Another contender for efficient voice-based pointing is `Voice Finger'~\cite{voicefinger}. Instead of a hierarchical approach, it utilises a large vocabulary of inputs, and maps sequences of these to a fine grid of screen portions. In other words, the user reads out `coordinates' of screen portions to move the mouse there. It is possible that we cannot map this so well to our system, which could be made available to more hardware if allowed to use a small vocabulary. Additionally the interface of the system obscures content with its multitude of labels, which could be small enough to be illegible on devices like Smart TVs.
 \section{Is there any support for the notion that web accessibility standards prescribe a sub-par experience?}
 \label{subparstandards}
 Current accessibility guidelines do not address the problem of efficient keyboard access~\cite{schrepp2006efficiency}. Keyboard inefficiency can be severe enough that even a standards-compliant website may be, for practical purposes, unusable by keyboard users\cite{schrepp2006efficiency,coyne2001beyond,powlik2002accessibility}. However, as discussed previously in \cref{makingwebcontentkeyboardaccessible}, current user agents do not necessarily comply with user agent standards as wholly as they could; the problem could therefore lie with the existing implementations of web browsers, rather than the standards prescribed.
@@ -1605,7 +1607,7 @@ We assert at least that there exists an effectiveness problem with tabbing. Howe
 
 \subsubsection{Flyout effectiveness}
 \label{sec:flyout_effectiveness}
-There existed some praise for the flyouts system, with one participant saying \textit{``Chibi with flyovers [sic] worked great!''} --- possibly this can be interpreted as an assessment that it solved the tasks well, which would imply effectiveness. In the same vein, ChibiPoint with flyouts was described to \textit{``work just as well and often better in all cases [than tabbing]''}.
+There existed some praise for the flyouts system, with one participant saying \textit{``Chibi with flyovers [sic] worked great!''} --- possibly this can be interpreted as an assessment that it solved the tasks well, which would imply effectiveness. In the same vein, ChibiPoint with flyouts was described to \textit{``work just as well and often better in all cases [than tabbing]''}. Flyouts were felt also to provide good guesses: \textit{``with flyouts, the offered `guesses' at what the user wants to click are very good. These guesses make it very clear what will be clicked on''}, which suggests that were effective at allowing the user to navigate where they wanted to.
 
 Flyouts were found, however, to obscure the elements that participants tried to point at: \textit{``Sometimes when using flyouts on an area with many links, the suggestions would become a bit cluttered making it slightly difficult to see what I was pointing at''}. The same participant, however, was unperturbed by this: \textit{``However, by choosing flyouts, this is a sacrifice I am willing to make (and understand why)''}, suggesting that this is still an acceptable level of effectiveness. It must also be pointed out that tasks such as `Link surrounded by many links' were designed to be worst-case scenarios for the flyouts system.
 
@@ -1620,7 +1622,10 @@ Using colour-matching to designate which flyout referred to which clickable was 
 
 It has to be cautioned also that we have not captured expert performance in this study --- the current design could be acceptable to an experienced user.
 
+Interestingly, there were no effectiveness problems pertaining to clickable detection. The few classes of clickable that we do detect, appeared to be sufficient for these tasks (though admittedly these were hand-picked by the researcher).
+
 \subsubsection{Crosshair effectiveness}
+\label{sec:crosshair_effectiveness}
 Crosshairs did not utilise the same `clickable' detection that flyouts enjoyed. We chose this implementation because there was an advantage to this: clicks could be sent to elements which were not recognised as clickable by our system.
 
 However this posed an effectiveness problem: participants were unsure whether the targeted element was one that a click could be sent to. Especially when containers existed around clickables, participants sometimes clicked these in stead of the clickable itself, assuming that it listened for click events.
@@ -1649,6 +1654,8 @@ ChibiPoint overall was described by one participant as \textit{``very intuitive 
 
 Incidentally, several participants warned that losing this spatial mapping of inputs would harm the system --- \textit{``Numpad is very handy for the grid interface and touch typing. It would be tricky to use the number row on a laptop keyboard, though''}. For laptop keyboards we have developed another $3\times3$ grid mapping of keybindings, that does not require a numpad (and uses instead a grid of alphabet keys). This has been received well (outside of a formal study context) by users who lacked a numpad.
 
+Additionally, the effectiveness problem raised in \Cref{sec:crosshair_effectiveness} concerning the difficulty that exists in ascertaining in advance whether a click can be sent to the target, can be considered a predictability problem. The same suggested design criteria could improve predictability here.
+
 \subsection{User Preferences}
 User preferences are tabulated in \Cref{fig:quantpost}. 10 participants (83\%) chose CX+F as their preferred system. The only deviations from these were 2 participants who chose CX. No participant preferred Tabbing. That any users explicitly preferred to not have flyouts is symptomatic that there are matters other than efficiency involved in system preference. This might be accounted for by the effectiveness problems we discussed in \Cref{sec:flyout_effectiveness}. Overall though, it is heartening to see that both ChibiPoint systems are preferred to Tabbing.
 
@@ -1661,7 +1668,20 @@ Participants were asked also to rate the amount of keypressing required by each 
 Thus it was seen that users agree with the hypotheses we have supported quantitatively --- that ChibiPoint systems are more efficient than tabbing, and also that flyouts improve that efficiency further.
 
 \subsection{Miscellaneous Feedback}
+\subsubsection{Related system: Vimium}
+One participant described ChibiPoint as being similar to an existing Chrome browser extension, `Vimium'~\cite{vimium}. This uses a non-hierarchical system: instead of requiring the user to specify an area of interest on the screen, every clickable on-screen is labelled immediately with a unique key sequence.
+
+A comparison of this system with ChibiPoint would be interesting, but is outside of the scope of this work. We note, though, that a larger input vocabulary is used by Vimium: it recruits a large alphabet for its key-sequences. This reduces its ability to map to other input hardware. Additionally, in the context of keyboard-usage, hands cannot stay in the $3\times3$ grids we designate on the keyboard; touch-typing becomes harder.
+
+Labels are small, so they are able to be overlaid on each clickable without seriously obscuring the element. However, that small size could pose a legibility problem, particularly on devices like Smart TVs.
+
+It is definitely worth reviewing the Vimium codebase --- it does not suffer from the keybinding conflicts that ChibiPoint experiences on websites like Google. Additionally it would be interesting to compare the methods used for clickable detection.
 % Mention suggestions here
+\subsubsection{Suggestions}
+One participant recommends implementing for flyouts \textit{``a priority system in the background that chooses which keys to highlight based on previous browsing history''}. Certainly since flyouts exist as suggestions, informing them with knowledge of previous pointing decisions (or history of visited webpages) could allow more relevant choices to be made. However, this is predicated on the assumption that the current suggestions are not as helpful as they could be. It is worth investigating in future which suggestion algorithms produce the most relevant results.
+
+\subsubsection{Assessment Disclaimers}
+One participant holds that `exertion' is not so simply measured in the case of tabbing: \textit{``tabbing involved holding down of keys, which is less physical exertion than the counted keypresses might imply''}. We did not factor this into our analysis. Perhaps our efficiency findings should only be taken as a heuristic for exertion.
 
 \section{Summary}
 \paragraph{Efficiency}
@@ -1721,7 +1741,44 @@ Due to the consistent capability it demonstrates in navigating modern, real-worl
 We feel we have demonstrated also that changing the navigation mechanism is a valid vector through which accessibility can be introduced to otherwise inaccessible websites. For example, ChibiPoint copes well with the focus indication problems that render Amazon inaccessible to tabbing navigation. Thus modern web developers could potentially be relieved of the onus of accessible development (at least in the case of mouseless navigation).
 
 \section{Future Work}
+Clearly there exists work in fixing implementation bugs in ChibiPoint:
 
+\begin{itemize}
+\item Clickable detection could be extended to capture more types of clickable (though this was not 
+seen to represent a gap in the effectiveness of flyouts).
+\item ChibiPoint's key listener logic needs work, to support websites like Google, which also listen for keypresses.
+\item Flash Players are a citizen in webpages that host interacting elements. ChibiPoint needs to be able to interact with these.
+\end{itemize}
+
+Design can be revised in these ways:
+\begin{itemize}
+\item Flyouts and their clickables need to be more distinguishable, as well as occluding each other less. Here the avoidance algorithm or positioning strategy could be changed. Otherwise opacity or quantity of flyouts could be reduced.
+\item Crosshairs behaviour could be made more predictable by refusing to click on elements which are not listening for clicks, or otherwise indicate visually when this is suspected to be the case.
+\end{itemize}
+
+ChibiPoint could be extended also with more functionality:
+\begin{itemize}
+\item A more complete mouse metaphor could be achieved by sending mouseover events to page elements that respond to them.
+\end{itemize}
+
+More comparisons are worth pursuing:
+\begin{itemize}
+\item How does ChibiPoint compare to the similar web-based pointing mechanism, Vimium~\cite{vimium}?
+\item How does ChibiPoint compare to the mouse?
+\end{itemize}
+
+Extensions of ChibiPoint are possible:
+\begin{itemize}
+\item Porting the system to other web browsers
+\item Porting the system to other devices
+\item Mapping more input hardware to ChibiPoint, such as gestures or speech
+\end{itemize}
+
+We ask if ChibiPoint could find use in wider keyboard pointing contexts than just the web --- for example, providing mouseless pointing on an OS-level.
+
+We also question the role of tabbing in the modern web --- perhaps it could be revised to better focus on its strengths --- for example, using it for form traversal only (as is possible in Safari).
+
+A wider question exists on the direction web accessibility should take --- is it an outdated view that the onus should fall on developers and web standards to provide accessibility? Can accessibility instead be brought to the web by developing a user agent that expects the websites of today, as we have done with the pointing system in ChibiPoint?
 %Remember also to print questionnaire itself!
 
 \pagebreak
