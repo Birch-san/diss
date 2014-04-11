@@ -79,7 +79,7 @@
 \usepackage[colorlinks]{hyperref}
 \usepackage[noabbrev]{cleveref}
 \crefformat{section}{section #2#1#3}
-\crefdefaultlabelformat{[#2#1#3]}
+\crefdefaultlabelformat{#2#1#3}
 
 \usepackage[nomain,acronym,toc,section,numberedsection=autolabel]{glossaries} % make a separate list of acronyms
 %\makeindex
@@ -1009,7 +1009,7 @@ The following describes the methodology for the full study. Deviations exclusive
 
 The researcher followed a script to ensure that all instances of the study were performed the same way.
 
-Participants were briefed on the purpose of the dissertation and of the study, as well as what participation in the study would entail. They were assured that no identifying information would be kept about them, that it was the system performance being measured rather than their personal performance, and that they were free to withdraw participation at any point. They were told that there was no desire for them to generate any particular outcome, and that we simply wanted to compare the performance of the systems. With these explained, participants were asked to sign a permission slip, and were offered also a copy in case they wished to contact the researchers after the fact.
+Participants were briefed on the purpose of the dissertation and of the study, as well as what participation in the study would entail. They were assured that no identifying information would be kept about them, that it was the system performance being measured rather than their personal performance, and that they were free to withdraw participation at any point. They were told that there was no desire for them to generate any particular outcome, and that we simply wanted to compare the performance of the systems. With these explained, participants were asked to sign a permission slip, and were offered also a copy in case they wished to contact the researchers after the fact. Permission slips can be seen in \Cref{sec:eval_permission}.
 
 Participants were assigned a unique number. This enabled both the questionnaires they would fill in to be related as being from the same participant. Additionally participants were assigned a sequence in which to evaluate the three systems. Biases pertaining to the order in which systems are used, were counterbalanced by testing using all sequence permutations of the three systems equally. There were 6 permutations, so the study recruited a multiple of this: 12 participants.
 
@@ -1050,7 +1050,7 @@ The post-task questionnaire asked participants to give subjective feedback on th
 \subsection{Pilot Study}
 The pilot study existed as a `dry run' to catch problems in the method of the larger study, before scaling up.
 
-We recruited a Software Research Engineer with experience developing and assessing accessibility software. His preliminary questionnaire response (\Cref{fig:partic_pilotpre}) describe a proficient computer user (with 13+ hours/day of device usage, 5/5 self-rating for touch typing, and a user of hotkeys).
+We recruited a Software Research Engineer with experience developing and assessing accessibility software. His preliminary questionnaire response (\Cref{fig:partic_pilotpre}) describe a proficient computer user (with 13+ hours/day of device usage, 5/5 self-rating for touch typing, and a user of hotkeys). He described no history of disability. His permission slip can be found in \Cref{sec:pilot_permission}.
 
 A list of pointing tasks was created, but these proved to be uninformative --- many of them duplicated classes of navigation already tested, and overall they did not test a wide enough spread of navigation types --- to the extent that tabbing's strengths in form traversal were not represented. Additionally it was not clear what the delineation was between task setup and the actual recorded portion. The larger study uses a clearer separation of actions and setup.
 
@@ -1801,59 +1801,6 @@ A wider question exists on the direction web accessibility should take --- is it
 %\pagebreak
 \addcontentsline{toc}{chapter}{APPENDICES}
 \appendix
-\chapter{Pilot Study}
-
-\begin{figure}[ht]
-% table row height
-\renewcommand{\arraystretch}{1.5}
-
-\begin{tabularx}{\textwidth}{X|X}
-\hline\hline %inserts double horizontal lines 
-Question & Response \\ [0.5ex] % inserts table 
-\hline
-%heading 
-Gender	&	Male	\\
-Age	&	23	\\
-How many hours a day do you use a computer or smartphone?	&	13+	\\
-How proficient are you at controlling computers with just the keyboard?	&	I use hotkeys in addition to a mouse/pointing device	\\
-Do you /currently/ have any motor impairments/disabilities that hinder computer usage? If so, please explain.	&	None	\\
-Do you presently have any difficulty reading the screen? If so, please explain.	&	None	\\
-Have you ever had any motor impairments/disabilities that hinder computer usage? If so, please explain.	&	None	\\
-What is the main desktop OS you use?	&	Windows	\\
-What is the main web browser you use?	&	Internet Explorer	\\
-Have you ever used any accessibility software or hardware to control computers? If so, please explain which, and the extent to which you used them.	&	Developed and used adaptive interface software for World of Warcraft.	\\
-Is there any additional information you wish to declare?	&	None	\\
-How proficient are you at touch-typing?	&	5	\\
-What is your occupation?	&	Software research engineer	\\ [1ex] % [1ex] adds vertical space 
-\hline %inserts single line 
-\end{tabularx}
-\caption{Questionnaire response of Pilot Study participant}
-\label{fig:partic_pilotpre}
-\end{figure}
-
-\begin{figure}[ht]
-% table row height
-\renewcommand{\arraystretch}{1.5}
-
-\begin{tabularx}{\textwidth}{X|X}
-\hline\hline %inserts double horizontal lines 
-Question & Response \\ [0.5ex] % inserts table
-\hline 
-Which system did you prefer using?	&	ChibiPoint (with crosshairs AND flyouts)	\\
-How easy was it to point using `tabbing navigation'?	&	1	\\
-How was the amount of keypressing required in `tabbing navigation'?	&	5	\\
-How easy was it to point using `ChibiPoint (with just crosshairs)'?	&	4	\\
-How was the amount of keypressing required in `ChibiPoint (with just crosshairs)'?	&	2	\\
-How easy was it to point using `ChibiPoint (with crosshairs AND flyouts)'?	&	5	\\
-How was the amount of keypressing required in `ChibiPoint (with crosshairs AND flyouts)'?	&	1	\\
-Have you any other feedback?	&	Crosshairs without flyouts can be difficult to accurately pinpoint the desired text.	\\
-\hline %inserts single line 
-\end{tabularx}
-\caption{Post-experiment questionnaire response of Pilot Study participant}
-Ratings were all on a five-point scale, 1--5.
-\label{fig:partic_pilotpost}
-\end{figure}
-
 \chapter{Usability Study}
 
 \definecolor{mygreen}{rgb}{0,0.6,0}
@@ -2388,8 +2335,69 @@ P:		Yeah. Absolutely. Who knows what's gonna - yeah, when people {unclear}, I ne
 \end{lstlisting}
 \FloatBarrier
 
-\chapter{Quantitative Study}
 
+\chapter{Pilot Study}
+
+\begin{figure}[ht]
+% table row height
+\renewcommand{\arraystretch}{1.5}
+
+\begin{tabularx}{\textwidth}{X|X}
+\hline\hline %inserts double horizontal lines 
+Question & Response \\ [0.5ex] % inserts table 
+\hline
+%heading 
+Gender	&	Male	\\
+Age	&	23	\\
+How many hours a day do you use a computer or smartphone?	&	13+	\\
+How proficient are you at controlling computers with just the keyboard?	&	I use hotkeys in addition to a mouse/pointing device	\\
+Do you /currently/ have any motor impairments/disabilities that hinder computer usage? If so, please explain.	&	None	\\
+Do you presently have any difficulty reading the screen? If so, please explain.	&	None	\\
+Have you ever had any motor impairments/disabilities that hinder computer usage? If so, please explain.	&	None	\\
+What is the main desktop OS you use?	&	Windows	\\
+What is the main web browser you use?	&	Internet Explorer	\\
+Have you ever used any accessibility software or hardware to control computers? If so, please explain which, and the extent to which you used them.	&	Developed and used adaptive interface software for World of Warcraft.	\\
+Is there any additional information you wish to declare?	&	None	\\
+How proficient are you at touch-typing?	&	5	\\
+What is your occupation?	&	Software research engineer	\\ [1ex] % [1ex] adds vertical space 
+\hline %inserts single line 
+\end{tabularx}
+\caption{Questionnaire response of Pilot Study participant}
+\label{fig:partic_pilotpre}
+\end{figure}
+
+\begin{figure}[ht]
+% table row height
+\renewcommand{\arraystretch}{1.5}
+
+\begin{tabularx}{\textwidth}{X|X}
+\hline\hline %inserts double horizontal lines 
+Question & Response \\ [0.5ex] % inserts table
+\hline 
+Which system did you prefer using?	&	ChibiPoint (with crosshairs AND flyouts)	\\
+How easy was it to point using `tabbing navigation'?	&	1	\\
+How was the amount of keypressing required in `tabbing navigation'?	&	5	\\
+How easy was it to point using `ChibiPoint (with just crosshairs)'?	&	4	\\
+How was the amount of keypressing required in `ChibiPoint (with just crosshairs)'?	&	2	\\
+How easy was it to point using `ChibiPoint (with crosshairs AND flyouts)'?	&	5	\\
+How was the amount of keypressing required in `ChibiPoint (with crosshairs AND flyouts)'?	&	1	\\
+Have you any other feedback?	&	Crosshairs without flyouts can be difficult to accurately pinpoint the desired text.	\\
+\hline %inserts single line 
+\end{tabularx}
+\caption{Post-experiment questionnaire response of Pilot Study participant}
+Ratings were all on a five-point scale, 1--5.
+\label{fig:partic_pilotpost}
+\end{figure}
+
+
+\section{Permission Slip}
+\label{sec:pilot_permission}
+\newcommand{\permissionslip}[1]{\centerline{\includegraphics{permission/#1.jpeg}}}
+\permissionslip{Zack}
+
+
+\chapter{Quantitative Study}
+\section{Demographic}
 %[trim=0.0cm 11cm 0.0cm 11cm,clip]
 %[viewport=0 0 390 610,clip,width=8in]
 %[viewport=0 0 11cm 5cm,clip]
@@ -2412,6 +2420,7 @@ P:		Yeah. Absolutely. Who knows what's gonna - yeah, when people {unclear}, I ne
 \label{fig:partic_gender}
 \end{table}
 
+\section{Proficiencies}
 \begin{table}[ht]
 \centerline{\includegraphics{figures/Proficiency.pdf}}
 \label{fig:partic_proficiency}
@@ -2440,7 +2449,7 @@ Touch-typing proficiency was rated on a five-point scale ranging from the sentim
 \end{table}
 
 %\FloatBarrier
-
+\section{Experiment Materials}
 \newcommand{\anumero}{{\fontfamily{cmr}\selectfont\textnumero}}
 
 \begin{table}[ht]
@@ -2463,6 +2472,8 @@ Task \anumero & URL \\ [0.5ex] % inserts table
 \caption{URLs used in tasks (full study)}
 \label{fig:fullStudyURLs}
 \end{table}
+
+\section{Post-Experiment Questionnaire Results}
 
 \newcommand*\rot{\rotatebox{90}}
 \newcommand{\psize}{1.5cm}
@@ -2495,6 +2506,22 @@ Ratings were all on a five-point scale, 1--5.
 %\begin{table}[ht]
 %\renewcommand{\arraystretch}{1.5}
 \LTXtable{\textwidth}{figures/Quantitative_PostFeedbackTable.tex}
+
+\section{Permission Slips}
+\label{sec:eval_permission}
+\permissionslip{Allan}
+\permissionslip{Danni}
+\permissionslip{David}
+\permissionslip{Iris}
+\permissionslip{Laura}
+\permissionslip{Lisa}
+\permissionslip{Matt}
+\permissionslip{Phil}
+\permissionslip{Rikki}
+\permissionslip{Rupert}
+\permissionslip{Will}
+\permissionslip{Wilson}
+
 %\caption{(Continued) Post-experiment questionnaire responses of Quantitative Study participants}
 %\label{fig:quantpost_feedback}
 %\end{table}
