@@ -86,21 +86,57 @@
 %\makeindex
 \makeglossaries
 
-\title{ChibiPoint (\begin{CJK}{UTF8}{min}ちび点\end{CJK}): Accessible Pointing for Web Applications}
+\newcommand{\disstitle}{ChibiPoint: Accessible Pointing for Web Applications}
+\newcommand{\myname}{Alexander Birch}
+\title{\disstitle}
 \author{Alexander Birch}
-\date{\today}
+\date{Bachelor of Science in Computer Science with Honours (incl. ab initio Japanese Language \& with Industrial Placement)\\The University of Bath\\April 2014}
+
+
 \begin{document}
+
+
+\setcounter{page}{0}
+\pagenumbering{roman}
+
 \include{Diss-glossary}
 \maketitle
-%\newpage
-\begin{abstract}
+
+
+% Set this to the number of years consultation prohibition, or 0 if no limit
+\consultation{0}
+
+
+\declaration{\disstitle}{\myname}
+
+
+\abstract
 The web is designed for pointing devices like mice. Many users cannot use such input devices, due to disability or device restrictions. The existing accessible standard for mouseless pointing on the web is `tabbing navigation', which we find to be ineffective, unpredictable and inefficient. We design, develop and evaluate `ChibiPoint (\begin{CJK}{UTF8}{min}ちび点\end{CJK})': a pointing mechanism designed for modern websites.
-\end{abstract}
+\newpage
+
 
 \tableofcontents
+\listoffigures
+\listoftables
 %\pagebreak
 
 %\chapter*{Introduction}
+\chapter*{Acknowledgements}
+I thank my supervisor, Dr. Fabio Nemetz, for taking a chance on this project idea. He has been a source of constant support and encouragement to me and all others he supervises. It was that motivation that enabled me to keep opening this .tex file.
+
+I thank the others in Team Fabio for the rapport we enjoyed as a group this year. It was heartening to work alongside so many inspired individuals.
+
+I thank Dr. Alessio Guglielmi for electing to second-assess this dissertation on top of his original workload. His gesture is appreciated.
+
+My brother Jamie provided invaluable assistance with statistical methods and SPSS. I am grateful for this.
+
+It goes without saying that I am indebted also to all my study participants. It is thanks to you that the points made in this dissertation have any weight.
+\newpage
+
+
+\setcounter{page}{1}
+\pagenumbering{arabic}
+
 
 \chapter{Introduction}
 
@@ -2393,7 +2429,7 @@ Ratings were all on a five-point scale, 1--5.
 
 \section{Permission Slip}
 \label{sec:pilot_permission}
-\newcommand{\permissionslip}[1]{\centerline{\includegraphics{permission/#1.jpeg}}}
+\newcommand{\permissionslip}[1]{\centerline{\includegraphics[width=\textwidth]{permission/#1.jpeg}}}
 \permissionslip{Zack}
 
 
@@ -2453,7 +2489,7 @@ Touch-typing proficiency was rated on a five-point scale ranging from the sentim
 \section{Experiment Materials}
 \subsection{Instructions}
 \label{sec:instructions}
-\newcommand{\instructionssheet}[1]{\centerline{\includegraphics[width=\textwidth]{instructions/#1.png}}}
+\newcommand{\instructionssheet}[1]{\centering\includegraphics[width=\textwidth,height=\dimexpr\textheight-1.1\baselineskip-\abovecaptionskip-\belowcaptionskip\relax,keepaspectratio]{instructions/#1.png}}
 \begin{figure}[ht]
 \instructionssheet{ChibiPointDrillInstructions}
 \label{fig:instructions_crosshairs}
