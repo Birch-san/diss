@@ -82,6 +82,14 @@
 \crefformat{section}{section #2#1#3}
 \crefdefaultlabelformat{#2#1#3}
 
+% allow URLs to wrap
+%\renewcommand{\UrlBreaks}{\do\/\do\a\do\b\do\c\do\d\do\e\do\f\do\g\do\h\do\i\do\j\do\k\do\l\do\m\do\n\do\o\do\p\do\q\do\r\do\s\do\t\do\u\do\v\do\w\do\x\do\y\d\o\z\do\A\do\B\do\C\do\D\do\E\do\F\do\G\do\H\do\I\do\J\do\K\do\L\do\M\do\N\do\O\do\P\do\Q\do\R\do\S\do\T\do\U\do\V\do\W\do\X\do\Y\do\Z}
+
+\usepackage[hyphenbreaks,anythingbreaks]{breakurl}
+
+
+\newcommand{\safefigheight}{\dimexpr\textheight-1.1\baselineskip-\abovecaptionskip-\belowcaptionskip\relax}
+
 \usepackage[nomain,acronym,toc,section,numberedsection=autolabel]{glossaries} % make a separate list of acronyms
 %\makeindex
 \makeglossaries
@@ -598,13 +606,13 @@ That is to say, they are desirable but not essential.
 %\includegraphics[width=8in]{LowFidelityFacebookLabelled}
 %\end{figure}
 
+Our software solution will need to cope with the many and varied pointing scenarios presented in typical web applications like \Cref{fig:typicalWebAppLayout}. Some discrete cases of interest have been labelled; a discussion follows, regarding what is significant about these cases, and how we could consider optimizing our software for such cases.
+
 \begin{figure}[H]
-\centerline{\includegraphics[width=8in]{figures/LowFidelityFacebookLabelled}}
+\centering\rotatebox{-90}{\includegraphics[height=\textwidth,width=\safefigheight,keepaspectratio]{figures/LowFidelityFacebookLabelled}}
 \caption{A typical complex web application layout.}
 \label{fig:typicalWebAppLayout}
 \end{figure}
-
- Our software solution will need to cope with the many and varied pointing scenarios presented in typical web applications like \Cref{fig:typicalWebAppLayout}. Some discrete cases of interest have been labelled; a discussion follows, regarding what is significant about these cases, and how we could consider optimizing our software for such cases.
 
 
 \newcounter{problemdomainfigcount}
@@ -1266,7 +1274,7 @@ We remind the reader of our hypotheses (whose detail can be read in full at \Cre
 \subsection{Overview}
 We provide in \Cref{fig:exertion} a clustered bar chart to show the difference in efficiency between each system, on a per-task basis:
 \begin{figure}[ht]
-\centerline{\includegraphics[width=8in]{figures/Exertion2.pdf}}
+\centering\rotatebox{-90}{\includegraphics[height=\textwidth,width=\safefigheight,keepaspectratio]{figures/Exertion2.pdf}}
 \caption{Exertion (in keypresses) per navigation task.}
 \label{fig:exertion}
 \end{figure}
@@ -1521,7 +1529,11 @@ By comparison, both ChibiPoint systems performed significantly better, as they w
 \navtask{Low visual indicator of focus}
 This task showed well the potential ineffectiveness of tabbing. Amazon.co.uk was styled (intentionally or otherwise) to have no visual indicator of keyboard focus for a vast majority of its interacting elements. Though highlights existed, it was found that its controls listen for `mouseover' events rather than `focus', and thus give feedback only to the mouse.
 
-Participants had to infer from the browser's `status bar' (a control which visualizes, amongst other things, the URL of any currently focused hyperlink), which element was focused. This information could come in forms such as: ``\begin{verbatim}http://www.amazon.co.uk/Polycotton-Hollowfibre-Non-Allergenic-Pillows-Pack/dp/B0029TA2LM/ref=sr_1_1?ie=UTF8&qid=1396716329&sr=8-1&keywords=pillow\end{verbatim}'', which was complex enough to be missed by many participants, who were observed to overshoot their target by pages, and even miss it on the way back also after backpedaling.
+Participants had to infer from the browser's `status bar' (a control which visualizes, amongst other things, the URL of any currently focused hyperlink), which element was focused. This information could come in forms such as:
+
+\raggedright\url{http://www.amazon.co.uk/Polycotton-Hollowfibre-Non-Allergenic-Pillows-Pack/dp/B0029TA2LM/ref=sr_1_1?ie=UTF8&qid=1396716329&sr=8-1&keywords=pillow}
+
+These were complex enough to be missed by many participants, who were observed to overshoot their target by pages, and even miss it on the way back also after backpedaling.
 
 Far more effective were the ChibiPoint systems, which provided their own visual indicators over targeted elements. They were also more efficient, performing in far fewer lookups than tabbing.
 
@@ -1544,7 +1556,7 @@ For speed comparisons, we will not invest in a formal significance analysis. We 
 \subsection{Overview}
 We provide in \Cref{fig:speed} a clustered bar chart to show the difference in speed between each system, on a per-task basis:
 \begin{figure}[ht]
-\centerline{\includegraphics[width=8in]{figures/TimeGraph2.pdf}}
+\centering\rotatebox{-90}{\includegraphics[height=\textwidth,width=\safefigheight,keepaspectratio]{figures/TimeGraph2.pdf}}
 \caption{Time taken (secs) per navigation task.}
 \label{fig:speed}
 \end{figure}
@@ -2489,7 +2501,7 @@ Touch-typing proficiency was rated on a five-point scale ranging from the sentim
 \section{Experiment Materials}
 \subsection{Instructions}
 \label{sec:instructions}
-\newcommand{\instructionssheet}[1]{\centering\includegraphics[width=\textwidth,height=\dimexpr\textheight-1.1\baselineskip-\abovecaptionskip-\belowcaptionskip\relax,keepaspectratio]{instructions/#1.png}}
+\newcommand{\instructionssheet}[1]{\centering\includegraphics[width=\textwidth,height=\safefigheight,keepaspectratio]{instructions/#1.png}}
 \begin{figure}[ht]
 \instructionssheet{ChibiPointDrillInstructions}
 \label{fig:instructions_crosshairs}
