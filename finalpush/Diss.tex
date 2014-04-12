@@ -19,7 +19,7 @@
 \usepackage{upquote}
 
 % accents in listings
-%\usepackage[utf8]{inputenc}
+%\usepackage[utf8x]{inputenc}
 %\usepackage{listingsutf8}
 
 % Japanese
@@ -183,12 +183,13 @@ literate={ö}{{\"o}}1
     basicstyle={\small\ttfamily},   
     frame=l,
     % Line numbers
-    xleftmargin={0.75cm},
+    framexleftmargin={-0.35cm},
+    xleftmargin={0.5cm},
     numbers=left,
     stepnumber=1,
     firstnumber=1,
     numberfirstline=true,
-    numbersep=20pt,                   % how far the line-numbers are from the code
+    numbersep=8pt,                   % how far the line-numbers are from the code
     prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\color{red}\rhookswarrow\space}},
     postbreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\color{red}\hookrightarrow\space}},
     % Code design   
@@ -2700,29 +2701,92 @@ Ratings were all on a five-point scale, 1--5.
 % Set this to the language you want to use in your code listings (if any)
 %\lstset{language=Java,breaklines,breakatwhitespace,basicstyle=\small}
 
-\newcommand{\mycodeinclude}[1]{
-\begin{landscape}
-\begin{multicols}{2}
-\section{./#1}
-\lstinputlisting[language=custom, alsolanguage=JavaScript, style=whatever]{code2/#1}
-\end{multicols}
-\end{landscape}
+\newcommand{\mycodeinclude}[2]{
+\subsection{./#2}
+\lstinputlisting[#1]{code2/#2}
 }
 
-% \lstinputlisting{background.js}
-\mycodeinclude{src/background.js}
-\mycodeinclude{src/depend.js}
-\mycodeinclude{src/setup.js}
-\mycodeinclude{src/main.js}
-\mycodeinclude{src/lookup.js}
-\mycodeinclude{src/test.js}
-\mycodeinclude{src/testonly.js}
-\mycodeinclude{src/trace.js}
-\mycodeinclude{src/Grid.js}
-\mycodeinclude{src/Crosshairs.js}
-\mycodeinclude{src/Flyout.js}
-\mycodeinclude{src/flyoutworker.js}
-\mycodeinclude{src/evaluator.js}
+\newcommand{\mycodeincludejs}[1]{
+\mycodeinclude{language=custom, alsolanguage=JavaScript, style=whatever}{#1}
+}
+
+\newcommand{\mycodeincludecss}[1]{
+\mycodeinclude{language=custom, style=whatever}{#1}
+}
+
+\newcommand{\mycodeincludejson}[1]{
+\mycodeinclude{language=custom, alsolanguage=JavaScript, style=whatever}{#1}
+}
+
+\newcommand{\mycodeincludeplain}[1]{
+\mycodeinclude{language=custom, style=whatever}{#1}
+}
+
+\begin{landscape}
+\begin{multicols}{2}
+
+% \newcommand{\mycodeincludecss}[1]{
+% \begin{landscape}
+% \begin{multicols}{2}
+% \section{./#1}
+% \lstinputlisting[language=custom, alsolanguage=JavaScript, style=whatever]{code2/#1}
+% \end{multicols}
+% \end{landscape}
+% }
+
+ %\lstinputlisting{background.js}
+\section{[Root Directory] Documentation}
+\mycodeincludeplain{README}
+\mycodeincludeplain{LICENSE}
+
+\section{[Root Directory] Packaging}
+\mycodeincludejson{manifest.json}
+
+\section{[Root Directory] Styles}
+\mycodeincludecss{styles.less}
+\mycodeincludecss{styles.css}
+
+\section{[Source Directory] Setup Modules}
+\mycodeincludejs{src/background.js}
+\mycodeincludejs{src/depend.js}
+\mycodeincludejs{src/setup.js}
+\mycodeincludejs{src/lookup.js}
+
+\section{[Source Directory] Classes}
+\mycodeincludejs{src/Grid.js}
+\mycodeincludejs{src/Crosshairs.js}
+\mycodeincludejs{src/Flyout.js}
+
+\section{[Source Directory] Main Content}
+\mycodeincludejs{src/test.js}
+
+\section{[Source Directory] Evaluation-Only}
+\mycodeincludejs{src/evaluator.js}
+
+\section{[Source Directory] Debug}
+\mycodeincludejs{src/testonly.js}
+\mycodeincludejs{src/trace.js}
+
+\section{[Source Directory] No Longer Used}
+\mycodeincludejs{src/main.js}
+\mycodeincludejs{src/flyoutworker.js}
+
+\section{[External Libraries] DOM Selection}
+\mycodeincludejs{src/lib/jquery-2.1.0.min.js}
+
+\section{[External Libraries] Dependency Management}
+\mycodeincludejs{src/lib/require-cs.js}
+\mycodeincludejs{src/lib/require.js}
+
+\section{[External Libraries] Evaluation-Only}
+\mycodeincludejs{src/lib/FileSaver.js}
+
+\section{[External Libraries] No Longer Used}
+\mycodeincludejs{src/lib/Blob.js}
+\mycodeincludejs{src/lib/within.js}
+
+\end{multicols}
+\end{landscape}
 
 %\caption{(Continued) Post-experiment questionnaire responses of Quantitative Study participants}
 %\label{fig:quantpost_feedback}

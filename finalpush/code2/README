@@ -17,12 +17,12 @@ Using Google Chrome,
 Browse the web as usual.
 Press Cmd+K (Mac) / Ctrl+K (Windows)£to invoke ChibiPoint interface.
 
-You should see a grid. If you£don’t, that’s bad. Probably an£installation or keybinding problem.
+You should see a grid. If you£don't, that's bad. Probably an£installation or keybinding problem.
 
 
 =Usage:
-Press the shortcuts you see on the£grid to `drill down’ in that£direction.
-Labels fly out from suggested£clickables. These `flyouts’ can be£invoked by pressing their£corresponding key.
+Press the shortcuts you see on the£grid to `drill down' in that£direction.
+Labels fly out from suggested£clickables. These `flyouts' can be£invoked by pressing their£corresponding key.
 
 By default, you drill with the numpad£directions.
 Flyout shortcuts are mapped to a 3x3£grid on the left hand of a Qwerty£keyboard.
@@ -31,9 +31,9 @@ Caps lock is not supported.
 
 
 =Customizing keys:
-By default we use numpad to `drill£down’. If you don’t have a£numpad, you should probably change£the code a little.
+By default we use numpad to `drill£down'. If you don't have a£numpad, you should probably change£the code a little.
 
-Lines 80-154 concern keybindings.£Sorry the world isn’t nicer.
+Lines 80-154 concern keybindings.£Sorry the world isn't nicer.
 There are a few defaults you might£want to try out, so fiddle around£with numpad = true and Dvorak =£false.
 
 Just edit the code, and refresh any£page that was using ChibiPoint; it£should update immediately.
