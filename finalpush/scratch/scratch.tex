@@ -99,6 +99,7 @@ literate={ö}{{\"o}}1
     basicstyle={\small\ttfamily},   
     frame=l,
     % Line numbers
+    framexleftmargin={-0.5cm},
     xleftmargin={0.75cm},
     numbers=left,
     stepnumber=1,
@@ -133,6 +134,43 @@ literate={ö}{{\"o}}1
     {ö}{{\"o}}1
     {£}{{}}0
 }
+
+%\usepackage{xcolor}
+
+% \definecolor{punct}{rgb}{0.5,0,0.3}
+% \definecolor{background}{rgb}{0.9,0.9,0.9}
+% \definecolor{delim}{rgb}{0.1,0.4,0.8}
+% \definecolor{punct}{rgb}{0.5,0,0.3}
+
+% \lstdefinelanguage{json}{
+%     basicstyle=\normalfont\ttfamily,
+%     numbers=left,
+%     numberstyle=\scriptsize,
+%     stepnumber=1,
+%     numbersep=8pt,
+%     showstringspaces=false,
+%     breaklines=true,
+%     frame=lines,
+%     backgroundcolor=\color{background},
+%     literate=
+%      *{0}{{{\color{numb}0}}}{1}
+%       {1}{{{\color{numb}1}}}{1}
+%       {2}{{{\color{numb}2}}}{1}
+%       {3}{{{\color{numb}3}}}{1}
+%       {4}{{{\color{numb}4}}}{1}
+%       {5}{{{\color{numb}5}}}{1}
+%       {6}{{{\color{numb}6}}}{1}
+%       {7}{{{\color{numb}7}}}{1}
+%       {8}{{{\color{numb}8}}}{1}
+%       {9}{{{\color{numb}9}}}{1}
+%       {:}{{{\color{punct}{:}}}}{1}
+%       {,}{{{\color{punct}{,}}}}{1}
+%       {\{}{{{\color{delim}{\{}}}}{1}
+%       {\}}{{{\color{delim}{\}}}}}{1}
+%       {[}{{{\color{delim}{[}}}}{1}
+%       {]}{{{\color{delim}{]}}}}{1},
+% }
+
 \begin{document}
     \begin{lstlisting}[caption={Transcript of Usability Study}, label={lst:usabilityTrans}, language=custom, style=basic, columns=fixed]
 R: (Researcher)
@@ -153,27 +191,71 @@ P:      Okay.
 \end{lstlisting}
 
     %\lstinputlisting[language=custom2, alsolanguage=JavaScript, style=whatever]{background.js}
-    \newcommand{\mycodeinclude}[1]{
 \begin{landscape}
 \begin{multicols}{2}
-\section{./#1}
-\lstinputlisting[language=custom, alsolanguage=JavaScript, style=whatever]{code2/#1}
-\end{multicols}
-\end{landscape}
+\newcommand{\mycodeinclude}[2]{
+
+\section{./#2}
+\lstinputlisting[#1]{code2/#2}
 }
 
+\newcommand{\mycodeincludejs}[1]{
+\mycodeinclude{language=custom, alsolanguage=JavaScript, style=whatever}{#1}
+}
+
+\newcommand{\mycodeincludecss}[1]{
+\mycodeinclude{language=custom, style=whatever}{#1}
+}
+
+\newcommand{\mycodeincludejson}[1]{
+\mycodeinclude{language=custom, alsolanguage=JavaScript, style=whatever}{#1}
+}
+
+\newcommand{\mycodeincludeplain}[1]{
+\mycodeinclude{language=custom, style=whatever}{#1}
+}
+
+% \newcommand{\mycodeincludecss}[1]{
+% \begin{landscape}
+% \begin{multicols}{2}
+% \section{./#1}
+% \lstinputlisting[language=custom, alsolanguage=JavaScript, style=whatever]{code2/#1}
+% \end{multicols}
+% \end{landscape}
+% }
+
  %\lstinputlisting{background.js}
- %\mycodeinclude{src/background.js}
-% \mycodeinclude{src/depend.js}
-% \mycodeinclude{src/setup.js}
-% \mycodeinclude{src/main.js}
-% \mycodeinclude{src/lookup.js}
-% \mycodeinclude{src/test.js}
-% \mycodeinclude{src/testonly.js}
-% \mycodeinclude{src/trace.js}
-% \mycodeinclude{src/Grid.js}
-% \mycodeinclude{src/Crosshairs.js}
-% \mycodeinclude{src/Flyout.js}
-% \mycodeinclude{src/flyoutworker.js}
-\mycodeinclude{src/evaluator.js}
+\mycodeincludeplain{README}
+\mycodeincludeplain{LICENSE}
+
+\mycodeincludejson{manifest.json}
+\mycodeincludecss{styles.less}
+\mycodeincludecss{styles.css}
+
+\mycodeincludejs{src/background.js}
+\mycodeincludejs{src/depend.js}
+\mycodeincludejs{src/setup.js}
+\mycodeincludejs{src/main.js}
+\mycodeincludejs{src/lookup.js}
+\mycodeincludejs{src/test.js}
+\mycodeincludejs{src/testonly.js}
+\mycodeincludejs{src/trace.js}
+\mycodeincludejs{src/Grid.js}
+\mycodeincludejs{src/Crosshairs.js}
+\mycodeincludejs{src/Flyout.js}
+\mycodeincludejs{src/flyoutworker.js}
+\mycodeincludejs{src/evaluator.js}
+
+\mycodeincludejs{src/lib/Blob.js}
+\mycodeincludejs{src/lib/FileSaver.js}
+\mycodeincludejs{src/lib/jquery-2.1.0.min.js}
+\mycodeincludejs{src/lib/require-cs.js}
+\mycodeincludejs{src/lib/require.js}
+\mycodeincludejs{src/lib/within.js}
+
+
+\end{multicols}
+\end{landscape}
+
+%\mycodeincludecss{manifest.json}
 \end{document}

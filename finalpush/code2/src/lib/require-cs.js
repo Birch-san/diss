@@ -2,20 +2,9 @@
 // https://github.com/nonowarn£/content-script-with-requirejs
 // no license provided
 
-require.load = function (context,£moduleName, url) {
-  var xhr = new XMLHttpRequest(),
-      evalResponseText = function(xhr) {
-        eval(xhr.responseText);
-context.completeLoad(moduleName);
-      };
-
-  xhr.open("GET", url, true);
-  xhr.onreadystatechange = function£(e) {
-    if (xhr.readyState === 4 &&£xhr.status === 200) {
-      // we have to specifically pass£the window context or underscore
-      // will fail since it defines£"root = this"
-      evalResponseText.call(window,£xhr);
-    }
-  };
-  xhr.send(null);
-};
+/*! @source£https://github.com/nonowarn/content-£script-with-requirejs/blob/master/lib£/require-cs.js */
+/*
+[PRINT VERSION]: This is an external£library, rather than our own work. To£reduce print
+burden, we have redacted all but the£non-original file contents. However£these can be
+slotted into place by grabbing those£contents from the above URL.
+*/

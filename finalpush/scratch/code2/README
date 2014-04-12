@@ -3,7 +3,6 @@ ChibiPoint is made by Alex Birch.
 Source code license is GNU GPL v3.£Full text available in file£`LICENSE`.
 
 
-
 =Installation:
 Using Google Chrome,
 1. Go to chrome://extensions/
@@ -14,13 +13,11 @@ Using Google Chrome,
 6. If you wish, you can customise the£invocation shortcut using the£`Keyboard Shortcuts` link at the£bottom of chrome://extensions/
 
 
-
 =Invocation:
 Browse the web as usual.
 Press Cmd+K (Mac) / Ctrl+K (Windows)£to invoke ChibiPoint interface.
 
 You should see a grid. If you£don’t, that’s bad. Probably an£installation or keybinding problem.
-
 
 
 =Usage:
@@ -31,7 +28,6 @@ By default, you drill with the numpad£directions.
 Flyout shortcuts are mapped to a 3x3£grid on the left hand of a Qwerty£keyboard.
 
 Caps lock is not supported.
-
 
 
 =Customizing keys:

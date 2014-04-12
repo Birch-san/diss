@@ -1,0 +1,426 @@
+// out: styles.css
+// compress: false, strictMath: false
+
+
+@gridcol: #ccc;
+@gridthick: 1px;
+
+@growcoeff: 1.05;
+
+
+body {
+    padding: 0;
+}
+
+.chibiPoint_gridContainer {
+  padding: 0;
+  //top: 8.3%;
+  top:0;
+  left:calc(((100%*(@growcoeff - 1))/2) /@growcoeff);
+  
+  position:fixed;
+  width:calc(100%/@growcoeff);
+  height:calc(100%/@growcoeff); 
+  
+  pointer-events: none;
+  
+  z-index:2147483646;
+}
+
+.chibiPoint_hiddenGridContainer {
+  display:none;
+}
+
+.chibiPoint_grid {
+    
+  position:relative;
+  left:calc(-(100%*(@growcoeff - 1))/2);
+  
+  //top:-10%;
+  top:0;
+  //float:left;
+  
+  width:calc(100%*@growcoeff);
+  height:calc(100%*@growcoeff);
+	
+    //overflow: auto;
+	display: table;
+    table-layout: fixed;
+  
+  pointer-events: inherit;
+}
+
+.chibiPoint_gridBorderOn {
+  border: @gridthick solid @gridcol;
+  border-width: @gridthick @gridthick @gridthick @gridthick;
+  //outline: 1px solid 0;
+}
+
+.chibiPoint_gridBorderOff {
+}
+
+.chibiPoint_row {
+    //border: 1px solid #ccc;
+    //border-width: 0 1px 1px 0;
+    
+    display: table-row;
+  pointer-events: inherit;
+  
+}
+
+@cellratio:calc(100%/3);
+
+.chibiPoint_cell {
+  padding:0;
+  
+  width:@cellratio;
+  height:@cellratio;
+  display: table-cell;
+  
+  
+  // text
+  line-height: @cellratio; 
+  text-align:center;
+  vertical-align:middle;
+  color: #000;
+  color:rgba(0, 0, 0, 0.5);
+  font-family:Geneva, Arial, Helvetica, sans-serif;
+  
+  pointer-events: inherit;
+  
+  position:relative;
+  overflow:visible;
+  clear:both;
+}
+
+.chibiPoint_cellBorderOn {
+  /*border: @gridthick solid @gridcol;
+  border-width: @gridthick @gridthick @gridthick @gridthick;
+  //border-style:double;
+  outline: 1px solid 0;
+  outline-offset: 1px;*/
+ 
+ //this one!
+ box-shadow: 0 0 0 1px #fff, 0 0 0 2px #888; 
+}
+
+.chibiPoint_cellBorderOff {
+}
+
+@backingprop: 0.8;
+@radius: 15%;
+@backinggrey: 230;
+
+.chibiPoint_backing {
+  position:absolute;
+  
+  top:calc(100%*(1-@backingprop)/2);
+  left:calc(100%*(1-@backingprop)/2);
+  
+  width:calc(100%*@backingprop);
+  height:calc(100%*@backingprop);
+  background:rgba(@backinggrey, @backinggrey, @backinggrey, 0.25);
+  
+  z-index:-1;
+  
+  -moz-border-radius: @radius @radius;
+  -webkit-border-radius: @radius @radius;
+  border-radius: @radius @radius;
+  
+  //background-blend-mode: difference, normal; // Chrome Canary
+  //-webkit-background-blend-mode: difference, normal; // WebKit Nightly
+}
+
+@haircol:rgba(255, 0, 0, 1);
+@hairthick:1px;
+@hairborderthick:1px;
+
+.chibiPoint_fullContainer {
+ top:0;
+  left:0;
+  
+  width:100%;
+  height:100%;
+  
+  position:fixed;
+  padding:0;
+  
+  pointer-events: none;
+}
+
+.chibiPoint_shownCrosshairs {
+  .chibiPoint_fullContainer;
+  
+  z-index:2147483645;
+}
+
+.chibiPoint_hiddenCrosshairs {  
+  pointer-events: none;
+  
+  display:none;
+}
+
+.chibiPoint_hairBorder {
+  //border-width: @hairborderthick @hairborderthick @hairborderthick @hairborderthick;
+  //border-color:#00ffff;
+  
+  //outline-color:;
+  //outline: 1px solid 0;
+}
+
+.chibiPoint_hairlinecommon {
+  padding:0;
+  
+  position:relative;
+  
+  pointer-events: inherit;
+  
+  background:@haircol;
+  
+  .chibiPoint_hairBorder;
+}
+
+.chibiPoint_horizontalHair {
+  .chibiPoint_hairlinecommon;
+  
+  left:inherit;
+  
+  width:inherit;
+  height:@hairthick;
+}
+
+.chibiPoint_verticalHair {
+  .chibiPoint_hairlinecommon;
+  
+  top:-@hairthick;
+  
+  width:@hairthick;
+  height:inherit;
+}
+
+.chibiPoint_targeted {
+    background: yellow!important;
+    //padding: 3px 5px;
+    //margin: -3px -5px;
+    //line-height: 1.7;
+  
+    border-radius: 3px;
+    /*border-color: red!important;
+    border: 3px solid black;
+    box-sizing: border-box;*/
+    //border-radius: 3px;
+    box-shadow:  0 0 10px #ff00ff;
+ 
+  // turn off croshairs:
+   //display: none;
+  
+    background-blend-mode: multiply, normal; // Chrome Canary
+    -webkit-background-blend-mode: multiply, normal; // WebKit Nightly
+  
+    //display:inline-block;
+}
+
+.chibiPoint_painted {
+    background: cyan!important;
+    //padding: 3px 5px;
+    //margin: -3px -5px;
+    //line-height: 1.7;
+  
+    border-radius: 3px;
+    /*border-color: red!important;
+    border: 3px solid black;
+    box-sizing: border-box;*/
+    //border-radius: 3px;
+    box-shadow:  0 0 10px #ff0000;
+  
+    background-blend-mode: multiply, normal; // Chrome Canary
+    -webkit-background-blend-mode: multiply, normal; // WebKit Nightly
+    //display:inline-block;
+}
+
+.chibiPoint_paintedUnique0 {
+  background: rgba(0,173,0, @flyoutAlpha)!important;
+}
+.chibiPoint_paintedUnique1 {
+  background: rgba(13,255,150, @flyoutAlpha)!important;
+}
+.chibiPoint_paintedUnique2 {
+  background: rgba(249,25,137, @flyoutAlpha)!important;
+}
+.chibiPoint_paintedUnique3 {
+  background: rgba(249,112,12, @flyoutAlpha)!important;
+}
+.chibiPoint_paintedUnique4 {
+  background: rgba(186,167,19, @flyoutAlpha)!important;
+}
+.chibiPoint_paintedUnique5 {
+  background: rgba(172,0,237, @flyoutAlpha)!important;
+}
+.chibiPoint_paintedUnique6 {
+  background: rgba(240,172,24, @flyoutAlpha)!important;
+}
+.chibiPoint_paintedUnique7 {
+  background: rgba(8,160,94, @flyoutAlpha)!important;
+}
+.chibiPoint_paintedUnique8 {
+  background: rgba(135,54,94, @flyoutAlpha)!important;
+}
+
+.chibiPoint_cluck {
+    background: red!important;
+    //padding: 3px 5px;
+    //margin: -3px -5px;
+    //line-height: 1.7;
+  
+    /*border-radius: 3px;
+    border-color: red!important;
+    border: 3px solid black;*/
+  
+    //display:inline-block;
+}
+
+.chibiPoint_flyoutContainer {
+ .chibiPoint_fullContainer;
+  
+  z-index:2147483647;
+}
+
+.chibiPoint_shownfC {
+}
+
+.chibiPoint_hiddenfC {
+ display:none;
+}
+
+.chibiPoint_aFlyout {
+  position: absolute;
+ width:100%;
+ height:100%;
+}
+
+.chibiPoint_aFlyoutHidden {
+ display: none;
+}
+
+.chibiPoint_flyout {
+  //background: rgba(0,173,0, 0.30);
+  //outline: 1px solid 0!important;
+  border: 1px solid black;
+  position: absolute;
+  top:0;
+  left: 0;
+ width:20px;
+ text-align: center;
+  font-family:Geneva, Arial, Helvetica, sans-serif;
+  
+  /*-webkit-text-stroke: 1px #000000;
+  -webkit-text-fill-color: #FFFFFF;*/
+  color: white;
+  text-shadow:
+   -1px -1px 0 #000,  
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+     1px 1px 0 #000;
+}
+
+@flyoutAlpha: 1.0;
+
+.chibiPoint_flyoutUnique0 {
+  background: rgba(0,173,0, @flyoutAlpha);
+}
+.chibiPoint_flyoutUnique1 {
+  background: rgba(13,255,150, @flyoutAlpha);
+}
+.chibiPoint_flyoutUnique2 {
+  background: rgba(249,25,137, @flyoutAlpha);
+}
+.chibiPoint_flyoutUnique3 {
+  background: rgba(249,112,12, @flyoutAlpha);
+}
+.chibiPoint_flyoutUnique4 {
+  background: rgba(186,167,19, @flyoutAlpha);
+}
+.chibiPoint_flyoutUnique5 {
+  background: rgba(172,0,237, @flyoutAlpha);
+}
+.chibiPoint_flyoutUnique6 {
+  background: rgba(240,172,24, @flyoutAlpha);
+}
+.chibiPoint_flyoutUnique7 {
+  background: rgba(8,160,94, @flyoutAlpha);
+}
+.chibiPoint_flyoutUnique8 {
+  background: rgba(135,54,94, @flyoutAlpha);
+}
+
+.chibiPoint_lineUnique0 {
+  stroke: rgb(0,173,0, @flyoutLineAlpha);
+}
+.chibiPoint_lineUnique1 {
+  stroke: rgb(13,255,150, @flyoutLineAlpha);
+}
+.chibiPoint_lineUnique2 {
+  stroke: rgb(249,25,137, @flyoutLineAlpha);
+}
+.chibiPoint_lineUnique3 {
+  stroke: rgb(249,112,12, @flyoutLineAlpha);
+}
+.chibiPoint_lineUnique4 {
+  stroke: rgb(186,167,19, @flyoutLineAlpha);
+}
+.chibiPoint_lineUnique5 {
+  stroke: rgb(172,0,237, @flyoutLineAlpha);
+}
+.chibiPoint_lineUnique6 {
+  stroke: rgb(240,172,24, @flyoutLineAlpha);
+}
+.chibiPoint_lineUnique7 {
+  stroke: rgb(8,160,94, @flyoutLineAlpha);
+}
+.chibiPoint_lineUnique8 {
+  stroke: rgb(135,54,94, @flyoutLineAlpha);
+}
+
+
+.chibiPoint_lineDiv {
+}
+
+.chibiPoint_lineSvg {
+}
+
+@flyoutLineAlpha:1;
+@flyoutLineWidth:2;
+.chibiPoint_line {
+ //stroke:rgb(0,173,0);
+ stroke-width:@flyoutLineWidth;
+}
+
+.chibiPoint_evaluator {
+  position:fixed;
+  
+  pointer-events: none;
+  
+  font-family:Geneva, Arial, Helvetica, sans-serif;
+  
+  color:red;
+  
+  width:100%;
+  height:100%;
+  
+  display:none;
+  
+}
+
+.chibiPoint_timer {
+  .chibiPoint_evaluator;
+  
+  left:10;
+  top:10;
+}
+
+.chibiPoint_keyCount {
+  .chibiPoint_evaluator;
+  
+  left:10;
+  top:30;
+}
