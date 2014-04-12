@@ -1,0 +1,176 @@
+\documentclass[11pt,openright,a4paper]{report}
+
+\usepackage{pdflscape}  % Provides landscape mode for end code listings
+\usepackage{multicol}   % Provides ability to split output into columns
+\usepackage{color}
+\definecolor{editorGray}{rgb}{0.95, 0.95, 0.95}
+\definecolor{editorOcher}{rgb}{1, 0.5, 0} % #FF7F00 -> rgb(239, 169, 0)
+\definecolor{editorGreen}{rgb}{0, 0.5, 0} % #007C00 -> rgb(0, 124, 0)
+\usepackage{upquote}
+\usepackage{listings}
+\lstset{basicstyle=\ttfamily}
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+\definecolor{violet}{rgb}{0.44, 0, 1}
+
+\lstdefinelanguage{custom}
+{
+morekeywords={R},
+ndkeywords={P},
+sensitive=false,
+morecomment=[l]{//},
+morecomment=[s]{/*}{*/},
+morestring=[b]{*},
+moreemph=[4][b]{=},
+literate={ö}{{\"o}}1
+           {Ü}{{\"U}}1
+           {ü}{{\"u}}1
+}
+
+\lstdefinestyle{basic}{ %
+  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+  basicstyle=\footnotesize\ttfamily,        % the size of the fonts that are used for the code
+  %\ttfamily
+  %\sffamily
+  emphstyle=\color{red},
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=t,                    % sets the caption-position to bottom
+  commentstyle=\color{mygreen},    % comment style
+  deletekeywords={...},            % if you want to delete keywords from the given language
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  frame=single,                    % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\color{blue}\bfseries,       % keyword style
+  ndkeywordstyle=\color{red}, % another keyword style
+  language=custom,                 % the language of the code
+  morekeywords={*,...},            % if you want to add more keywords to the set
+  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=20pt,                   % how far the line-numbers are from the code
+  numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  stringstyle=\color{violet},     % string literal style
+  tabsize=4,                       % sets default tabsize to 2 spaces
+  %title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+  %inputencoding=utf8/latin1
+}
+
+
+\lstdefinelanguage{JavaScript}{
+  morekeywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break},
+  morecomment=[s]{/*}{*/},
+  morecomment=[l]//,
+  morestring=[b]",
+  morestring=[b]'
+}
+
+\lstdefinelanguage{HTML5}{
+        language=html,
+        sensitive=true, 
+        alsoletter={<>=-},
+        otherkeywords={
+        % HTML tags
+        <html>, <head>, <title>, </title>, <meta, />, </head>, <body>,
+        <canvas, \/canvas>, <script>, </script>, </body>, </html>, <!, html>, <style>, </style>, ><
+        },  
+        ndkeywords={
+        % General
+        =,
+        % HTML attributes
+        charset=, id=, width=, height=,
+        % CSS properties
+        border:, transform:, -moz-transform:, transition-duration:, transition-property:, transition-timing-function:
+        },  
+        morecomment=[s]{<!--}{-->},
+        tag=[s]
+}
+
+\lstdefinestyle{whatever}{%
+    % Basic design
+    backgroundcolor=\color{editorGray},
+    basicstyle={\small\ttfamily},   
+    frame=l,
+    % Line numbers
+    xleftmargin={0.75cm},
+    numbers=left,
+    stepnumber=1,
+    firstnumber=1,
+    numberfirstline=true,
+    numbersep=20pt,                   % how far the line-numbers are from the code
+    postbreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\color{red}\hookrightarrow\space}},
+    % Code design   
+    keywordstyle=\color{blue}\bfseries,
+    commentstyle=\color{mygreen}\ttfamily,
+    ndkeywordstyle=\color{editorGreen}\bfseries,
+    stringstyle=\color{editorOcher},
+    % Code
+    language=HTML5,
+    alsolanguage=JavaScript,
+    alsodigit={.:;},
+    tabsize=2,
+    showtabs=false,
+    showspaces=false,
+    showstringspaces=false,
+    extendedchars=true,
+    breaklines=true,        
+    % Support for German umlauts
+    literate=%
+    {Ö}{{\"O}}1
+    {Ä}{{\"A}}1
+    {Ü}{{\"U}}1
+    {ß}{{\ss}}1
+    {ü}{{\"u}}1
+    {ä}{{\"a}}1
+    {ö}{{\"o}}1
+    {£}{{}}1
+}
+\begin{document}
+    \begin{lstlisting}[caption={Transcript of Usability Study}, label={lst:usabilityTrans}, language=custom, style=basic, columns=fixed]
+R: (Researcher)
+P: (Participant)
+
+====Flyouts On====
+
+    First system, Flyouts ON.
+
+R:  Start the system by pressing Apple K.
+P:      Okay, is there an Apple on here?
+R:  Yeah, I've mapped Ctrl to Apple.
+P:      Okay, great.
+P:      I'll do what I have to do to get started, and...
+        *Presses Apple K*
+        *Chibipoint interface appears*
+P:      Okay.
+\end{lstlisting}
+
+    %\lstinputlisting[language=custom2, alsolanguage=JavaScript, style=whatever]{background.js}
+    \newcommand{\mycodeinclude}[1]{
+\begin{landscape}
+\begin{multicols}{2}
+\section{./#1}
+\lstinputlisting[language=custom, alsolanguage=JavaScript, style=whatever]{code/#1}
+\end{multicols}
+\end{landscape}
+}
+
+ %\lstinputlisting{background.js}
+ %\mycodeinclude{src/background.js}
+% \mycodeinclude{src/depend.js}
+% \mycodeinclude{src/setup.js}
+% \mycodeinclude{src/main.js}
+% \mycodeinclude{src/lookup.js}
+% \mycodeinclude{src/test.js}
+% \mycodeinclude{src/testonly.js}
+% \mycodeinclude{src/trace.js}
+% \mycodeinclude{src/Grid.js}
+% \mycodeinclude{src/Crosshairs.js}
+% \mycodeinclude{src/Flyout.js}
+% \mycodeinclude{src/flyoutworker.js}
+\mycodeinclude{src/evaluator-2.js}
+\end{document}
