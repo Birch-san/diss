@@ -14,6 +14,8 @@
 \definecolor{mymauve}{rgb}{0.58,0,0.82}
 \definecolor{violet}{rgb}{0.44, 0, 1}
 
+\usepackage{MnSymbol}
+
 \lstdefinelanguage{custom}
 {
 morekeywords={R},
@@ -103,6 +105,7 @@ literate={ö}{{\"o}}1
     firstnumber=1,
     numberfirstline=true,
     numbersep=20pt,                   % how far the line-numbers are from the code
+    prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\color{red}\rhookswarrow\space}},
     postbreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\color{red}\hookrightarrow\space}},
     % Code design   
     keywordstyle=\color{blue}\bfseries,
@@ -128,7 +131,7 @@ literate={ö}{{\"o}}1
     {ü}{{\"u}}1
     {ä}{{\"a}}1
     {ö}{{\"o}}1
-    {£}{{}}1
+    {£}{{}}0
 }
 \begin{document}
     \begin{lstlisting}[caption={Transcript of Usability Study}, label={lst:usabilityTrans}, language=custom, style=basic, columns=fixed]
@@ -154,7 +157,7 @@ P:      Okay.
 \begin{landscape}
 \begin{multicols}{2}
 \section{./#1}
-\lstinputlisting[language=custom, alsolanguage=JavaScript, style=whatever]{code/#1}
+\lstinputlisting[language=custom, alsolanguage=JavaScript, style=whatever]{code2/#1}
 \end{multicols}
 \end{landscape}
 }
@@ -172,5 +175,5 @@ P:      Okay.
 % \mycodeinclude{src/Crosshairs.js}
 % \mycodeinclude{src/Flyout.js}
 % \mycodeinclude{src/flyoutworker.js}
-\mycodeinclude{src/evaluator-2.js}
+\mycodeinclude{src/evaluator.js}
 \end{document}

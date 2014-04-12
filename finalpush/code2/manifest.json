@@ -1,0 +1,32 @@
+{
+  "name": "ChibiPoint",
+  "description": "Point at webpages£using the keyboard",
+  "version": "0.5",
+	"content_scripts": [
+		{
+                        "matches":£["http://*/*", "https://*/*"],
+      "css": ["styles.css"],
+      "js": ["src/lib/require.js",£"src/lib/require-cs.js",£"src/depend.js"],
+      "run_at": "document_start"
+		}
+	],
+  "permissions": [
+	  "tabs",
+    "activeTab"
+  ],
+  "background": {"scripts":£["src/background.js"]},
+  "commands": {
+    "toggle-feature-foo": {
+      "suggested_key": {
+        "default": "Ctrl+K",
+        "mac": "Command+K"
+      },
+      "description": "Invoke ChibiPoint"
+    }
+  },
+  "manifest_version": 2,
+  "web_accessible_resources": [
+    "*.js"
+  ]
+}
+
