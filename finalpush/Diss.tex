@@ -1052,9 +1052,9 @@ Regarding participant's exposure to accessibility needs or solutions, three had 
 \subsection{Methodology}
 The following describes the methodology for the full study. Deviations exclusive to the pilot study are disclosed in its separate section.
 
-The researcher followed a script to ensure that all instances of the study were performed the same way.
+The researcher followed a script (\Cref{fig:myscript}) to ensure that all instances of the study were performed the same way.
 
-Participants were briefed on the purpose of the dissertation and of the study, as well as what participation in the study would entail. They were assured that no identifying information would be kept about them, that it was the system performance being measured rather than their personal performance, and that they were free to withdraw participation at any point. They were told that there was no desire for them to generate any particular outcome, and that we simply wanted to compare the performance of the systems. With these explained, participants were asked to sign a permission slip, and were offered also a copy in case they wished to contact the researchers after the fact. Permission slips can be seen in \Cref{sec:eval_permission}.
+Participants were briefed (see script \Cref{fig:theirscript}) on the purpose of the dissertation and of the study, as well as what participation in the study would entail. They were assured that no identifying information would be kept about them, that it was the system performance being measured rather than their personal performance, and that they were free to withdraw participation at any point. They were told that there was no desire for them to generate any particular outcome, and that we simply wanted to compare the performance of the systems. With these explained, participants were asked to sign a permission slip, and were offered also a copy in case they wished to contact the researchers after the fact. Permission slips can be seen in \Cref{sec:eval_permission}.
 
 Participants were assigned a unique number. This enabled both the questionnaires they would fill in to be related as being from the same participant. Additionally participants were assigned a sequence in which to evaluate the three systems. Biases pertaining to the order in which systems are used, were counterbalanced by testing using all sequence permutations of the three systems equally. There were 6 permutations, so the study recruited a multiple of this: 12 participants.
 
@@ -1062,7 +1062,7 @@ The study began with the first questionnaire's being allocated. This asked parti
 
 The participants began the testing activity by reading instructions on the system they had been allocated. Such instructions can be seen in \Cref{sec:instructions}. The researcher then guided them through a training scenario to confirm that they had understood the instructions. During this training period, the researcher would answer any questions and correct any mistakes that occurred. In the case of learning the system `ChibiPoint with crosshairs AND flyouts' before learning the system `ChibiPoint with crosshairs ONLY', participants were trained in the use of both features in turn.
 
-After training, all test websites were opened, and the participant was directed to the attend to the first \gls{browsingcontext}, which was navigated to the website for task 1. The researcher would point out to them the page element that needed to be clicked in this task. The pointing objectives were also printed on a piece of paper that they could refer to.
+After training, all test websites were opened, and the participant was directed to the attend to the first \gls{browsingcontext}, which was navigated to the website for task 1. The researcher would point out to them the page element that needed to be clicked in this task. The pointing objectives were also printed on a piece of paper that they could refer to (\Cref{fig:taskscript}).
 
 The participant completes a task by clicking the specified element using the pointing system they have been allocated. At this point, telemetry (of keypress count and timing) is automatically downloaded by the browser extension (that is, ChibiPoint --- which is repurposed as a keylogger --- whether its pointing features are in use or not). The researcher then confirms whether the correct button was clicked.
 
@@ -2501,7 +2501,9 @@ Touch-typing proficiency was rated on a five-point scale ranging from the sentim
 \section{Experiment Materials}
 \subsection{Instructions}
 \label{sec:instructions}
-\newcommand{\instructionssheet}[1]{\centering\includegraphics[width=\textwidth,height=\safefigheight,keepaspectratio]{instructions/#1.png}}
+\newcommand{\somesheet}[1]{\centering\includegraphics[width=\textwidth,height=\safefigheight,keepaspectratio]{#1}}
+
+\newcommand{\instructionssheet}[1]{\somesheet{instructions/#1.png}}
 \begin{figure}[ht]
 \instructionssheet{ChibiPointDrillInstructions}
 \label{fig:instructions_crosshairs}
@@ -2518,6 +2520,26 @@ Touch-typing proficiency was rated on a five-point scale ranging from the sentim
 \instructionssheet{TabbingInstructions}
 \label{fig:instructions_tabbing}
 \caption{Instructions for `tabbing navigation'.}
+\end{figure}
+\FloatBarrier
+
+\subsection{Scripts}
+\begin{figure}[ht]
+\somesheet{sheets/script.pdf}
+\label{fig:myscript}
+\caption{Script for researcher to follow.}
+\end{figure}
+
+\begin{figure}[ht]
+\somesheet{sheets/briefingScript.pdf}
+\label{fig:theirscript}
+\caption{Briefing script for participant.}
+\end{figure}
+
+\begin{figure}[ht]
+\somesheet{sheets/taskScript.pdf}
+\label{fig:taskscript}
+\caption{Task script to prompt participant.}
 \end{figure}
 \FloatBarrier
 
@@ -2549,7 +2571,8 @@ Task \anumero & URL \\ [0.5ex] % inserts table
 \section{Post-Experiment Questionnaire Results}
 
 \newcommand*\rot{\rotatebox{90}}
-\newcommand{\psize}{1.5cm}
+%(textwidth-3.5cm)/8
+\newcommand{\psize}{0.125\textwidth-0.4375cm}
 \newcommand{\reasonable}{\rot{(1= Reasonable, 5=Unreasonable)}}
 
 \begin{table}[ht]
