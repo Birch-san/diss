@@ -248,7 +248,7 @@ literate={ö}{{\"o}}1
 
 
 \abstract
-The web is designed for pointing devices like mice. Many users cannot use such input devices, due to disability or device restrictions. The existing accessible standard for mouseless pointing on the web is `tabbing navigation', which we find to be ineffective, unpredictable and inefficient. We design, develop and evaluate `ChibiPoint (\begin{CJK}{UTF8}{min}ちび点\end{CJK})': a pointing mechanism designed for modern websites.
+The web is designed for pointing devices like mice. Many users cannot use such input devices, due to disability or device restrictions. The existing accessible standard for mouseless pointing on the web is `tabbing navigation', which we find to be ineffective, unpredictable and inefficient. We design, develop and evaluate `ChibiPoint': a pointing mechanism designed for modern websites.
 \newpage
 
 
@@ -259,11 +259,11 @@ The web is designed for pointing devices like mice. Many users cannot use such i
 
 %\chapter*{Introduction}
 \chapter*{Acknowledgements}
-I thank my supervisor, Dr. Fabio Nemetz, for taking a chance on this project idea. He has been a source of constant support and encouragement to me and all others he supervises. It was that motivation that enabled me to keep opening this .tex file.
+I thank my supervisor, Dr\. Fabio Nemetz, for taking a chance on this project idea. He has been a source of constant support and encouragement to me and all others he supervises. It was that motivation that enabled me to keep opening this .tex file.
 
 I thank the others in Team Fabio for the rapport we enjoyed as a group this year. It was heartening to work alongside so many inspired individuals.
 
-I thank Dr. Alessio Guglielmi for electing to second-assess this dissertation on top of his original workload. His gesture is appreciated.
+I thank Dr\. Alessio Guglielmi for electing to second-assess this dissertation on top of his original workload. His gesture is appreciated.
 
 My brother Jamie provided invaluable assistance with statistical methods and SPSS. I am grateful for this.
 
@@ -284,6 +284,7 @@ Many of these websites are designed to be used with mice, or equivalent pointing
 
 Many users cannot use mice to point in websites, due to input restrictions:
 \begin{enumerate}
+%\glsunset{rsi}
 \item Some users are too disabled (due to conditions like \gls{rsi}) to use the input device provided to them
 \item More suitable input hardware, such as bespoke accessibility hardware, can be hard to prescribe (due to lack of knowledge, or access to a needs assessor) or procure (due to rarity or expense)
 \item Some devices (such as Smart TVs or games consoles) inherently enforce a standard, limited, input hardware (such as a remote or gamepad) in stead of a better pointing device
@@ -297,11 +298,13 @@ It is challenging to optimise websites to accommodate tabbing navigation. In pra
 
 \textit{A more detailed background is disclosed in \Cref{chap:context}.}
 \section{Literature \& Technology Review}
-We confirm here the need for an alternative pointing mechanim, and explore the approaches that have been attempted already.
+We confirm here the need for an alternative pointing mechanism, and explore the approaches that have been attempted already.
 
 We review what factors exist in designing for accessible keyboard control. We assess the state of keyboard accessibility, in general and for the web. We explore also general web accessibility, and how the problem it presents has been addressed up until now. We explore the vectors through which accessibility can be added to the web. We ascertain whether there exist any novel approaches to keyboard pointing. We review whether accessibility standards are capable of solving the problem of keyboard pointing in the web, and finally look for experimental methods to evaluate the performance of keyboard pointing systems.
 
 We conclude that the root of the problem is that standards push a navigation mechanism that is not suited to the task of pointing. We decide that a new mechanism could be delivered in the form of a web browser extension.
+
+\textit{A more detailed background is disclosed in \Cref{chap:litreview}.}
 % The deliverable for this dissertation is anticipated to be a browser extension that adds accessibility onto web content, favouring a novel interaction approach over the experience prescribed as accessible by web standards.
 
 % The key points to explore are:
@@ -334,6 +337,8 @@ Existing work focuses around making websites conform to accessibility standards.
 The pointing mechanism provided by `tabbing navigation' is inherently limited, so \textbf{a more suitable mouseless pointing mechanism needs to be developed: one that is designed to cope with real websites, rather than idealized ones.}
 
 To solve mouseless pointing on a wide variety of input hardware, a mechanism is required that maps well to that wide variety of input hardware. One that is effective, predictable and efficient.
+
+In order to address this problem, we developed a novel keyboard-based pointing mechanism for the Web, which we call ChibiPoint.
 %Many input devices generate input which can be parsed as discrete symbols; for example gestures or speech samples. A keyboard-based proof-of-concept could be mapped to work with symbols
 
 \subsection{Hypotheses}
@@ -341,15 +346,12 @@ To solve mouseless pointing on a wide variety of input hardware, a mechanism is 
 We believe that our keyboard navigation system for the web, ChibiPoint, provides an improved mechanism for pointing as compared to tabbing.
 
 \newcommand{\hypone}{Hypothesis 1: ChibiPoint is generally more efficient at web navigation than tabbing}
-\subsubsection{\hypone}
-We hypothesise that our system, \textbf{ChibiPoint, requires significantly fewer keypresses to navigate webpages, than does `tabbing navigation'} (the current standards-prescribed method for keyboard navigation).
-`Navigate webpages' is a broad term, as there are many classes of pointing that need to be analysed. The more detailed hypothesis is that, \textbf{given several distinct classes of pointing, ChibiPoint requires fewer (or equal) keypresses, for a large majority (>80\%) of these scenarios}. Since we analyse two versions of ChibiPoint, it should be understood that we require at least one of these to outperform tabbing in a majority of tasks.
+\textbf{\hypone}
 
 \newcommand{\hyptwo}{Hypothesis 2: ChibiPoint's `flyouts' feature, reduces further the required keypresses for web navigation}
-\subsubsection{\hyptwo}
-We hypothesise that the novel `flyouts' feature of ChibiPoint, which assigns hotkeys to suggested buttons on the webpage, contributes to reducing the number of keypresses required by ChibiPoint for web navigation, compared to using just its standard pointing method of hierarchically drilling through the page and pointing at elements using crosshairs.
-In other words, we hypothesise that ChibiPoint `with crosshairs and flyouts enabled' performs a large majority (>80\%) of pointing scenarios in fewer keypresses than ChibiPoint `with just crosshairs enabled'.
+\textbf{\hyptwo}
 
+\textit{We present these hypotheses --- and their assessment criteria --- in further detail in \Cref{sec:detailedhyp}}.
 % Concise statement of problem
 % State efficiency goal
 \section{Goals and Methods}
@@ -372,44 +374,52 @@ We aim to deliver the following qualitative improvements over `tabbing' navigati
 \begin{itemize}
 \item We will improve upon the efficiency of tabbing navigation's linear trawl, by using a hierarchical traversal.
 
+\item We will address the effectiveness problems of tabbing navigation:
 \begin{itemize}
-\item We will solve tabbing navigation's effectiveness problems: we avoid falling into `focus traps' by avoiding a relative traversal.
+\item We will avoid falling into `focus traps' by avoiding a relative traversal.
 \item We will solve the feedback problem represented by `lack of visual indicator of focus', by painting our own visual indicators on elements.
 \end{itemize}
 
 \item We will improve predictability of navigation by using a spatial traversal rather than tabbing navigation's markup-driven traversal.
 \end{itemize}
 
-\section{Results / Contributions}
-Both our hypotheses are confirmed: ChibiPoint provides a significantly more efficient pointing mechanism than tabbing. The novel `flyouts' feature contributes further to ChibiPoint's efficiency.
+\section{Contributions}
+The main contribution of this dissertation is a solution to Web interface inaccessibility. We relieve developers of the onus and expense of meeting flawed standards, by providing a navigation mechanism that is more prepared for the modern, varied Web.
 
-We contribute a widely portable mechanism --- ChibiPoint recruits in its development only widely-available web technologies. The system is compatible with many `real-world' websites that expect mice. Some implementation bugs exist, and these are felt to be fixable.
+Our solution is widely generic: it can be applied to many browsers, many devices, and many types of input hardware. In addition to this, it is open-source. We enable widespread adoption.
 
-ChibiPoint demonstrates a navigation mechanism whose input vocabulary is a simple symbol sequence. By showing an instance of its application with keyboard input, we imply that the mechanism is compatible also with other point systems that can produce symbol output, such as gesture control or speech. Thus its efficient navigation could be extended to other mouseless devices like Smart TVs.
+% Both our hypotheses are confirmed: ChibiPoint provides a significantly more efficient pointing mechanism than tabbing. The novel `flyouts' feature contributes further to ChibiPoint's efficiency.
+
+% We contribute a widely portable mechanism --- ChibiPoint recruits in its development only widely-available web technologies. The system is compatible with many `real-world' websites that expect mice. Some implementation bugs exist, and these are felt to be fixable.
+
+% ChibiPoint demonstrates a navigation mechanism whose input vocabulary is a simple symbol sequence. By showing an instance of its application with keyboard input, we imply that the mechanism is compatible also with other point systems that can produce symbol output, such as gesture control or speech. Thus its efficient navigation could be extended to other mouseless devices like Smart TVs.
+
 % Summarise our most important findings
 % Cast findings as contributions to research field
 
-[Revisit this once Results section is finalized, and once Conclusions section is written]
-\section{Thesis overview}
-\newcommand{\chapterref}[2]{\Cref{#1}, \textit{#2},}
+\section{Dissertation overview}
+\newcommand{\chapterref}[2]{\item \Cref{#1}, \textit{#2},}
 % Overview of remainder of thesis
 The remainder of the thesis is composed as follows:
 
-\chapterref{chap:context}{Detailed Context \& Motivation} discloses more detail around the background and motivation for this work.\\
-\chapterref{chap:litreview}{Literature \& Technology Review} confirms the need for an alternative web pointing mechanism, and explores the approaches recommended, as well as reviewing what solutions have been attempted already.\\ %We review what factors exist in designing for accessible keyboard control.
-\chapterref{chap:reqanddesign}{Requirements \& Design} details the design of our system and pointing mechanism.\\
-\chapterref{chap:implementation}{Implementation} describes how we built our web browser extension.\\
-\chapterref{chap:evaluation}{Evaluation} chronicles the output of a usability study and a larger quantitative study. We determine how our web browser extension compares to tabbing navigation, and determine also the contribution of our novel algorithm for suggesting `clickables'.\\
+\begin{itemize}
+\chapterref{chap:context}{Detailed Context \& Motivation} discloses more detail around the background and motivation for this work.
+\chapterref{chap:litreview}{Literature \& Technology Review} confirms the need for an alternative web pointing mechanism, and explores the approaches recommended, as well as reviewing what solutions have been attempted already. %We review what factors exist in designing for accessible keyboard control.
+\chapterref{chap:reqanddesign}{Requirements \& Design} details the design of our system and pointing mechanism.
+\chapterref{chap:implementation}{Implementation} describes how we built our web browser extension.
+\chapterref{chap:evaluation}{Evaluation} explains how we evaluated the system in two studies: a usability study, and a larger quantitative study.
+\chapterref{chap:results}{Results \& Analysis of Quantitative Study} describes and discusses the results of our larger quantitative study. We determine how our web browser extension compares to tabbing navigation, and determine also the contribution of our novel algorithm for suggesting `clickables'.
 \chapterref{chap:conclusions}{Conclusions \& Future Work} discusses our contribution to the field, and ways to extend the work.
+\end{itemize}
 
 \chapter{Detailed Context \& Motivation}
 \label{chap:context}
-[@Fabio: this whole chapter is copypasta from the original Project Proposal. I've not proofread it, so cannot guarantee if it's consistent with the current problem I say I am trying to solve, or the solution I propose.]
 \section{Problem}
 \subsection{Problem Context}
 Some domain knowledge will be divulged in this section, prior to describing the problem under investigation. Namely, the case for accessible navigation alternatives' necessity, and also the relevance of the web in contributing to the size of the problem.
 \paragraph{Need for accessibility}
-Computer users are not uniform in their capabilities and preferences. For this reason, users differ in the input mechanisms they choose for interacting with software. Some users may prefer to perform tasks using a keyboard rather than using a mouse, for example. Commonly mouse and keyboard will be recruited together. However some users' input strategies are constrained by factors such as disability: occupational syndromic conditions such as ~\gls{rsi} can preclude the ability to use a mouse, keyboard or both~\cite{trewin1999keyboard}. ~\gls{rsi} and related disabilities are growing in prevalence, representing by some estimates 22\% of people~\cite{rsiprevalence}. This disability accounts for one third of workers' compensation costs in the US private industry~\cite{barr2002pathophysiological}.
+\glsreset{rsi}
+Computer users are not uniform in their capabilities and preferences. For this reason, users differ in the input mechanisms they choose for interacting with software. Some users may prefer to perform tasks using a keyboard rather than using a mouse, for example. Commonly mouse and keyboard will be recruited together. However some users' input strategies are constrained by factors such as disability: occupational syndromic conditions such as ~\gls{rsi} can preclude the ability to use a mouse, keyboard or both~\cite{trewin1999keyboard}. ~\gls{rsi} and related disabilities are growing in prevalence, representing by some estimates 22\% of people~\cite{rsiprevalence}. This disability alone accounts for one third of workers' compensation costs in the US private industry~\cite{barr2002pathophysiological}.
 
 When the user cannot or will not use the primary input scheme of the software, it becomes necessary to provide alternative input modes. For simple interfaces that use standard components, keyboard and mouse can be both supported implicitly without additional development effort. Conversely, complex interfaces or ones involving non-standard components require explicit treatment from the developer to ensure that all funcitonality can be accessed. In cases where accessibility is not a priority or concern of the software developer, users can be left unable to use said software.
 
@@ -437,7 +447,7 @@ This transition away from native applications is leading to sacrifices in access
 
 Even on the conceptual level, there are problems with using the web to serve applications: a web application tries to fit a full application interface inside a web browser's (already saturated) interface. It is a second-class citizen; a user cannot `switch application' to it, only trawl for it amongst the tabs and windows of some web browser.
 
-Additionally, web applications are often guilty of foregoing standard UI components in favour of a bespoke UI made in JavaScript or CSS. This can be used to deliver impressive effects like transitions, or serve complicated shapes of interactive content or buttons. But this freedom makes it all too easy to produce inaccessible elements, such as buttons that can't be pressed or focused using the keyboard.
+Additionally, web applications are often guilty of foregoing standard UI components in favour of a bespoke UI made in JavaScript or CSS. This can be used to deliver impressive effects like transitions, or serve complicated shapes of interactive content or buttons. But this freedom makes it all too easy to produce inaccessible elements, such as buttons that cannot be pressed or focused using the keyboard.
 
 \subsection{Existing Approaches}
 There exist at present a few categories of solution to the problem of web accessibility:
@@ -458,7 +468,7 @@ Guidance is provided on how to develop accessible web applications, in the form 
    It is difficult to develop a tab-accessible web application~\cite{watanabe2012using}. Since the only pointing expression assumed is the tab key, layout must be linearized. Not only is this hard to design and develop for (requiring explicit effort and markup changes), the end result is not that impressive; content that is far away in the tab order unavoidably requires repeated hammering of the tab key (making it far harder to reach with the keyboard than with a pointing device). Plus linearization doesn't suit web content, which often has navigation bars, side bars, feeds or some similar multi-dimensional layout.
 \subparagraph{Short-circuiting tab journey with skip-links}
 \label{sec:skiplinks}
-  An exception to the content linearization problem is skip links, which can short-circuit the tab journey around a page by allowing the user to choose alternative insertion points. These again require effort and understanding from the developer. It is hard to provide a suitable set of skip links, and again the best case is still a hamfisted pointing experience, where the user can't predict where they are going to or from.
+  An exception to the content linearization problem is skip links, which can short-circuit the tab journey around a page by allowing the user to choose alternative insertion points. These again require effort and understanding from the developer. It is hard to provide a suitable set of skip links, and again the best case is still a hamfisted pointing experience, where the user cannot predict where they are going to or from.
 \paragraph{Conclusion}
   Even a website designed with accessibility standards in mind can be quite hard to navigate; web standards prescribe only a very limited amount of keyboard expression, so meeting these provides a very limited experience.
 
@@ -509,7 +519,6 @@ The accessibility layer will be implemented in the form of a \gls{browserextensi
 
 \chapter{Literature \& Technology Review}
 \label{chap:litreview}
-[@Fabio: this whole chapter is copypasta from the original Literature Review. I've not proofread it, so cannot guarantee if it's consistent with the current problem I say I am trying to solve, or the solution I propose.]
 \section{Overview}
 The deliverable for this dissertation is anticipated to be a browser extension that adds accessibility onto web content, favouring a novel interaction approach over the experience prescribed as accessible by web standards.
 
@@ -582,7 +591,7 @@ As explored previously in \cref{recommendedpracticesection}, guidance is provide
 Suggested standards have evolved, with two versions of the \gls{wcag} being published~\cite{chisholm2001web,wcag}, in \citeyear{chisholm2001web} and in \citeyear{wcag}. Some noteworthy changes to keyboard use include~\cite{wcagcomparison}:
 \begin{itemize}
 \item The recommendation for provision of access keys has been redacted in the newer version.
-\item Focus traps (where the user can't move keyboard focus out of some interface area, such as an `infinite-scrolling' list) are recognised to be a problem.
+\item Focus traps (where the user cannot move keyboard focus out of some interface area, such as an `infinite-scrolling' list) are recognised to be a problem.
 \item Visual indicator of focus is now required for keyboard navigation.
 \end{itemize}
 
@@ -604,7 +613,7 @@ A patent exists~\cite{Mouyade:2011:EP2385452} describing an `intuitive' method o
 
 The default Mac browser, Safari, supports multiple granularities of interface tabbing, differentiated by whether Alt is held down with Tab\cite{safaria11y}. This allows a choice of whether to navigate between all focusable elements, or just form elements. This essentially gives the user a filtering mechanism, and can shorten tab journeys where the only controls of interest are form controls (ie, forms). Chrome also provides two modes for tabbing, but they are accessessed via a setting toggle rather than given separate keybindings~\cite{browserkeyboardaccess}. The result is that switching between them on a whim is not possible, so combining the use of the two modes in navigation is denied.
 The Mac OS itself also provides a global `granularity' setting for tabbing, which can be toggled by shortcut between `text boxes and lists only', or `all controls'\cite{macshortcuts}. Again, the effect is that the tab journey can be made finer or coarser via a toggle, shortening journeys to certain elements. This system-wide toggle stacks with the effects of Safari's toggle, allowing for complex filters to be created. However, shortcomings are that the current state of the system-wide toggle has to be memorized to be able to predict effects, and as ever with tab navigation, the destination is unknown until after the action. Additionally, this setting is not honored by all browsers; the Chrome web browser, for example does not observe this preference\cite{browserkeyboardaccess}.
-As a solution, there are other impracticalities to consider: the setting affects interactions in all aspects of the OS interface, rather than just the application at hand, which may be undesirable. It is also questionable whether repeatedly changing system preferences just to complete navigation tasks within an application, is sensible from a design point of view; changes made in `System Preferences' should be just that: preferences. A user can't `prefer' both modes -- rather, the choice is made based on current context, so a better implementation for these purposes is to allow both modes of navigation at all times, mapped to different key bindings (rather than toggling the mode used by one single key binding). In essence, this is what is achieved by Safari's `Alt-Tab' shortcut.
+As a solution, there are other impracticalities to consider: the setting affects interactions in all aspects of the OS interface, rather than just the application at hand, which may be undesirable. It is also questionable whether repeatedly changing system preferences just to complete navigation tasks within an application, is sensible from a design point of view; changes made in `System Preferences' should be just that: preferences. A user cannot `prefer' both modes -- rather, the choice is made based on current context, so a better implementation for these purposes is to allow both modes of navigation at all times, mapped to different key bindings (rather than toggling the mode used by one single key binding). In essence, this is what is achieved by Safari's `Alt-Tab' shortcut.
 
 MouseKeys is a feature that exists in Windows, Mac OS X and X Windows-based workstations. This is a system-level alternative pointing mechanism, that moves the mouse cursor and performs clicks, using keypresses. Naturally, being system-level allows it to work for all applications, and being an interface for operating the mouse cursor allows it to be treated by applications in the same way a mouse is. However it is considered time-consuming in comparison to keyboard navigation because it provides `relatively crude directional control', and inefficient support for continuous motions like drag \& drop \cite{bergman1995towards}.
 
@@ -760,7 +769,7 @@ Our software solution will need to cope with the many and varied pointing scenar
 \someprob{Infinite Scrolling}{Many websites with dynamic content recruit `infinite scrollers' to procedurally load in more content as the user scrolls the page. These are dangerous to tab navigation, which traverses depth-first; once it is in an infinite feed, it cannot escape, since as focus approaches the `end' of the content, further content is loaded indefinitely. Thus elements after an infinite content feed are rendered unreachable. This is another case where our traversal system will absolutely need to provide a skipping mechanism, or choice of route.}
 \someprob{Layout Occlusion}{Floating elements can occlude those elements behind them. Thus it becomes impossible to point at the occluded elements. Actually, tab navigation copes very well with this problem (as it traverses by markup, rather than visual position). Our system will not try to solve this problem though, since even mouse pointing suffers from this. Since websites are mouse-optimized, it is expected that they would avoid creating problematic occlusion scenarios, or at least make them reversible (for example, some occluding content can be collapsed).}
 \someprob{Repeated units of varying size}{Identification of repeating units based on a visual analysis might be difficult, as the visual difference can be non-trivial; some elements can be larger than others. At any rate, our system will not attempt anything as complex as computer vision for understanding page layout. Ideally the system should be designed to not need an understanding of the page layout (like mouse navigation, which simply points at coordinates specified by the user).}
-\someprob{Multiple Infinite Scrollers}{A page can recruit infinite scrollers for content other than just the main feed. Thus assumptions like `any infinite scrolled content is likely to be the main focus of the page' can't be so easily made. The main takeaway here is that our system should not optimize interaction based on some imagined understanding of the purpose of the page structure; it could easily make incorrect assertions, thus would not be resilient to bad or obscure web design.}
+\someprob{Multiple Infinite Scrollers}{A page can recruit infinite scrollers for content other than just the main feed. Thus assumptions like `any infinite scrolled content is likely to be the main focus of the page' cannot be so easily made. The main takeaway here is that our system should not optimize interaction based on some imagined understanding of the purpose of the page structure; it could easily make incorrect assertions, thus would not be resilient to bad or obscure web design.}
 \someprob{Multi-modal Elements}{Elements can change size or state, for example collapsible components. Any representation the system stores about the layout of the webpage should be sensitive to this possibility of change.}
 %\someprob{}{}
 
@@ -952,7 +961,7 @@ Performance was important, as ChibiPoint resides in all \glspl{browsingcontext} 
 \subsubsection{Respecting Viewport Changes}
 We had to respect that the page could resize or scroll at any time. To cope with this, the entire interface is specified in relative dimensions; changes to the viewport size stretched ChibiPoint appropriately, and scrolling did not move the ChibiPoint interface out of view, as its coordinates are `fixed' relative to the viewport itself.
 
-Upon scroll or size change, the `flyouts' suggestions have to move. They stay `clipped' to the clickable they describe (and scroll with it). Once the clickable itself is off-screen, we remove the flyout --- the user does not need keybindings applied to elements they can't see, as this would offer unpredictable behaviour. The `crosshairs' pointing mechanism behaves slightly differently --- instead of following the target at which it points, it stays fixed in space, and allows new elements to scroll into its reticule. This allows it to aim like a mouse. For visual indication, it continues to `paint' its latest target (and `unpaint' targets it loses).
+Upon scroll or size change, the `flyouts' suggestions have to move. They stay `clipped' to the clickable they describe (and scroll with it). Once the clickable itself is off-screen, we remove the flyout --- the user does not need keybindings applied to elements they cannot see, as this would offer unpredictable behaviour. The `crosshairs' pointing mechanism behaves slightly differently --- instead of following the target at which it points, it stays fixed in space, and allows new elements to scroll into its reticule. This allows it to aim like a mouse. For visual indication, it continues to `paint' its latest target (and `unpaint' targets it loses).
 
 \subsubsection{Markup}
 Our system shares a DOM with the webpage in which it is hosted. Thus there is the possibility the markup we introduce could get caught in the crossfire of existing scripts or styles on the webpage --- selectors that apply a universal text style could also modify ChibiPoint, for example.
@@ -1083,6 +1092,7 @@ That is: a MouseGrid-like system provided predictable spatial navigation, and pr
 \chapter{Evaluation}
 \label{chap:evaluation}
 \section{Overview}
+\subsection{Analyses made}
 The primary system comparison we sought to pursue was `ChibiPoint' versus `tabbing navigation'. We aimed also to evaluate the contribution made by the `flyouts' feature of ChibiPoint: whether it helps or hinders. As such, we evaluated three systems:
 \begin{enumerate}
 \item Tabbing navigation
@@ -1101,6 +1111,17 @@ We aimed to quantitatively evaluate the following things:
 
 Qualitative data was useful also, as it offered feedback on specific advantages or disadvantages of each system, as well as providing insight to usability and the reasons for user preferences.
 
+\subsection{Clarification of Hypotheses}
+\label{sec:detailedhyp}
+We remind the reader of our hypotheses, which we now expand upon. We provide detail on the criteria this analysis will use to confirm that they are met:
+\textbf{\hypone}\\
+We hypothesise that our system, \textbf{ChibiPoint, requires significantly fewer keypresses to navigate webpages, than does `tabbing navigation'} (the current standards-prescribed method for keyboard navigation).
+`Navigate webpages' is a broad term, as there are many classes of pointing that need to be analysed. The more detailed hypothesis is that, \textbf{given several distinct classes of pointing, ChibiPoint requires fewer (or equal) keypresses, for a large majority (>80\%) of these scenarios}. Since we analyse two versions of ChibiPoint, it should be understood that we require at least one of these to outperform tabbing in a majority of tasks.
+\textbf{\hyptwo}\\
+We hypothesise that the novel `flyouts' feature of ChibiPoint, which assigns hotkeys to suggested buttons on the webpage, contributes to reducing the number of keypresses required by ChibiPoint for web navigation, compared to using just its standard pointing method of hierarchically drilling through the page and pointing at elements using crosshairs.
+In other words, we hypothesise that ChibiPoint `with crosshairs and flyouts enabled' performs a large majority (>80\%) of pointing scenarios in fewer keypresses than ChibiPoint `with just crosshairs enabled'.
+
+\subsection{Process}
 We performed first a usability study, as a precursor to the more detailed quantitative testing. The usability study was expected to reveal how a new user approaches the system --- what level of instruction is necessary, and what problems are encountered with usage. Addressing issues here would reduce problems in the larger, quantitative study that followed.
 
 Regarding the quantitative study: a pilot study was conducted first, to ensure that the study approach was effective, before widening the participation. Omissions from that pilot study were addressed.
@@ -1365,7 +1386,8 @@ Ultimately what we test is `at least' the described pointing case. Unrelated fac
 
 Were a large discrepancy to be caused by such unrelated factors, then the tested system would be seen to be so vulnerable to outside influence that it could not complete the task without being overwhelmed by those factors. Perhaps capturing this is similar enough to finding that the system is bad at that class of navigation --- since we found we cannot rely on this system to always cope with that class of navigation, due to its existing vulnerabilities.
 
-\chapter{Results of larger study}
+\chapter{Results \& Analysis of Quantitative Study}
+\label{chap:results}
 \section{Overview}
 We compared, for each of the eight navigation tasks, the number of keystrokes each system required to complete that navigation. Time was compared also, but as this was of secondary interest, less analysis was performed.
 \subsection{Efficiency (Keystrokes required)}
@@ -1715,7 +1737,7 @@ Speed scores are, in any case, an aside --- we restate that the goal of the syst
 \section{Discussion}
 \subsection{Support for Hypotheses}
 % Hey, maybe ChibiPoint should be a less good citizen and always be listening for a numpad press? Or always be open?
-The primary purpose of this evaluation was to ascertain whether our hypotheses, which pertain to system efficiency, were supported. We remind the reader again of those hypotheses (whose detail can be read in full at \Cref{chap:hypotheses}):
+The primary purpose of this evaluation was to ascertain whether our hypotheses, which pertain to system efficiency, were supported. We remind the reader again of those hypotheses (whose detail can be read in full at \Cref{sec:detailedhyp}):
 
 \textbf{\hypone}\\
 \textbf{\hyptwo}\\
