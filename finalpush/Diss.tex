@@ -79,7 +79,6 @@
 
 %,bibencoding=utf8
 \usepackage[firstinits=true, sorting=nyt,backend=bibtex]{biblatex}
-\DeclareNameAlias{default}{last-first}
 
 %\usepackage[sorting=none,backend=biber,bibencoding=utf8]{biblatex}
 \bibliography{Diss}
@@ -362,6 +361,7 @@ We believe that our keyboard navigation system for the web, ChibiPoint, provides
 \section{Goals and Methods}
 % What we intend to solve, and how
 \subsection{Goals}
+\label{sec:goals}
 We intend to demonstrate that a more effective, efficient, and predictable mouseless pointing mechanism than `tabbing navigation' can be made for the web. The mechanism needs to be capable of achieving widespread availability --- across many browsers and input systems.
 
 The input mechanism used by the web browser extension should be input hardware-agnostic: that is, it must accept as input a language that can be mapped to by a wide variety of input methods.
@@ -413,7 +413,8 @@ The remainder of the thesis is composed as follows:
 \chapterref{chap:reqanddesign}{Requirements \& Design} details the design of our system and pointing mechanism.
 \chapterref{chap:implementation}{Implementation} describes how we built our web browser extension.
 \chapterref{chap:evaluation}{Evaluation} explains how we evaluated the system in two studies: a usability study, and a larger quantitative study.
-\chapterref{chap:results}{Results, Discussion \& Analysis} describes and discusses the results of our larger quantitative study. We determine how our web browser extension compares to tabbing navigation, and determine also the contribution of our novel algorithm for suggesting `clickables' (defined in \Cref{sec:clickablesExplained}).
+\chapterref{chap:results}{Results \& Analysis} describes and analyses the results of our larger quantitative study. We determine how our web browser extension compares to tabbing navigation, and determine also the contribution of our novel algorithm for suggesting `clickables' (defined in \Cref{sec:clickablesExplained}).
+\chapterref{chap:discussion}{Discussion} discusses the results and analysis of the quantitative study, and ultimately decides how much support exists for our hypotheses and assertions about our system.
 \chapterref{chap:conclusions}{Conclusions \& Future Work} discusses our contribution to the field, and ways to extend the work.
 \end{itemize}
 
@@ -1363,16 +1364,22 @@ An explanation of the task classifications follows, and the pointing ramificatio
 	\TaskDef{Link surrounded by links}{the Table of Contents for a Wikipedia article contains many hyperlinks cramped together. Click one of these, `2.3 the modern computer'.}{This class of pointing could cause problems for ChibiPoint flyouts; many suggestions need to be squeezed into a small space. Though the keypress count might not be affected, reading time may be harmed. Additionally, in the case of tabbing, there will be more elements to tab past.}
 \end{enumerate}
 
+\label{sec:tasklimitations}
 Admittedly these are not completely isolated classes; for example, visual indicator of focus happens also to use an element that is late in markup, as well as testing the general lack of visual feedback. So some keypress count will be attributed to unrelated factors. However, we feel this correctly represents the real usage context of a navigation system --- the web is not so kind as to be designed as a set of isolated pointing cases.
 
 Ultimately what we test is `at least' the described pointing case. Unrelated factors such as the starting point in the page, or how many clickables there are along the way, will always add or subtract from the difficulty. We cannot know whether a keypress difference is caused primarily by unrelated factors or by the actual task intention.
 
 Were a large discrepancy to be caused by such unrelated factors, then the tested system would be seen to be so vulnerable to outside influence that it could not complete the task without being overwhelmed by those factors. Perhaps capturing this is similar enough to finding that the system is bad at that class of navigation --- since we found we cannot rely on this system to always cope with that class of navigation, due to its existing vulnerabilities.
 
-\chapter{Results, Discussion \& Analysis}
+\section{Summary}
+In this chapter we described how the quantitative study was enacted, as well as what it attempted to evaluate. The next chapter details the results and subsequent analysis of the systems under test.
+
+\chapter{Results \& Analysis}
 \label{chap:results}
 \section{Overview}
 We compared, for each of the eight navigation tasks, the number of keystrokes each system required to complete that navigation. Time was compared also, but as this was of secondary interest, less analysis was performed.
+
+Qualitative data was captured also: we summarize our observations of task performance.
 \subsection{Efficiency (Keystrokes required)}
 Each system was found to have different strengths. Tabbing was found to excel significantly at just one task: traversing short distances in forms (for example, from username field to password field). For longer form traversals, it was matched or beaten by the various ChibiPoint systems, and it even failed to surpass ChibiPoint at accessing visually early elements.
 
@@ -1404,6 +1411,8 @@ In the same way, users of tabbing could perhaps improve their performance if the
 We perform no analysis to assess the tabbing skill level of our participants (that is, how close to expert performance they achieve), but necessarily the tabbing performance measured is `at least that of a beginner', and ChibiPoint performance is `at most that of a beginner', so our comparison should be interpreted in the context of those boundaries.
 
 Skiplinks are one exception to the non-determinism of tabbing journeys. We chose to disallow the use of these, as they are website-dependent, and would therefore not represent the performance of a general browsing mechanism. Thus variance for tabbing is arguably not as large as it could be. However the tests chosen were not ones whose performance could have been improved upon with the available skip links (with the possible exception of Test 8 on Wikipedia, but this Skiplink is broken on Google Chrome, the browser in use, so provides no benefit).
+
+The navigation tasks used do not capture completely isolated cases. However we feel that it is inherently difficult to represent the real web with isolated navigation cases. We explain the problem and our justifications in detail in \Cref{sec:tasklimitations}.
 
 \section{Analysis of Efficiency}
 \subsection{Analysis Preamble}
@@ -1623,6 +1632,8 @@ Hypothesis 2 supported.
 
 \subsection{Observational Analysis by Task}
 \label{sec:efficiencydiscussion}
+Here we describe our observations about the efficiency with which candidates completed each task --- for example, reasons for inefficiency of each system, or whether expert performance was achieved.
+
 \setcounter{TaskType}{0}
 \navtask{[Within form] Immediate related traversal}
 This task demanded traversal in a login form from a `Username' field to its markup-adjacent `Password field'. Naturally this is a perfect task for tabbing, which achieves the navigation in just 1 keypress.
@@ -1705,6 +1716,7 @@ We provide in \Cref{fig:speed} a clustered bar chart to show the difference in s
 \caption{Time taken (secs) per navigation task.}
 \label{fig:speed}
 \end{figure}
+\FloatBarrier
 
 This graph plots the number of seconds elapsed between the first and final keypress of each navigation task. Naturally, tasks that take 1 keypress (i.e. `[Within form] immediate related traversal') incur zero time. Shorter bars represent a faster system.
 
@@ -1728,15 +1740,24 @@ CX+F provides a speed improvement over Tabbing in many tasks also (4--7), as wel
 
 Speed scores are, in any case, an aside --- we restate that the goal of the system is not to provide faster navigation, though it is welcome if it emerges.
 
-\section{Discussion}
-\subsection{Support for Hypotheses}
+\section{Analysis of User Preferences}
+\label{sec:userpref}
+User preferences are tabulated in \Cref{fig:quantpost}. 10 participants (83\%) chose CX+F as their preferred system. The only deviations from these were 2 participants who chose CX. No participant preferred Tabbing.
+
+Asked to rate ease of use on a 5-point scale (1= `Difficult to point at what I wanted', 5=`Easy to point at what I wanted'), ChibiPoint systems averaged highly (CX = 4.17/5, CX+F = 4.75/5), and certainly higher than tabbing (2.08/5).
+
+Participants were asked also to rate the amount of keypressing required by each system on a 5-point scale (1= `Few enough keypresses', 5= `Too many keypresses'). ChibiPoint systems were considered reasonable (`unreasonability' rating CX = 2.08/5, CX+F = 1.42/5), and tabbing considered completely unreasonable (4.75/5).
+
+\chapter{Discussion}
+\label{chap:discussion}
+\section{Support for Hypotheses}
 % Hey, maybe ChibiPoint should be a less good citizen and always be listening for a numpad press? Or always be open?
 The primary purpose of this evaluation was to ascertain whether our hypotheses, which pertain to system efficiency, were supported. We remind the reader again of those hypotheses (whose detail can be read in full at \Cref{sec:detailedhyp}):
 
 \textbf{\hypone}\\
 \textbf{\hyptwo}\\
 
-\subsubsection{Support for Hypothesis 1}
+\subsection{Support for Hypothesis 1}
 \newcounter{tasktablecounter}
 \newcommand{\tasktablenumber}{\stepcounter{tasktablecounter}\arabic{tasktablecounter}.~}
 \begin{tabular}{l l}
@@ -1762,7 +1783,7 @@ Thus CX+F reduced keypresses compared to tabbing in 7 of 8 tasks, which we consi
 CX reduced keypresses compared to tabbing in 6 of 8 tasks (75\%), which is certainly overall an improvement, but not the large majority sought by the hypothesis.\\
 Since one mode of ChibiPoint (CX+F) meets the requirements, Hypothesis 1 holds.
 
-\subsubsection{Support for Hypothesis 2}
+\subsection{Support for Hypothesis 2}
 \setcounter{tasktablecounter}{0}
 \begin{tabular}{l l}
 \hline\hline %inserts double horizontal lines 
@@ -1785,11 +1806,11 @@ Hypothesis 2 is not refuted in task 3 --- it is merely not supported.
 Thus CX+F reduced keypresses compared to CX in 7 of 8 tasks, which we consider to be a large majority (>80\%), as required.\\
 It should also be observed that in the non-supported task, no refute was seen to the claim; in all cases, CX+F either outperforms or matches CX.
 
-\subsection{How `effective' are the pointing systems under test?}
-\subsubsection{Definition of effectiveness}
+\section{How `effective' are the pointing systems under test?}
+\subsection{Definition of effectiveness}
 We promised in \Cref{sec:qualitative_promises} to deliver a more `effective' pointing system than tabbing. By this we mean: a system which is capable of completing the required pointing tasks. Tabbing was felt to be insufficient here, because its relative traversal was vulnerable to focus traps --- page regions beyond which focus cannot advance, or which indefinitely load new content into the path of traversal. Additionally tabbing was believed to be vulnerable to a `lack of visual indicator of focus' --- a situation where webpage elements provide no visual feedback upon keyboard focus, leaving the user lost.
 
-\subsubsection{Tabbing effectiveness}
+\subsection{Tabbing effectiveness}
 \label{sec:tabbing_effectiveness}
 We did not attempt to capture the former effectiveness problem (focus traps), since we cannot do a quantitative comparison where one system is unable altogether to point at the target. However we capture some evidence for the latter effectiveness problem (lack of visual indicator of focus). This occurs, of course, in Task 6: Low Visual Indicator of Focus. A huge standard deviation in keystrokes (30.485) was measured on this task, especially considering the tabbing journey is deterministic, so no deviation need occur at all unless the user overshoots their target and has to backtrack.
 
@@ -1799,7 +1820,7 @@ Nevertheless, we feel the abnormally high deviation in the `low visual indicator
 
 We assert at least that there exists an effectiveness problem with tabbing. However, ChibiPoint came with its own effectiveness problems.
 
-\subsubsection{Flyout effectiveness}
+\subsection{Flyout effectiveness}
 \label{sec:flyout_effectiveness}
 There existed some praise for the flyouts system, with one participant saying \textit{``Chibi with flyovers [sic] worked great!''} --- possibly this can be interpreted as an assessment that it solved the tasks well, which would imply effectiveness. In the same vein, ChibiPoint with flyouts was described to \textit{``work just as well and often better in all cases [than tabbing]''}. Flyouts were felt also to provide good guesses: \textit{``with flyouts, the offered `guesses' at what the user wants to click are very good. These guesses make it very clear what will be clicked on''}, which suggests that were effective at allowing the user to navigate where they wanted to.
 
@@ -1818,7 +1839,7 @@ It has to be cautioned also that we have not captured expert performance in this
 
 Interestingly, there were no effectiveness problems pertaining to clickable detection. The few classes of clickable that we do detect, appeared to be sufficient for these tasks (though admittedly these were hand-picked by the researcher).
 
-\subsubsection{Crosshair effectiveness}
+\subsection{Crosshair effectiveness}
 \label{sec:crosshair_effectiveness}
 Crosshairs did not utilise the same `clickable' detection that flyouts enjoyed. We chose this implementation because there was an advantage to this: clicks could be sent to elements which were not recognised as clickable by our system.
 
@@ -1830,40 +1851,41 @@ Possibly a compromise design exists: allow users to click elements with crosshai
 
 Overall (it is unclear if flyouts are included in this assessment), ChibiPoint was felt to be \textit{``far less variable than tabbing.''}. That is, its performance was consistent over a variety of tasks. This in itself can be taken as a type of effectiveness --- it is suited to more pointing contexts.
 
-\subsection{How `predictable' are the pointing systems under test?}
-\subsubsection{Definition of predictability}
+\section{How `predictable' are the pointing systems under test?}
+\subsection{Definition of predictability}
 We promised in \Cref{sec:qualitative_promises} to deliver a more `predictable' pointing system than tabbing. By this we mean: a pointing system where the user knows in advance what the outcomes of their actions will be (ie, what output will arise from each of their inputs). We felt tabbing to be fundamentally `unpredictable' because it traverses with respect to the page markup --- its journey is based on code the user cannot see. 
 
-\subsubsection{Tabbing predictability}
+\subsection{Tabbing predictability}
 We capture quantitatively some evidence for a predictability problem in tabbing. Since the system is meant to take a deterministic route through the page (the markup does not change, and the route cannot branch, except with skiplinks which we did not use), one might expect there to be no deviation in the scores of participants. But as discussed in \Cref{sec:tabbing_effectiveness}, one reason for deviation in keystroke scores of participants, is that users overshoot their target in their haste to pre-empt how many keypresses are required. This is because a visual heuristic is used to judge progress in a (non-visual) markup traversal. The fact that this visual heuristic does not allow users to accurately judge how much input is required of them, is symptomatic of the system's unpredictability.
 
-\subsubsection{Flyouts predictability}
+\subsection{Flyouts predictability}
 % usability study covers some stuff, right?
 One participant suggested implementing \textit{``a priority system in the background that chooses which keys to highlight based on previous browsing history rather than what seems like random''}, implying that the suggestions produced by flyouts could not be pre-empted. This is not a huge failing: the flyout feature on its own is not intended to enhance predictability; its primary goal is adding efficiency.
 
 In any case, participants were observed to exercise some control over their shortlist of flyouts, as evidenced by their over-specifying of elements on tasks like `visually early element', to remove confusing suggestions. So users understood how to constrain their search, bounding the possible suggestions, even if they did not know which possibilities would be presented.
 
-\subsubsection{Crosshairs predictability}
+\subsection{Crosshairs predictability}
 ChibiPoint overall was described by one participant as \textit{``very intuitive and was simple to use. Also, it mapped well to the Numpad which made navigation easier and more `familiar' so to speak''}. We take this `intuitivity' to meet our definition of predictability --- a user's knowing in advance what the outcomes of their actions will be. Mappings to numpad directions were understood, so it is possible that this participant understood that they had non-arbitrary control over the direction of traversal.
 
 Incidentally, several participants warned that losing this spatial mapping of inputs would harm the system --- \textit{``Numpad is very handy for the grid interface and touch typing. It would be tricky to use the number row on a laptop keyboard, though''}. For laptop keyboards we have developed another $3\times3$ grid mapping of keybindings, that does not require a numpad (and uses instead a grid of alphabet keys). This has been received well (outside of a formal study context) by users who lacked a numpad.
 
 Additionally, the effectiveness problem raised in \Cref{sec:crosshair_effectiveness} concerning the difficulty that exists in ascertaining in advance whether a click can be sent to the target, can be considered a predictability problem. The same suggested design criteria could improve predictability here.
 
-\subsection{User Preferences}
-\label{sec:userpref}
-User preferences are tabulated in \Cref{fig:quantpost}. 10 participants (83\%) chose CX+F as their preferred system. The only deviations from these were 2 participants who chose CX. No participant preferred Tabbing. That any users explicitly preferred to not have flyouts is symptomatic that there are matters other than efficiency involved in system preference. This might be accounted for by the effectiveness problems we discussed in \Cref{sec:flyout_effectiveness}. Overall though, it is heartening to see that both ChibiPoint systems are preferred to Tabbing.
+\section{User Preferences}
+Here we reference the findings from \Cref{sec:userpref}.
 
-Asked to rate ease of use on a 5-point scale (1= `Difficult to point at what I wanted', 5=`Easy to point at what I wanted'), ChibiPoint systems averaged highly (CX = 4.17/5, CX+F = 4.75/5), and certainly higher than tabbing (2.08/5).
+Both ChibiPoint systems were preferred to Tabbing. Hopefully this preference could encourage adoption of the system as a replacement for Tabbing. That a small minority of users explicitly preferred to not have flyouts is symptomatic that there are matters other than efficiency involved in system preference. This might be accounted for by the effectiveness problems we discussed in \Cref{sec:flyout_effectiveness}.
 
-Despite effectiveness issues raised by flyouts, users felt it made ChibiPoint easier to use. Of course, this is a subjective question and `ease of use' may have been felt to include the number of keypresses required --- users could just be referring to efficiency here.
+Additionally, both systems were rated as highly easy to use, and certainly easier to use than tabbing.
 
-Participants were asked also to rate the amount of keypressing required by each system on a 5-point scale (1= `Few enough keypresses', 5= `Too many keypresses'). ChibiPoint systems were considered reasonable (`unreasonability' rating CX = 2.08/5, CX+F = 1.42/5), and tabbing considered completely unreasonable (4.75/5).
+Despite effectiveness issues raised by flyouts, users felt these made ChibiPoint easier to use. Of course, this is a subjective question and `ease of use' may have been felt to include the number of keypresses required --- users could just be referring to efficiency here.
+
+Participants considered the amount of keypressing by both ChibiPoint systems to be reasonable, whereas tabbing was considered to require a highly unreasonable amount of keypressing. If this was a barrier to entry for keyboard pointing, perhaps ChibiPoint provides now a system that people would be prepared to use.
 
 Thus it was seen that users agree with the hypotheses we have supported quantitatively --- that ChibiPoint systems are more efficient than tabbing, and also that flyouts improve that efficiency further.
 
-\subsection{Miscellaneous Feedback}
-\subsubsection{Related system: Vimium}
+\section{Miscellaneous Feedback}
+\subsection{Related system: Vimium}
 One participant described ChibiPoint as being similar to an existing Chrome browser extension, `Vimium'~\cite{vimium}. This uses a non-hierarchical system: instead of requiring the user to specify an area of interest on the screen, every clickable on-screen is labelled immediately with a unique key sequence.
 
 A comparison of this system with ChibiPoint would be interesting, but is outside of the scope of this work. We note, though, that a larger input vocabulary is used by Vimium: it recruits a large alphabet for its key-sequences. This reduces its ability to map to other input hardware. Additionally, in the context of keyboard-usage, hands cannot stay in the $3\times3$ grids we designate on the keyboard; touch-typing becomes harder.
@@ -1872,10 +1894,10 @@ Labels are small, so they are able to be overlaid on each clickable without seri
 
 It is definitely worth reviewing the Vimium codebase --- it does not suffer from the keybinding conflicts that ChibiPoint experiences on websites like Google. Additionally it would be interesting to compare the methods used for clickable detection.
 % Mention suggestions here
-\subsubsection{Suggestions}
+\subsection{Suggestions}
 One participant recommends implementing for flyouts \textit{``a priority system in the background that chooses which keys to highlight based on previous browsing history''}. Certainly since flyouts exist as suggestions, informing them with knowledge of previous pointing decisions (or history of visited webpages) could allow more relevant choices to be made. However, this is predicated on the assumption that the current suggestions are not as helpful as they could be. It is worth investigating in future which suggestion algorithms produce the most relevant results.
 
-\subsubsection{Assessment Disclaimers}
+\subsection{Disclaimers}
 One participant holds that `exertion' is not so simply measured in the case of tabbing: \textit{``tabbing involved holding down of keys, which is less physical exertion than the counted keypresses might imply''}. We did not factor this into our analysis. Perhaps our efficiency findings should only be taken as a heuristic for exertion.
 
 \section{Summary}
@@ -1900,6 +1922,9 @@ Flyouts were found to be unpredictable, although users demonstrated the ability 
 \paragraph{Favour}
 Participants unanimously preferred ChibiPoint systems, with only two dissenters preferring not to have flyouts. ChibiPoint systems were rated far higher in ease of use than tabbing (considered hard to use), with the flyouts system rating even higher still. ChibiPoint systems were felt to require only a reasonable amount of keypressing, with the flyouts system considered even more reasonable still. Tabbing, by contrast was considered to require an unreasonable amount of keypressing.
 % favourite
+
+\paragraph{Conclusion}
+Overall, we feel we convincingly meet the goals we set in \Cref{sec:goals}: we demonstrated that a more effective, efficient, and predictable mouseless pointing mechanism than `tabbing navigation' can be made for the web. Our system has been developed on a highly-available foundation with no obvious barriers to entry, and users enjoy it.
 
 \chapter{Conclusions \& Future work}
 \label{chap:conclusions}
