@@ -745,7 +745,7 @@ The choice of `4 lookups' is an arbitrary low value. Its main purpose is illustr
 \reqend
 
 \section{Design}
-\subsection{Problem domain \& Design Criteria}
+\subsection{Problem domain}
 %\includegraphics[width=\textwidth]{LowFidelityFacebookLabelled}
 
 %\begin{figure}[H]
@@ -765,6 +765,7 @@ Our software solution will need to cope with the many and varied pointing scenar
 \newcounter{problemdomainfigcount}
 
 \newcommand{\someprob}[2]{\stepcounter{problemdomainfigcount}\indent\textbf{\arabic{problemdomainfigcount} --- #1}\\\noindent#2
+
 }
 
 \FloatBarrier
@@ -774,35 +775,36 @@ Our software solution will need to cope with the many and varied pointing scenar
 %
 %
 \someprob{Navigation bar floats above content}{This is a `web application' version of interface `chrome' (application controls around the content). Intuitive pointing needs to respect the current visual position of the content, and understand that the content can scroll under the floating chrome. Tab navigation ignores the presented position of the content, and can focus off-screen elements (despite the user's not being able to see such elements). It would be more efficient to restrict the search space to visible, on-screen elements (i.e. things that can be `pointed' at).}
- \someprob{Elements can duplicate each other's actions}{For example, a hyperlink could be the caption to some icon, and clicking either would produce the same result. In a poorly-marked-up page, a tab journey would traverse both of these elements, despite their function being equivalent. A more efficient mechanism would be one that allows the user to skip past duplicates (by combining them conceptually into one control, or otherwise by allowing the user to jump over multiple elements in a traversal).}
- \someprob{Repeating units of repeating units}{These sets of buttons are grouped into categories. If the user can express that they are interested in a category, it could eliminate other categories entirely from the search space. Similarly, if repeating units could be detected, then an explicit list traversal mechanism could be offered to the user. Detection of such things is likely to be difficult though, as it requires sane markup.}
- \someprob{Unskippable lists}{Similar to the previous point, a list of elements can be marked up without the use of an explicit list component (for example, a drop-down). In tab-navigation, skipping past the list is impossible; the user must tab past each individual element. A better traversal method would not rely on explicit list markup for entering and escaping lists.}
- \someprob{Rarely-used elements}{Though it needs to be possible to point at all elements, it is not ideal for obscure elements to appear in the majority of tab journeys (the user only wants to traverse them in exceptional cases). Our system needs to give the user control over the journey they take to point at an element, such that they can decide whether to traverse toward elements they would otherwise avoid.}
- \someprob{Invisible elements}{Some elements only present themselves upon mouseover or keyboard focus. Similarly, components like menus might expand as an option is touched on mouseover. Our pointing system might need to provide the user with an equivalent mechanism to `mouseover' to probe for invisible elements. In particular, actions other than `click' should be made available for interacting with the environment.}
- \someprob{Many forms}{A page can contain many small forms that are unrelated to each other. Since tab navigation is relatively good at traversing forms, browsers like Safari allow the user to traverse just form components. But it is hard to be sure whether pressing tab will move to the next element in some form, or to a different form altogether. It needs to be clear to the user how far they will move when they interact, so a visual indicator of the constraints of the search would be useful.}
- \someprob{Infinite Scrolling}{Many websites with dynamic content recruit `infinite scrollers' to procedurally load in more content as the user scrolls the page. These are dangerous to tab navigation, which traverses depth-first; once it is in an infinite feed, it cannot escape, since as focus approaches the `end' of the content, further content is loaded indefinitely. Thus elements after an infinite content feed are rendered unreachable. This is another case where our traversal system will absolutely need to provide a skipping mechanism, or choice of route.}
- \someprob{Layout Occlusion}{Floating elements can occlude those elements behind them. Thus it becomes impossible to point at the occluded elements. Actually, tab navigation copes very well with this problem (as it traverses by markup, rather than visual position). Our system will not try to solve this problem though, since even mouse pointing suffers from this. Since websites are mouse-optimized, it is expected that they would avoid creating problematic occlusion scenarios, or at least make them reversible (for example, some occluding content can be collapsed).}
- \someprob{Repeated units of varying size}{Identification of repeating units based on a visual analysis might be difficult, as the visual difference can be non-trivial; some elements can be larger than others. At any rate, our system will not attempt anything as complex as computer vision for understanding page layout. Ideally the system should be designed to not need an understanding of the page layout (like mouse navigation, which simply points at coordinates specified by the user).}
- \someprob{Multiple Infinite Scrollers}{A page can recruit infinite scrollers for content other than just the main feed. Thus assumptions like `any infinite scrolled content is likely to be the main focus of the page' cannot be so easily made. The main takeaway here is that our system should not optimize interaction based on some imagined understanding of the purpose of the page structure; it could easily make incorrect assertions, thus would not be resilient to bad or obscure web design.}
- \someprob{Multi-modal Elements}{Elements can change size or state, for example collapsible components. Any representation the system stores about the layout of the webpage should be sensitive to this possibility of change.}
- %\someprob{}{}
- 
- \subsection{Design Criteria}
- We intend to cope with the aforementioned minefield of design traps, by prescribing the following design criteria:
- \setcounter{problemdomainfigcount}{0}
- 
- \someprob{Navigation bar floats above content}{Our system will only point within the current viewport of the browser. As for elements hidden in collapsed menus, we should not offer clicking for these until such time as that menu is opened --- in other words, we must offer pointing only for currently visible elements.}
- \someprob{Elements can duplicate each other's actions}{We will use a hierarchical traversal --- that is, dividing the search space each time, in a logarithmic manner --- rather than the linear mechanism used by tabbing navigation. This allows groups of content to be efficiently skipped. We will attempt to provide a variety of pointing choices at every stage of navigation, so that duplicates do not overwhelm the list of choices.}
- \someprob{Repeating units of repeating units}{Rather than assuming we can make informed simplifications based on markup, we will simply side-step this using a hierarchical traversal; the user can efficiently skip past large portions of the page.}
- \someprob{Unskippable lists}{Similar resolution to above.}
- \someprob{Rarely-used elements}{Hierarchical traversal helps here also; access to a large search space can be made possible in very few lookups. If important elements are more prominent on the page (say, larger), then a spatial hierarchy creates a bias towards important elements first, but provides also the power to point at smaller, more obscure elements with a bit more work. This allows the system to be quick in the general case, and almost as quick for the obscure case.}
- \someprob{Invisible elements}{We will attempt to emulate the `mouseover' event of a mouse cursor. For this, our system needs certainly to be able to be aimed at targets. We will present crosshairs to achieve this.}
- \someprob{Many forms}{Our system needs to express the boundaries of its search --- we will display borders describing the region in which search is directed, as well as where it will move on the next lookup. This allows the traversal to be predicted.}
- \someprob{Infinite Scrolling}{Our system needs to provide absolute traversal, so that it does not get stuck in focus traps like infinite scrolling content.}
- \someprob{Layout Occlusion}{Our system will call the same lookup as a mouse does when clicking, so that occluded elements are handled in the same manner. That is, we will lookup the frontmost element at the inspected coordinates.}
- \someprob{Repeated units of varying size}{Our system will not attempt repetition analysis, but provide through its hierarchical pointing a robust way to aim at elements in irregular lists.}
- \someprob{Multiple Infinite Scrollers}{Our system will avoid optimizing based on assumptions of page markup --- it will be entirely visually aimed, like with the mouse, so it can cope in a familiar way to content  that flows off-screen, or has no fixed size, or has a complex role --- and it does not need to know that these factors defined those page elements.}
- \someprob{Multi-modal Elements}{The system will not rely on a cached representation of the page. Should suggestions be made that have gone out of date, re-scanning should be possible.}
+\someprob{Elements can duplicate each other's actions}{For example, a hyperlink could be the caption to some icon, and clicking either would produce the same result. In a poorly-marked-up page, a tab journey would traverse both of these elements, despite their function being equivalent. A more efficient mechanism would be one that allows the user to skip past duplicates (by combining them conceptually into one control, or otherwise by allowing the user to jump over multiple elements in a traversal).}
+\someprob{Repeating units of repeating units}{These sets of buttons are grouped into categories. If the user can express that they are interested in a category, it could eliminate other categories entirely from the search space. Similarly, if repeating units could be detected, then an explicit list traversal mechanism could be offered to the user. Detection of such things is likely to be difficult though, as it requires sane markup.}
+\someprob{Unskippable lists}{Similar to the previous point, a list of elements can be marked up without the use of an explicit list component (for example, a drop-down). In tab-navigation, skipping past the list is impossible; the user must tab past each individual element. A better traversal method would not rely on explicit list markup for entering and escaping lists.}
+\someprob{Rarely-used elements}{Though it needs to be possible to point at all elements, it is not ideal for obscure elements to appear in the majority of tab journeys (the user only wants to traverse them in exceptional cases). Our system needs to give the user control over the journey they take to point at an element, such that they can decide whether to traverse toward elements they would otherwise avoid.}
+\someprob{Invisible elements}{Some elements only present themselves upon mouseover or keyboard focus. Similarly, components like menus might expand as an option is touched on mouseover. Our pointing system might need to provide the user with an equivalent mechanism to `mouseover' to probe for invisible elements. In particular, actions other than `click' should be made available for interacting with the environment.}
+\someprob{Many forms}{A page can contain many small forms that are unrelated to each other. Since tab navigation is relatively good at traversing forms, browsers like Safari allow the user to traverse just form components. But it is hard to be sure whether pressing tab will move to the next element in some form, or to a different form altogether. It needs to be clear to the user how far they will move when they interact, so a visual indicator of the constraints of the search would be useful.}
+\someprob{Infinite Scrolling}{Many websites with dynamic content recruit `infinite scrollers' to procedurally load in more content as the user scrolls the page. These are dangerous to tab navigation, which traverses depth-first; once it is in an infinite feed, it cannot escape, since as focus approaches the `end' of the content, further content is loaded indefinitely. Thus elements after an infinite content feed are rendered unreachable. This is another case where our traversal system will absolutely need to provide a skipping mechanism, or choice of route.}
+\someprob{Layout Occlusion}{Floating elements can occlude those elements behind them. Thus it becomes impossible to point at the occluded elements. Actually, tab navigation copes very well with this problem (as it traverses by markup, rather than visual position). Our system will not try to solve this problem though, since even mouse pointing suffers from this. Since websites are mouse-optimized, it is expected that they would avoid creating problematic occlusion scenarios, or at least make them reversible (for example, some occluding content can be collapsed).}
+\someprob{Repeated units of varying size}{Identification of repeating units based on a visual analysis might be difficult, as the visual difference can be non-trivial; some elements can be larger than others. At any rate, our system will not attempt anything as complex as computer vision for understanding page layout. Ideally the system should be designed to not need an understanding of the page layout (like mouse navigation, which simply points at coordinates specified by the user).}
+\someprob{Multiple Infinite Scrollers}{A page can recruit infinite scrollers for content other than just the main feed. Thus assumptions like `any infinite scrolled content is likely to be the main focus of the page' cannot be so easily made. The main takeaway here is that our system should not optimize interaction based on some imagined understanding of the purpose of the page structure; it could easily make incorrect assertions, thus would not be resilient to bad or obscure web design.}
+\someprob{Multi-modal Elements}{Elements can change size or state, for example collapsible components. Any representation the system stores about the layout of the webpage should be sensitive to this possibility of change.}
+%\someprob{}{}
+
+\clearpage
+\subsection{Design Criteria}
+We intend to cope with the aforementioned minefield of design traps, by prescribing the following design criteria:
+\setcounter{problemdomainfigcount}{0}
+
+\someprob{Navigation bar floats above content}{Our system will only point within the current viewport of the browser. As for elements hidden in collapsed menus, we should not offer clicking for these until such time as that menu is opened --- in other words, we must offer pointing only for currently visible elements.}
+\someprob{Elements can duplicate each other's actions}{We will use a hierarchical traversal --- that is, dividing the search space each time, in a logarithmic manner --- rather than the linear mechanism used by tabbing navigation. This allows groups of content to be efficiently skipped. We will attempt to provide a variety of pointing choices at every stage of navigation, so that duplicates do not overwhelm the list of choices.}
+\someprob{Repeating units of repeating units}{Rather than assuming we can make informed simplifications based on markup, we will simply side-step this using a hierarchical traversal; the user can efficiently skip past large portions of the page.}
+\someprob{Unskippable lists}{Similar resolution to above.}
+\someprob{Rarely-used elements}{Hierarchical traversal helps here also; access to a large search space can be made possible in very few lookups. If important elements are more prominent on the page (say, larger), then a spatial hierarchy creates a bias towards important elements first, but provides also the power to point at smaller, more obscure elements with a bit more work. This allows the system to be quick in the general case, and almost as quick for the obscure case.}
+\someprob{Invisible elements}{We will attempt to emulate the `mouseover' event of a mouse cursor. For this, our system needs certainly to be able to be aimed at targets. We will present crosshairs to achieve this.}
+\someprob{Many forms}{Our system needs to express the boundaries of its search --- we will display borders describing the region in which search is directed, as well as where it will move on the next lookup. This allows the traversal to be predicted.}
+\someprob{Infinite Scrolling}{Our system needs to provide absolute traversal, so that it does not get stuck in focus traps like infinite scrolling content.}
+\someprob{Layout Occlusion}{Our system will call the same lookup as a mouse does when clicking, so that occluded elements are handled in the same manner. That is, we will lookup the frontmost element at the inspected coordinates.}
+\someprob{Repeated units of varying size}{Our system will not attempt repetition analysis, but provide through its hierarchical pointing a robust way to aim at elements in irregular lists.}
+\someprob{Multiple Infinite Scrollers}{Our system will avoid optimizing based on assumptions of page markup --- it will be entirely visually aimed, like with the mouse, so it can cope in a familiar way to content  that flows off-screen, or has no fixed size, or has a complex role --- and it does not need to know that these factors defined those page elements.}
+\someprob{Multi-modal Elements}{The system will not rely on a cached representation of the page. Should suggestions be made that have gone out of date, re-scanning should be possible.}
 
 %\someprob{}{}
 \subsection{Suggested Solution}
@@ -825,9 +827,9 @@ That is: the viewport of the browser is divided into a ($3\times3$) grid, and ea
 \textit{The website featured is `Katawa-Shoujo.com'~\cite{katawashoujo}. We chose this website to use in examples because it exemplifies a spatial pointing hierarchy (important controls in many directions, as well as smaller, lower-priority controls, also in a spread of directions) with minimal complexity.}
 
 \begin{figure}[ht]
-\label{fig:grid9}
 \centering\includegraphics[width=\textwidth]{figures/Grid9.png}
 \caption{Browser viewport being divided in a `MouseGrid' style, on an example webpage}
+\label{fig:grid9}
 \end{figure}
 
 \FloatBarrier
@@ -835,9 +837,9 @@ That is: the viewport of the browser is divided into a ($3\times3$) grid, and ea
 The user specifies by keypress which cell contains the element they are interested in. Then a new, smaller grid is constructed within that cell, and the process repeats itself. We demonstrate this recursion in \Cref{fig:grid9drilled}. The area in which the user wants to point is indicated to be more specific. They can repeatedly `drill down' into subsequent grids to further increase specificity.
 
 \begin{figure}[ht]
-\label{fig:grid9drilled}
 \centering\includegraphics[width=\textwidth]{figures/Grid9Drilled.png}
 \caption{`MouseGrid' division applied recursively, on an example webpage}
+\label{fig:grid9drilled}
 \end{figure}
 
 \FloatBarrier
@@ -845,9 +847,9 @@ The user specifies by keypress which cell contains the element they are interest
 Grids are constructed within grids, and a set of `crosshairs' (like on the sight of a gun) can follow the center of the most specific grid, and provide mouse behaviour (sending `click' and `hover' events) at those coordinates. Such crosshairs can be seen aiming at the `About' button in \Cref{fig:crosshairs}.
 
 \begin{figure}[ht]
-\label{fig:crosshairs}
 \centering\includegraphics[width=\textwidth]{figures/Crosshairs.png}
 \caption{`Crosshairs' targeting the center of the most specific grid on an example webpage}
+\label{fig:crosshairs}
 \end{figure}
 
 \FloatBarrier
@@ -865,9 +867,9 @@ We introduce the term `clickable' --- a button, hyperlink or other element, whic
 
 We provide in \Cref{fig:clickables} a picture to illustrate what clickables could exist on a webpage. These are elements the user might want to interact with, which listen for click events.
 \begin{figure}[ht]
-\label{fig:clickables}
 \centering\includegraphics[width=\textwidth]{figures/Clickables.png}
 \caption{`Clickables' on an example webpage (outlined with rectangles)}
+\label{fig:clickables}
 \end{figure}
 
 \FloatBarrier
@@ -876,9 +878,9 @@ The smaller a `clickable' is, the more precision is required to specify its loca
 We provide in \Cref{fig:suggestions} a picture to illustrate a `shortlist' of clickables being made for a user to choose from. No intelligence is used in picking this illustratory shortlist, but it demonstrates that some clickables have been filtered out, and a `top few' by some criteria are suggested to the user. These suggestions will be keyboard-activated, and thus need to display labels of the shortcut that invokes them, as well as indicating which element, upon invocation, will be clicked.
 
 \begin{figure}[ht]
-\label{fig:suggestions}
 \centering\includegraphics[width=\textwidth]{figures/Suggestions.png}
 \caption{`Shortlist of suggested clickables' on an example webpage}
+\label{fig:suggestions}
 \end{figure}
 
 %it is unambiguous which locations the user could be trying to point at: in other words, if there exist only a small set of `clickables' within the search space, it is worth suggesting these immediately to the user as targets, as any one could potentially be the element of interest
@@ -887,20 +889,20 @@ We provide in \Cref{fig:suggestions} a picture to illustrate a `shortlist' of cl
 Suggestions can complement the grid-drilling approach. They can be re-evaluated and constrained to the space of the latest grid, every time the user `drills down', allowing increasingly more informed suggestions to be made. \Cref{fig:filteredsuggestions} illustrates how a shortlist can be targeted to produce suggestions from within only a specified area.
 
 \begin{figure}[ht]
-\label{fig:filteredsuggestions}
 \centering\includegraphics[width=\textwidth]{figures/FilteredSuggestions.png}
 \caption{`Shortlist of suggested clickables' constrained to a quadrant of an example webpage}
+\label{fig:filteredsuggestions}
 \end{figure}
 
 \FloatBarrier
 \subsubsection{Visiblity Concerns}
-In order to allow the clickable underneath the suggestion to be seen clearly, the label that designates the shortcut for activating the clickable should `fly out' from that element. An arrow will denote the relationship between the label and the element it `flies out' from. Such suggestions will be referred to henceforth as `flyouts'. Their presence provides necessarily a visual indicator of what the user can click --- one which is not guaranteed in tabbing navigation.
+In order to allow the clickable underneath the suggestion to be seen clearly, the label that designates the shortcut for activating the clickable should `fly out' from that element. An arrow will denote the relationship between the label and the element from which it `flies out'. Such suggestions will be referred to henceforth as `flyouts'. Their presence provides necessarily a visual indicator of what the user can click --- one which is not guaranteed in tabbing navigation.
 
 We illustrate in \Cref{fig:flyouts} what a flyout might look like. Clearly if labels were clipped directly to these interface elements, the labels would occlude nearby clickables. Flyouts tag a clickable from afar to improve visibility.
 \begin{figure}[ht]
-\label{fig:flyouts}
 \centering\includegraphics[width=\textwidth]{figures/Flyouts.png}
 \caption{`Flyouts' tagging clickables from afar on an example webpage}
+\label{fig:flyouts}
 \end{figure}
 
 \FloatBarrier
@@ -2675,7 +2677,6 @@ Ratings were all on a five-point scale, 1--5.
 \section{Proficiencies}
 \begin{table}[ht]
 \centerline{\includegraphics{figures/Proficiency.pdf}}
-\label{fig:partic_proficiency}
 \medskip
 \small
 Participants were asked to pick which of these sentiments they identified best with. The statements attempted to describe a proficiency scale for keyboard usage:
@@ -2688,16 +2689,17 @@ Participants were asked to pick which of these sentiments they identified best w
 \end{enumerate}
 Votes were cast only for the middle descriptors, 2--4.
 \caption{Keyboard Navigation Proficiency of Participants}
+\label{fig:partic_proficiency}
 
 \end{table}
 
 \begin{table}[ht]
 \centerline{\includegraphics{figures/TouchTyping.pdf}}
-\label{fig:partic_ttype}
 \medskip
 \small
 Touch-typing proficiency was rated on a five-point scale ranging from the sentiment `I look at every key before pressing' to `I always type without even a reference glance at the keyboard'.
 \caption{Touch-Typing Proficiency of Participants}
+\label{fig:partic_ttype}
 \end{table}
 
 \FloatBarrier
@@ -2705,8 +2707,8 @@ Touch-typing proficiency was rated on a five-point scale ranging from the sentim
 \subsection{Questionnaires}
 \label{sec:questionnaires}
 \begin{figure}[ht]
-\label{fig:prequestionnaire}
 \caption{Pre-Experiment Questionnaire}
+\label{fig:prequestionnaire}
 \includegraphics[page=1,width=\textwidth,height=\safefigheight,keepaspectratio]{sheets/PreQuestionnaire.pdf}
 \end{figure}
 \begin{figure}[ht]
@@ -2721,9 +2723,9 @@ Touch-typing proficiency was rated on a five-point scale ranging from the sentim
 \end{figure}
 
 \begin{figure}[ht]
-\label{fig:postquestionnaire}
 \includegraphics[page=1,width=\textwidth,height=\safefigheight,keepaspectratio]{sheets/PostQuestionnaire.pdf}
 \caption{Post-Experiment Questionnaire}
+\label{fig:postquestionnaire}
 \end{figure}
 \begin{figure}[ht]
 \ContinuedFloat
@@ -2739,40 +2741,40 @@ Touch-typing proficiency was rated on a five-point scale ranging from the sentim
 \newcommand{\instructionssheet}[1]{\somesheet{instructions/#1.png}}
 \begin{figure}[ht]
 \instructionssheet{ChibiPointDrillInstructions}
-\label{fig:instructions_crosshairs}
 \caption{Instructions for the `crosshairs' feature of ChibiPoint.}
+\label{fig:instructions_crosshairs}
 \end{figure}
 
 \begin{figure}[ht]
 \instructionssheet{ChibiPointFlyoutInstructions}
-\label{fig:instructions_flyouts}
 \caption{Instructions for the `flyouts' feature of ChibiPoint.}
+\label{fig:instructions_flyouts}
 \end{figure}
 
 \begin{figure}[ht]
 \instructionssheet{TabbingInstructions}
-\label{fig:instructions_tabbing}
 \caption{Instructions for `tabbing navigation'.}
+\label{fig:instructions_tabbing}
 \end{figure}
 \FloatBarrier
 
 \subsection{Scripts}
 \begin{figure}[ht]
 \somesheet{sheets/script.pdf}
-\label{fig:myscript}
 \caption{Script for researcher to follow.}
+\label{fig:myscript}
 \end{figure}
 
 \begin{figure}[ht]
 \somesheet{sheets/briefingScript.pdf}
-\label{fig:theirscript}
 \caption{Briefing script for participant.}
+\label{fig:theirscript}
 \end{figure}
 
 \begin{figure}[ht]
 \somesheet{sheets/taskScript.pdf}
-\label{fig:taskscript}
 \caption{Task script to prompt participant.}
+\label{fig:taskscript}
 \end{figure}
 \FloatBarrier
 
