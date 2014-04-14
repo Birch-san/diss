@@ -259,15 +259,16 @@ The web is designed for pointing devices like mice. Many users cannot use such i
 \tableofcontents
 \listoffigures
 \listoftables
+\lstlistoflistings
 %\pagebreak
 
 %\chapter*{Introduction}
 \chapter*{Acknowledgements}
-I thank my supervisor, Dr\. Fabio Nemetz, for taking a chance on this project idea. He has been a source of constant support and encouragement to me and all others he supervises. It was that motivation that enabled me to keep opening this .tex file.
+I thank my supervisor, Dr. Fabio Nemetz, for taking a chance on this project idea. He has been a source of constant support and encouragement to me and all others he supervises. It was that motivation that enabled me to keep opening this .tex file.
 
 I thank the others in Team Fabio for the rapport we enjoyed as a group this year. It was heartening to work alongside so many inspired individuals.
 
-I thank Dr\. Alessio Guglielmi for electing to second-assess this dissertation on top of his original workload. His gesture is appreciated.
+I thank Dr. Alessio Guglielmi for electing to second-assess this dissertation on top of his original workload. His gesture is appreciated.
 
 My brother Jamie provided invaluable assistance with statistical methods and SPSS. I am grateful for this.
 
@@ -291,7 +292,7 @@ Many users cannot use mice to point in websites, due to input restrictions:
 %\glsunset{rsi}
 \item Some users are too disabled (due to conditions like \gls{rsi}) to use the input device provided to them
 \item More suitable input hardware, such as bespoke accessibility hardware, can be hard to prescribe (due to lack of knowledge, or access to a needs assessor) or procure (due to rarity or expense)
-\item Some devices (such as Smart TVs or games consoles) inherently enforce a standard, limited, input hardware (such as a remote or gamepad) in stead of a better pointing device
+\item Some devices (such as Smart TVs or games consoles) inherently enforce a standard, limited, input hardware (such as a remote or gamepad) instead of a better pointing device
 \end{enumerate}
 
 Such users are denied full access to a web that relies on a robust pointing mechanism.
@@ -427,7 +428,7 @@ Some domain knowledge will be divulged in this section, prior to describing the 
 \glsreset{rsi}
 Computer users are not uniform in their capabilities and preferences. For this reason, users differ in the input mechanisms they choose for interacting with software. Some users may prefer to perform tasks using a keyboard rather than using a mouse, for example. Commonly mouse and keyboard will be recruited together. However some users' input strategies are constrained by factors such as disability: occupational syndromic conditions such as ~\gls{rsi} can preclude the ability to use a mouse, keyboard or both~\cite{trewin1999keyboard}. ~\gls{rsi} and related disabilities are growing in prevalence, representing by some estimates 22\% of people~\cite{rsiprevalence}. This disability alone accounts for one third of workers' compensation costs in the US private industry~\cite{barr2002pathophysiological}.
 
-When the user cannot or will not use the primary input scheme of the software, it becomes necessary to provide alternative input modes. For simple interfaces that use standard components, keyboard and mouse can be both supported implicitly without additional development effort. Conversely, complex interfaces or ones involving non-standard components require explicit treatment from the developer to ensure that all funcitonality can be accessed. In cases where accessibility is not a priority or concern of the software developer, users can be left unable to use said software.
+When the user cannot --- or will not --- use the primary input scheme of the software, it becomes necessary to provide alternative input modes. For simple interfaces that use standard components, keyboard and mouse can be both supported implicitly without additional development effort. Conversely, complex interfaces or ones involving non-standard components require explicit treatment from the developer to ensure that all functionality can be accessed. In cases where accessibility is not a priority or concern of the software developer, users can be left unable to use said software.
 
 \subsubsection{Rise of web applications}
 Even as early as 2001, software made the leap to the web~\cite{ginige2001web}. Services such as email, banking and word processing are being produced as web applications, due to a few advantages:
@@ -476,7 +477,7 @@ Guidance is provided on how to develop accessible web applications, in the form 
    It is difficult to develop a tab-accessible web application~\cite{watanabe2012using}. Since the only pointing expression assumed is the tab key, layout must be linearized. Not only is this hard to design and develop for (requiring explicit effort and markup changes), the end result is not that impressive; content that is far away in the tab order unavoidably requires repeated hammering of the tab key (making it far harder to reach with the keyboard than with a pointing device). Plus linearization does not suit web content, which often has navigation bars, side bars, feeds or some similar multi-dimensional layout.
 \subparagraph{Short-circuiting tab journey with skip-links}
 \label{sec:skiplinks}
-  An exception to the content linearization problem is skip links, which can short-circuit the tab journey around a page by allowing the user to choose alternative insertion points. These again require effort and understanding from the developer. It is hard to provide a suitable set of skip links, and again the best case is still a hamfisted pointing experience, where the user cannot predict where they are going to or from.
+  An exception to the content linearization problem is skip links, which can short-circuit the tab journey around a page by allowing the user to choose alternative insertion points. These again require effort and understanding from the developer. It is hard to provide a suitable set of skip links, and again the best case is still a ham-fisted pointing experience, where the user cannot predict where they are going to or from.
 \paragraph{Conclusion}
   Even a website designed with accessibility standards in mind can be quite hard to navigate; web standards prescribe only a very limited amount of keyboard expression, so meeting these provides a very limited experience.
 
@@ -625,7 +626,7 @@ As a solution, there are other impracticalities to consider: the setting affects
 
 MouseKeys is a feature that exists in Windows, Mac OS X and X Windows-based workstations. This is a system-level alternative pointing mechanism, that moves the mouse cursor and performs clicks, using keypresses. Naturally, being system-level allows it to work for all applications, and being an interface for operating the mouse cursor allows it to be treated by applications in the same way a mouse is. However it is considered time-consuming in comparison to keyboard navigation because it provides `relatively crude directional control', and inefficient support for continuous motions like drag \& drop \cite{bergman1995towards}.
 
-Switch Scanning is a paradigm whereby input options are scanned in front of the user, who activates a switch whenceupon their desired option cycles into focus~\cite{hendrix1997adapting}. By allowing one key to perform many roles (dependent on time elapsed), it increases the expression of a keyboard shortcut. It is described as slow (naturally; it introduces a time factor to an otherwise-instant action). However, where time is not a concern, it could be harnessed to reduce the repetitive motor strain associated with repeated keyboard tabbing (a user could initiate cycled tabbing with one keypress, then stop it with one more, regardless of distance). For the purposes of this work though, which aims to improve on the speed of tabbing (not just the repetitive strain), switch scanning is likely too slow to be a solution.
+Switch Scanning is a paradigm whereby input options are scanned in front of the user, who activates a switch when their desired option cycles into focus~\cite{hendrix1997adapting}. By allowing one key to perform many roles (dependent on time elapsed), it increases the expression of a keyboard shortcut. It is described as slow (naturally; it introduces a time factor to an otherwise-instant action). However, where time is not a concern, it could be harnessed to reduce the repetitive motor strain associated with repeated keyboard tabbing (a user could initiate cycled tabbing with one keypress, then stop it with one more, regardless of distance). For the purposes of this work though, which aims to improve on the speed of tabbing (not just the repetitive strain), switch scanning is likely too slow to be a solution.
 
 TypeAheadFind (now Find As You Type), referred to previously in \Cref{changingwebbrowser}, is not just a plugin for the Chrome browser, but also a feature distributed with Firefox as standard~\cite{firefoxshortcuts}. It streamlines for the user the process of selecting hyperlinks; any time keyboard focus is not within an input field, key input is directed to an as-you-type search, which focuses any matching string in the page. A selected hyperlink can easily be followed by pressing Enter. This is an efficient method for focusing hyperlinks, as text search can narrow down the target quickly, and without aiming. However the string needs to be sufficiently unique, to reduce cycling through options. Additionally, it is no use for selecting interface elements that are not defined by text, such as divs. It can also be a bad citizen if the web application in question expects to receive keyboard input when the user is not within a form (for example, in a game). This can be improved optionally by setting a single, uncommonly-used key to be used for invoking the feature.
 
@@ -875,7 +876,7 @@ We provide in \Cref{fig:clickables} a picture to illustrate what clickables coul
 \FloatBarrier
 The smaller a `clickable' is, the more precision is required to specify its location, and consequently the more lookups must be specified by the user. However, this search can be shortened if the user's intentions can be pre-empted. Allowing the user to choose from a set of suggestions, can spare them from having to specify the exact location of their target. Especially in the case where few `clickables' exist within the search space, suggesting even a small subset of the clickables in that search space enables the user to potentially forego a longer location-based search.
 
-We provide in \Cref{fig:suggestions} a picture to illustrate a `shortlist' of clickables being made for a user to choose from. No intelligence is used in picking this illustratory shortlist, but it demonstrates that some clickables have been filtered out, and a `top few' by some criteria are suggested to the user. These suggestions will be keyboard-activated, and thus need to display labels of the shortcut that invokes them, as well as indicating which element, upon invocation, will be clicked.
+We provide in \Cref{fig:suggestions} a picture to illustrate a `shortlist' of clickables being made for a user to choose from. No intelligence is used in picking this illustrative shortlist, but it demonstrates that some clickables have been filtered out, and a `top few' by some criteria are suggested to the user. These suggestions will be keyboard-activated, and thus need to display labels of the shortcut that invokes them, as well as indicating which element, upon invocation, will be clicked.
 
 \begin{figure}[ht]
 \centering\includegraphics[width=\textwidth]{figures/Suggestions.png}
@@ -993,9 +994,11 @@ We draw attention also to the fact that clickable suggestions are not the only p
 \subsubsection{Detection}
 It was challenging to detect which elements were listening for click events. There exists no standardised way to retrieve the list of event listeners bound to an element. Rather, an attempt was made to introduce such a standard in the W3C \gls{dom} Level 3 Events specification\cite{dom3attempt}, but this addition was later redacted\cite{domlevel3}. User agents (that is, web browsers) can expose access to their own internal representations of event listener lists. In fact, our browser extension could perhaps use Chrome's Command Line API\cite{commandlineapi} to look up such event listener lists --- but this requires its Developer Tools Console to be open, and removes our browser-independence. A such, a different solution was needed.
 
-A discussion on StackOverflow.com provided the answer we needed\cite{eventlistenerprototype}: before the \gls{dom} is constructed, overwrite the definition of `addEventListener' used in the prototype for HTML elements. In this way, we can ensure that, any time an event listener is added to an element, it is tracked in a list on that element (which we can later query for). After this it was trivial to, using JQuery, select all elements in the page which have this list attributed to them.
+A discussion on StackOverflow.com provided the answer we needed\cite{eventlistenerprototype}: before the \gls{dom} is constructed, overwrite the definition of `\texttt{addEventListener}' used in the prototype for HTML elements. In this way, we can ensure that, any time an event listener is added to an element, it is tracked in a list on that element (which we can later query for). This code can be seen in \Cref{lst:handlerTypes}. Once an attribute exists denoting an element's having click events, it becomes trivial to (using JQuery) select all elements in the page which have this list attributed to them.
 
-For additional coverage, we infer `clickability' of elements simply by reading their tag name. For example, all `anchor' tags are assumed (admittedly generously) to be purposed as hyperlinks. Admittedly it is possible to confirm the role of the anchor tag as clickable (for example by checking whether it has a URL associated with it), but it is not too harmful to present false positives --- users are given multiple other suggestions, so assuming that user realizes they do not need to click the element, it does not cause them great problems. Form elements are assumed also to be of interest always to the user, so we register these as clickables.
+For additional coverage, we infer `clickability' of elements simply by reading their tag name. For example, all `\texttt{anchor}' tags are assumed (admittedly generously) to be purposed as hyperlinks. Admittedly it is possible to confirm the role of the anchor tag as clickable (for example by checking whether it has a URL associated with it), but it is not too harmful to present false positives --- users are given multiple other suggestions, so assuming that user realizes they do not need to click the element, it does not cause them great problems. Form elements are assumed also to be of interest always to the user, so we register these as clickables.
+
+The code used for querying for clickables can be seen in \Cref{lst:detectclickables}.
 
 A visibility check is performed, since this is a visual pointing system and users have no need to click on elements they are not aware of. For this we simply check whether the value of an element's `hidden' and `visible' attributes.
 
@@ -1022,6 +1025,37 @@ In response to those priorities, this is the algorithm we used to generate a sho
 \item Present `flyouts' for each clickable suggestion elected on the shortlist
 \end{enumerate}
 
+Part of this algorithm can be seen implemented in code in \Cref{lst:codeshortlist}. The code is not production-quality, so we recommend relying on the written algorithm for understanding.
+
+An example of our system generating a shortlist of clickables with this algorithm can be seen in \Cref{fig:impClickable}.
+
+\begin{figure}[ht]
+\centering\includegraphics[width=\textwidth]{figures/ImpClickables.png}
+\caption{A shortlist of clickables is generated by ChibiPoint, and flyouts are presented to the user.}
+\label{fig:impClickable}
+\end{figure}
+\FloatBarrier
+
+Should the user find that their intended target is not captured in this shortlist, they can further specify their space of interest, by drilling down into a quadrant. This search refinement is demonstrated in \Cref{fig:impFilteredClickable}.
+
+\begin{figure}[ht]
+\centering\includegraphics[width=\textwidth]{figures/ImpFilteredClickables.png}
+\caption{The user refines their search space to a quadrant of the screen, and Chibipoint produces a more specific shortlist of clickables.}
+\label{fig:impFilteredClickable}
+\end{figure}
+
+\FloatBarrier
+
+\subsection{Creation of MouseGrid}
+The implementation of `crosshairs' was a straightforward engineering task, so we will not dwell on it. Any novelty in its concept has been covered in the Design section (\Cref{sec:ourmousegrid}). However we provide in \Cref{fig:impCrosshairs} a diagram, in order to paint a complete picture of the system we implemented. `\texttt{document.elementFromPoint(x,y)}' is used to lookup the element at the coordinates of the crosshairs, and `\texttt{element.click()}' is effected on that element. It should also be noted that we `paint' the targeted element yellow, by styling its background and applying a glow effect.
+
+\begin{figure}[ht]
+\centering\includegraphics[width=\textwidth]{figures/ImpCrosshairs.png}
+\caption{`MouseGrid' implementation, aimed at Amazon.co.uk. The user can send `click' actions to the coordinates of the center of the most specific grid}
+\label{fig:impCrosshairs}
+\end{figure}
+\FloatBarrier
+
 \subsection{Citizenship}
 \subsubsection{Keybindings}
 We had to be careful to avoid blocking the user's interaction with websites. In this vein, the ChibiPoint interface is not even rendered until the time it is invoked. When capturing keyboard input from the user, we ensured first that keyboard focus was not in use to interact with forms.
@@ -1046,19 +1080,19 @@ Our system shares a DOM with the webpage in which it is hosted. Thus there is th
 
 We cannot make our interface resilient to all types of interface change --- the hosting webpage has just as much power to change our interface as we do, as it uses the same technologies in the same context. The only difference is that they are not trying to change our interface, and do not know it exists! Conflicts can occur by accident, though, if generous selectors are used to edit webpages.
 
-To protect our markup, we prefaced all our CSS class names with `chibiPoint\_', to reduce the likelihood of accidentally being selected by queries or styles on a webpage. This turned out to be a necessary decision --- early versions of ChibiPoint were being accidentally re-styled by some websites, such as Kotaku.com.
+To protect our markup, we prefaced all our CSS class names with `\texttt{chibiPoint\_}', to reduce the likelihood of accidentally being selected by queries or styles on a webpage. This turned out to be a necessary decision --- early versions of ChibiPoint were being accidentally re-styled by some websites, such as Kotaku.com.
 
 Some websites, such as Facebook, had interface that occluded ChibiPoint's. We fixed this by explicitly reserving the highest z-index in the draw order.
 
 Use of the browser's Developer Mode became troublesome, since the ChibiPoint interface occludes all elements behind it; it became difficult to inspect elements, as they could not be clicked on when ChibiPoint was loaded. We provided a partial fix to this --- the ChibiPoint interface is now rendered only when it is actually in use. Thus elements behind it can be inspected, provided it is closed.
 
-Aside from Developer Mode selections, we needed to make sure also that regular clicking was still possible whilst ChibiPoint was loaded. Thus we use a `\begin{verbatim}pointer-events: none;\end{verbatim}' style to ensure that ChibiPoint does not intercept clicks, even when it is present.
+Aside from Developer Mode selections, we needed to make sure also that regular clicking was still possible whilst ChibiPoint was loaded. Thus we use a `\texttt{pointer-events: none}' style to ensure that ChibiPoint does not intercept clicks, even when it is present.
 
 Regarding the markup of our grids within grids, we considered using a Composite pattern\cite{gamma1994design}, so that all grid levels could be treated the same way in code. However we realised that is was more useful to be able to give special treatment to certain grid levels --- in particular, the existence of a top-level grid is an important factor in the state of the system: it determines whether ChibiPoint is in use. We can also bound any page changes we make to be constrained to within this container, keeping good citizenship.
 
-Thus we specify a particular container, `chibiPoint\_gridContainer', in which to build grids. This container was always present, whether there were grids within it or not, so it provided a consistent place to check the state of the system. We were able also to apply transformations to that high-level container when we wanted to modify the entire grid, such as removing the interface from render.
+Thus we specify a particular container, `\texttt{chibiPoint\_gridContainer}', in which to build grids. This container was always present, whether there were grids within it or not, so it provided a consistent place to check the state of the system. We were able also to apply transformations to that high-level container when we wanted to modify the entire grid, such as removing the interface from render.
 
-Necessary conflicts existed also --- in cases where we `painted' page elements (for example to show which clickables are designated by each flyout, and also which element is targeted by crosshairs), we had to be careful not to paint them in a manner that would break other code that interacted with it. We add a `chibiPoint\_painted' class to such elements, or otherwise look for and remove that class to `unpaint' them afterward. Admittedly this produces conflicts for code which is not expecting multiple classes to exist on some element. This is a regrettable problem of our browser extension's sharing a DOM with the page it resides in. ChibiPoint does not modify elements unless it is in use, so even if problems are caused by this mechanism, the user can still fall back on their standard web browsing experience if they close ChibiPoint. A more insulated painting mechanism could be achieved by `painting' an element owned by ChibiPoint (as opposed to painting the element directly), in a similar manner to how flyouts provide their own arrows to point to targets.
+Necessary conflicts existed also --- in cases where we `painted' page elements (for example to show which clickables are designated by each flyout, and also which element is targeted by crosshairs), we had to be careful not to paint them in a manner that would break other code that interacted with it. We add a `\texttt{chibiPoint\_painted}' class to such elements, or otherwise look for and remove that class to `unpaint' them afterward. Admittedly this produces conflicts for code which is not expecting multiple classes to exist on some element. This is a regrettable problem of our browser extension's sharing a DOM with the page it resides in. ChibiPoint does not modify elements unless it is in use, so even if problems are caused by this mechanism, the user can still fall back on their standard web browsing experience if they close ChibiPoint. A more insulated painting mechanism could be achieved by `painting' an element owned by ChibiPoint (as opposed to painting the element directly), in a similar manner to how flyouts provide their own arrows to point to targets.
 
 \subsection{Interface Malleability}
 \subsubsection{Philosophy}
@@ -1105,7 +1139,7 @@ By making each of the flyouts `fly out' in different directions, we provide some
 
 As for the final problem --- obscuring regions of interest in higher-specificity grids --- we decided to attend to this more as the grids became more specific. Thus flyout labels must give more and more berth (separation) to their clickables as the grid becomes more specific. We used `distance of current flyout label from center of most specific grid' as a heuristic for how specific the grid had become. We controlled berth with an inverse cubic relationship to that distance, as this was found to produce an effective rate of separation. Berth was capped with a maximum distance.
 
-Flyouts fan out in the direction that leads away from the center of the most specific grid. This allows them to choose unique directions without communicating with each other.
+Flyouts fan out in the direction that leads away from the center of the most specific grid. This allows them to choose unique directions without communicating with each other. This behaviour can be seen in \Cref{fig:impFilteredClickable}.
 
 Flyout positions are constrained to the viewport boundaries, as it is more important for the flyout to be visible than for it to be ideally separated from its clickable.
 
@@ -1141,11 +1175,11 @@ Overall we meet well all our high-priority non-functional requirements.
 
 Even our low-priority non-functional requirements were met.
 
-\subsection{Delivery on Functional requirements}
+\subsubsection{Delivery on Functional requirements}
 
 \textbf{We responded in the following ways to these high-priority requirements:}
 \reqstart
-	\reqitem{Efficient navigation (semantically unrelated elements)}{The system uses a hierarchical navigation system, so efficient navigation is expected. Certainly we are not vulnerable to markup distance between each focusable element, as we traverse spatially. A more rigorous evaluation of efficiency will be pursued in the quantitive evaluation that follows.}
+	\reqitem{Efficient navigation (semantically unrelated elements)}{The system uses a hierarchical navigation system, so efficient navigation is expected. Certainly we are not vulnerable to markup distance between each focusable element, as we traverse spatially. A more rigorous evaluation of efficiency will be pursued in the quantitative evaluation that follows.}
 	\reqitem{Efficient navigation (semantically related, but distant elements)}{This will be ascertained in the quantitative evaluation. However the hierarchical navigation should mean that travelling distance is efficient.}
 	\reqitem{Efficient navigation (arbitrary position)}{This, too, will be ascertained in the quantitative evaluation. Certainly hierarchical traversal is suited for efficient access to arbitrary locations though.}
     %\reqitem{}{}
@@ -1209,7 +1243,7 @@ The participant was seen to crane toward the screen to read flyouts. We decided 
 
 The participant noted that the crosshairs did not wholly emulate a mouse, since they did not trigger mouseover or hover events, nor display a `mouseover' cursor. A cursory effort was made to address this, but no fix could be found at the time. Further work could pursue a solution for this, to improve the feedback of the system and complete the cursor metaphor.
 
-The participant assumed incorrectly that drilling could not continue beyond the point where the quadrant labels were hidden. The grid gets smaller each time, and past a threshold the text and gridlines are removed so as not to occlude the content in the quadrants. However, drilling remains possible provided the user recalls the shortcuts. To address any misconceptions, we decided to explictly cover this behaviour in future training.
+The participant assumed incorrectly that drilling could not continue beyond the point where the quadrant labels were hidden. The grid gets smaller each time, and past a threshold the text and gridlines are removed so as not to occlude the content in the quadrants. However, drilling remains possible provided the user recalls the shortcuts. To address any misconceptions, we decided to explicitly cover this behaviour in future training.
 
 \subsection{Implementation problems}
 ChibiPoint could not click buttons within Flash Player interfaces (such as `play' buttons on web-based video). For a proof-of-concept this is unimportant. More work could investigate communicating with Flash elements.
@@ -1810,7 +1844,7 @@ Crucially, we see that a lot of time is invested by users of Tabbing in `Low vis
 
 Overall CX+F outperforms or matches CX in most tasks. Thus, despite its introducing a necessary time overhead of evaluating suggestions at each stage of drilling, it saves the users enough time in specification of their targets to make up for this. Its aforementioned failure to outperform CX in `Visually early element' is attributed to design choices which are remediable (or otherwise able to be understood better by an expert user).
 
-The first three tasks --- which concern tabbing-optimized scenarios (form traversal and early element selection) --- are favourable to Tabbing. Moreover, in the latter two of these tasks, where ChibiPoint was known to compare favourably in effiency, it is seen here to fail in speed. This is perhaps because ChibiPoint enforces a necessary startup cost for any navigation --- the user must invoke the system, then evaluate their options for traversal and make a decision. By contrast, tabbing requires much less appraisal and decision-making: the user need only hammer the `tab' key, and wait until their intended target is highlighted.
+The first three tasks --- which concern tabbing-optimized scenarios (form traversal and early element selection) --- are favourable to Tabbing. Moreover, in the latter two of these tasks, where ChibiPoint was known to compare favourably in efficiency, it is seen here to fail in speed. This is perhaps because ChibiPoint enforces a necessary startup cost for any navigation --- the user must invoke the system, then evaluate their options for traversal and make a decision. By contrast, tabbing requires much less appraisal and decision-making: the user need only hammer the `tab' key, and wait until their intended target is highlighted.
 
 Thus, we conclude that tabbing is a choice which requires less cognition, but whose speed is inexorably tied to the distance in markup it needs to traverse. ChibiPoint systems can beat this speed provided its invocation, appraisal and decision-making amount to less time expenditure than a long, linear page-trawl. CX+F exacerbates these time costs, introducing more appraisal cost (as flyouts need to be evaluated). To deliver an improved speed over CX, CX+F needs to provide suggestions that are helpful enough to deliver a return on their appraisal cost.
 
@@ -1928,7 +1962,7 @@ Interestingly, there were no effectiveness problems pertaining to clickable dete
 \label{sec:crosshair_effectiveness}
 Crosshairs did not utilise the same `clickable' detection that flyouts enjoyed. We chose this implementation because there was an advantage to this: clicks could be sent to elements which were not recognised as clickable by our system.
 
-However this posed an effectiveness problem: participants were unsure whether the targeted element was one that a click could be sent to. Especially when containers existed around clickables, participants sometimes clicked these in stead of the clickable itself, assuming that it listened for click events.
+However this posed an effectiveness problem: participants were unsure whether the targeted element was one that a click could be sent to. Especially when containers existed around clickables, participants sometimes clicked these instead of the clickable itself, assuming that it listened for click events.
 
 Feedback reveals such experiences: \textit{``Chibi with just crosshairs was unique and I found it efficient, though having the html container light up was confusing''}.
 
@@ -2867,6 +2901,10 @@ Ratings were all on a five-point scale, 1--5.
 \mycodeinclude{language=custom, alsolanguage=JavaScript, style=whatever}{#1}
 }
 
+\newcommand{\mycodeincludejsb}[2]{
+\mycodeinclude{language=custom, alsolanguage=JavaScript, style=whatever, #2}{#1}
+}
+
 \newcommand{\mycodeincludecss}[1]{
 \mycodeinclude{language=custom, style=whatever}{#1}
 }
@@ -2944,6 +2982,13 @@ Ratings were all on a five-point scale, 1--5.
 % \section{[External Libraries] No Longer Used}
 % \mycodeincludejs{src/lib/Blob.js}
 % \mycodeincludejs{src/lib/within.js}
+
+\section{Source Code --- Creating Shortlists of Clickables}
+\mycodeincludejsb{src/depend.js}{firstnumber=1, linerange={1-48}, caption={Code for determining which elements have DOM Level 2 event listeners bound to them. A comma-delimited variable, `\texttt{\_handlerTypes}', containing a list of event listeners that are bound, is maintained as an attribute on all elements.}, label={lst:handlerTypes}}
+
+\mycodeincludejsb{src/test.js}{firstnumber=476, linerange={476-516}, caption={Code for producing shortlist of clickables. 9 `buckets' exist (one for each segment in a $3\times3$ grid), filled already with a list of clickables that have been found within those areas. The code attempts to choose 9 unique clickables from across these buckets, and populate the \texttt{selected} array with those suggestions.}, label={lst:codeshortlist}}
+
+\mycodeincludejsb{src/test.js}{firstnumber=387, linerange={387-408}, caption={Code for querying the webpage for clickables. We JQuery (`\$') to search for elements matching specified tag names (hyperlinks and form elements), and also for elements with the `\texttt{\_handlerTypes}' attribute (which we add to any element to which DOM Level 2 event listeners are bound).}, label={lst:detectclickables}}
 
 \end{multicols}
 \end{landscape}
