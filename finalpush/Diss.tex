@@ -452,7 +452,7 @@ This transition away from native applications is leading to sacrifices in access
  \item citizenship amongst other applications
 \end{itemize}
 
-Even on the conceptual level, there are problems with using the web to serve applications: a web application tries to fit a full application interface inside a web browser's (already saturated) interface. It is a second-class citizen; a user cannot `switch application' to it, only trawl for it amongst the tabs and windows of some web browser.
+Even on the conceptual level, there are problems with using the web to serve applications: a web application tries to fit a full application interface inside a web browser's (already saturated) interface. It is a second-class citizen; a user cannot `switch application' to it, only trawl for it amongst the tabs and windows of that web browser.
 
 Additionally, web applications are often guilty of foregoing standard UI components in favour of a bespoke UI made in JavaScript or CSS. This can be used to deliver impressive effects like transitions, or serve complicated shapes of interactive content or buttons. But this freedom makes it all too easy to produce inaccessible elements, such as buttons that cannot be pressed or focused using the keyboard.
 
@@ -474,7 +474,7 @@ Guidance is provided on how to develop accessible web applications, in the form 
 
   It is hard to avoid conflicts with existing shortcuts used by the user's accessibility technologies, since there is no standardisation between browsers as to which modifier keys to use~\cite{webaimaccesskeys}. Recommendation exists that \gls{accesskeys} be avoided altogether for this reason. Another problem with \gls{accesskeys} is that they rely on explicit implementation by developers. They also require learning of a layout, and although attempts have been made at increasing standardisation~\cite{AccesskeyStandardisation}, that standardisation is not prevalent.
 \paragraph{Making interface tab-accessible}
-   It is difficult to develop a tab-accessible web application~\cite{watanabe2012using}. Since the only pointing expression assumed is the tab key, layout must be linearized. Not only is this hard to design and develop for (requiring explicit effort and markup changes), the end result is not that impressive; content that is far away in the tab order unavoidably requires repeated hammering of the tab key (making it far harder to reach with the keyboard than with a pointing device). Plus linearization does not suit web content, which often has navigation bars, side bars, feeds or some similar multi-dimensional layout.
+   It is difficult to develop a tab-accessible web application~\cite{watanabe2012using}. Since the only pointing expression assumed is the tab key, layout must be linearized. Not only is this hard to design and develop for (requiring explicit effort and markup changes), the end result is unimpressive; content that is far away in the tab order unavoidably requires repeated hammering of the tab key (making it far harder to reach with the keyboard than with a pointing device). Plus linearization does not suit web content, which often has navigation bars, side bars, feeds or some similar multi-dimensional layout.
 \subparagraph{Short-circuiting tab journey with skip-links}
 \label{sec:skiplinks}
   An exception to the content linearization problem is skip links, which can short-circuit the tab journey around a page by allowing the user to choose alternative insertion points. These again require effort and understanding from the developer. It is hard to provide a suitable set of skip links, and again the best case is still a ham-fisted pointing experience, where the user cannot predict where they are going to or from.
@@ -505,7 +505,7 @@ Part of the difficulty of enabling full navigation access via the keyboard, is t
 
 The burden of reserving \glspl{keybinding} should fall on the web browser, or an extension thereof. Here it can be controlled and configured, as well as uninstalled should it cause conflicts. A novel shortcut scheme would be used to avoid conflicts, such as sequences rather than chords, or invoking the extension explictly as a precursor to action.
 
-The rest of the problem is that accessibility is presently found only on websites that design for it. It is easy to blame developers for making websites that only work with a mouse or touchscreen, but the real problem here is not that the website is designed wrong, it is that the keyboard is not powerful enough to cope with these pointing situations.
+The rest of the problem is that accessibility is presently found only on websites that design for it. It is easy to blame developers for making websites that only work with a mouse or touchscreen, but the real problem here is not that the website is designed incorrectly: it is that the keyboard is not powerful enough to cope with these pointing situations.
 
 Again, a solution where the keyboard is augmented via the browser is desirable. Increasing keyboard control diminishes the number of problem situations that exist for it.
 
@@ -584,7 +584,7 @@ It would be interesting to explore the original role of the `tab' key, and verif
 If it is the case that tab navigation was intended for form traversal, then it would not be surprising for it to be unsuited to general pointing. It is also easy to see how its use could have evolved from form navigation to whole-interface navigation; it provides a way to move keyboard focus to controls, so the temptation exists to purpose it as a general focus mechanism. On some level, this seems like accessibility, but on another level, it can be harmful; it pushes a possibly poorly-suited mechanism as the standard problem solution.
 \section{Has the status of keyboard accessibility evolved over time?}
 \label{a11yevolution}
-An early view (\citeyear{bergman1995towards}) is provided on the landscape of accessible computing by \citeauthor{bergman1995towards}~\cite{bergman1995towards}. It suggests that ``most interface style guides were not written taking users with disabilities into account'' (p.9). Whereas today, accessibility is featured in the Design Guidelines for many prominent software platforms: Apple references accessibility in its OS X Human Interface Guidelines~\cite{applehig}, Microsoft provides literature on Designing Accessible Applications~\cite{microsofthig}, and The GNOME Project provides Human Interface Guidelines for use with its desktop environment for Unix-like OSes~\cite{gnomehig}.
+An early view (\citeyear{bergman1995towards}) is provided on the landscape of accessible computing by \citeauthor{bergman1995towards}~\cite{bergman1995towards}. It suggests that ``most interface style guides were not written taking users with disabilities into account'' (p.9). Today, however, accessibility is featured in the Design Guidelines for many prominent software platforms: Apple references accessibility in its OS X Human Interface Guidelines~\cite{applehig}, Microsoft provides literature on Designing Accessible Applications~\cite{microsofthig}, and The GNOME Project provides Human Interface Guidelines for use with its desktop environment for Unix-like OSes~\cite{gnomehig}.
 
 \citeauthor{hendrix1997adapting} describe how, in \citeyear{hendrix1997adapting}, the Mac versions of Internet Explorer and Netscape web browsers lacked any provision for selecting or activating web links without the mouse~\cite{hendrix1997adapting}. The Mac OS as a whole was also slated for not providing out-of-the-box support for accessing menus via the keyboard. These points are in stark contrast to today, where the default Mac browser, Safari, provides tab support by default~\cite{safaria11y}, and the OS provides global keyboard shortcuts to access menus~\cite{macshortcuts}.
 
@@ -907,7 +907,7 @@ We illustrate in \Cref{fig:flyouts} what a flyout might look like. Clearly if la
 \end{figure}
 
 \FloatBarrier
-If many flyouts are densely-packed, there exists a risk that flyouts will cover each other up, or the elements that they are responsible for. Hence we will implement some avoidance strategy to make them fan out from their respective targets in separate directions (as in the idealistic illustration of \Cref{fig:flyouts}), allowing the clickables beneath to be seen. Additionally we shall endeavour to limit the number of flyouts.
+If many flyouts are densely-packed, there exists a risk that flyouts will cover each other up, or the elements for which they are responsible. Hence we will implement some avoidance strategy to make them fan out from their respective targets in separate directions (as in the idealistic illustration of \Cref{fig:flyouts}), allowing the clickables beneath to be seen. Additionally we shall endeavour to limit the number of flyouts.
 
 There are further advantages to using a smaller number of flyouts: the input vocabulary of the system is kept small. We will assign one flyout per grid segment --- a total of nine. This also allows some symmetry with the vocabulary size for drilling; perhaps a modal input system could take advantage of this, and map at any time to either drilling shortcuts or flyout shortcuts.
 
@@ -932,7 +932,7 @@ We decided (as per \Cref{changingwebbrowser} and \Cref{sec:softwaresolution}) th
 
 To keep the system browser-agnostic, we ensured that all code necessary for proving our concept, recruited only standard, widely-available web technologies. That is: HTML5, CSS and JavaScript. Respectively these provide any modern web browser with page markup, presentation, and interaction. This is more of a theoretical taxonomy than a practical one, as in reality the lines between their roles are heavily blurred.
 
-Google Chrome's browser extension architecture offers various ways to extend the browser. The relevant method for our needs was a `content script'\cite{contentscript}. Google defines these as: ``JavaScript files that run in the context of web pages. By using the standard \gls{dom}, they can read details of the web pages the browser visits, or make changes to them''.
+Google Chrome's browser extension architecture offers various ways to extend the browser. The relevant method for our needs was a `content script'~\cite{contentscript}. Google defines these as: ``JavaScript files that run in the context of web pages. By using the standard \gls{dom}, they can read details of the web pages the browser visits, or make changes to them''.
 Thus a content script has the power to present a user interface within an existing webpage, as well as capture and effect interactions. This gave us all the power we needed to:
 
 \begin{enumerate}
@@ -950,51 +950,51 @@ Additionally, since `content script' development asks only that the entire syste
 
 \section{External Libraries}
 \subsection{Libraries Required for General Operation}
-We utilised, as a foundation for our key-capture and display of interface, code from the open-source Google Chrome browser extension Type-Ahead-Find~\cite{typeaheadfind,typeaheadfindsource} (which we describe in \Cref{novelpointing}). The source code to Type-Ahead-Find is made available under the GNU GPL v3\cite{gnugpl} license.
+We utilised, as a foundation for our key-capture and display of interface, code from the open-source Google Chrome browser extension Type-Ahead-Find~\cite{typeaheadfind,typeaheadfindsource} (which we describe in \Cref{novelpointing}). The source code to Type-Ahead-Find is made available under the GNU GPL v3~\cite{gnugpl} license.
 
 \textit{Side-note: The GNU GPL v3 license dictates that derivative works, such as ChibiPoint, must make their source code available under the same terms. Thus ChibiPoint, too, is unavoidably licensed under the GNU GPL v3.}
 
-Our JavaScript code was to be split into many modules. There existed a need to manage dependencies, and their loading order, because otherwise code could be invoked that had not yet loaded. We wanted to avoid solutions that relied upon the browser extension's packaging system, since such solutions would be browser-dependent. Ultimately we used RequireJS\cite{requirejs}, an open-source Javascript module loader. RequireJS is available under the `new BSD' or MIT license\cite{requirejslicense,mitlicense}.
+Our JavaScript code was to be split into many modules. There existed a need to manage dependencies, and their loading order, because otherwise code could be invoked that had not yet loaded. We wanted to avoid solutions that relied upon the browser extension's packaging system, since such solutions would be browser-dependent. Ultimately we used RequireJS~\cite{requirejs}, an open-source Javascript module loader. RequireJS is available under the `new BSD' or MIT license~\cite{requirejslicense,mitlicense}.
 
-To make RequireJS loading compatible with browser extensions, we used a RequireJS extension provided in an example by `\citeauthor{requirejscs}'\cite{requirejslicense}. No license was attributed to this code.
+To make RequireJS loading compatible with browser extensions, we used a RequireJS extension provided in an example by `\citeauthor{requirejscs}'~\cite{requirejslicense}. No license was attributed to this code.
 
-Our system needed often to select page elements and modify them: for example applying highlights to code on the webpage that was being pointed at, or else just changing ChibiPoint's own interface. We used JQuery\cite{jquery} for much of our querying and selecting of page elements. JQuery is distributed under the MIT license\cite{mitlicense}.
+Our system needed often to select page elements and modify them: for example applying highlights to code on the webpage that was being pointed at, or else just changing ChibiPoint's own interface. We used JQuery~\cite{jquery} for much of our querying and selecting of page elements. JQuery is distributed under the MIT license~\cite{mitlicense}.
 
-Often there was a need to search for page elements within some specified coordinates. To achieve this, we adapted code from the jquery++\cite{jquerypp} helper library for JQuery. It, too, is distributed under the MIT license\cite{mitlicense}.
+Often there was a need to search for page elements within some specified coordinates. To achieve this, we adapted code from the jquery++~\cite{jquerypp} helper library for JQuery. It, too, is distributed under the MIT license~\cite{mitlicense}.
 
-For detection of clickables, we used code from StackOverflow.com discussions\cite{eventlistenerprototype}. All StackOverflow discussions are distributed under a CC BY-SA 3.0 license\cite{soverflowlicense}.
+For detection of clickables, we used code from StackOverflow.com discussions~\cite{eventlistenerprototype}. All StackOverflow discussions are distributed under a CC BY-SA 3.0 license~\cite{soverflowlicense}.
 
 \subsection{Libraries Used for Performance Evaluation}
 For the quantitative study of our system that would follow, we needed to be able to measure keypresses, and save this data out for analysis. Tracking keypresses was trivial, as we already listened for input from the user, to control the system. Saving out this data was the technical challenge that remained.
 
-We decided, upon effecting a `click' in ChibiPoint, to dump all recorded data into a string, convert that string into a `Blob' data type, and force a download of that `Blob'. For saving the Blob, we used Eli Grey's implementation of the W3C File API's saveAs() function\cite{filesaver}. Our legacy code includes also Eli Grey's Blob implementation\cite{blob}, but this particular code is no longer needed by the system. Both are available under the X11/MIT license\cite{x11license}.
+We decided, upon effecting a `click' in ChibiPoint, to dump all recorded data into a string, convert that string into a `Blob' data type, and force a download of that `Blob'. For saving the Blob, we used Eli Grey's implementation of the W3C File API's saveAs() function~\cite{filesaver}. Our legacy code includes also Eli Grey's Blob implementation~\cite{blob}, but this particular code is no longer needed by the system. Both are available under the X11/MIT license~\cite{x11license}.
 
 \section{Novel Problems}
 \subsection{Detecting `Clickables'}
 A crucial requirement of our system was the ability to detect `clickables' (as described in \Cref{sec:clickablesExplained}) --- we needed to do this in order to suggest shortcuts to users.
 
 \subsubsection{Taxonomy of Clickables}
-Detection of clickables is problematic, because there are many ways in HTML5 webpages to make page elements respond to clicks. \citeauthor{events} provides a taxonomy\cite{events}:
+Detection of clickables is problematic, because there are many ways in HTML5 webpages to make page elements respond to clicks. \citeauthor{events} provides a taxonomy~\cite{events}:
 
 \begin{itemize}
-	\item \gls{dom} Level 0 - inline model\cite{inlineevents}
-	\item \gls{dom} Level 0 - traditional model\cite{traditionalevents}
-	\item \gls{dom} Level 2 - event listeners, W3C model\cite{domlevel2,advancedevents}
+	\item \gls{dom} Level 0 - inline model~\cite{inlineevents}
+	\item \gls{dom} Level 0 - traditional model~\cite{traditionalevents}
+	\item \gls{dom} Level 2 - event listeners, W3C model~\cite{domlevel2,advancedevents}
 	\item \gls{dom} Level 2 - event listeners, Microsoft model
 \end{itemize}
 
 There exists also a \gls{dom} Level 3 specification for events\cite{domlevel3}, which is, at the time of writing, a work in progress.
 
-Detecting clickables is further complicated by the concept of event delegation\cite{franklin2013more}: it is incorrect to conclude that an element with no events must be `not clickable', because an element's ancesters can listen for these events. For example, a list that contains graphics can be `delegated' responsibility for listening to click events on all of those graphics. In this situation, a whole set of distinct `clickables' can exist, described by just one event listener.
+Detecting clickables is further complicated by the concept of event delegation~\cite{franklin2013more}: it is incorrect to conclude that an element with no events must be `not clickable', because an element's ancestors can listen for these events. For example, a list that contains graphics can be `delegated' responsibility for listening to click events on all of those graphics. In this situation, a whole set of distinct `clickables' can exist, described by just one event listener.
 
-We chose not to look into the `delegates' problem --- we can demonstrate that our pointing system works on a conceptual level, so long as at least some types of clickables are detected. We felt we could capture a large portion of clickables by targeting at least those bound as `\gls{dom} Level 2 - event listeners, W3C model' events --- this is the event binding strategy used by JQuery, a library adopted by upwards of 58.2\% of websites\cite{jquerypopularity}. Other popular alternatives, such as PrototypeJS\cite{prototypejs}, use this strategy also.
+We chose not to look into the `delegates' problem --- we can demonstrate that our pointing system works on a conceptual level, so long as at least some types of clickables are detected. We felt we could capture a large portion of clickables by targeting at least those bound as `\gls{dom} Level 2 - event listeners, W3C model' events --- this is the event binding strategy used by JQuery, a library adopted by upwards of 58.2\% of websites~\cite{jquerypopularity}. Other popular alternatives, such as PrototypeJS~\cite{prototypejs}, use this strategy also.
 
 We draw attention also to the fact that clickable suggestions are not the only pointing mechanism in ChibiPoint --- in cases where detection fails, the MouseGrid-style crosshairs mechanism we describe in \Cref{sec:ourmousegrid}, can be used as a fallback to send click events to any element that the user can point at.
 
 \subsubsection{Detection}
-It was challenging to detect which elements were listening for click events. There exists no standardised way to retrieve the list of event listeners bound to an element. Rather, an attempt was made to introduce such a standard in the W3C \gls{dom} Level 3 Events specification\cite{dom3attempt}, but this addition was later redacted\cite{domlevel3}. User agents (that is, web browsers) can expose access to their own internal representations of event listener lists. In fact, our browser extension could perhaps use Chrome's Command Line API\cite{commandlineapi} to look up such event listener lists --- but this requires its Developer Tools Console to be open, and removes our browser-independence. A such, a different solution was needed.
+It was challenging to detect which elements were listening for click events. There exists no standardised way to retrieve the list of event listeners bound to an element. Rather, an attempt was made to introduce such a standard in the W3C \gls{dom} Level 3 Events specification~\cite{dom3attempt}, but this addition was later redacted~\cite{domlevel3}. User agents (that is, web browsers) can expose access to their own internal representations of event listener lists. In fact, our browser extension could perhaps use Chrome's Command Line API~\cite{commandlineapi} to look up such event listener lists --- but this requires its Developer Tools Console to be open, and removes our browser-independence. A such, a different solution was needed.
 
-A discussion on StackOverflow.com provided the answer we needed\cite{eventlistenerprototype}: before the \gls{dom} is constructed, overwrite the definition of `\texttt{addEventListener}' used in the prototype for HTML elements. In this way, we can ensure that, any time an event listener is added to an element, it is tracked in a list on that element (which we can later query for). This code can be seen in \Cref{lst:handlerTypes}. Once an attribute exists denoting an element's having click events, it becomes trivial to (using JQuery) select all elements in the page which have this list attributed to them.
+A discussion on StackOverflow.com provided the answer we needed~\cite{eventlistenerprototype}: before the \gls{dom} is constructed, overwrite the definition of `\texttt{addEventListener}' used in the prototype for HTML elements. In this way, we can ensure that, any time an event listener is added to an element, it is tracked in a list on that element (which we can later query for). This code can be seen in \Cref{lst:handlerTypes}. Once an attribute exists denoting an element's having click events, it becomes trivial to (using JQuery) select all elements in the page which have this list attributed to them.
 
 For additional coverage, we infer `clickability' of elements simply by reading their tag name. For example, all `\texttt{anchor}' tags are assumed (admittedly generously) to be purposed as hyperlinks. Admittedly it is possible to confirm the role of the anchor tag as clickable (for example by checking whether it has a URL associated with it), but it is not too harmful to present false positives --- users are given multiple other suggestions, so assuming that user realizes they do not need to click the element, it does not cause them great problems. Form elements are assumed also to be of interest always to the user, so we register these as clickables.
 
@@ -1068,7 +1068,7 @@ One advantage of giving ChibiPoint invocation a keybinding with first-level brow
 Whenever a keypress event is captured by ChibiPoint, we ascertain whether the key is mapped to any functionality within ChibiPoint. If so, that functionality is invoked, and we end propagation of the event, so that the website does not receive the same keypress. However, if said keypress does not match any of our mappings (for example: the tab key), then we take no action, and allow the event to propagate to other event listeners. In this way, we allow co-citizenship for all keypresses that are not relevant to our system, and crucially we maintain compatibility with tabbing.
 
 \subsubsection{Performance}
-Performance was important, as ChibiPoint resides in all \glspl{browsingcontext} that are opened. Querying the page for clickables and their coordinates was very intensive, so we had to ensure that this was done sparingly, and onl on user request. As such, production of suggestions was only effected in response to user input --- invocation of ChibiPoint, or drilling into a grid segment were the ways to effect re-appraisal of suggestions.
+Performance was important, as ChibiPoint resides in all \glspl{browsingcontext} that are opened. Querying the page for clickables and their coordinates was very intensive, so we had to ensure that this was done sparingly, and only on user request. As such, production of suggestions was only effected in response to user input --- invocation of ChibiPoint, or drilling into a grid segment were the ways to effect re-appraisal of suggestions.
 
 \subsubsection{Respecting Viewport Changes}
 We had to respect that the page could resize or scroll at any time. To cope with this, the entire interface is specified in relative dimensions; changes to the viewport size stretched ChibiPoint appropriately, and scrolling did not move the ChibiPoint interface out of view, as its coordinates are `fixed' relative to the viewport itself.
@@ -1088,7 +1088,7 @@ Use of the browser's Developer Mode became troublesome, since the ChibiPoint int
 
 Aside from Developer Mode selections, we needed to make sure also that regular clicking was still possible whilst ChibiPoint was loaded. Thus we use a `\texttt{pointer-events: none}' style to ensure that ChibiPoint does not intercept clicks, even when it is present.
 
-Regarding the markup of our grids within grids, we considered using a Composite pattern\cite{gamma1994design}, so that all grid levels could be treated the same way in code. However we realised that is was more useful to be able to give special treatment to certain grid levels --- in particular, the existence of a top-level grid is an important factor in the state of the system: it determines whether ChibiPoint is in use. We can also bound any page changes we make to be constrained to within this container, keeping good citizenship.
+Regarding the markup of our grids within grids, we considered using a Composite pattern~\cite{gamma1994design}, so that all grid levels could be treated the same way in code. However we realised that is was more useful to be able to give special treatment to certain grid levels --- in particular, the existence of a top-level grid is an important factor in the state of the system: it determines whether ChibiPoint is in use. We can also bound any page changes we make to be constrained to within this container, keeping good citizenship.
 
 Thus we specify a particular container, `\texttt{chibiPoint\_gridContainer}', in which to build grids. This container was always present, whether there were grids within it or not, so it provided a consistent place to check the state of the system. We were able also to apply transformations to that high-level container when we wanted to modify the entire grid, such as removing the interface from render.
 
@@ -1096,7 +1096,7 @@ Necessary conflicts existed also --- in cases where we `painted' page elements (
 
 \subsection{Interface Malleability}
 \subsubsection{Philosophy}
-Since we were creating a novel navigation system, it was useful to have a lot of expression over how the interface works. In fact we wanted to extend this flexibility to the user --- users can provide custom stylesheets\cite{stylebot} to change the way web content is presented to them. Additionally, different form factor devices such as mobile phones with small screens could benefit from an alternative interface style (for example, text size differences.
+Since we were creating a novel navigation system, it was useful to have a lot of expression over how the interface works. In fact we wanted to extend this flexibility to the user --- users can provide custom stylesheets~\cite{stylebot} to change the way web content is presented to them. Additionally, different form factor devices such as mobile phones with small screens could benefit from an alternative interface style (for example, text size differences.
 
 We place a lot of power in the styling of the interface, by using the presentation layer to inform the state of the system. That is: the pointing grid's size is specified in terms relative to the viewport of the window, and this affects where the system will point (as crosshairs are aligned to the center of the most specific grid). If a user had different requirements, they could specify the dimension rules of the grid differently.
 
@@ -1112,7 +1112,7 @@ Since clickable dimensions are not highly-specific (ie, buttons need to be desig
 \subsubsection{Architecture}
 Incidentally, we found that we had a need for macro language and inheritance in our CSS stylesheets --- often colours needed to be repeated, or otherwise we had portions of our styles that needed often to be re-used in other styles. CSS does not classically support concepts like variables, or true inheritance. Admittedly something like inheritance can be achieved on the markup level --- for example by defining some object in terms of multiple styles --- but no semantics exist to enforce this relationship, so maintenance becomes a problem.
 
-We chose an architecture that allowed us to control the relations between styles, and allow our system to be defined by re-usable parameters --- such as line thicknesses or color schemes. Even the `grid growing' percentage is able to be defined like this, so it can be trivially turned off. To achieve this, we wrote styles in the LESS (Leaner CSS)\cite{lesscss} pre-processor, which compiles down to CSS. This gave us the feature-set that we needed from a styling technology, without breaking our commitment to use widely-available web technologies in our implementation.
+We chose an architecture that allowed us to control the relations between styles, and allow our system to be defined by re-usable parameters --- such as line thicknesses or color schemes. Even the `grid growing' percentage is able to be defined like this, so it can be trivially turned off. To achieve this, we wrote styles in the LESS (Leaner CSS)~\cite{lesscss} pre-processor, which compiles down to CSS. This gave us the feature-set that we needed from a styling technology, without breaking our commitment to use widely-available web technologies in our implementation.
 
 \subsection{Avoiding Flyout Overlap}
 \label{sec:avoidance}
@@ -1237,7 +1237,7 @@ The participant understood intuitively that page scrolling keys co-operate with 
 \subsection{Interface problems}
 The BBC website had complicated nesting of clickables within its navigation bar. It became difficult to distinguish which flyout referred to which button. Judgement of which element the flyout was bound to, appeared to be based on the position of the label. This was an incorrect mental model; the label's position is only a heuristic for which interface element is bound. In reality, the arrow coming off the label is the indicator of which element will be clicked. Observation of the video suggests that the arrows were barely visible in this situation; their dark arrows were flush with the (also dark) frame of the webpage. Ultimately the participant was able to recover from the situation by relying on ChibiPoint's other pointing mechanism, crosshairs. This showed that the participant learned that both could be used situationally.
 
-More contrast would help highlight the existence of the flyout arrows. Another solution is to uniquely color-match the flyout with the element it was bound to, so that the pairing is visualized. This led us in the next version of ChibiPoint to `paint' flyout-bound elements, in the same way ChibiPoint's crosshairs paint their target. Flyouts were also given discretely different colors to each other, for further identity.
+More contrast would help highlight the existence of the flyout arrows. Another solution is to uniquely color-match the flyout with the element to which it was bound, so that the pairing is visualized. This led us in the next version of ChibiPoint to `paint' flyout-bound elements, in the same way ChibiPoint's crosshairs paint their target. Flyouts were also given discretely different colors to each other, for further identity.
 
 The participant was seen to crane toward the screen to read flyouts. We decided to respond to this by increasing the flyouts' size and legibility.
 
@@ -1935,7 +1935,7 @@ We did not attempt to capture the former effectiveness problem (focus traps), si
 
 Admittedly in many cases, participants overshoot on purpose, as they use (we believe) the visual progress of the tab focus as a heuristic for how many keypresses they need to input --- allowing them to pause less often to verify the element under focus. Hence a certain amount of deviation can be expected in longer navigations, as participants titrate their speed to traverse the long distances quickly.
 
-Nevertheless, we feel the abnormally high deviation in the `low visual indicator of focus' task to be symptomatic of participants missing their target when using tabbing navigation --- they did not know that they were pointing at their target, and so continued traversing past it. This was confirmed by our observations of the task performance, and also from feedback the participants gave: \textit{``in some cases, e.g. Amazon, the button's were not highlighted so it required some careful investigation to find out what I was about to press''}, \textit{``when performing tabbing on the amazon page, I had very little knowledge about the current `location' of the tab. Even on websites that did show the location, it was often just a very faint dotted border, which really isn't much easier to see''}.
+Nevertheless, we feel the abnormally high deviation in the `low visual indicator of focus' task to be symptomatic of participants missing their target when using tabbing navigation --- they did not know that they were pointing at their target, and so continued traversing past it. This was confirmed by our observations of the task performance, and also from feedback the participants gave: \textit{``in some cases, e.g. Amazon, the button's [sic] were not highlighted so it required some careful investigation to find out what I was about to press''}, \textit{``when performing tabbing on the amazon page, I had very little knowledge about the current `location' of the tab. Even on websites that did show the location, it was often just a very faint dotted border, which really isn't much easier to see''}.
 
 We assert at least that there exists an effectiveness problem with tabbing. However, ChibiPoint came with its own effectiveness problems.
 
