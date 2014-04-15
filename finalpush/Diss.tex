@@ -252,7 +252,7 @@ literate={ö}{{\"o}}1
 
 
 \abstract
-The web is designed for pointing devices like mice. Many users cannot use such input devices, due to disability or device restrictions. The existing accessible standard for mouseless pointing on the web is `tabbing navigation', which we find to be ineffective, unpredictable and inefficient. We design, develop and evaluate `ChibiPoint': a pointing mechanism designed for modern websites.
+The web is designed for pointing devices like mice. Many users cannot use such input devices, due to disability or device restrictions. The existing accessible standard for mouseless pointing on the web is `tabbing navigation', which we find to be ineffective, unpredictable and inefficient. In order to solve this problem, we design, develop and evaluate `ChibiPoint': a pointing mechanism designed for modern websites. ChibiPoint is observed to be more effective and predictable than tabbing. Moreover, we demonstrate statistically that ChibiPoint is more efficient in a majority of navigation contexts. The architecture used for developing this browser extension allows its use to be extended to a wide variety of web browsers, devices and input hardware.
 \newpage
 
 
@@ -762,7 +762,7 @@ The choice of `4 lookups' is an arbitrary low value. Its main purpose is illustr
 %\includegraphics[width=8in]{LowFidelityFacebookLabelled}
 %\end{figure}
 
-Our software solution will need to cope with the many and varied pointing scenarios presented in typical web applications like \Cref{fig:typicalWebAppLayout}. Some discrete cases of interest have been labelled; a discussion follows, regarding what is significant about these cases, and how we could consider optimizing our software for such cases. We prescribe also the design criteria we will follow to avoid falling afoul of these problems.
+Our software solution will need to cope with the many and varied pointing scenarios presented in typical web applications like \Cref{fig:typicalWebAppLayout}. Some discrete cases of interest have been labelled; a discussion follows for each of these numbered cases, regarding what is significant about them, and how we could consider optimizing our software for such cases. We prescribe also the design criteria we will follow to avoid falling afoul of these problems.
 
 \begin{figure}[H]
 \centering\rotatebox{-90}{\includegraphics[height=\textwidth,width=\safefigheight,keepaspectratio]{figures/LowFidelityFacebookLabelled}}
@@ -930,7 +930,7 @@ This chapter presented design criteria and engineering requirements for our nove
 
 \chapter{Implementation}
 \label{chap:implementation}
-\section{Chapter Purpose}
+\section{Introduction}
 The primary objective of this chapter is to disclose and attribute the external software that we relied upon. It is not the purpose of this dissertation to explain web development in detail: we require the reader to have a working knowledge of web development and technologies.
 
 Much of the engineering involved in ChibiPoint is not of academic interest. We focus here on non-trivial engineering problems, or ones that required novel solutions.
@@ -958,9 +958,7 @@ Additionally, since `content script' development asks only that the entire syste
 
 \section{External Libraries}
 \subsection{Libraries Required for General Operation}
-We utilised, as a foundation for our key-capture and display of interface, code from the open-source Google Chrome browser extension Type-Ahead-Find~\cite{typeaheadfind,typeaheadfindsource} (which we describe in \Cref{novelpointing}). The source code to Type-Ahead-Find is made available under the GNU GPL v3~\cite{gnugpl} license.
-
-\textit{Side-note: The GNU GPL v3 license dictates that derivative works, such as ChibiPoint, must make their source code available under the same terms. Thus ChibiPoint, too, is unavoidably licensed under the GNU GPL v3.}
+We utilised, as a foundation for our key-capture and display of interface, code from the open-source Google Chrome browser extension Type-Ahead-Find~\cite{typeaheadfind,typeaheadfindsource} (which we describe in \Cref{novelpointing}). The source code to Type-Ahead-Find is made available under the GNU GPL v3~\cite{gnugpl} license.\footnote{Side-note: The GNU GPL v3 license dictates that derivative works, such as ChibiPoint, must make their source code available under the same terms. Thus ChibiPoint, too, is unavoidably licensed under the GNU GPL v3.}
 
 Our JavaScript code was to be split into many modules. There existed a need to manage dependencies, and their loading order, because otherwise code could be invoked that had not yet loaded. We wanted to avoid solutions that relied upon the browser extension's packaging system, since such solutions would be browser-dependent. Ultimately we used RequireJS~\cite{requirejs}, an open-source Javascript module loader. RequireJS is available under the `new BSD' or MIT license~\cite{requirejslicense,mitlicense}.
 
@@ -1035,19 +1033,30 @@ In response to those priorities, this is the algorithm we used to generate a sho
 
 Part of this algorithm can be seen implemented in code in \Cref{lst:codeshortlist}. The code is not production-quality, so we recommend relying on the written algorithm for understanding.
 
-An example of our system generating a shortlist of clickables with this algorithm can be seen in \Cref{fig:impClickable}.
+An example of our system generating a shortlist of clickables with this algorithm can be seen in \Cref{fig:origClickable}.
+
+% \begin{figure}[ht]
+% \centering\includegraphics[width=\textwidth]{figures/ImpClickables.png}
+% \caption{A shortlist of clickables is generated by ChibiPoint, and flyouts are presented to the user.}
+% \label{fig:impClickable}
+% \end{figure}
 
 \begin{figure}[ht]
-\centering\includegraphics[width=\textwidth]{figures/ImpClickables.png}
+\centering\includegraphics[width=\textwidth]{figures/FlyoutsOriginal.png}
 \caption{A shortlist of clickables is generated by ChibiPoint, and flyouts are presented to the user.}
-\label{fig:impClickable}
+\label{fig:origClickable}
 \end{figure}
 \FloatBarrier
 
 Should the user find that their intended target is not captured in this shortlist, they can further specify their space of interest, by drilling down into a quadrant. This search refinement is demonstrated in \Cref{fig:impFilteredClickable}.
 
+% \begin{figure}[ht]
+% \centering\includegraphics[width=\textwidth]{figures/ImpFilteredClickables.png}
+% \caption{The user refines their search space to a quadrant of the screen, and Chibipoint produces a more specific shortlist of clickables.}
+% \label{fig:impFilteredClickable}
+% \end{figure}
 \begin{figure}[ht]
-\centering\includegraphics[width=\textwidth]{figures/ImpFilteredClickables.png}
+\centering\includegraphics[width=\textwidth]{figures/FlyoutsFilteredOriginal.png}
 \caption{The user refines their search space to a quadrant of the screen, and Chibipoint produces a more specific shortlist of clickables.}
 \label{fig:impFilteredClickable}
 \end{figure}
@@ -1263,8 +1272,15 @@ The participant understood intuitively that page scrolling keys co-operate with 
 \subsection{Interface problems}
 The BBC website had complicated nesting of clickables within its navigation bar. It became difficult to distinguish which flyout referred to which button. Judgement of which element the flyout was bound to, appeared to be based on the position of the label. This was an incorrect mental model; the label's position is only a heuristic for which interface element is bound. In reality, the arrow coming off the label is the indicator of which element will be clicked. Observation of the video suggests that the arrows were barely visible in this situation; their dark arrows were flush with the (also dark) frame of the webpage. Ultimately the participant was able to recover from the situation by relying on ChibiPoint's other pointing mechanism, crosshairs. This showed that the participant learned that both could be used situationally.
 
-More contrast would help highlight the existence of the flyout arrows. Another solution is to uniquely color-match the flyout with the element to which it was bound, so that the pairing is visualized. This led us in the next version of ChibiPoint to `paint' flyout-bound elements, in the same way ChibiPoint's crosshairs paint their target. Flyouts were also given discretely different colors to each other, for further identity.
+More contrast would help highlight the existence of the flyout arrows. Another solution is to uniquely color-match the flyout with the element to which it was bound, so that the pairing is visualized. This led us in the next version of ChibiPoint to `paint' flyout-bound elements, in the same way ChibiPoint's crosshairs paint their target. Flyouts were also given discretely different colors to each other, for further identity. The new design can be seen in \Cref{fig:impClickable}.
 
+\begin{figure}[ht]
+\centering\includegraphics[width=\textwidth]{figures/ImpClickables.png}
+\caption{The revised style for clickables, with unique color identities and increased size.}
+\label{fig:impClickable}
+\end{figure}
+
+\FloatBarrier
 The participant was seen to crane toward the screen to read flyouts. We decided to respond to this by increasing the flyouts' size and legibility.
 
 The participant noted that the crosshairs did not wholly emulate a mouse, since they did not trigger mouseover or hover events, nor display a `mouseover' cursor. A cursory effort was made to address this, but no fix could be found at the time. Further work could pursue a solution for this, to improve the feedback of the system and complete the cursor metaphor.
@@ -1827,7 +1843,7 @@ This task showed well the potential ineffectiveness of tabbing. Amazon.co.uk was
 
 Participants had to infer from the browser's `status bar' (a control which visualizes, amongst other things, the URL of any currently focused hyperlink), which element was focused. This information could come in forms such as:
 
-\raggedright\url{http://www.amazon.co.uk/Polycotton-Hollowfibre-Non-Allergenic-Pillows-Pack/dp/B0029TA2LM/ref=sr_1_1?ie=UTF8&qid=1396716329&sr=8-1&keywords=pillow}
+{\raggedright{}\url{http://www.amazon.co.uk/Polycotton-Hollowfibre-Non-Allergenic-Pillows-Pack/dp/B0029TA2LM/ref=sr_1_1?ie=UTF8&qid=1396716329&sr=8-1&keywords=pillow}}
 
 These were complex enough to be missed by many participants, who were observed to overshoot their target by pages, and even miss it on the way back also after backpedaling.
 
@@ -1889,7 +1905,7 @@ Asked to rate ease of use on a 5-point scale (1= `Difficult to point at what I w
 Participants were asked also to rate the amount of keypressing required by each system on a 5-point scale (1= `Few enough keypresses', 5= `Too many keypresses'). ChibiPoint systems were considered reasonable (`unreasonability' rating CX = 2.08/5, CX+F = 1.42/5), and tabbing considered completely unreasonable (4.75/5).
 
 \section{Summary}
-In this chapter we disclosed the results of our quantitative study was enacted, and performed analyses to confirm whether our hypotheses and goals were met. The next chapter discusses the findings of these analyses.
+In this chapter we disclosed the results of our quantitative study, and performed analyses to confirm whether our hypotheses and goals were met. The next chapter discusses the findings of these analyses.
 
 \chapter{Discussion}
 \label{chap:discussion}
@@ -1961,17 +1977,17 @@ We did not attempt to capture the former effectiveness problem (focus traps), si
 
 Admittedly in many cases, participants overshoot on purpose, as they use (we believe) the visual progress of the tab focus as a heuristic for how many keypresses they need to input --- allowing them to pause less often to verify the element under focus. Hence a certain amount of deviation can be expected in longer navigations, as participants titrate their speed to traverse the long distances quickly.
 
-Nevertheless, we feel the abnormally high deviation in the `low visual indicator of focus' task to be symptomatic of participants missing their target when using tabbing navigation --- they did not know that they were pointing at their target, and so continued traversing past it. This was confirmed by our observations of the task performance, and also from feedback the participants gave: \textit{``in some cases, e.g. Amazon, the button's [sic] were not highlighted so it required some careful investigation to find out what I was about to press''}, \textit{``when performing tabbing on the amazon page, I had very little knowledge about the current `location' of the tab. Even on websites that did show the location, it was often just a very faint dotted border, which really isn't much easier to see''}.
+Nevertheless, we feel the abnormally high deviation in the `low visual indicator of focus' task to be symptomatic of participants missing their target when using tabbing navigation --- they did not know that they were pointing at their target, and so continued traversing past it. This was confirmed by our observations of the task performance, and also from feedback the participants gave: \textit{``in some cases, e.g. Amazon, the button's [sic] were not highlighted so it required some careful investigation to find out what I was about to press''} (P8), \textit{``when performing tabbing on the amazon page, I had very little knowledge about the current `location' of the tab. Even on websites that did show the location, it was often just a very faint dotted border, which really isn't much easier to see''} (P1).
 
 We assert at least that there exists an effectiveness problem with tabbing. However, ChibiPoint came with its own effectiveness problems.
 
 \subsection{Flyout effectiveness}
 \label{sec:flyout_effectiveness}
-There existed some praise for the flyouts system, with one participant saying \textit{``Chibi with flyovers [sic] worked great!''} --- possibly this can be interpreted as an assessment that it solved the tasks well, which would imply effectiveness. In the same vein, ChibiPoint with flyouts was described to \textit{``work just as well and often better in all cases [than tabbing]''}. Flyouts were felt also to provide good guesses: \textit{``with flyouts, the offered `guesses' at what the user wants to click are very good. These guesses make it very clear what will be clicked on''}, which suggests that were effective at allowing the user to navigate where they wanted to.
+There existed some praise for the flyouts system, with one participant saying \textit{``Chibi with flyovers [sic] worked great!''} (P8) --- possibly this can be interpreted as an assessment that it solved the tasks well, which would imply effectiveness. In the same vein, ChibiPoint with flyouts was described to \textit{``work just as well and often better in all cases [than tabbing]''} (P11). Flyouts were felt also to provide good guesses: \textit{``with flyouts, the offered `guesses' at what the user wants to click are very good. These guesses make it very clear what will be clicked on''} (P11), which suggests that were effective at allowing the user to navigate where they wanted to.
 
-Flyouts were found, however, to obscure the elements that participants tried to point at: \textit{``Sometimes when using flyouts on an area with many links, the suggestions would become a bit cluttered making it slightly difficult to see what I was pointing at''}. The same participant, however, was unperturbed by this: \textit{``However, by choosing flyouts, this is a sacrifice I am willing to make (and understand why)''}, suggesting that this is still an acceptable level of effectiveness. It must also be pointed out that tasks such as `Link surrounded by many links' were designed to be worst-case scenarios for the flyouts system.
+Flyouts were found, however, to obscure the elements that participants tried to point at: \textit{``Sometimes when using flyouts on an area with many links, the suggestions would become a bit cluttered making it slightly difficult to see what I was pointing at''} (P1). The same participant, however, was unperturbed by this: \textit{``However, by choosing flyouts, this is a sacrifice I am willing to make (and understand why)''}, suggesting that this is still an acceptable level of effectiveness. It must also be pointed out that tasks such as `Link surrounded by many links' were designed to be worst-case scenarios for the flyouts system.
 
-Using colour-matching to designate which flyout referred to which clickable was felt to be at least partially ineffective: \textit{``question the effectiveness of the use of colours to highlight the link suggestions. On a webpage with a lot of colours this just because [sic] confusing''}. The positioning of the flyouts was felt to be confusing also \textit{``especially when the key shortcuts [...] overlapped and the shortcut appeared over the face of other links''}. This is a hard problem to solve, but we suggest nevertheless some alternative designs:
+Using colour-matching to designate which flyout referred to which clickable was felt to be at least partially ineffective: \textit{``question the effectiveness of the use of colours to highlight the link suggestions. On a webpage with a lot of colours this just because [sic] confusing''} (P7). The positioning of the flyouts was felt to be confusing also \textit{``especially when the key shortcuts [...] overlapped and the shortcut appeared over the face of other links''} (P7). This is a hard problem to solve, but we suggest nevertheless some alternative designs:
 
 \begin{itemize}
 \item Positioning the flyout on the clickable it describes could make it easier to determine which element it refers to, but at the same time it necessarily obscures that clickable. However the user might not need to see the entirety of a clickable to be able to act on it, so this could be fine, and work better than the current confusion.
@@ -2005,14 +2021,14 @@ We capture quantitatively some evidence for a predictability problem in tabbing.
 
 \subsection{Flyouts predictability}
 % usability study covers some stuff, right?
-One participant suggested implementing \textit{``a priority system in the background that chooses which keys to highlight based on previous browsing history rather than what seems like random''}, implying that the suggestions produced by flyouts could not be pre-empted. This is not a huge failing: the flyout feature on its own is not intended to enhance predictability; its primary goal is adding efficiency.
+One participant suggested implementing \textit{``a priority system in the background that chooses which keys to highlight based on previous browsing history rather than what seems like random''} (P4), implying that the suggestions produced by flyouts could not be pre-empted. This is not a huge failing: the flyout feature on its own is not intended to enhance predictability; its primary goal is adding efficiency.
 
 In any case, participants were observed to exercise some control over their shortlist of flyouts, as evidenced by their over-specifying of elements on tasks like `visually early element', to remove confusing suggestions. So users understood how to constrain their search, bounding the possible suggestions, even if they did not know which possibilities would be presented.
 
 \subsection{Crosshairs predictability}
-ChibiPoint overall was described by one participant as \textit{``very intuitive and was simple to use. Also, it mapped well to the Numpad which made navigation easier and more `familiar' so to speak''}. We take this `intuitivity' to meet our definition of predictability --- a user's knowing in advance what the outcomes of their actions will be. Mappings to numpad directions were understood, so it is possible that this participant understood that they had non-arbitrary control over the direction of traversal.
+ChibiPoint overall was described by one participant as \textit{``very intuitive and was simple to use. Also, it mapped well to the Numpad which made navigation easier and more `familiar' so to speak''} (P6). We take this `intuitivity' to meet our definition of predictability --- a user's knowing in advance what the outcomes of their actions will be. Mappings to numpad directions were understood, so it is possible that this participant understood that they had non-arbitrary control over the direction of traversal.
 
-Incidentally, several participants warned that losing this spatial mapping of inputs would harm the system --- \textit{``Numpad is very handy for the grid interface and touch typing. It would be tricky to use the number row on a laptop keyboard, though''}. For laptop keyboards we have developed another $3\times3$ grid mapping of keybindings, that does not require a numpad (and uses instead a grid of alphabet keys). This has been received well (outside of a formal study context) by users who lacked a numpad.
+Incidentally, several participants warned that losing this spatial mapping of inputs would harm the system --- \textit{``Numpad is very handy for the grid interface and touch typing. It would be tricky to use the number row on a laptop keyboard, though''} (P9). For laptop keyboards we have developed another $3\times3$ grid mapping of keybindings, that does not require a numpad (and uses instead a grid of alphabet keys). This has been received well (outside of a formal study context) by users who lacked a numpad.
 
 Additionally, the effectiveness problem raised in \Cref{sec:crosshair_effectiveness} concerning the difficulty that exists in ascertaining in advance whether a click can be sent to the target, can be considered a predictability problem. The same suggested design criteria could improve predictability here.
 
@@ -2040,10 +2056,10 @@ Labels are small, so they are able to be overlaid on each clickable without seri
 It is definitely worth reviewing the Vimium codebase --- it does not suffer from the keybinding conflicts that ChibiPoint experiences on websites like Google. Additionally it would be interesting to compare the methods used for clickable detection.
 % Mention suggestions here
 \subsection{Suggestions}
-One participant recommends implementing for flyouts \textit{``a priority system in the background that chooses which keys to highlight based on previous browsing history''}. Certainly since flyouts exist as suggestions, informing them with knowledge of previous pointing decisions (or history of visited webpages) could allow more relevant choices to be made. However, this is predicated on the assumption that the current suggestions are not as helpful as they could be. It is worth investigating in future which suggestion algorithms produce the most relevant results.
+One participant recommends implementing for flyouts \textit{``a priority system in the background that chooses which keys to highlight based on previous browsing history''} (P4). Certainly since flyouts exist as suggestions, informing them with knowledge of previous pointing decisions (or history of visited webpages) could allow more relevant choices to be made. However, this is predicated on the assumption that the current suggestions are not as helpful as they could be. It is worth investigating in future which suggestion algorithms produce the most relevant results.
 
 \subsection{Disclaimers}
-One participant holds that `exertion' is not so simply measured in the case of tabbing: \textit{``tabbing involved holding down of keys, which is less physical exertion than the counted keypresses might imply''}. We did not factor this into our analysis. Perhaps our efficiency findings should only be taken as a heuristic for exertion.
+One participant holds that `exertion' is not so simply measured in the case of tabbing: \textit{``tabbing involved holding down of keys, which is less physical exertion than the counted keypresses might imply''} (P1). We did not factor this into our analysis. Perhaps our efficiency findings should only be taken as a heuristic for exertion.
 
 \section{Summary}
 \paragraph{Efficiency}
@@ -2880,8 +2896,8 @@ Task \anumero & URL \\ [0.5ex] % inserts table
 3	&	CX	&	1	&	5	&	5	&	2	&	5	&	1	\\
 4	&	CX+F	&	1	&	5	&	3	&	3	&	4	&	2	\\
 5	&	CX+F	&	1	&	5	&	5	&	2	&	5	&	1	\\
-7	&	CX+F	&	4	&	5	&	4	&	2	&	5	&	2	\\
 6	&	CX+F	&	2	&	4	&	4	&	3	&	5	&	2	\\
+7	&	CX+F	&	4	&	5	&	4	&	2	&	5	&	2	\\
 8	&	CX+F	&	2	&	5	&	4	&	2	&	5	&	1	\\
 9	&	CX+F	&	1	&	5	&	4	&	3	&	5	&	2	\\
 10	&	CX+F	&	4	&	4	&	4	&	3	&	5	&	2	\\
