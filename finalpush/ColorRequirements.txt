@@ -1,0 +1,44 @@
+Which pages need colour (in total there are 22):
+
+(Simplified):
+24
+47-49
+51-54
+61-63
+67-68
+76
+93
+102
+149-151
+172-175
+
+Expanded:
+
+Page number:
+PDF	Counter
+24 	9
+47	32
+48	33
+49	34
+51	36
+52	37
+53	38
+54	39
+61	46
+62	47
+63	48
+67	52
+68	53
+76	61
+93	78
+102	87
+149	134
+150	135
+151	136
+172	157
+173	158
+174	159
+175	160
+
+Also, a warning:
+Pages 172-175 are marked up as landscape. Hopefully the printer will know what to do.
