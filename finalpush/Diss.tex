@@ -79,6 +79,7 @@
 
 %,bibencoding=utf8
 \usepackage[firstinits=true, sorting=nyt,backend=bibtex]{biblatex}
+\DeclareNameAlias{default}{last-first}
 
 %\usepackage[sorting=none,backend=biber,bibencoding=utf8]{biblatex}
 \bibliography{Diss}
@@ -532,9 +533,13 @@ The system will aim to solve better the pointing situations to which tabbing nav
 \label{sec:softwaresolution}
 The choice of browser for implementation is immaterial; the same logic can be applied to any extensible browser. This work will concern itself with Google Chrome, but the choice is arbitrary.
 The accessibility layer will be implemented in the form of a \gls{browserextension}, as this meets the criteria of sitting between browser and content, persists between page navigations, and does not incur work on the website developer's end.
+\section{Conclusion}
+In this chapter we disclosed the background information necessary for a reader to understand the motivation behind seeking an alternative solution to mouseless pointing on the Web, as well as describing an initial vector for how to do this. In the next chapter we confirm further, with deeper reference to literature, the need for such a solution, and also explore what approaches have been attempted already.
 
 \chapter{Literature \& Technology Review}
 \label{chap:litreview}
+\section{Introduction}
+In this chapter, we confirm the need for an alternative web pointing mechanism, and explore any recommended approaches, as well as reviewing what solutions have been attempted already.
 \section{Overview}
 The deliverable for this dissertation is anticipated to be a browser extension that adds accessibility onto web content, favouring a novel interaction approach over the experience prescribed as accessible by web standards.
 
@@ -698,9 +703,10 @@ We decided to develop a novel keyboard pointing approach, delivered by browser e
 
 
 \reqinit
-
+\section{Introduction}
+In this chapter, we describe the requirements elicitation and design for our software system. We set engineering goals, which we can use as a yardstick for completeness when it comes to the implementation of the system.
 \section{Requirements}
-Here we capture the main engineering goals of the software system to be produced. The purpose is to paint a picture of our initial intentions; it is not intended as a rigid specification. Requirements were informed primarily by constraints highlighted in the literature review --- for example: the need to avoid key conflicts, to create a mechanism that is predictable, and to make a mechanism that does not require specific effort in website development.
+Here we capture the main engineering goals of the software system to be produced. The purpose is to paint a picture of our initial intentions; it is not intended as a rigid specification. Requirements are informed primarily by constraints highlighted in the literature review --- for example: the need to avoid key conflicts, to create a mechanism that is predictable, and to make a mechanism that does not require specific effort in website development.
 An attempt is made to refrain from prescribing a specific implementation.
 
 \newcommand{\reqitem}[2]{\item {#1} \\\textit{#2}}
@@ -925,15 +931,13 @@ Incidentally: one metaphor for flyouts, is a space-constrained, multiple-choice 
 \section{System Name}
 The chosen name for the pointing system was `ChibiPoint' (stylized in Japanese as \begin{CJK}{UTF8}{min}ちび点\end{CJK}). `Chibi' (\begin{CJK}{UTF8}{min}ちび\end{CJK}) was felt to describe the youth of our pointing system, as it is used to refer to small, cute things. The chosen English pronunciation is `chibby', although this is an oversimplification. The use of the `\begin{CJK}{UTF8}{min}点\end{CJK}' kanji to refer to `point' (as in point score, rather than spatial pointing) is a deliberate pun: an allusion to our hopes that the system will perform well.
 
-\section{Summary}
+\section{Conclusion}
 This chapter presented design criteria and engineering requirements for our novel pointing system, ChibiPoint. In the next chapter, we go on to discuss how we implemented that system.
 
 \chapter{Implementation}
 \label{chap:implementation}
 \section{Introduction}
-The primary objective of this chapter is to disclose and attribute the external software that we relied upon. It is not the purpose of this dissertation to explain web development in detail: we require the reader to have a working knowledge of web development and technologies.
-
-Much of the engineering involved in ChibiPoint is not of academic interest. We focus here on non-trivial engineering problems, or ones that required novel solutions.
+The objective of this chapter is to disclose and attribute the external software that we relied upon, and also to describe the problems that were overcome in building our software systesm. We focus on non-trivial engineering problems: ones that required novel solutions, or were academically interesting. It must be cautioned that it is not the purpose of this dissertation to explain web development in detail: we require the reader to have a working knowledge of web development and technologies.
 
 \section{Primary Technology}
 We decided (as per \Cref{changingwebbrowser} and \Cref{sec:softwaresolution}) that ChibiPoint would be implemented as a browser extension, for the arbitrarily-chosen browser of Google Chrome. It was felt that a proof-of-concept with any browser would validate the approach for use in other browsers, especially if no browser-specific code was relied upon.
@@ -1064,7 +1068,9 @@ Should the user find that their intended target is not captured in this shortlis
 \FloatBarrier
 
 \subsection{Creation of MouseGrid}
-The implementation of `crosshairs' was a straightforward engineering task, so we will not dwell on it. Any novelty in its concept has been covered in the Design section (\Cref{sec:ourmousegrid}). However we provide in \Cref{fig:impCrosshairs} a diagram, in order to paint a complete picture of the system we implemented. `\texttt{document.elementFromPoint(x,y)}' is used to lookup the element at the coordinates of the crosshairs, and `\texttt{element.click()}' is effected on that element. It should also be noted that we `paint' the targeted element yellow, by styling its background and applying a glow effect.
+For completeness, we mention also the MouseGrid implementation we built, which we refer to as `pointing with crosshairs'. Enabling pointing via crosshairs was a straightforward engineering task, so we will not linger on it. Any novelty in its concept has been covered in the Design section (\Cref{sec:ourmousegrid}). A screenshot of our implementation can be found in \Cref{fig:impCrosshairs}, and completes the picture of our system.
+
+As for how a mouse was emulated by these crosshairs: `\texttt{document.elementFromPoint(x,y)}' is used to lookup the element at the coordinates of the crosshairs, and `\texttt{element.click()}' is then used to effect a click on that element. It should also be noted that we `paint' the targeted element yellow, by styling its background and applying a glow effect.
 
 \begin{figure}[ht]
 \centering\includegraphics[width=\textwidth]{figures/ImpCrosshairs.png}
@@ -1236,8 +1242,13 @@ We succeeded in meeting our design criteria --- we produced a system that:
 
 That is: a MouseGrid-like system provided predictable spatial navigation, and provided pointing via crosshairs. We produced a shortlist of clickables for every stage of traversal.
 
+\subsection{Conclusion}
+In implementation of our novel pointing system, we met our functional and non-functional system requirements, as well as our design criteria. The next chapter describes the studies we performed to assess our system's performance.
+
 \chapter{Evaluation}
 \label{chap:evaluation}
+\section{Introduction}
+This chapter explains how we evaluated ChibiPoint's performance, and details the two studies we pursued to achieve this.
 \section{Overview}
 \subsection{Comparisons}
 The primary system comparison we sought to pursue was `ChibiPoint' versus `tabbing navigation'. We aimed also to evaluate the contribution made by the `flyouts' feature of ChibiPoint: whether it helps or hinders. The exact qualities we intended to compare are detailed in \Cref{sec:systemcomparisonobjectives}.
@@ -1527,11 +1538,13 @@ Ultimately what we test is `at least' the described pointing case. Unrelated fac
 
 Were a large discrepancy to be caused by such unrelated factors, then the tested system would be seen to be so vulnerable to outside influence that it could not complete the task without being overwhelmed by those factors. Perhaps capturing this is similar enough to finding that the system is bad at that class of navigation --- since we found we cannot rely on this system to always cope with that class of navigation, due to its existing vulnerabilities.
 
-\section{Summary}
+\section{Conclusion}
 In this chapter we described how the quantitative study was enacted, as well as what it attempted to evaluate. The next chapter details the results and subsequent analysis of the systems under test.
 
 \chapter{Results \& Analysis}
 \label{chap:results}
+\section{Introduction}
+This chapter describes and analyses the results of our quantitative study. We determine how our web browser extension compares to tabbing navigation, and determine also the contribution of our novel algorithm for suggesting `clickables' (defined in \Cref{sec:clickablesExplained}).
 \section{Overview}
 We compared, for each of the eight navigation tasks, the number of keystrokes each system required to complete that navigation. Time was compared also, but as this was of secondary interest, less analysis was performed.
 
@@ -1904,12 +1917,12 @@ Asked to rate ease of use on a 5-point scale (1= `Difficult to point at what I w
 
 Participants were asked also to rate the amount of keypressing required by each system on a 5-point scale (1= `Few enough keypresses', 5= `Too many keypresses'). ChibiPoint systems were considered reasonable (`unreasonability' rating CX = 2.08/5, CX+F = 1.42/5), and tabbing considered completely unreasonable (4.75/5).
 
-\section{Summary}
+\section{Conclusion}
 In this chapter we disclosed the results of our quantitative study, and performed analyses to confirm whether our hypotheses and goals were met. The next chapter discusses the findings of these analyses.
 
 \chapter{Discussion}
 \label{chap:discussion}
-\section{Overview}
+\section{Introduction}
 The purpose of this chapter is to take the analyses and results of the previous chapter, and build with them a case for whether our hypotheses and goals from \Cref{sec:goals} are met. We support our cases with user feedback from the questionnaires.
 \section{Support for Hypotheses}
 % Hey, maybe ChibiPoint should be a less good citizen and always be listening for a numpad press? Or always be open?
@@ -2085,20 +2098,22 @@ Participants unanimously preferred ChibiPoint systems, with only two dissenters 
 % favourite
 
 \paragraph{Conclusion}
-Overall, we feel we convincingly meet the goals we set in \Cref{sec:goals}: we demonstrated that a more effective, efficient, and predictable mouseless pointing mechanism than `tabbing navigation' can be made for the web. Our system has been developed on a highly-available foundation with no obvious barriers to entry, and users enjoy it.
+We conclude in this chapter that we convincingly met the goals we set for our system in \Cref{sec:goals}: we demonstrated that a more effective, efficient, and predictable mouseless pointing mechanism than `tabbing navigation' can be made for the web. Our system has been developed on a highly-available foundation with no obvious barriers to entry, and users enjoy it.
+
+The next chapter summarizes the contribution of the entire dissertation, and suggestions future work.
 
 \chapter{Conclusions \& Future work}
 \label{chap:conclusions}
 \section{Conclusions}
-With ChibiPoint, we contribute a pointing system that excels in many areas compared to the current standards-blessed mouseless web navigation method, tabbing navigation.
+With ChibiPoint, we contribute a pointing system that excels in many areas compared to tabbing navigation (the current standards-blessed method for mouseless web navigation). We meet all the goals described in \Cref{sec:goals}, itemized as follows:
 
-In supporting our hypotheses, we demonstrated formally that:
+In supporting our hypotheses, we demonstrated formally that\ldots
 \begin{enumerate}
 	\item ChibiPoint is more efficient than tabbing navigation
 	\item Our novel suggestions mechanism, `flyouts', improves further the efficiency of ChibiPoint
 \end{enumerate}
 
-Other qualities were found:
+Other qualities were demonstrated:
 
 \begin{itemize}
 \item ChibiPoint is faster in most cases of navigation.
@@ -2115,19 +2130,17 @@ Other qualities were found:
 	\end{itemize}
 \end{itemize}
 
-With this, ChibiPoint meets all the goals that we set for it.
-
 Due to the consistent capability it demonstrates in navigating modern, real-world websites, we feel that ChibiPoint has the potential to become a new standard mechanism for accessible pointing. It has been developed on a foundation that can be made highly-available, allowing it to be used in many web browsers, on many devices, and with a wide variety of input hardware.
 
 We feel we have demonstrated also that changing the navigation mechanism is a valid vector through which accessibility can be introduced to otherwise inaccessible websites. For example, ChibiPoint copes well with the focus indication problems that render Amazon inaccessible to tabbing navigation. Thus modern web developers could potentially be relieved of the onus of accessible development (at least in the case of mouseless navigation).
 
 \section{Future Work}
-Clearly there exists work in fixing implementation bugs in ChibiPoint:
+Despite having achieving the original goals established for this project, there exist many opportunities to further the work. Clearly there exists work in fixing implementation bugs in ChibiPoint:
 
 \begin{itemize}
 \item Clickable detection could be extended to capture more types of clickable (though this was not 
 seen to represent a gap in the effectiveness of flyouts).
-\item ChibiPoint's key listener logic needs work, to support websites like Google, which also listen for keypresses.
+\item ChibiPoint's key listener logic needs work, to support websites like Google --- which also listen for keypresses.
 \item Flash Players are a citizen in webpages that host interacting elements. ChibiPoint needs to be able to interact with these.
 \end{itemize}
 
@@ -2161,6 +2174,8 @@ We also question the role of tabbing in the modern web --- perhaps it could be r
 
 A wider question exists on the direction web accessibility should take --- is it an outdated view that the onus should fall on developers and web standards to provide accessibility? Can accessibility instead be brought to the web by developing a user agent that expects the websites of today, as we have done with the pointing system in ChibiPoint?
 %Remember also to print questionnaire itself!
+
+We feel that ChibiPoint contributes to the state of accessibility in the Web, as well as easing the burden on accessible development.
 
 \pagebreak
 \chapter{Glossary}
@@ -2933,8 +2948,15 @@ Ratings were all on a five-point scale, 1--5.
 % Set this to the language you want to use in your code listings (if any)
 %\lstset{language=Java,breaklines,breakatwhitespace,basicstyle=\small}
 
+% \newcommand{\mycodeinclude}[2]{
+% \subsection{./#2}
+% \lstinputlisting[#1]{code2/#2}
+% }
+
+
 \newcommand{\mycodeinclude}[2]{
-\subsection{./#2}
+
+\textbf{./#2}
 \lstinputlisting[#1]{code2/#2}
 }
 
@@ -2960,7 +2982,7 @@ Ratings were all on a five-point scale, 1--5.
 
 \begin{landscape}
 \begin{multicols}{2}
-\chapter{Code}
+\chapter{Code Excerpts}
 
 % \newcommand{\mycodeincludecss}[1]{
 % \begin{landscape}
