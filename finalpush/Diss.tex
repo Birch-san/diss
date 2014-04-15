@@ -253,7 +253,7 @@ literate={ö}{{\"o}}1
 
 
 \abstract
-The web is designed for pointing devices like mice. Many users cannot use such input devices, due to disability or device restrictions. The existing accessible standard for mouseless pointing on the web is `tabbing navigation', which we find to be ineffective, unpredictable and inefficient. In order to solve this problem, we design, develop and evaluate `ChibiPoint': a pointing mechanism designed for modern websites. ChibiPoint is observed to be more effective and predictable than tabbing. Moreover, we demonstrate statistically that ChibiPoint is more efficient in a majority of navigation contexts. The architecture used for developing this browser extension allows its use to be extended to a wide variety of web browsers, devices and input hardware.
+The web is designed for pointing devices like mice. Many users cannot use such input devices, due to disability or device restrictions. The existing accessible standard for mouseless pointing on the web is `tabbing navigation', which we find to be ineffective, unpredictable and inefficient. In order to solve this problem, we design, develop and evaluate `ChibiPoint': a pointing mechanism designed for modern websites. ChibiPoint excels in providing pointing in previously-inaccessible websites, contributing an improved accessible mechanism for pointing, and relieving web developers of the expensive task of developing for accessibility. We find that the web browser itself is a strong vector for inserting accessibility, and recommend that web technologies be used to fix the accessibility gap on the user's end, rather than relying on website developers to be accommodating.
 \newpage
 
 
@@ -473,7 +473,7 @@ Controls can be focused and clicked using the keyboard via `tabbing navigation'.
 
 \begin{figure}[ht]
 \centering\includegraphics[width=\textwidth]{figures/TabbingJourney.png}
-\caption{The steps in a tab journey: each arrow indicates the result of the next keypress --- focus travels from button to button, one lookup at a time}
+\caption{A tabbing `journey': focus travels from button to button, one keypress at a time}
 \label{fig:tabjourney}
 \end{figure}
 
@@ -1037,7 +1037,7 @@ In response to those priorities, this is the algorithm we used to generate a sho
 
 Part of this algorithm can be seen implemented in code in \Cref{lst:codeshortlist}. The code is not production-quality, so we recommend relying on the written algorithm for understanding.
 
-An example of our system generating a shortlist of clickables with this algorithm can be seen in \Cref{fig:origClickable}.
+An example of our system generating a shortlist of clickables with this algorithm can be seen in \Cref{fig:origClickable}. This screenshot also showcases an alternative key-mapping for drilling (QWE | ASD | ZXC instead of numpad). It is worth declaring also that we revise the visibility of these flyouts before the final evaluation of the system (\Cref{sec:interfaceprobs}).
 
 % \begin{figure}[ht]
 % \centering\includegraphics[width=\textwidth]{figures/ImpClickables.png}
@@ -1281,6 +1281,7 @@ The participant soon noticed the flyouts, and understood them to be keyboard-act
 The participant understood intuitively that page scrolling keys co-operate with the ChibiPoint interface; she was able to click off-screen elements by scrolling to them and then invoking ChibiPoint, without instruction.
 
 \subsection{Interface problems}
+\label{sec:interfaceprobs}
 The BBC website had complicated nesting of clickables within its navigation bar. It became difficult to distinguish which flyout referred to which button. Judgement of which element the flyout was bound to, appeared to be based on the position of the label. This was an incorrect mental model; the label's position is only a heuristic for which interface element is bound. In reality, the arrow coming off the label is the indicator of which element will be clicked. Observation of the video suggests that the arrows were barely visible in this situation; their dark arrows were flush with the (also dark) frame of the webpage. Ultimately the participant was able to recover from the situation by relying on ChibiPoint's other pointing mechanism, crosshairs. This showed that the participant learned that both could be used situationally.
 
 More contrast would help highlight the existence of the flyout arrows. Another solution is to uniquely color-match the flyout with the element to which it was bound, so that the pairing is visualized. This led us in the next version of ChibiPoint to `paint' flyout-bound elements, in the same way ChibiPoint's crosshairs paint their target. Flyouts were also given discretely different colors to each other, for further identity. The new design can be seen in \Cref{fig:impClickable}.
